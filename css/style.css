@@ -312,6 +312,10 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 
 /* бургер: три линии; когда меню открыто — верхняя и нижняя поворачиваются в крестик, средняя гаснет */
 .header__burger { position: relative; z-index: 2; display: grid; place-items: center; color: var(--white); }
+/* знак с названием — в шапке телефона и планшета слева, на одной линии с бургером */
+.header__brand { display: inline-flex; align-items: center; gap: var(--sp-8); margin-right: auto; color: var(--white); text-decoration: none; }
+.header__brand-mark { flex: none; width: 26px; height: 28px; }
+.header__brand-text { width: 72px; font-weight: 200; line-height: 1; }
 .burger { display: block; width: 50px; height: 50px; overflow: visible; }
 .burger__line {
   stroke: currentColor;
@@ -341,7 +345,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 }
 .is-menu-open .mobile-menu__backdrop { opacity: 1; visibility: visible; transition-delay: 0s; }
 
-/* меню: панель справа на половину ширины и всю высоту экрана (но не уже 320px — чтобы всё помещалось). Сверху знак с подписью, под ним пункты,
+/* меню: панель справа на половину ширины и всю высоту экрана (но не уже 320px — чтобы всё помещалось). Сверху пункты,
    внизу — кнопка «Получить консультацию» в 32px от нижнего края экрана */
 .mobile-menu {
   position: fixed;
@@ -355,7 +359,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   height: 100vh;
   height: 100dvh;
   box-sizing: border-box;
-  padding: calc(var(--hdr-gap) + 7px) var(--s-24) var(--s-32);   /* знак — на одной высоте с бургером */
+  padding: calc(var(--hdr-gap) + 7px) var(--s-24) var(--s-32);
   background: var(--red);
   color: var(--white);
   box-shadow: -16px 0 40px rgba(0, 0, 0, .18);
@@ -364,18 +368,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   transition: transform .45s cubic-bezier(.65, 0, .35, 1), visibility 0s linear .45s;
 }
 .mobile-menu.is-open { transform: none; visibility: visible; transition-delay: 0s; }
-.mobile-menu__logo {
-  display: inline-flex;
-  align-self: flex-start;                             /* только по ширине знака с подписью — не заходит под бургер */
-  align-items: center;
-  gap: var(--sp-8);
-  min-height: 36px;
-  color: var(--white);
-  text-decoration: none;
-}
-.mobile-menu__mark { flex: none; width: 26px; height: 28px; }
-.mobile-menu__logo-text { width: 72px; font-weight: 200; line-height: 1; }
-.mobile-menu__nav { display: flex; flex-direction: column; gap: var(--sp-20); margin-top: var(--gap-head); }
+.mobile-menu__nav { display: flex; flex-direction: column; gap: var(--sp-20); margin-top: var(--s-64); font-size: 20px; }   /* знака в меню нет — пункты начинаются под крестиком; на ступень крупнее основного текста */
 .mobile-menu__nav a { color: var(--white); text-decoration: none; }
 .mobile-menu__nav a:hover { opacity: .75; }
 .mobile-menu__cta {
@@ -2126,7 +2119,9 @@ body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif
   .home3 .header.is-top .header__mobile { background: transparent; }
   .home3 .header .icon-btn { background: transparent; color: var(--text); }
   .home3 .header.is-top .icon-btn { color: var(--white); }
-  .home3.is-menu-open .header .icon-btn { color: var(--text); }
+  .home3.is-menu-open .header .icon-btn { color: var(--white); }   /* крестик — белый на красном меню */
+  .home3 .header .header__brand { color: var(--red); transition: color .35s ease; }
+  .home3 .header.is-top .header__brand { color: var(--white); }
 }
 
 /* ---------- 1. первый экран: фото с маленьким полем от краёв, справа внизу красная плашка ---------- */
@@ -2205,8 +2200,11 @@ body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif
   .h3-footer { grid-template-columns: 1fr; grid-template-rows: none; row-gap: var(--s-24); padding-inline: var(--side); }
   .h3-footer__policy, .h3-footer__links, .h3-footer__mark { grid-column: 1; grid-row: auto; }
   .h3-footer__policy { justify-self: start; }
-  .h3-footer__links { padding-bottom: 0; }
-  .h3-footer__mark { font-size: calc((100vw - 2 * var(--side)) / 7.1); }
+  /* соцсети — только иконки, в строку; подписи остаются для экранных дикторов */
+  .h3-footer__links { flex-direction: row; flex-wrap: wrap; gap: var(--s-24); padding-bottom: 0; }
+  .h3-footer__links a span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  /* надпись — по центру и чуть шире экрана: края слегка срезаны */
+  .h3-footer__mark { margin-inline: calc(-1 * var(--side) - 4vw); font-size: calc(100vw * 1.08 / 7.1); text-align: center; }
 }
 
 /* =========================================================
@@ -2368,7 +2366,16 @@ html.home3 :is(h1, h2, h3, h4, .h3-intro__lead):not(.about-svc__chip) { font-wei
 .home3 .roots__btn:hover { background: rgba(255, 255, 255, .88) !important; }
 @media (max-width: 767px) {
   .roots { min-height: 0; padding: var(--s-128) var(--side) var(--s-48); }
-  .roots::before, .roots::after { width: 60%; height: 50%; opacity: .45; }
+  /* ветки отражены по вертикали: длинная ветвь уходит вверх, над текстом, а не пересекает его */
+  .roots { padding-top: 176px; }
+  .roots::before, .roots::after { width: 60%; height: 176px; opacity: .5; background-position: right bottom;
+    -webkit-mask-image: linear-gradient(to left, #000 45%, transparent), linear-gradient(to top, #000 70%, transparent);
+            mask-image: linear-gradient(to left, #000 45%, transparent), linear-gradient(to top, #000 70%, transparent);
+    -webkit-mask-composite: source-in; mask-composite: intersect; }   /* ветки — только в полосе над текстом и гаснут к нему */
+  .roots::before { transform: scaleY(-1); }
+  .roots::after { transform: scale(-1, -1); }
+  .roots__label { font-size: 14px; }
+  .roots__text { text-wrap: wrap; }   /* строки во всю ширину, без выравнивания длины */
   .home3 .roots__btn { width: 100%; }
 }
 
@@ -2495,9 +2502,12 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .svx__stage { position: relative; height: 100%; }
 .svx__card { position: absolute; overflow: hidden; padding: 0; border: 0; transition: left .8s var(--e), top .8s var(--e), width .8s var(--e), height .8s var(--e), opacity .8s var(--e); }
 .svx__card[data-pos="active"] { left: 0; top: 0; width: 45%; height: 100%; pointer-events: none; }
-.svx__card[data-pos="next"] { left: calc(100% + var(--g3) - 6%); top: 11%; width: 6%; height: 82%; opacity: .55; pointer-events: none; }   /* узкая полоса у правого края окна, бледнее */
-.svx__card[data-pos="prev"] { left: -24%; top: 11%; width: 20%; height: 82%; opacity: 0; pointer-events: none; }
-.svx__card[data-pos="wait"] { left: calc(100% + var(--g3)); top: 11%; width: 6%; height: 82%; opacity: 0; pointer-events: none; }
+/* все карточки — одной пропорции с большой (45% ширины × 100% высоты сцены), остальные уменьшены в --mini раз:
+   следующая выглядывает из-за правого края окна и при переключении выезжает, пропорционально увеличиваясь, а не расширяясь */
+.svx { --mini: .6; }
+.svx__card[data-pos="next"] { left: calc(100% + var(--g3) - 6%); top: calc((1 - var(--mini)) * 50%); width: calc(45% * var(--mini)); height: calc(100% * var(--mini)); opacity: .55; pointer-events: none; }   /* видна полоса у правого края окна, бледнее */
+.svx__card[data-pos="prev"] { left: calc(-45% * var(--mini) - 4%); top: calc((1 - var(--mini)) * 50%); width: calc(45% * var(--mini)); height: calc(100% * var(--mini)); opacity: 0; pointer-events: none; }
+.svx__card[data-pos="wait"] { left: calc(100% + var(--g3)); top: calc((1 - var(--mini)) * 50%); width: calc(45% * var(--mini)); height: calc(100% * var(--mini)); opacity: 0; pointer-events: none; }
 .svx__card.is-jump { transition: none; }
 .svx__card img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.5) sepia(.15) hue-rotate(-30deg) contrast(.96) brightness(1.03); }   /* та же цветокоррекция, что у остальных фото */
 .svx__text { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity .2s ease; }
@@ -2505,11 +2515,11 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .svx__info { position: absolute; top: 11%; bottom: 0; left: calc(45% + var(--s-48)); width: calc(42% - var(--s-48)); display: flex; flex-direction: column; align-items: flex-start; }   /* по макету: текст начинается вровень с верхом узкой карточки справа (11% высоты), не по центру */
 .svx__text.is-on .svx__info { pointer-events: auto; }
 .svx__chips { display: flex; flex-wrap: wrap; gap: var(--s-8); margin: var(--s-24) 0 0; padding: 0; list-style: none; }   /* под названием: срок и цена */
-.svx__chips li { padding: 12px 20px; border-radius: 999px; white-space: nowrap; background: rgba(101, 98, 95, .1); font-size: var(--t5); color: var(--text); }
+.svx__chips li { padding: 6px 14px; border-radius: 999px; white-space: nowrap; background: rgba(101, 98, 95, .1); font-size: 14px; color: var(--text); }   /* плашки — мелкие, второстепенные */
 .svx__name { font-size: var(--t2); color: var(--red); text-wrap: balance; }   /* размер H2, фирменный красный */
 .svx__body { display: flex; flex-direction: column; align-items: flex-start; }
-/* по макету: название → 24 → плашки → 96 → «Что это такое?» (H4) → 20 → описание (обычный текст) → 56 → кнопка */
-.svx__label { margin-top: var(--s-96); font-size: var(--t4); line-height: 1.2; color: var(--text); }
+/* название → 24 → плашки → 64 → «Что это такое?» (H3 — заметно крупнее текста, чтобы читался как заголовок) → 20 → описание → 56 → кнопка */
+.svx__label { margin-top: var(--s-64); font-size: var(--t3); line-height: 1.15; color: var(--text); }
 .svx__desc { max-width: 36em; margin-top: var(--sp-20); font-size: var(--t5); line-height: 1.5; color: var(--text-body); text-wrap: pretty; }
 .home3 .svx__btn { display: flex; width: fit-content; min-height: 64px; margin-top: var(--s-56); padding: 20px 56px !important; font-weight: 500; }
 .svx__btn svg { width: 1em; height: 1em; }
@@ -2521,11 +2531,13 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
   .svx__track { height: auto; }
   .svx__sticky { position: static; height: auto; min-height: 0; }
   .svx__stage { display: flex; flex-direction: column; gap: var(--s-24); height: auto; }
-  .svx__card, .svx__card[data-pos] { display: block; position: relative; left: auto; top: auto; width: 100%; height: 75vw; opacity: 1; transition: none; order: calc(var(--k) * 2); }   /* 4:3 */
+  .svx__card, .svx__card[data-pos] { display: block; position: relative; left: auto; top: auto; width: 100%; height: 60vw; opacity: 1; transition: none; order: calc(var(--k) * 2); }   /* 5:3 — карточка целиком помещается на экран телефона */
   .svx__text, .svx__text.is-on { position: static; opacity: 1; transition: none; order: calc(var(--k) * 2 + 1); }
-  .svx__info { position: static; width: auto; gap: var(--s-24); margin-bottom: var(--s-32); pointer-events: auto; }
-  .home3 .svx__btn { width: 100%; }
-  .svx__label { margin-top: var(--s-32); }
+  .svx__info { position: static; width: auto; gap: 0; margin-bottom: var(--s-48); pointer-events: auto; }
+  .svx__chips { margin-top: var(--sp-12); }
+  .svx__label { margin-top: var(--s-24); }
+  .svx__desc { margin-top: var(--s-8); }
+  .home3 .svx__btn { width: 100%; min-height: 52px; margin-top: var(--s-24); padding: 14px 24px !important; }
   .svx__info { padding-top: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .svx__card, .svx__text { transition: none !important; } }
@@ -2561,4 +2573,10 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
   .idx3 .calc--split .calc__box { grid-column: 1 / -1; }
   .calc__photo { display: none; }
 }
-@media (max-width: 767px) { .idx3 .calc--split .calc__box { padding: var(--s-24); } }
+@media (max-width: 767px) {
+  /* белая карточка — от края до края экрана, текст внутри на одной линии с остальным контентом страницы */
+  .idx3 .calc--split .calc__box { margin-inline: calc(-1 * var(--side)); padding: var(--s-32) var(--side); }
+  /* поля ввода ниже: «Свой вариант» — компактное поле в строку с подписью, регион — обычной высоты */
+  .idx3 .calc--split .calc-q__custom.input { width: 88px; height: 40px; padding: 0 var(--sp-12); }
+  .idx3 .calc--split .combo__input.input { height: 44px; padding: 0 var(--sp-12); }
+}
