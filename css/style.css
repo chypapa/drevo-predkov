@@ -2365,13 +2365,6 @@ html.home3 :is(h1, h2, h3, h4, .h3-intro__lead):not(.about-svc__chip) { font-wei
 .roots__text { margin-top: var(--s-24); font-size: var(--t5); text-wrap: pretty; }
 .home3 .roots__btn { margin-top: var(--s-48); background: var(--white) !important; color: #4a5a3f !important; }
 .home3 .roots__btn:hover { background: rgba(255, 255, 255, .88) !important; }
-/* вариант с циферблатом: вместо веток — круг из белых штрихов по центру; круг выше блока, сверху и снизу обрезается.
-   Прозрачность каждого штриха задаёт js/main.js по прокрутке */
-.roots--dial::before, .roots--dial::after { display: none; }
-.roots__dial { position: absolute; top: 50%; left: 50%; z-index: -1; height: 112%; aspect-ratio: 1; translate: -50% -50%; overflow: visible; pointer-events: none; }
-.roots__dial line { stroke: #fff; stroke-width: 2.5px; stroke-linecap: round; vector-effect: non-scaling-stroke; }
-.roots--dial .roots__in { max-width: 600px; }
-.idx3 .roots + .roots--dial { margin-top: var(--s-24); }   /* небольшой зазор между двумя зелёными блоками */
 @media (max-width: 767px) {
   .roots { min-height: 0; padding: var(--s-128) var(--side) var(--s-48); }
   .roots::before, .roots::after { width: 60%; height: 50%; opacity: .45; }

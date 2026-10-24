@@ -891,38 +891,3 @@
   window.addEventListener('resize', update);
   update();
 })();
-
-/* главная, «Корни» с циферблатом: 60 штрихов, как на часах, — каждый 5-й (часовой) длиннее, между ними по 4 коротких.
-   Пока блок проходит экран снизу вверх (p от 0 до 1), штрихи по очереди гаснут — от 12 часов против часовой стрелки.
-   Без полутонов: штрих либо яркий, либо потухший */
-(function () {
-  var dial = document.querySelector('.roots__dial');
-  if (!dial) return;
-  var sec = dial.closest('section');
-  var N = 60, MIN = 0.15, NS = 'http://www.w3.org/2000/svg';
-  var ticks = [];
-  for (var i = 0; i < N; i++) {
-    var line = document.createElementNS(NS, 'line');
-    var long = i % 5 === 0;
-    line.setAttribute('x1', 0); line.setAttribute('x2', 0);
-    line.setAttribute('y1', long ? -85 : -90); line.setAttribute('y2', -98);
-    line.setAttribute('transform', 'rotate(' + (-i * 360 / N) + ')');   // минус — против часовой стрелки
-    dial.appendChild(line);
-    ticks.push(line);
-  }
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;   // без анимации — все штрихи яркие
-  var last = -1, queued = false;
-  function paint() {
-    queued = false;
-    var r = sec.getBoundingClientRect(), vh = window.innerHeight;
-    if (r.bottom < 0 || r.top > vh) return;
-    var p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height)));
-    if (Math.abs(p - last) < 0.002) return;
-    last = p;
-    var off = Math.round(p * N);                                         // сколько штрихов уже потухло
-    for (var i = 0; i < N; i++) ticks[i].style.opacity = i < off ? MIN : 1;
-  }
-  window.addEventListener('scroll', function () { if (!queued) { queued = true; requestAnimationFrame(paint); } }, { passive: true });
-  window.addEventListener('resize', paint);
-  paint();
-})();
