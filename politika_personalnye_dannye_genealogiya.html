@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ru" class="theme-v1 home3 idx3 svcp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Древо предков</title>
+  <link rel="icon" href="img/favicon.ico" sizes="32x32">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css?v=20261023z">
+  <script>if (!('onpagereveal' in window)) document.documentElement.classList.add('fade-nav');</script>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============ HEADER ============ -->
+  <header class="header header--sticky header--dark is-top">
+    <div class="header__bar">
+      <div class="header__left">
+        <a class="header__logo" href="index.html" aria-label="Древо предков — на главную">
+          <!-- знак рисуется при загрузке страницы по центру экрана и переезжает сюда (js/main.js) -->
+          <span class="logo-mark">
+            <svg class="mark" viewBox="0 0 370 395" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <defs>
+                <!-- маска прячет линию заднего стебля там, где его перекрывает передний -->
+                <mask id="mark-behind-1" maskUnits="userSpaceOnUse" x="-10" y="-10" width="390" height="415">
+                  <rect x="-10" y="-10" width="390" height="415" fill="#fff"/>
+                  <path fill="#000" d="M220.482 164.832C221.301 163.992 220.287 162.695 219.292 163.317C168.484 195.065 134.407 232.444 134.408 281.868C134.368 334.185 161.475 361.569 205.015 393.239C205.181 393.36 205.383 393.428 205.589 393.431L271.408 394.497C272.531 394.515 272.836 392.929 271.789 392.52C217.137 371.204 159.834 334.475 159.834 278.373C159.834 231.388 177.557 208.84 220.482 164.832Z"/>
+                </mask>
+              </defs>
+              <g class="mark-lines">
+                <path pathLength="1" d="M155.453 159.515C155.733 106.715 135.203 49.5645 57.9633 30.1345C55.3433 109.745 104.623 145.235 155.453 159.515Z"/>
+                <path pathLength="1" d="M161.61 190.925C123.18 154.715 67.38 130.745 0.5 173.995C56.93 230.195 116.5 218.355 161.61 190.925Z"/>
+                <path pathLength="1" d="M213.767 159.654C213.487 106.854 234.017 49.7036 311.257 30.2736C313.877 109.884 264.597 145.374 213.767 159.654Z"/>
+                <path pathLength="1" d="M207.61 190.786C246.04 154.576 301.84 130.606 368.72 173.856C312.29 230.056 252.72 218.216 207.61 190.786Z"/>
+                <path pathLength="1" d="M184.61 162.5C216.61 120.5 234.61 62.5 184.61 0.5C134.61 62.5 152.61 120.5 184.61 162.5Z"/>
+                <path pathLength="1" stroke-miterlimit="6" d="M220.482 164.832C221.301 163.992 220.287 162.695 219.292 163.317C168.484 195.065 134.407 232.444 134.408 281.868C134.368 334.185 161.475 361.569 205.015 393.239C205.181 393.36 205.383 393.428 205.589 393.431L271.408 394.497C272.531 394.515 272.836 392.929 271.789 392.52C217.137 371.204 159.834 334.475 159.834 278.373C159.834 231.388 177.557 208.84 220.482 164.832Z"/>
+                <path mask="url(#mark-behind-1)" pathLength="1" stroke-miterlimit="6" d="M148.738 164.832C147.919 163.992 148.933 162.695 149.928 163.317C200.736 195.065 234.813 232.444 234.812 281.868C234.852 334.185 207.745 361.569 164.205 393.239C164.039 393.36 163.837 393.428 163.631 393.431L97.8125 394.497C96.6892 394.515 96.3844 392.929 97.431 392.52C152.083 371.204 209.386 334.475 209.386 278.373C209.386 231.388 191.663 208.84 148.738 164.832Z"/>
+              </g>
+              <g class="mark-fill">
+                <path d="M155.453 159.515C155.733 106.715 135.203 49.5645 57.9633 30.1345C55.3433 109.745 104.623 145.235 155.453 159.515Z"/>
+                <path d="M161.61 190.925C123.18 154.715 67.38 130.745 0.5 173.995C56.93 230.195 116.5 218.355 161.61 190.925Z"/>
+                <path d="M213.767 159.654C213.487 106.854 234.017 49.7036 311.257 30.2736C313.877 109.884 264.597 145.374 213.767 159.654Z"/>
+                <path d="M207.61 190.786C246.04 154.576 301.84 130.606 368.72 173.856C312.29 230.056 252.72 218.216 207.61 190.786Z"/>
+                <path d="M184.61 162.5C216.61 120.5 234.61 62.5 184.61 0.5C134.61 62.5 152.61 120.5 184.61 162.5Z"/>
+                <path d="M220.482 164.832C221.301 163.992 220.287 162.695 219.292 163.317C168.484 195.065 134.407 232.444 134.408 281.868C134.368 334.185 161.475 361.569 205.015 393.239C205.181 393.36 205.383 393.428 205.589 393.431L271.408 394.497C272.531 394.515 272.836 392.929 271.789 392.52C217.137 371.204 159.834 334.475 159.834 278.373C159.834 231.388 177.557 208.84 220.482 164.832Z"/>
+                <path d="M148.738 164.832C147.919 163.992 148.933 162.695 149.928 163.317C200.736 195.065 234.813 232.444 234.812 281.868C234.852 334.185 207.745 361.569 164.205 393.239C164.039 393.36 163.837 393.428 163.631 393.431L97.8125 394.497C96.6892 394.515 96.3844 392.929 97.431 392.52C152.083 371.204 209.386 334.475 209.386 278.373C209.386 231.388 191.663 208.84 148.738 164.832Z"/>
+              </g>
+            </svg>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Основное меню">
+          <a href="index.html#about">О нас</a>
+          <a href="rodoslovnaya-kniga.html">Родословная книга</a>
+          <a href="issledovanie.html">Архивный свиток</a>
+          <a href="tochechnye-issledovaniya.html">Точечные исследования</a>
+        </nav>
+      </div>
+      <div class="header__right">
+        <!-- на остальных страницах кнопка открывает окно с формой поверх страницы (#consult-modal внизу страницы, js/main.js) -->
+        <a class="btn btn--white header__cta" href="index.html#contact" data-consult>Получить консультацию</a>
+      </div>
+    </div>
+
+    <div class="header__mobile">
+      <!-- на телефоне и планшете в шапке только бургер; по нажатию он превращается в крестик, справа выезжает меню -->
+      <button class="icon-btn header__burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu-1">
+        <svg class="burger" viewBox="0 0 50 50" width="50" height="50" aria-hidden="true" focusable="false">
+          <line class="burger__line burger__line--top" x1="15" y1="18" x2="35" y2="18"/>
+          <line class="burger__line burger__line--mid" x1="15" y1="25" x2="35" y2="25"/>
+          <line class="burger__line burger__line--bot" x1="15" y1="32" x2="35" y2="32"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu__backdrop" aria-hidden="true"></div>
+    <div class="mobile-menu" data-lenis-prevent id="mobile-menu-1">
+      <a class="mobile-menu__logo" href="index.html" aria-label="Древо предков — на главную">
+        <svg class="mobile-menu__mark" viewBox="0 0 370 395" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <g fill="currentColor">
+              <path d="M155.453 159.515C155.733 106.715 135.203 49.5645 57.9633 30.1345C55.3433 109.745 104.623 145.235 155.453 159.515Z"/>
+              <path d="M161.61 190.925C123.18 154.715 67.38 130.745 0.5 173.995C56.93 230.195 116.5 218.355 161.61 190.925Z"/>
+              <path d="M213.767 159.654C213.487 106.854 234.017 49.7036 311.257 30.2736C313.877 109.884 264.597 145.374 213.767 159.654Z"/>
+              <path d="M207.61 190.786C246.04 154.576 301.84 130.606 368.72 173.856C312.29 230.056 252.72 218.216 207.61 190.786Z"/>
+              <path d="M184.61 162.5C216.61 120.5 234.61 62.5 184.61 0.5C134.61 62.5 152.61 120.5 184.61 162.5Z"/>
+              <path d="M220.482 164.832C221.301 163.992 220.287 162.695 219.292 163.317C168.484 195.065 134.407 232.444 134.408 281.868C134.368 334.185 161.475 361.569 205.015 393.239C205.181 393.36 205.383 393.428 205.589 393.431L271.408 394.497C272.531 394.515 272.836 392.929 271.789 392.52C217.137 371.204 159.834 334.475 159.834 278.373C159.834 231.388 177.557 208.84 220.482 164.832Z"/>
+              <path d="M148.738 164.832C147.919 163.992 148.933 162.695 149.928 163.317C200.736 195.065 234.813 232.444 234.812 281.868C234.852 334.185 207.745 361.569 164.205 393.239C164.039 393.36 163.837 393.428 163.631 393.431L97.8125 394.497C96.6892 394.515 96.3844 392.929 97.431 392.52C152.083 371.204 209.386 334.475 209.386 278.373C209.386 231.388 191.663 208.84 148.738 164.832Z"/>
+              </g>
+        </svg>
+        <span class="mobile-menu__logo-text">Древо предков</span>
+      </a>
+      <nav class="mobile-menu__nav" aria-label="Мобильное меню">
+        <a href="index.html#about">О&nbsp;нас</a>
+        <a href="rodoslovnaya-kniga.html">Родословная книга</a>
+        <a href="issledovanie.html">Архивный свиток</a>
+        <a href="tochechnye-issledovaniya.html">Точечные исследования</a>
+        <a href="index.html#contact">Контакты</a>
+      </nav>
+      <a class="btn mobile-menu__cta" href="index.html#contact" data-consult>Получить консультацию</a>
+    </div>
+  </header>
+
+  <!-- ============ ТЕКСТ ПОЛИТИКИ. Красным отмечены места, которые нужно заполнить ============ -->
+  <main id="top">
+    <!-- шапка страницы — как на страницах услуг: невысокий баннер с фото. Фото: конверт 1923 года,
+         Wikimedia Commons (общественное достояние) -->
+    <section class="opening opening--policy opening--banner" aria-labelledby="opening-title">
+      <div class="opening__media" aria-hidden="true">
+        <img class="opening__img" src="img/policy-hero.jpg" srcset="img/policy-hero-960.jpg 960w, img/policy-hero.jpg 2000w" sizes="100vw" width="2000" height="1372" alt="" fetchpriority="high" decoding="async">
+      </div>
+      <div class="opening__content">
+        <h1 class="opening__title" id="opening-title">
+          <span class="line"><span>Политика в&nbsp;отношении обработки</span></span>
+          <span class="line"><span>персональных данных</span></span>
+        </h1>
+      </div>
+    </section>
+
+    <div class="policy">
+    <div class="policy__text">
+
+      <h2>1. Общие положения</h2>
+
+      <p>Настоящая Политика в отношении обработки персональных данных (далее — Политика) определяет порядок обработки и защиты персональных данных, которые индивидуальный предприниматель <span class="placeholder">[ФИО ИП полностью]</span> (далее — Оператор) получает от пользователей сайта <span class="placeholder">[адрес сайта]</span> (далее — Сайт).</p>
+
+      <p>Политика разработана в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных» и иными применимыми нормативными правовыми актами Российской Федерации.</p>
+
+      <p>Оператор обеспечивает конфиденциальность и безопасность персональных данных и обрабатывает их только в объёме и для целей, необходимых для работы с обращениями пользователей.</p>
+
+      <h2>2. Сведения об Операторе</h2>
+
+      <p>Оператор персональных данных: индивидуальный предприниматель <span class="placeholder">[ФИО ИП полностью]</span>.</p>
+
+      <p>ИНН: <span class="placeholder">[ИНН]</span>.</p>
+
+      <p>ОГРНИП: <span class="placeholder">[ОГРНИП]</span>.</p>
+
+      <p>Адрес: <span class="placeholder">[адрес ИП]</span>.</p>
+
+      <p>Контактный e-mail: <span class="placeholder">[e-mail]</span>.</p>
+
+      <p>Контактный телефон: <span class="placeholder">[телефон]</span>.</p>
+
+      <h2>3. Какие персональные данные обрабатываются</h2>
+
+      <p>При обращении через Сайт пользователь может самостоятельно предоставить Оператору следующие персональные данные:</p>
+
+      <p>— имя или иное указанное пользователем имя;</p>
+
+      <p>— номер телефона;</p>
+
+      <p>— адрес электронной почты;</p>
+
+      <p>— идентификатор или контакт в мессенджере;</p>
+
+      <p>— иные контактные данные, которые пользователь добровольно указывает в форме обращения;</p>
+
+      <p>— содержание обращения и иные сведения, содержащиеся в сообщении пользователя.</p>
+
+      <p>Оператор не требует от пользователя предоставления избыточных персональных данных, не связанных с целью обработки обращения.</p>
+
+      <h2>4. Цели обработки персональных данных</h2>
+
+      <p>Персональные данные обрабатываются исключительно для:</p>
+
+      <p>— получения и рассмотрения обращения пользователя;</p>
+
+      <p>— связи с пользователем по указанным им контактным данным;</p>
+
+      <p>— предоставления консультации по вопросам оказания услуг, связанных с генеалогическим поиском;</p>
+
+      <p>— подготовки ответа на обращение пользователя.</p>
+
+      <p>Персональные данные не используются для целей, несовместимых с указанными выше целями.</p>
+
+      <h2>5. Правовые основания обработки</h2>
+
+      <p>Правовым основанием обработки персональных данных является согласие пользователя на обработку его персональных данных, предоставленное при направлении обращения через Сайт, а также иные основания, предусмотренные законодательством Российской Федерации, если они применимы к конкретной ситуации.</p>
+
+      <h2>6. Порядок обработки персональных данных</h2>
+
+      <p>Обработка персональных данных может осуществляться с использованием средств автоматизации, а также без их использования.</p>
+
+      <p>В рамках обработки персональных данных Оператор может осуществлять сбор, запись, систематизацию, хранение, уточнение, извлечение, использование, передачу в случаях, предусмотренных законодательством Российской Федерации, обезличивание, блокирование, удаление и уничтожение персональных данных.</p>
+
+      <p>Оператор принимает необходимые правовые, организационные и технические меры для защиты персональных данных от неправомерного или случайного доступа, уничтожения, изменения, блокирования, копирования, предоставления, распространения и иных неправомерных действий.</p>
+
+      <h2>7. Передача персональных данных третьим лицам</h2>
+
+      <p>Оператор не осуществляет продажу или передачу персональных данных третьим лицам в целях их самостоятельного использования третьими лицами.</p>
+
+      <p>Передача персональных данных может осуществляться только в случаях, когда это необходимо для обработки обращения пользователя, исполнения требований законодательства Российской Федерации либо с привлечением лиц, действующих по поручению Оператора и соблюдающих требования к защите персональных данных.</p>
+
+      <h2>8. Срок обработки и хранения персональных данных</h2>
+
+      <p>Персональные данные обрабатываются и хранятся в течение срока, необходимого для достижения целей их обработки, включая рассмотрение обращения пользователя и предоставление ответа.</p>
+
+      <p>После достижения целей обработки персональные данные подлежат удалению или уничтожению, если их дальнейшее хранение не требуется законодательством Российской Федерации или не имеется иного законного основания для продолжения обработки.</p>
+
+      <p><span class="placeholder">[Если у вас установлен конкретный срок хранения обращений, укажите его здесь, например: «Персональные данные хранятся не более 1 года с даты последнего взаимодействия с пользователем».]</span></p>
+
+      <h2>9. Права субъекта персональных данных</h2>
+
+      <p>Пользователь вправе получать сведения об обработке его персональных данных, требовать уточнения, блокирования или уничтожения персональных данных в случаях, предусмотренных законодательством Российской Федерации, а также отзывать ранее предоставленное согласие на обработку персональных данных, если обработка осуществляется на основании согласия.</p>
+
+      <p>Для реализации своих прав пользователь может направить обращение Оператору по адресу электронной почты <span class="placeholder">[e-mail]</span> либо по адресу: <span class="placeholder">[почтовый адрес]</span>.</p>
+
+      <h2>10. Отзыв согласия</h2>
+
+      <p>Пользователь вправе отозвать согласие на обработку персональных данных, направив соответствующее обращение Оператору по адресу <span class="placeholder">[e-mail]</span>.</p>
+
+      <p>Отзыв согласия не влияет на законность обработки персональных данных, осуществлённой до его отзыва. После получения отзыва Оператор прекращает обработку персональных данных, если отсутствуют иные законные основания для их дальнейшей обработки.</p>
+
+      <h2>11. Заключительные положения</h2>
+
+      <p>Настоящая Политика действует бессрочно до её замены новой редакцией.</p>
+
+      <p>Оператор вправе вносить изменения в настоящую Политику в связи с изменением законодательства Российской Федерации, порядка обработки персональных данных или работы Сайта. Актуальная редакция Политики размещается на Сайте.</p>
+
+      <p>Дата последнего обновления: <span class="placeholder">[дата]</span>.</p>
+
+      <p class="policy__date"><strong>Дата публикации:</strong> <span class="placeholder">[укажите дату]</span></p>
+    </div>
+  </div>
+  </main>
+
+  <!-- подвал: красный, слева мессенджеры, справа политика, внизу — крупная надпись «Древо предков» -->
+  <footer class="h3-footer">
+    <div class="h3-footer__top">
+      <ul class="h3-footer__links">
+        <li><a href="https://t.me/drevo_predkov" target="_blank" rel="noopener"><img src="img/icons/telegram.svg" width="44" height="44" alt=""><span>Телеграм&nbsp;↗</span></a></li>
+        <li><a href="https://vk.ru/im?sel=-228395135" target="_blank" rel="noopener"><img src="img/icons/vk.svg" width="44" height="44" alt=""><span>ВКонтакте&nbsp;↗</span></a></li>
+        <li><a href="https://api.whatsapp.com/send/?phone=79158929206&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener"><img src="img/icons/whatsapp.svg" width="44" height="44" alt=""><span>WhatsApp&nbsp;↗</span></a></li>
+        <li><a href="https://www.avito.ru/moskva/predlozheniya_uslug/rodoslovnayagenealogiyadizayn_dreva_4729921847" target="_blank" rel="noopener"><img src="img/icons/max.svg" width="44" height="44" alt=""><span>Авито&nbsp;↗</span></a></li>
+      </ul>
+      <a class="h3-footer__policy" href="politika_personalnye_dannye_genealogiya.html">Политика конфиденциальности</a>
+    </div>
+    <p class="h3-footer__mark" aria-hidden="true">Древо предков</p>
+  </footer>
+
+</div>
+
+<!-- ============ КОНСУЛЬТАЦИЯ: окно поверх страницы — красная плашка в одну колонку: заголовок, текст и соцсети над формой.
+     Открывается кнопкой «Получить консультацию» в шапке и в мобильном меню и ссылкой «Можете связаться с нами» (атрибут data-consult).
+     Страница под окном затемнена на 20% и размыта, как под мобильным меню. Закрывается крестиком, кликом мимо окна и клавишей Esc ============ -->
+<div class="overlay consult-modal" id="consult-modal" role="dialog" aria-modal="true" aria-labelledby="consult-title" hidden>
+  <div class="consult-modal__box lead lead--modal" data-lenis-prevent>
+    <div class="lead__inner">
+      <form class="lead__card" action="#" method="post" novalidate>
+        <div class="lead__head">
+          <h2 class="lead__title" id="consult-title">Начните с&nbsp;консультации</h2>
+          <p>Расскажите, что&nbsp;уже известно о&nbsp;вашей семье,&nbsp;— подскажем, с&nbsp;чего начать поиск и&nbsp;какой формат подойдёт.</p>
+        </div>
+        <ul class="lead__chips" aria-label="Условия консультации">
+          <li>Онлайн</li>
+          <li>Бесплатно</li>
+          <li>С&nbsp;конкретными рекомендациями</li>
+        </ul>
+        <div class="lead__fields">
+          <div class="field">
+            <input class="field__input" id="consult-name" name="name" type="text" autocomplete="name" placeholder=" ">
+            <label class="field__label" for="consult-name">Ваше имя</label>
+          </div>
+          <div class="field">
+            <input class="field__input" id="consult-contact" name="contact" type="text" autocomplete="tel" placeholder=" " required>
+            <label class="field__label" for="consult-contact">Телефон или&nbsp;ник в&nbsp;мессенджере*</label>
+          </div>
+          <div class="field field--area">
+            <textarea class="field__input" id="consult-ancestors" name="ancestors" placeholder=" "></textarea>
+            <label class="field__label" for="consult-ancestors">Что известно о&nbsp;предках</label>
+          </div>
+        </div>
+        <label class="check lead__agree">
+          <input type="checkbox" name="agree" required>
+          <span>Нажимая «Отправить заявку», вы&nbsp;даёте согласие на&nbsp;обработку персональных данных и&nbsp;соглашаетесь с&nbsp;<a href="politika_personalnye_dannye_genealogiya.html">политикой конфиденциальности</a>.</span>
+        </label>
+        <button class="btn lead__submit" type="submit">Отправить заявку</button>
+        <p class="lead__note" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    <!-- прежний вариант формы (до 09.10): чтобы вернуть, замените блок выше содержимым этого шаблона — на странице он не показывается -->
+    <template id="contact-v1">
+    <div class="contact__inner">
+      <div class="contact__info">
+        <h2 class="h2 contact__title" id="consult-title">Начните с&nbsp;консультации</h2>
+        <p class="h4 contact__text">Расскажите, что&nbsp;уже известно о&nbsp;вашей семье,&nbsp;— подскажем, с&nbsp;чего начать поиск и&nbsp;какой формат подойдёт.</p>
+        <div class="socials">
+          <a href="https://api.whatsapp.com/send/?phone=79158929206&text&type=phone_number&app_absent=0" aria-label="WhatsApp"><img src="img/icons/whatsapp.svg" width="44" height="44" alt=""></a>
+          <a href="https://t.me/drevo_predkov" aria-label="Telegram"><img src="img/icons/telegram.svg" width="44" height="44" alt=""></a>
+          <a href="https://vk.ru/im?sel=-228395135" aria-label="ВКонтакте"><img src="img/icons/vk.svg" width="44" height="44" alt=""></a>
+          <a href="https://www.avito.ru/moskva/predlozheniya_uslug/rodoslovnayagenealogiyadizayn_dreva_4729921847" aria-label="Avito"><img src="img/icons/max.svg" width="44" height="44" alt=""></a>
+        </div>
+      </div>
+
+      <form class="form" action="#" method="post" novalidate>
+        <div class="form__fields">
+          <label class="visually-hidden" for="consult-contact">Телефон, почта или мессенджер</label>
+          <input class="input" id="consult-contact" name="contact" type="text" placeholder="Телефон, почта, мессенджер" autocomplete="tel" required>
+          <label class="visually-hidden" for="consult-ancestors">Что известно о предках</label>
+          <textarea class="input input--area" id="consult-ancestors" name="ancestors" placeholder="Что известно о предках (необязательно): имена, фамилии, места проживания"></textarea>
+          <label class="check">
+            <input type="checkbox" name="agree" required>
+            <span>Отправляя форму я&nbsp;принимаю <a href="politika_personalnye_dannye_genealogiya.html">политику конфиденциальности</a></span>
+          </label>
+        </div>
+        <button class="btn form__submit" type="submit">Отправить</button>
+        <p class="form__note" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    </template>
+    <button class="overlay__close" type="button" aria-label="Закрыть"></button>
+  </div>
+</div>
+
+<!-- ============ ВИДЕООТЗЫВ: окно поверх страницы. Страница под ним затемнена на 20% и размыта, как под мобильным меню.
+     Закрывается крестиком, кликом мимо видео и клавишей Esc ============ -->
+<div class="overlay video-modal" id="video-modal" role="dialog" aria-modal="true" aria-label="Видеоотзыв" hidden>
+  <video class="video-modal__player" controls playsinline preload="none"></video>
+  <p class="video-modal__missing">Видео скоро появится</p>
+  <button class="overlay__close" type="button" aria-label="Закрыть видео"></button>
+</div>
+
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/main.js?v=20261023g"></script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru" class="theme-v1 home3 idx3 svcp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Древо предков</title>
+  <meta name="description" content="Отдельные генеалогические задачи: поиск архивных документов, установление личности предка, подтверждение родства для суда, наследства и гражданства по происхождению. Консультация. Дизайн родословного древа по уже известным данным.">
+  <link rel="icon" href="img/favicon.ico" sizes="32x32">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css?v=20261023z">
+  <script>if (!('onpagereveal' in window)) document.documentElement.classList.add('fade-nav');</script>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============ HEADER ============ -->
+  <header class="header header--sticky header--dark is-top">
+    <div class="header__bar">
+      <div class="header__left">
+        <a class="header__logo" href="index.html" aria-label="Древо предков — на главную">
+          <!-- знак рисуется при загрузке страницы по центру экрана и переезжает сюда (js/main.js) -->
+          <span class="logo-mark">
+            <svg class="mark" viewBox="0 0 370 395" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <defs>
+                <!-- маска прячет линию заднего стебля там, где его перекрывает передний -->
+                <mask id="mark-behind-1" maskUnits="userSpaceOnUse" x="-10" y="-10" width="390" height="415">
+                  <rect x="-10" y="-10" width="390" height="415" fill="#fff"/>
+                  <path fill="#000" d="M220.482 164.832C221.301 163.992 220.287 162.695 219.292 163.317C168.484 195.065 134.407 232.444 134.408 281.868C134.368 334.185 161.475 361.569 205.015 393.239C205.181 393.36 205.383 393.428 205.589 393.431L271.408 394.497C272.531 394.515 272.836 392.929 271.789 392.52C217.137 371.204 159.834 334.475 159.834 278.373C159.834 231.388 177.557 208.84 220.482 164.832Z"/>
+                </mask>
+              </defs>
+              <g class="mark-lines">
+                <path pathLength="1" d="M155.453 159.515C155.733 106.715 135.203 49.5645 57.9633 30.1345C55.3433 109.745 104.623 145.235 155.453 159.515Z"/>
+                <path pathLength="1" d="M161.61 190.925C123.18 154.715 67.38 130.745 0.5 173.995C56.93 230.195 116.5 218.355 161.61 190.925Z"/>
+                <path pathLength="1" d="M213.767 159.654C213.487 106.854 234.017 49.7036 311.257 30.2736C313.877 109.884 264.597 145.374 213.767 159.654Z"/>
+                <path pathLength="1" d="M207.61 190.786C246.04 154.576 301.84 130.606 368.72 173.856C312.29 230.056 252.72 218.216 207.61 190.786Z"/>
+                <path pathLength="1" d="M184.61 162.5C216.61 120.5 234.61 62.5 184.61 0.5C134.61 62.5 152.61 120.5 184.61 162.5Z"/>
+                <path pathLength="1" stroke-miterlimit="6" d="M220.482 164.832C221.301 163.992 220.287 162.695 219.292 163.317C168.484 195.065 134.407 232.444 134.408 281.868C134.368 334.185 161.475 361.569 205.015 393.239C205.181 393.36 205.383 393.428 205.589 393.431L271.408 394.497C272.531 394.515 272.836 392.929 271.789 392.52C217.137 371.204 159.834 334.475 159.834 278.373C159.834 231.388 177.557 208.84 220.482 164.832Z"/>
+                <path mask="url(#mark-behind-1)" pathLength="1" stroke-miterlimit="6" d="M148.738 164.832C147.919 163.992 148.933 162.695 149.928 163.317C200.736 195.065 234.813 232.444 234.812 281.868C234.852 334.185 207.745 361.569 164.205 393.239C164.039 393.36 163.837 393.428 163.631 393.431L97.8125 394.497C96.6892 394.515 96.3844 392.929 97.431 392.52C152.083 371.204 209.386 334.475 209.386 278.373C209.386 231.388 191.663 208.84 148.738 164.832Z"/>
+              </g>
+              <g class="mark-fill">
+                <path d="M155.453 159.515C155.733 106.715 135.203 49.5645 57.9633 30.1345C55.3433 109.745 104.623 145.235 155.453 159.515Z"/>
+                <path d="M161.61 190.925C123.18 154.715 67.38 130.745 0.5 173.995C56.93 230.195 116.5 218.355 161.61 190.925Z"/>
+                <path d="M213.767 159.654C213.487 106.854 234.017 49.7036 311.257 30.2736C313.877 109.884 264.597 145.374 213.767 159.654Z"/>
+                <path d="M207.61 190.786C246.04 154.576 301.84 130.606 368.72 173.856C312.29 230.056 252.72 218.216 207.61 190.786Z"/>
+                <path d="M184.61 162.5C216.61 120.5 234.61 62.5 184.61 0.5C134.61 62.5 152.61 120.5 184.61 162.5Z"/>
+                <path d="M220.482 164.832C221.301 163.992 220.287 162.695 219.292 163.317C168.484 195.065 134.407 232.444 134.408 281.868C134.368 334.185 161.475 361.569 205.015 393.239C205.181 393.36 205.383 393.428 205.589 393.431L271.408 394.497C272.531 394.515 272.836 392.929 271.789 392.52C217.137 371.204 159.834 334.475 159.834 278.373C159.834 231.388 177.557 208.84 220.482 164.832Z"/>
+                <path d="M148.738 164.832C147.919 163.992 148.933 162.695 149.928 163.317C200.736 195.065 234.813 232.444 234.812 281.868C234.852 334.185 207.745 361.569 164.205 393.239C164.039 393.36 163.837 393.428 163.631 393.431L97.8125 394.497C96.6892 394.515 96.3844 392.929 97.431 392.52C152.083 371.204 209.386 334.475 209.386 278.373C209.386 231.388 191.663 208.84 148.738 164.832Z"/>
+              </g>
+            </svg>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Основное меню">
+          <a href="index.html#about">О нас</a>
+          <a href="rodoslovnaya-kniga.html">Родословная книга</a>
+          <a href="issledovanie.html">Архивный свиток</a>
+          <a href="tochechnye-issledovaniya.html" aria-current="page">Точечные исследования</a>
+        </nav>
+      </div>
+      <div class="header__right">
+        <!-- на этой странице форма — в последнем блоке, кнопка ведёт к ней -->
+        <a class="btn btn--white header__cta" href="#contact">Получить консультацию</a>
+      </div>
+    </div>
+
+    <div class="header__mobile">
+      <!-- на телефоне и планшете в шапке только бургер; по нажатию он превращается в крестик, справа выезжает меню -->
+      <button class="icon-btn header__burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu-1">
+        <svg class="burger" viewBox="0 0 50 50" width="50" height="50" aria-hidden="true" focusable="false">
+          <line class="burger__line burger__line--top" x1="15" y1="18" x2="35" y2="18"/>
+          <line class="burger__line burger__line--mid" x1="15" y1="25" x2="35" y2="25"/>
+          <line class="burger__line burger__line--bot" x1="15" y1="32" x2="35" y2="32"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu__backdrop" aria-hidden="true"></div>
+    <div class="mobile-menu" data-lenis-prevent id="mobile-menu-1">
+      <a class="mobile-menu__logo" href="index.html" aria-label="Древо предков — на главную">
+        <svg class="mobile-menu__mark" viewBox="0 0 370 395" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <g fill="currentColor">
+              <path d="M155.453 159.515C155.733 106.715 135.203 49.5645 57.9633 30.1345C55.3433 109.745 104.623 145.235 155.453 159.515Z"/>
+              <path d="M161.61 190.925C123.18 154.715 67.38 130.745 0.5 173.995C56.93 230.195 116.5 218.355 161.61 190.925Z"/>
+              <path d="M213.767 159.654C213.487 106.854 234.017 49.7036 311.257 30.2736C313.877 109.884 264.597 145.374 213.767 159.654Z"/>
+              <path d="M207.61 190.786C246.04 154.576 301.84 130.606 368.72 173.856C312.29 230.056 252.72 218.216 207.61 190.786Z"/>
+              <path d="M184.61 162.5C216.61 120.5 234.61 62.5 184.61 0.5C134.61 62.5 152.61 120.5 184.61 162.5Z"/>
+              <path d="M220.482 164.832C221.301 163.992 220.287 162.695 219.292 163.317C168.484 195.065 134.407 232.444 134.408 281.868C134.368 334.185 161.475 361.569 205.015 393.239C205.181 393.36 205.383 393.428 205.589 393.431L271.408 394.497C272.531 394.515 272.836 392.929 271.789 392.52C217.137 371.204 159.834 334.475 159.834 278.373C159.834 231.388 177.557 208.84 220.482 164.832Z"/>
+              <path d="M148.738 164.832C147.919 163.992 148.933 162.695 149.928 163.317C200.736 195.065 234.813 232.444 234.812 281.868C234.852 334.185 207.745 361.569 164.205 393.239C164.039 393.36 163.837 393.428 163.631 393.431L97.8125 394.497C96.6892 394.515 96.3844 392.929 97.431 392.52C152.083 371.204 209.386 334.475 209.386 278.373C209.386 231.388 191.663 208.84 148.738 164.832Z"/>
+              </g>
+        </svg>
+        <span class="mobile-menu__logo-text">Древо предков</span>
+      </a>
+      <nav class="mobile-menu__nav" aria-label="Мобильное меню">
+        <a href="index.html#about">О&nbsp;нас</a>
+        <a href="rodoslovnaya-kniga.html">Родословная книга</a>
+        <a href="issledovanie.html">Архивный свиток</a>
+        <a href="tochechnye-issledovaniya.html" aria-current="page">Точечные исследования</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+      <a class="btn mobile-menu__cta" href="#contact">Получить консультацию</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ ПЕРВЫЙ ЭКРАН — по макету Figma (plat-fam, узел 481:387): фото на 90% высоты окна, нижние углы скруглены,
+         затемнение-градиент снизу, заголовок и текст поверх ============ -->
+    <section class="opening opening--tochno opening--banner" aria-labelledby="opening-title">
+      <div class="opening__media" aria-hidden="true">
+        <img class="opening__img" src="img/tochechnye-hero.jpg" srcset="img/tochechnye-hero-960.jpg 960w, img/tochechnye-hero.jpg 1920w" sizes="100vw" width="1920" height="875" alt="" fetchpriority="high" decoding="async">
+      </div>
+      <div class="opening__content">
+        <h1 class="opening__title" id="opening-title">
+          <span class="line"><span>Точечные генеалогические</span></span>
+          <span class="line"><span>исследования и&nbsp;дизайн древа</span></span>
+        </h1>
+      </div>
+    </section>
+
+    <!-- ============ ЭТАПЫ РАБОТЫ — как на главной: три фото разной высоты, под каждым — этап ============ -->
+    <section class="h3-sec h3-steps" aria-labelledby="h3-steps-title">
+      <h2 class="v1-h2 h3-head" id="h3-steps-title">Этапы работы</h2>
+      <ol class="i3-news__list">
+        <li class="i3-post">
+          <img class="i3-post__img" src="img/home/step-1.jpg" width="1257" height="2000" alt="Пожилая женщина, чёрно-белый портрет" loading="lazy" decoding="async">
+          <div>
+            <h3 class="i3-post__title">Разбираем задачу</h3>
+            <p class="i3-post__text">Узнаём, что нужно найти или&nbsp;подтвердить и&nbsp;какие сведения уже есть. Обсуждаем срок и&nbsp;стоимость&nbsp;— они зависят от&nbsp;задачи.</p>
+          </div>
+        </li>
+        <li class="i3-post">
+          <img class="i3-post__img" src="img/home/step-2.jpg" width="2000" height="1333" alt="Старые фотографии солдат и рукописное письмо" loading="lazy" decoding="async">
+          <div>
+            <h3 class="i3-post__title">Ищем в&nbsp;нужном архиве</h3>
+            <p class="i3-post__text">Запрашиваем документы в&nbsp;архивах и&nbsp;ЗАГСах, расшифровываем записи и&nbsp;проверяем, что&nbsp;они относятся именно к&nbsp;вашему предку.</p>
+          </div>
+        </li>
+        <li class="i3-post">
+          <img class="i3-post__img" src="img/home/step-3.webp" width="1122" height="1402" alt="Родословное древо с именами и датами" loading="lazy" decoding="async">
+          <div>
+            <h3 class="i3-post__title">Передаём результат</h3>
+            <p class="i3-post__text">Копии найденных документов с&nbsp;расшифровкой&nbsp;— или&nbsp;готовый дизайн родословного древа, если вы&nbsp;заказали оформление.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+
+    <!-- ============ ОБ УСЛУГЕ: слева заголовок, справа вводный текст; ниже три коротких пункта в ряд;
+         затем «Дизайн родословного древа» — фото (пока серый прямоугольник) и текст с кнопкой ============ -->
+    <!-- точечные исследования: слева — что это и что вы получите, справа — с чем приходят (два случая).
+         Ниже — дополнительная услуга: дизайн древа, фото и текст рядом по сетке -->
+    <section class="h3-sec spot" aria-labelledby="spot-title">
+      <div class="spot__top">
+        <div class="spot__intro">
+          <h2 class="v1-h2" id="spot-title">Когда нужен ответ на&nbsp;один вопрос</h2>
+          <p class="h3-text spot__lead">Точечное исследование&nbsp;— поиск под&nbsp;конкретную задачу, а&nbsp;не&nbsp;история всего рода.</p>
+          <div class="spot__result">
+            <p class="h3-label">Что вы&nbsp;получите</p>
+            <p class="h3-text">Копии найденных документов с&nbsp;расшифровкой. Объём и&nbsp;стоимость обсуждаем под&nbsp;задачу.</p>
+          </div>
+        </div>
+        <div class="spot__cases">
+          <p class="h3-label">С&nbsp;чем к&nbsp;нам приходят</p>
+          <ul class="spot__points">
+            <li><h3 class="spot__case">Для&nbsp;документов</h3><p class="h3-text">Доказать родство для&nbsp;наследства, суда или&nbsp;гражданства по&nbsp;происхождению. Находим архивные записи, которые это подтверждают.</p></li>
+            <li><h3 class="spot__case">Для&nbsp;себя</h3><p class="h3-text">Узнать, кем был прадед, где венчались бабушка с&nbsp;дедушкой, откуда родом фамилия, или&nbsp;проверить семейную легенду.</p></li>
+          </ul>
+        </div>
+      </div>
+      <div class="spot__design">
+        <img class="spot__img" src="img/photos/tree-design.webp" width="1122" height="1402" alt="Родословное древо: имена и даты в рамках на ветвях" loading="lazy" decoding="async">
+        <div class="spot__design-text">
+          <p class="h3-label">Можно добавить к&nbsp;исследованию</p>
+          <h2 class="v1-h2" id="spot-design-title">Дизайн родословного древа</h2>
+          <p class="h3-text">Найденное в&nbsp;архивах&nbsp;— или&nbsp;то, что&nbsp;семья уже знает,&nbsp;— оформим в&nbsp;родословное древо, как&nbsp;в&nbsp;родословной книге.</p>
+          <ol class="i3-steps spot__steps">
+            <li><span class="i3-steps__name">Схема родства</span><span class="i3-steps__text">Собираем имена, даты и&nbsp;связи в&nbsp;одну схему&nbsp;— из&nbsp;найденных документов и&nbsp;семейных сведений.</span></li>
+            <li><span class="i3-steps__name">Согласование</span><span class="i3-steps__text">Показываем схему вам, уточняем написание имён и&nbsp;дат, решаем, сколько поколений поместить.</span></li>
+            <li><span class="i3-steps__name">Дизайн и&nbsp;печать</span><span class="i3-steps__text">Готовим макет для&nbsp;печати на&nbsp;холсте или&nbsp;бумаге либо файл в&nbsp;электронном виде.</span></li>
+          </ol>
+          <a class="btn spot__btn" href="#contact">Заказать дизайн древа</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ КОНТАКТЫ: как последний блок главной — слева заголовок и соцсети, справа форма ============ -->
+    <!-- ============ ЗАЯВКА: красный блок; слева светлая карточка — заголовок, текст, плашки, поля с подписями, которые при вводе
+         поднимаются вверх; справа — мессенджеры, сверху справа — декоративная кривая (img/lead-curve.png) ============ -->
+    <section class="h3-lead" id="contact" aria-labelledby="lead-title">
+      <img class="h3-lead__img" src="img/home/about.jpg" width="1780" height="1325" alt="" loading="lazy" decoding="async">
+      <form class="lead__card h3-lead__card" action="#" method="post" novalidate>
+        <div class="lead__head">
+          <h2 class="lead__title" id="lead-title">Расскажите о&nbsp;своей задаче</h2>
+          <p>Оставьте заявку&nbsp;— ответим на&nbsp;вопросы и&nbsp;подскажем, с&nbsp;чего начать.</p>
+        </div>
+        <ul class="lead__chips" aria-label="Условия консультации">
+          <li>Онлайн</li>
+          <li>Бесплатно</li>
+          <li>С&nbsp;конкретными рекомендациями</li>
+        </ul>
+        <div class="lead__fields">
+          <div class="field">
+            <input class="field__input" id="lead-name" name="name" type="text" autocomplete="name" placeholder=" ">
+            <label class="field__label" for="lead-name">Ваше имя</label>
+          </div>
+          <div class="field">
+            <input class="field__input" id="lead-contact" name="contact" type="text" autocomplete="tel" placeholder=" " required>
+            <label class="field__label" for="lead-contact">Телефон или&nbsp;ник в&nbsp;мессенджере*</label>
+          </div>
+          <div class="field field--area">
+            <textarea class="field__input" id="lead-ancestors" name="ancestors" placeholder=" "></textarea>
+            <label class="field__label" for="lead-ancestors">Опишите задачу</label>
+          </div>
+        </div>
+        <label class="check lead__agree">
+          <input type="checkbox" name="agree" required>
+          <span>Нажимая «Отправить заявку», вы&nbsp;даёте согласие на&nbsp;обработку персональных данных и&nbsp;соглашаетесь с&nbsp;<a href="politika_personalnye_dannye_genealogiya.html">политикой конфиденциальности</a>.</span>
+        </label>
+        <button class="btn lead__submit" type="submit">Отправить заявку</button>
+        <p class="lead__note" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+    <!-- прежний вариант формы (до 09.10): чтобы вернуть, замените блок выше содержимым этого шаблона — на странице он не показывается -->
+    <template id="contact-v1">
+    <section class="contact container section" id="contact">
+      <div class="contact__inner">
+        <div class="contact__info">
+          <h2 class="h2 contact__title">Расскажите о&nbsp;своей задаче</h2>
+          <p class="h4 contact__text">Оставьте сообщение на&nbsp;сайте или&nbsp;напишите нам в&nbsp;мессенджер&nbsp;— ответим на&nbsp;вопросы и&nbsp;подскажем, с&nbsp;чего начать.</p>
+          <div class="socials">
+            <a href="https://api.whatsapp.com/send/?phone=79158929206&text&type=phone_number&app_absent=0" aria-label="WhatsApp"><img src="img/icons/whatsapp.svg" width="44" height="44" alt=""></a>
+            <a href="https://t.me/drevo_predkov" aria-label="Telegram"><img src="img/icons/telegram.svg" width="44" height="44" alt=""></a>
+            <a href="https://vk.ru/im?sel=-228395135" aria-label="ВКонтакте"><img src="img/icons/vk.svg" width="44" height="44" alt=""></a>
+            <a href="https://www.avito.ru/moskva/predlozheniya_uslug/rodoslovnayagenealogiyadizayn_dreva_4729921847" aria-label="Avito"><img src="img/icons/max.svg" width="44" height="44" alt=""></a>
+          </div>
+        </div>
+
+        <form class="form" action="#" method="post" novalidate>
+          <div class="form__fields">
+            <label class="visually-hidden" for="contact-field">Телефон, почта или мессенджер</label>
+            <input class="input" id="contact-field" name="contact" type="text" placeholder="Телефон, почта, мессенджер" autocomplete="tel" required>
+            <label class="visually-hidden" for="ancestors-field">Описание задачи</label>
+            <textarea class="input input--area" id="ancestors-field" name="ancestors" placeholder="Опишите задачу (необязательно): что нужно найти или подтвердить"></textarea>
+            <label class="check">
+              <input type="checkbox" name="agree" required>
+              <span>Отправляя форму я&nbsp;принимаю <a href="politika_personalnye_dannye_genealogiya.html">политику конфиденциальности</a></span>
+            </label>
+          </div>
+          <button class="btn form__submit" type="submit">Отправить</button>
+          <p class="form__note" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+    </template>
+
+  </main>
+
+
+  <!-- подвал: красный, слева мессенджеры, справа политика, внизу — крупная надпись «Древо предков» -->
+  <footer class="h3-footer">
+    <div class="h3-footer__top">
+      <ul class="h3-footer__links">
+        <li><a href="https://t.me/drevo_predkov" target="_blank" rel="noopener"><img src="img/icons/telegram.svg" width="44" height="44" alt=""><span>Телеграм&nbsp;↗</span></a></li>
+        <li><a href="https://vk.ru/im?sel=-228395135" target="_blank" rel="noopener"><img src="img/icons/vk.svg" width="44" height="44" alt=""><span>ВКонтакте&nbsp;↗</span></a></li>
+        <li><a href="https://api.whatsapp.com/send/?phone=79158929206&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener"><img src="img/icons/whatsapp.svg" width="44" height="44" alt=""><span>WhatsApp&nbsp;↗</span></a></li>
+        <li><a href="https://www.avito.ru/moskva/predlozheniya_uslug/rodoslovnayagenealogiyadizayn_dreva_4729921847" target="_blank" rel="noopener"><img src="img/icons/max.svg" width="44" height="44" alt=""><span>Авито&nbsp;↗</span></a></li>
+      </ul>
+      <a class="h3-footer__policy" href="politika_personalnye_dannye_genealogiya.html">Политика конфиденциальности</a>
+    </div>
+    <p class="h3-footer__mark" aria-hidden="true">Древо предков</p>
+  </footer>
+
+</div>
+
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/main.js?v=20261023g"></script>
+</body>
+</html>

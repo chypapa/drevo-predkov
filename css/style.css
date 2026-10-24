@@ -1,0 +1,2552 @@
+/* =========================================================
+   Древо предков — сайт
+   Брейкпоинты: десктоп ≥ 1200 · планшет 768–1199 · мобильный < 768
+
+   ТИПОГРАФИКА — одна система на весь сайт, только Manrope, без размеров «по месту».
+                 размер (телефон)   начертание     межстрочный   трекинг
+   H1 — заголовок страницы     56 (36)   Medium 500     120%   −1%
+   H2 — заголовок раздела      40 (28)   Medium 500     120%   −1%
+   H3 — подраздел              32 (22)   Medium 500     125%   −0,5%
+   H4 — заголовок карточки     24 (18)   Medium 500     130%   −0,5%
+   P  — текст                  16        Regular 400    150%   0
+   Выделение в тексте — Medium 500 того же размера. Уровень заголовка (тег) — по смыслу (H1 → H2 → H3 → H4),
+   вид заголовка карточки — класс .h4.
+
+   ОТСТУПЫ — см. «СИСТЕМА ОТСТУПОВ» в токенах ниже: между колонками 20px, по вертикали 8 · 12 · 20 · 32 · 48, между блоками 120.
+   ПОЛЯ ПО КРАЯМ — 70px на 1920, 56 / 40px на меньших экранах, на телефоне 16px.
+   ФОТО — скругление 16px, без рамок и тяжёлых теней.
+   ========================================================= */
+
+/* ---------- Шрифты (только из папки font) ---------- */
+@font-face { font-family: "Manrope"; src: url("../font/Manrope-ExtraLight.ttf") format("truetype"); font-weight: 200; font-display: swap; }
+@font-face { font-family: "Manrope"; src: url("../font/Manrope-Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Manrope"; src: url("../font/Manrope-Medium.ttf") format("truetype"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Manrope"; src: url("../font/Manrope-SemiBold.ttf") format("truetype"); font-weight: 600; font-display: swap; }
+/* заголовки — Brygada 1918 (бесплатный, лицензия OFL; латиница + кириллица); текст — Manrope */
+@font-face { font-family: "Brygada 1918"; src: url("../font/brygada-1918-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Brygada 1918"; src: url("../font/brygada-1918-cyrillic-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+@font-face { font-family: "Brygada 1918"; src: url("../font/brygada-1918-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Brygada 1918"; src: url("../font/brygada-1918-cyrillic-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+@font-face { font-family: "Brygada 1918"; src: url("../font/brygada-1918-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Brygada 1918"; src: url("../font/brygada-1918-cyrillic-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+/* заголовки всех страниц — Playfair Display (бесплатный, лицензия OFL; латиница + кириллица) */
+@font-face { font-family: "Playfair Display"; src: url("../font/playfair-display-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Playfair Display"; src: url("../font/playfair-display-cyrillic-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+@font-face { font-family: "Playfair Display"; src: url("../font/playfair-display-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Playfair Display"; src: url("../font/playfair-display-cyrillic-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+/* Cormorant — только для карточки в блоке-коллаже (третий блок главной). Вариативный шрифт: одна пара файлов на все начертания 300–700 */
+@font-face { font-family: "Cormorant"; src: url("../font/Cormorant-cyr.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: swap; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Cormorant"; src: url("../font/Cormorant-lat.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Cormorant"; src: url("../font/Cormorant-Italic-cyr.woff2") format("woff2"); font-weight: 300 700; font-style: italic; font-display: swap; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Cormorant"; src: url("../font/Cormorant-Italic-lat.woff2") format("woff2"); font-weight: 300 700; font-style: italic; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+/* ---------- Токены ---------- */
+:root {
+  --bg: #f1eee9;
+  --red: #515237;             /* акцентный цвет — тёмно-зелёный (раньше был красный) */
+  --red-hover: #3f402b;
+  --terra: #b05538;
+  --orange: #e7a43c;
+  --gold: #af8c4c;
+  --green: #9ba089;
+  --olive: #515237;                                   /* тёмно-оливковый: блок-коллаж и блок заявки */
+  --text: #3c3c3c;            /* заголовки */
+  --text-body: #85857e;       /* основной текст на светлом фоне */
+  --dark: #3c3c3c;
+  --slate: #3c3c3c;            /* цвет шапки */
+  --muted: var(--text-body);                          /* второстепенный текст — тем же цветом, что и основной */
+  --placeholder: rgba(0, 0, 0, .5);
+  --white: #fff;
+
+  /* сетка страницы: одно общее поле для всех блоков */
+  --container: 1780px;                                /* 1920 − 2 × 70 */
+  --gut: 70px;                                        /* поле по краям страницы: 70px на 1920; меньше — в @media ниже */
+  --edge: max(var(--gut), calc((100% - var(--container)) / 2));
+  /* ширина окна без полосы прокрутки (--sbw ставит main.js; 100vw её включает) — для лент во всю ширину окна */
+  --vw: calc(100vw - var(--sbw, 0px));
+  /* шкала отступов (шаг 8px) */
+  --s-8: 8px;
+  --s-16: 16px;
+  --s-24: 24px;
+  --s-32: 32px;
+  --s-48: 48px;
+  --s-56: 56px;
+  --s-64: 64px;
+  --s-72: 72px;
+  --s-96: 96px;
+  --s-128: 128px;
+  --s-160: 160px;
+
+  /* СИСТЕМА ОТСТУПОВ: по горизонтали между колонками и карточками — всегда 20px (--col-gap);
+     по вертикали — пять шагов, других значений между элементами нет:
+       --sp-8   8px  — иконка ↔ подпись, фото → подпись, мелкие пары
+       --sp-12  12px — поля формы между собой, пункты списка, плашки
+       --sp-20  20px — заголовок → текст, абзацы, карточки между собой (= --col-gap)
+       --sp-32  32px — группы внутри блока: текст → кнопка, шапка формы → поля
+       --gap-head    — заголовок блока → содержимое: 48 / 40 / 32px
+     между блоками — --section-gap: 120 / 96 / 80 / 64px (≥1440 / 1200–1439 / 768–1199 / телефон) */
+  --sp-8: 8px;
+  --sp-12: 12px;
+  --sp-20: 20px;
+  --sp-32: 32px;
+  --section-gap: 120px;
+  --section-pad: var(--s-96);                         /* внутренний отступ цветных разделов сверху и снизу */
+  --gap-head: 48px;                                   /* заголовок блока → содержимое */
+  --gap-text: var(--sp-20);                           /* заголовок → текст */
+  --col-gap: 20px;                                    /* между колонками и карточками — везде 20px */
+  --pad-card: var(--s-32);                            /* внутренний отступ карточек */
+  --radius: 8px;                                      /* скругления — вдвое меньше прежних (16 → 8) */
+  --radius-sm: 6px;                                  /* кнопки, поля, чекбокс — всё, что лежит внутри карточек */
+
+  /* одна мягкая тень для всех белых карточек: тёплая, сверху почти нет, внизу рассеянная */
+  --shadow-card: 0 1px 2px rgba(60, 40, 30, .04), 0 12px 32px rgba(60, 40, 30, .07);
+
+  /* высота шапки и отступ до первого блока (для подгонки hero под экран) */
+  --hdr-h: 68px;
+  --hdr-gap: 0px;                                     /* шапка на всю ширину прижата к верху окна (на телефоне — 12px) */
+  /* секция не выше видимой части окна под шапкой (с небольшим «воздухом») */
+  --fit: calc(100svh - var(--hdr-h) - var(--hdr-gap) - 32px);  /* с учётом закреплённой шапки и отступа над ней */
+
+  /* размеры текста: плавно меняются между шириной окна 375px (телефон) и 1440px (компьютер) */
+  /* пять стилей текста на весь сайт (Manrope), размеры — ступенями по ширине окна (без clamp):
+                 ≥1440   1200–1439   768–1199   <768
+     H1          56      50          44         34     первый экран и баннеры страниц
+     H2          40      36          32         28     заголовки блоков, карточки ленты, сумма калькулятора
+     H3          32      28          26         22     названия карточек, подзаголовки
+     H4          24      22          20         18     заголовки постов, этапов, вопросов калькулятора
+     текст       18      17          16         16     весь основной текст, кнопки, подписи */
+  --fs-h1: 80px;                                      /* H1, H2 — Cormorant (как в макете 745:1715) */
+  --fs-h2: 55px;
+  --fs-strip: 40px;                                   /* заголовки карточек ленты (второй блок) — Manrope, как сейчас */
+  --fs-quote: 32px;                                   /* Cormorant Italic: надпись в коллаже, «Древо Предков…», подзаголовки карточек */
+  --fs-h3: 32px;
+  --fs-h4: 24px;
+  --fs-body: 18px;
+}
+/* основной текст и поля страницы по ступеням ширины окна */
+@media (max-width: 1439px) { :root { --section-gap: 96px; --gut: 56px; --fs-h1: 68px; --fs-h2: 48px; --fs-strip: 36px; --fs-quote: 28px; --fs-h3: 28px; --fs-h4: 22px; --fs-body: 17px; } }
+
+/* ---------- База ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--hdr-h) + var(--hdr-gap) + 16px); -webkit-text-size-adjust: 100%; }
+html.lenis { scroll-behavior: auto; }   /* плавностью управляет Lenis (js/main.js), нативный smooth ему мешает */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-body);
+  font-family: "Manrope", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.page { overflow-x: clip; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3, h4, p, ul { margin: 0; }
+strong, b { font-weight: 500; }                       /* выделение в тексте — Medium */
+ul { padding: 0; list-style: none; }
+button, input, textarea { font: inherit; }
+:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+::selection { background: rgba(81, 82, 55, .18); }
+
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* зерно поверх всей страницы: анимированный шум (img/noise.gif — 4 кадра, 10 кадров/с), как на sofiasaveleva.com;
+   непрозрачность в 1,5 раза меньше, чем там (8% → 5,3%); клики проходят сквозь слой */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: url("../img/noise.gif") 0 0 / 80px auto repeat;
+  opacity: .053;
+}
+@media (prefers-reduced-motion: reduce) { body::after { display: none; } }   /* мерцание мешает — без шума */
+@media print { body::after { display: none; } }
+
+.container { width: min(var(--container), 100% - 2 * var(--gut)); margin-inline: auto; }
+/* между разделами — один отступ --section-gap: flow-root не даёт отрицательным отступам первого/последнего элемента
+   (ленты карточек, строки заголовков) «просочиться» наружу и съесть промежуток */
+.section { display: flow-root; margin-top: var(--section-gap); padding-block: 0; }   /* цветные блоки (.russia) задают свой внутренний отступ сами */
+section[hidden] { display: none !important; }       /* скрытые блоки (атрибут hidden в разметке) — не показываются, даже если у блока свой display */
+
+/* ---------- Стили текста ----------
+   Уровень задаётся тегом (h1 / h2 / h3) по смыслу; заголовки карточек — класс .h4 (на теге h3 или h4).
+   В блоках размер, начертание и межстрочный интервал заголовков не переопределяются */
+h1, h2, h3, h4, .h2, .h3, .h4 {
+  font-family: "Manrope", system-ui, sans-serif;
+  text-wrap: balance;                                 /* ровные строки, без одного слова на последней */
+}
+h1, h2, h3, h4, .h2, .h3, .h4 { color: var(--text); }
+h1, h2, .h2, .lead__title, .about2__subtitle, .book-lead { font-family: "Cormorant", Georgia, serif; }   /* заголовки — Cormorant; H3/H4 (названия карточек) — Manrope */
+h1 { font-size: var(--fs-h1); font-weight: 500; line-height: 1.05; letter-spacing: -.01em; }
+h2, .h2 { font-size: var(--fs-h2); font-weight: 400; line-height: 1; letter-spacing: -.01em; }
+h3, .h3 { font-size: var(--fs-h3); font-weight: 500; line-height: 1.25; letter-spacing: -.005em; }
+h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-spacing: -.005em; }
+/* ---------- Заголовки H2 появляются построчно (классы ставит js/main.js; без JS всё видно сразу):
+   каждая строка выезжает снизу из-под своей нижней границы, строки — одна за другой (.tl > .tl__in) */
+.text-lines .tl {
+  /* inline-block на всю ширину: каждая строка — своя, а отрицательные отступы соседних строк не «схлопываются»
+     (у блочных схлопнулись бы, и строки стояли бы реже межстрочного интервала заголовка) */
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+  overflow: hidden;                                   /* строка «прячется» под свою нижнюю границу */
+  /* запас сверху и снизу, чтобы не срезать выносные элементы букв (у, р, д, й) */
+  padding: .28em 0;
+  margin: -.28em 0;
+}
+.text-lines .tl__in {
+  display: block;
+  transform: translateY(110%);
+  transition: transform .9s cubic-bezier(.22, .8, .2, 1);
+  transition-delay: calc(var(--i, 0) * .09s);
+}
+.text-lines.is-in .tl__in { transform: none; }
+/* всё остальное — основной текст: 16px, межстрочный 150% — наследуется от body */
+
+/* ---------- Кнопки / ссылки ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-8);
+  padding: var(--s-16) var(--s-32);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--red);
+  color: var(--white);
+  font-size: var(--fs-body);
+  line-height: 24px;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color .2s ease, box-shadow .2s ease, transform .2s ease, filter .2s ease;
+}
+/* при наведении кнопка чуть приподнимается, при нажатии — опускается */
+.btn:hover { background: var(--red-hover); box-shadow: 0 8px 20px rgba(81, 82, 55, .22); transform: translateY(-1px); }
+.btn:active { box-shadow: none; transform: none; transition-duration: .06s; }
+.btn img { width: 20px; height: 20px; }
+/* белая кнопка — на красном фоне */
+.btn--white { background: var(--white); color: var(--text); }
+.btn--white:hover { background: var(--bg); box-shadow: 0 8px 20px rgba(0, 0, 0, .14); }
+
+.link-more {
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color .2s ease;
+}
+.link-more:hover { color: var(--red); }
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+/* заливка шапки — на всю ширину окна; логотип, меню, телефон и соцсети стоят по краям контентной части страницы */
+.header { width: 100%; position: relative; z-index: 20; }
+
+.header__bar {
+  display: flex;
+  align-items: center;                              /* содержимое по центру высоты плашки */
+  justify-content: space-between;
+  height: var(--hdr-h);
+  padding: 0 var(--edge);                           /* содержимое — по краям контентной части, как у всех блоков */
+  background: var(--red);
+  border-radius: 0;                                  /* без скругления и без тени */
+}
+.header__left, .header__right { display: flex; align-items: center; }
+.header__left { gap: var(--gap-head); }
+.header__logo img { width: 33px; height: 37px; }
+.nav { display: flex; gap: var(--sp-32); }
+.nav a {
+  color: var(--white);
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity .2s ease;
+}
+.nav a:hover { opacity: .75; }
+/* узкий ноутбук: четыре пункта меню и кнопка помещаются в одну строку */
+@media (max-width: 1199px) {
+  .header__left { gap: var(--sp-32); }
+  .nav { gap: var(--sp-20); }
+}
+/* справа — белая кнопка «Получить консультацию»: на главной ведёт к форме внизу, на остальных страницах открывает окно с формой */
+.header__cta { padding: var(--s-8) var(--s-24); }
+
+/* мобильная шапка */
+.header__mobile { display: none; }
+.icon-btn {
+  display: block;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--red);
+  cursor: pointer;
+}
+
+/* над первым экраном (пока страница не прокручена) заливки у шапки нет — она появляется при прокрутке (класс is-top ставит main.js) */
+.header--sticky.is-top .header__bar, .header--sticky.is-top .icon-btn { background-color: rgba(155, 160, 137, 0); }
+
+/* знак в шапке — векторный (тот же, что рисуется при загрузке) */
+.header__logo { display: block; }
+.logo-mark { display: block; width: 35px; height: 37px; color: var(--white); }
+.mark { display: block; width: 100%; height: 100%; overflow: visible; }
+
+/* шапка закреплена вверху окна, всегда красная. Прокрутка вниз — шапка уезжает вверх за край окна,
+   прокрутка вверх — возвращается (класс is-hidden ставит main.js). Без will-change: иначе меню внутри шапки
+   (position: fixed) встанет относительно шапки */
+.header--sticky { position: sticky; top: var(--hdr-gap); z-index: 50; margin-top: var(--hdr-gap); transition: transform .4s cubic-bezier(.4, 0, .2, 1); }
+.header--sticky.is-hidden,
+.header--sticky.is-over-collage { transform: translateY(calc(-100% - var(--hdr-gap) - 8px)); }   /* над коллажем шапки нет */
+.is-intro:not(.is-intro-done) .header--sticky { transform: none; }   /* пока идёт заставка, шапка (и знак в ней) не двигается */
+.header--sticky .header__bar, .header--sticky .icon-btn { transition: background-color .45s ease; }
+
+/* бургер: три линии; когда меню открыто — верхняя и нижняя поворачиваются в крестик, средняя гаснет */
+.header__burger { position: relative; z-index: 2; display: grid; place-items: center; color: var(--white); }
+.burger { display: block; width: 50px; height: 50px; overflow: visible; }
+.burger__line {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  transform-box: view-box;
+  transform-origin: 25px 25px;
+  transition: transform .35s cubic-bezier(.65, 0, .35, 1), opacity .2s ease;
+}
+.header__burger[aria-expanded="true"] .burger__line--top { transform: rotate(45deg) translateY(7px); }
+.header__burger[aria-expanded="true"] .burger__line--mid { opacity: 0; transform: scaleX(.2); }
+.header__burger[aria-expanded="true"] .burger__line--bot { transform: rotate(-45deg) translateY(-7px); }
+.is-menu-open .header__burger { background-color: var(--red); }   /* и над первым экраном */
+
+/* затемнение и размытие страницы под открытым меню */
+.mobile-menu__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: none;
+  background: rgba(0, 0, 0, .2);
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .45s ease, visibility 0s linear .45s;
+}
+.is-menu-open .mobile-menu__backdrop { opacity: 1; visibility: visible; transition-delay: 0s; }
+
+/* меню: панель справа на половину ширины и всю высоту экрана (но не уже 320px — чтобы всё помещалось). Сверху знак с подписью, под ним пункты,
+   внизу — кнопка «Получить консультацию» в 32px от нижнего края экрана */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: none;
+  flex-direction: column;
+  width: max(50vw, min(100vw, 320px));
+  height: 100vh;
+  height: 100dvh;
+  box-sizing: border-box;
+  padding: calc(var(--hdr-gap) + 7px) var(--s-24) var(--s-32);   /* знак — на одной высоте с бургером */
+  background: var(--red);
+  color: var(--white);
+  box-shadow: -16px 0 40px rgba(0, 0, 0, .18);
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform .45s cubic-bezier(.65, 0, .35, 1), visibility 0s linear .45s;
+}
+.mobile-menu.is-open { transform: none; visibility: visible; transition-delay: 0s; }
+.mobile-menu__logo {
+  display: inline-flex;
+  align-self: flex-start;                             /* только по ширине знака с подписью — не заходит под бургер */
+  align-items: center;
+  gap: var(--sp-8);
+  min-height: 36px;
+  color: var(--white);
+  text-decoration: none;
+}
+.mobile-menu__mark { flex: none; width: 26px; height: 28px; }
+.mobile-menu__logo-text { width: 72px; font-weight: 200; line-height: 1; }
+.mobile-menu__nav { display: flex; flex-direction: column; gap: var(--sp-20); margin-top: var(--gap-head); }
+.mobile-menu__nav a { color: var(--white); text-decoration: none; }
+.mobile-menu__nav a:hover { opacity: .75; }
+.mobile-menu__cta {
+  margin-top: auto;                                   /* к низу панели */
+  padding-inline: var(--s-16);
+  background: var(--white);
+  color: var(--red);
+  text-align: center;
+}
+.mobile-menu__cta:hover { background: var(--bg); box-shadow: none; }
+
+/* =========================================================
+   ПЕРВЫЙ ЭКРАН — по макету Figma (plat-fam, узел 230:178): фото на весь экран
+   (img/hero-album.jpg), снизу затемнение-градиент, чуть наклонённый вправо,
+   поверх — заголовок (Manrope 64px), текст и кнопка. Шапка лежит поверх фото.
+   При прокрутке фото чуть приближается, а текст уходит вверх и гаснет (--hp ставит main.js)
+   ========================================================= */
+.opening {
+  --ease-out: cubic-bezier(.2, .75, .15, 1);
+  position: relative;
+  height: 95vh;                                       /* 95% высоты окна, нижние углы скруглены */
+  height: 95svh;
+  min-height: 560px;
+  border-radius: 0 0 var(--radius) var(--radius);
+  margin-top: calc(-1 * (var(--hdr-h) + var(--hdr-gap)));   /* блок начинается от верха окна, под шапкой */
+  overflow: hidden;
+  background: #3a3833;
+  color: var(--white);
+}
+.opening__media { position: absolute; inset: 0; overflow: hidden; }
+.opening__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 69%;                           /* кадр как в макете: рука и альбом */
+  transform: scale(calc(1 + var(--hp, 0) * .08));
+}
+/* затемнение под текстом: градиент снизу вверх, чуть наклонённый вправо — внизу слева, где текст, темнее всего
+   (как в макете Figma, plat-fam, узел 450:1176) */
+.opening__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(190.95deg, rgba(0, 0, 0, 0) 14.76%, rgba(0, 0, 0, .87) 75.86%);
+  pointer-events: none;
+}
+.opening__content {
+  position: absolute;
+  left: var(--edge);
+  right: var(--edge);
+  bottom: var(--section-pad);                         /* внутренний отступ блока снизу */
+  z-index: 1;
+  max-width: 792px;
+  opacity: calc(1 - var(--hp, 0) * 1.3);
+  transform: translateY(calc(var(--hp, 0) * -60px));
+}
+.opening__title { max-width: 775px; color: var(--white); }   /* стиль H1 */
+.opening__title .line { display: block; overflow: hidden; padding-bottom: .08em; }
+.opening__title .line > span { display: block; }
+
+/* ---------- Вступление: светлый экран, на нём рисуется знак (контур снизу вверх → заливка),
+   потом знак переезжает в шапку, экран растворяется и появляется первый экран.
+   Классы is-intro (ставится в <head>) и is-ready (main.js) ---------- */
+.mark-lines path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;                                /* вместе с pathLength="1" у path */
+  stroke-dashoffset: 1;
+}
+.mark-fill path { fill: currentColor; stroke: currentColor; stroke-width: 1.5; stroke-linejoin: round; }
+.mark-lines { opacity: 0; }                           /* без вступления знак просто залит */
+.is-intro .mark-lines { opacity: 1; }
+.is-intro .mark-fill { opacity: 0; }
+.mark.play .mark-lines path { animation: mark-draw .35s cubic-bezier(.3, .7, .4, 1) forwards; }
+.mark.play .mark-lines { animation: mark-out .31s ease-in-out .78s forwards; }
+.mark.play .mark-fill { animation: mark-in .31s ease-in-out .78s forwards; }
+/* очерёдность снизу вверх: стебли → нижние листья → верхние лепестки → центральный */
+.mark.play .mark-lines path:nth-child(2),
+.mark.play .mark-lines path:nth-child(4) { animation-delay: .18s; }
+.mark.play .mark-lines path:nth-child(1),
+.mark.play .mark-lines path:nth-child(3) { animation-delay: .31s; }
+.mark.play .mark-lines path:nth-child(5) { animation-delay: .45s; }
+.mark.done .mark-lines { opacity: 0; animation: none; }
+.mark.done .mark-fill { opacity: 1; animation: none; }
+@keyframes mark-draw { to { stroke-dashoffset: 0; } }
+@keyframes mark-in { to { opacity: 1; } }
+@keyframes mark-out { to { opacity: 0; } }
+
+.preloader { display: none; }
+.is-intro .preloader {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 45;                                        /* под шапкой: знак в шапке виден поверх экрана */
+  background: var(--bg);
+  transition: opacity .4s ease .09s, visibility 0s linear .49s;
+  animation: intro-failsafe-hide 0s 8s forwards;      /* если скрипт не запустился — экран уходит сам */
+}
+.is-ready .preloader { opacity: 0; visibility: hidden; }
+/* название рядом со знаком: выезжает из-за знака вправо, пока знак рисуется; знак при этом сдвигается влево,
+   и знак с названием вместе стоят по центру экрана. Размер и место ставит main.js */
+.preloader__name {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -.01em;
+  white-space: nowrap;
+  color: var(--red);
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transform: translateX(-24px);
+  transition: opacity .5s ease, clip-path .6s cubic-bezier(.4, 0, .2, 1), transform .6s cubic-bezier(.4, 0, .2, 1);
+}
+.preloader__name.is-in { opacity: 1; clip-path: inset(0 0 0 0); transform: none; }
+
+/* до конца вступления видно только знак на светлом экране: заливки у шапки нет (и у кнопок мобильной шапки),
+   она появляется, когда знак встал на место (класс is-intro-done) */
+.is-intro:not(.is-intro-done) .header__bar, .is-intro:not(.is-intro-done) .icon-btn { background-color: rgba(81, 82, 55, 0); }
+.is-intro .nav, .is-intro .header__right { opacity: 0; transition: opacity .35s ease; }
+.is-intro.is-ready .nav, .is-intro.is-ready .header__right { opacity: 1; transition-delay: .4s; }
+
+.is-intro .opening__title .line > span { transform: translateY(110%); }
+.is-ready .opening__title .line > span { transform: none; transition: transform .58s var(--ease-out) .33s; }
+.is-ready .opening__title .line + .line > span { transition-delay: .4s; }
+
+/* если скрипт не запустился — через 7 с всё показывается само */
+.is-intro:not(.is-ready) .opening__title .line > span, .is-intro:not(.is-ready) .nav, .is-intro:not(.is-ready) .header__right { animation: intro-failsafe-show 0s 7s forwards; }
+:where(.is-intro:not(.is-ready)) .mark-fill { animation: intro-failsafe-show 0s 7s forwards; }
+@keyframes intro-failsafe-show { to { opacity: 1; transform: none; } }
+@keyframes intro-failsafe-hide { to { opacity: 0; visibility: hidden; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .header--sticky { transition: none; }
+  .is-intro .preloader { display: none; }
+  .is-intro .mark-lines { opacity: 0; }
+  .is-intro .mark-fill { opacity: 1; }
+  .is-intro .nav, .is-intro .header__right { opacity: 1; transform: none; }
+  .is-intro .opening__title .line > span { transform: none; }
+  .opening__img, .opening__content { transform: none; }
+}
+
+/* =========================================================
+   HERO — бегущая лента: 6 карточек едут влево по кругу.
+   Лента от края до края экрана, зазор 24px.
+   ========================================================= */
+.marquee {
+  --gap: var(--sp-20);                                        /* как в макете 56:995 */
+  --card-h: min(634px, calc(100svh - var(--hdr-h) - 2 * var(--hdr-gap) - 20px));
+  --card-w: var(--card-h);                            /* квадрат 634 × 634 — целые пиксели, без дрожания на стыке */
+  --period: calc(6 * (var(--card-w) + var(--gap)));   /* длина одного набора из 6 карточек */
+  --duration: 102s;                                   /* один круг; main.js берёт скорость отсюда */
+  overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;                                /* вертикальная прокрутка страницы, горизонталь — перетаскивание */
+  user-select: none;
+  -webkit-user-select: none;
+}
+.marquee.is-dragging { cursor: grabbing; }
+.marquee img { pointer-events: none; -webkit-user-drag: none; }
+.marquee__track {
+  display: flex;
+  gap: var(--gap);
+  width: max-content;
+  animation: marquee-left var(--duration) linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+/* с JS лентой управляет main.js (автопрокрутка + перетаскивание), CSS-анимация — запасной вариант */
+.marquee--js .marquee__track { animation: none; }
+@keyframes marquee-left {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(calc(-1 * var(--period)), 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track { animation: none; transform: none; }
+}
+/* =========================================================
+   НАЙДЁМ ИСТОРИЮ — второй блок: текст поверх затемнённого размытого фото,
+   высота — 95% экрана. Вокруг курсора ореол: в центре фото в самом чётком
+   фокусе, дальше плавно переходит в размытие (координаты курсора ставит js/main.js).
+   Шрифты, кнопка и отступы — те же, что на первом экране
+   ========================================================= */
+.focus.section { padding-block: 0; }                  /* фото на весь блок; отступы — внутри, у текста */
+.focus__card {
+  --bleed: 56px;                                      /* фото шире блока — размытые края остаются за границей */
+  --mx: 50%;
+  --my: 50%;
+  --r: clamp(170px, 15vw, 300px);                     /* радиус ореола */
+  position: relative;
+  height: 98vh;
+  height: 98svh;
+  min-height: 360px;
+  overflow: hidden;
+  isolation: isolate;
+  container-type: size;                               /* размеры блока нужны для кадрирования фото (единицы cqw/cqh) */
+  margin: 0;                                          /* на всю ширину экрана, вплотную к соседним блокам */
+  border-radius: 0 0 8px 8px;                       /* скругление только снизу */
+  background: #2f2d2a;
+  color: var(--white);
+}
+/* основной слой: без курсора фото целиком чёткое, курсор над блоком — размывается (класс is-focus ставит main.js) */
+/* слои для ореола: чуть размытый — пошире, чёткий — в центре; появляются, когда курсор над блоком */
+/* затемнение поверх фото (и поверх ореола): слева, под текстом, чуть темнее */
+
+/* телефон вертикально: блок узкий и высокий. Фото увеличено ровно так, чтобы все головы помещались
+   по ширине (люди на hero-2.jpg — правее центра, 39–86% ширины), и прижато к низу блока;
+   сверху, под заголовком, — то же фото, сильно размытое, чтобы блок был заполнен */
+@media (max-width: 767px) {
+  .focus__card { --bleed: 40px; --r: 150px; }
+}
+
+/* =========================================================
+   НАПРАВЛЕНИЯ — вариант по макету Figma (plat-fam, узел 228:146).
+   Заголовок секции слева, подзаголовок — над второй карточкой. Две белые карточки
+   в две колонки: фото сверху (907 × 401 на 1920), на нём плашки и стрелка;
+   ниже подпись, заголовок и текст. Кнопки нет — вся карточка-ссылка,
+   а курсор над ней превращается в красный круг «Узнать подробнее» (js/main.js).
+   Планшет: те же две колонки, плотнее. Телефон: карточки одна под другой
+   ========================================================= */
+/* шапка секции стоит на той же сетке, что и карточки: подзаголовок начинается над второй карточкой */
+.blog:not(.blog--cards) .section-head .h2 { max-width: 650px; }
+
+/* круг-курсор (span.cursor-bubble): красный круг 161px с подписью, центр — в точке курсора.
+   Сейчас используется лентой этапов (.stages__bubble); виден только у мыши */
+.cursor-bubble { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .cursor-bubble {
+    position: absolute;
+    left: var(--cx, 50%);                             /* центр круга — в точке курсора (координаты ставит main.js) */
+    top: var(--cy, 50%);
+    z-index: 2;
+    margin: -80.5px 0 0 -80.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 161px;
+    height: 161px;
+    padding: var(--s-8);
+    border-radius: 50%;
+    background: var(--red);
+    color: var(--white);
+    font-size: var(--fs-body);
+    line-height: 1.3;
+    white-space: nowrap;
+    pointer-events: none;
+    transform: scale(0);
+    transition: transform .3s cubic-bezier(.2, .7, .2, 1);   /* плавно только появление; за курсором — без задержки */
+    will-change: transform;
+  }
+}
+
+/* =========================================================
+   SECTION HEAD
+   ========================================================= */
+.section-head {
+  flex: none;
+  display: flex;
+  align-items: flex-end;
+  align-items: last baseline;                         /* ссылка «Читать…» стоит на одной линии с заголовком */
+  justify-content: space-between;
+  gap: var(--sp-20) var(--gap-head);
+  margin-bottom: var(--gap-head);                     /* заголовок секции → карточки */
+}
+.section-head > .h2 { flex: 0 0 auto; min-width: 50%; }   /* заголовок — не уже половины ширины блока */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-8);
+  padding: var(--s-8) var(--s-16);
+  border-radius: 12.5px;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.tag::before {
+  content: "";
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+/* =========================================================
+   ОТЗЫВЫ
+   ========================================================= */
+/* отзывы в одну строку: на ноутбуке и большом экране все четыре карточки помещаются в ширину контента
+   (внутренний отступ карточек — 24px, чтобы тексту хватало места); на планшете и телефоне — лента с прокруткой вбок */
+.reviews__list { display: flex; gap: var(--col-gap); }
+.review { flex: 1 1 0; min-width: 0; }
+.review {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--sp-20);
+  min-height: 328px;
+  padding: var(--s-24);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+.review__stars { width: 98px; height: 20px; margin-left: -2px; }
+.review__text { margin-top: var(--sp-20); color: var(--text-body); }
+.review__author { display: flex; align-items: center; gap: var(--sp-8); color: var(--muted); }
+.review__author img { width: 22px; height: 22px; }
+
+/* =========================================================
+   БЛОГ — как в макете: большая картинка слева ровно той же высоты,
+   что три маленькие справа вместе с промежутками между ними;
+   под большой картинкой — заголовок, текст и ссылка.
+   Справа три строки: фото 5 : 4 и текст рядом
+   ========================================================= */
+.post { min-width: 0; min-height: 0; }
+.post__img { width: 100%; object-fit: cover; border-radius: var(--radius); }
+.post__title { color: var(--text); }
+.post__desc {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: var(--muted);
+}
+.post__link { color: var(--red); text-decoration: none; transition: opacity .2s ease; }
+/* посты из ВК: пока грузятся — карточки прозрачные; заголовок не длиннее 2 строк */
+.post[hidden], .post__desc[hidden] { display: none !important; }
+.post__title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.post__link:hover { opacity: .75; }
+
+/* первый блог: вместо ссылки «Читать полностью» — вся карточка-ссылка (адрес поста ставит main.js в .post__link,
+   ссылка растянута на всю карточку, текст ссылки скрыт, но читается экранными дикторами);
+   курсор над карточкой — красный круг «Узнать подробнее» (как у карточек услуг) */
+.blog:not(.blog--cards) .post { position: relative; overflow: hidden; }
+.blog:not(.blog--cards) .post__link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  margin: 0;
+  font-size: 0;
+  color: transparent;
+  border-radius: var(--radius);
+}
+.blog:not(.blog--cards) .post__link:focus-visible { outline: 3px solid var(--red); outline-offset: -3px; }
+/* текст — как в карточках «Направления и услуги» (Manrope 1.3); заголовки постов — стиль H3 */
+
+@media (min-width: 1200px) {
+  /* большая картинка не задаёт высоту строки, а растягивается на высоту трёх маленьких */
+
+  /* строка справа: фото — около трети ширины, как в макете, по пропорции 5 : 4;
+     на невысоких экранах строки ниже, чтобы весь блог помещался под шапкой.
+     Если текст выше фото, строка растёт по тексту, фото растягивается вместе с ней */
+
+  /* первый блог — по сетке из 12 столбцов: большая карточка — 6 столбцов (половина контентной части),
+     колонка справа — 6; в маленькой карточке фото — 2 столбца, текст — 4 (промежутки те же, что между столбцами) */
+  /* большая карточка (фото + текст) ровно той же высоты, что три маленькие: колонка справа занимает
+     обе строки, текст под большим фото — по содержимому, фото — всё оставшееся место */
+  /* весь ряд карточек на 20% выше: маленькие карточки и промежутки между ними ×1,2,
+     большая карточка тянется за ними; шрифты и внутренние отступы не меняются */
+  /* заголовки всех карточек — до двух строк */
+  .blog:not(.blog--cards) .post__title { -webkit-line-clamp: 2; line-clamp: 2; }
+}
+
+/* =========================================================
+   КОНТАКТЫ / ФОРМА
+   ========================================================= */
+/* по макету Figma (plat-fam, 261:52): красная плашка шириной с контент страницы, скругление 16px;
+   слева заголовок, подпись и иконки соцсетей, справа светлая карточка формы */
+.contact.section { padding-bottom: 0; }   /* до подвала — половина обычного отступа */
+.contact__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gap-head);
+  padding: var(--s-32);
+  border-radius: var(--radius);
+  background: var(--red);
+}
+.contact__info { flex: 1; min-width: 0; color: var(--white); }
+.contact__title { max-width: 760px; color: var(--white); }
+.contact__text { margin-top: var(--sp-20); font-weight: 400; }
+.socials { display: flex; flex-wrap: wrap; gap: var(--sp-20) var(--sp-32); margin-top: var(--sp-20); }
+.socials a { display: block; flex: none; transition: opacity .2s ease; }
+.socials a:hover { opacity: .75; }
+.socials img { width: 57px; height: 57px; }
+
+.form {
+  display: flex;
+  flex: 0 0 min(876px, 49.3%);
+  flex-direction: column;
+  gap: var(--sp-32);
+  padding: var(--pad-card);
+  border-radius: 5px;
+  background: var(--bg);
+}
+.form__fields { display: flex; flex-direction: column; gap: var(--sp-20); }
+.input {
+  width: 100%;
+  padding: var(--s-24);
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.input::placeholder { color: var(--placeholder); opacity: 1; }
+.input:focus { border-color: var(--red); box-shadow: 0 0 0 4px rgba(81, 82, 55, .10); }
+.input.is-invalid { border-color: var(--red); box-shadow: 0 0 0 2px rgba(81, 82, 55, .15); }
+.input--area { height: clamp(120px, calc(100svh - 545px), 252px); resize: none; }
+
+.check { display: flex; align-items: center; gap: var(--sp-20); color: var(--text); cursor: pointer; }
+.check a { color: inherit; text-decoration: none; }
+.check a:hover { text-decoration: underline; }
+.check input {
+  flex: none;
+  width: 20.5px;
+  height: 20.5px;
+  margin: 0;
+  border: 1.5px solid var(--text);
+  border-radius: 2px;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.check input:checked { background: var(--red); border-color: var(--red); box-shadow: inset 0 0 0 3px var(--bg); }
+.check input.is-invalid { border-color: var(--red); box-shadow: 0 0 0 2px rgba(81, 82, 55, .25); }
+
+.form__submit { width: min(446px, 100%); padding: var(--s-16); }
+.form__note { margin-top: calc(var(--s-16) - var(--s-32)); }   /* 16px под кнопкой */
+.form__note:empty { display: none; }
+
+/* ---------- Заявка (макет Figma plat-fam, узел 527:354): красный блок; слева светлая карточка — заголовок, текст,
+   плашки-обводки, поля (подпись поля при вводе поднимается вверх и становится мельче), согласие, кнопка;
+   справа — карта с границами и фото (img/lead-map.jpg). Мессенджеры — в подвале.
+   На телефоне — просто форма на красном фоне с белыми надписями и белыми ветвями (img/lead-curve.png).
+   Прежний вариант формы лежит в <template id="contact-v1"> ---------- */
+.lead.section { padding-bottom: 0; }
+.lead__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 920fr) minmax(0, 705fr);
+  padding: var(--s-16);
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--olive);
+}
+.lead__card {
+  position: relative;
+  z-index: 1;
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-20);
+  padding: var(--s-48) var(--s-56) var(--s-32);   /* под кнопкой — меньше */
+  color: var(--white);
+}
+.lead__title { color: var(--white); font-size: var(--fs-h2); font-weight: 400; line-height: 1; letter-spacing: -.01em; }   /* стиль H2 */
+.lead__head p { max-width: 640px; margin-top: var(--sp-20); }   /* основной текст сайта */
+.lead__chips { display: flex; flex-wrap: wrap; gap: var(--sp-20); margin: 0; padding: 0; list-style: none; }
+.lead__chips li { padding: var(--s-8) var(--s-24); border: 1px solid rgba(255, 255, 255, .8); border-radius: 999px; line-height: 1.5; }
+.lead__fields { display: flex; flex-direction: column; gap: var(--sp-12); margin-top: var(--sp-20); }   /* над полями — больше воздуха */
+.field { position: relative; }
+.field__input {
+  display: block;
+  width: 100%;
+  height: 58px;
+  padding: 24px 24px 6px;
+  border: 1px solid transparent;
+  border-radius: 5.5px;
+  background: var(--white);
+  color: var(--text);
+  font-size: var(--fs-body);
+  line-height: 1.3;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.field--area .field__input { height: 120px; padding-top: 30px; resize: none; }
+.field__input:focus, .field__input.is-invalid { border-color: var(--white); box-shadow: 0 0 0 3px rgba(255, 255, 255, .35); }
+/* подпись внутри поля: пока поле пустое — на месте текста; при вводе (и когда в поле есть текст) — вверху, мельче */
+.field__label {
+  position: absolute;
+  top: 29px;
+  left: 25px;
+  right: 25px;
+  overflow: hidden;
+  color: var(--placeholder);
+  font-size: var(--fs-body);
+  line-height: 1.2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: top .2s ease, font-size .2s ease, transform .2s ease;
+}
+.field--area .field__label { top: 22px; transform: none; white-space: normal; }
+.field__input:focus + .field__label,
+.field__input:not(:placeholder-shown) + .field__label { top: 8px; font-size: 13px; transform: none; }
+.lead__agree { align-items: flex-start; }
+.lead__agree { color: var(--white); }
+.lead__agree input { margin-top: 0; border: 2px solid var(--white); }
+.lead__agree input:checked { background: var(--white); border-color: var(--white); box-shadow: inset 0 0 0 4px var(--olive); }
+.lead__agree a { color: var(--white); text-decoration: underline; }
+.lead__submit { width: 100%; min-height: 56px; background: var(--white); color: var(--text); }   /* белая кнопка на красном */
+.lead__submit:hover { background: var(--bg); }
+.lead__note { margin-top: calc(-1 * var(--s-8)); color: var(--white); }
+.lead__note:empty { display: none; }
+/* блок заявки на странице (не во всплывающем окне): фон #515237 на всю ширину окна, без полей и скругления.
+   Внутри — общая сетка 12 колонок с полями страницы: форма — колонки 1–5, картинка (карта с фото) — колонки 7–12;
+   кнопка «Отправить заявку» — 3 колонки. Между блоком и подвалом отступа нет */
+.lead.container:not(.lead--modal) { width: 100%; }
+.lead:not(.lead--modal) .lead__inner {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  padding: 0 var(--edge);
+  border-radius: 0;
+  background: var(--olive);
+}
+.lead:not(.lead--modal) .lead__card { grid-column: 1 / 6; padding: var(--s-96) 0; }   /* форма — колонки 1–5 */
+.lead:not(.lead--modal) .lead__submit { width: calc((100% - 4 * var(--col-gap)) * 3 / 5 + 2 * var(--col-gap)); }   /* кнопка — 3 колонки из 5 */
+@media (max-width: 1023px) {
+  .lead:not(.lead--modal) .lead__card { grid-column: 1 / -1; padding: var(--s-64) 0; }
+}
+@media (max-width: 767px) {
+  .lead:not(.lead--modal) .lead__submit { width: 100%; }   /* на телефоне кнопка — во всю ширину, как остальные кнопки */
+}
+@media (max-width: 1023px) {
+  .lead__inner { grid-template-columns: 1fr; }
+  .lead__card { padding: var(--s-48) var(--s-40, 40px); }
+}
+/* телефон: форма прямо на красном фоне, надписи белые; сверху справа — белые ветви древа */
+@media (max-width: 767px) {
+  .lead.container { width: 100%; }
+  .lead__inner { padding: var(--s-64) var(--gut); border-radius: 0; }
+  .lead__card { padding: 0; background: transparent; color: var(--white); }
+  .lead__title { color: var(--white); }
+  .lead__chips { gap: var(--sp-8); }
+  .lead__chips li { border-color: rgba(255, 255, 255, .8); padding: 6px var(--s-16); }
+  .field__input { font-size: 16px; }   /* 16px: иначе iPhone увеличивает страницу при вводе */
+  .field__input { height: 56px; padding: 24px 16px 6px; }
+  .field--area .field__input { height: 112px; padding-top: 28px; }
+  .field__label { top: 28px; left: 17px; right: 17px; }
+  .field--area .field__label { top: 18px; }
+  .field__input:focus, .field__input.is-invalid { border-color: var(--white); box-shadow: 0 0 0 3px rgba(255, 255, 255, .35); }
+  .field__input:focus + .field__label,
+  .field__input:not(:placeholder-shown) + .field__label { top: 7px; font-size: 12px; }
+  .lead__agree { color: var(--white); }
+  .lead__agree input { border-color: var(--white); }
+  .lead__agree input:checked { background: var(--white); box-shadow: inset 0 0 0 4px var(--olive); }
+  .lead__agree a { color: var(--white); }
+  .lead__submit { min-height: 50px; background: var(--white); color: var(--text); }
+  .lead__submit:hover { background: var(--bg); }
+  .lead__note { color: var(--white); }
+}
+/* окно «Получить консультацию»: только карточка с формой; крестик — в её правом верхнем углу */
+.lead--modal .lead__inner { grid-template-columns: 1fr; box-shadow: 0 24px 64px rgba(0, 0, 0, .25); }
+.lead--modal .lead__card { padding: var(--s-48) var(--s-40, 40px); }
+.lead--modal .lead__title { padding-right: 56px; }
+.lead--modal .overlay__close { top: var(--s-32); right: var(--s-32); }
+@media (max-width: 767px) {
+  .lead--modal .lead__inner { padding: var(--s-32) var(--s-16); border-radius: var(--radius); }
+  .lead--modal .overlay__close { top: var(--s-16); right: var(--s-16); }
+}
+
+/* =========================================================
+   ДРЕВО — последний блок: рисунок голых ветвей; при прокрутке сверху вниз
+   его «заливает» рисунок с листвой, край заливки неровный, как растёкшиеся чернила
+   (эффект как на heronaiapp.com; маску двигает js/main.js)
+   ========================================================= */
+.inkswap__frame {
+  position: relative;
+  aspect-ratio: 1960 / 505;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: #ede5d9;
+}
+.inkswap__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.inkswap__svg { display: block; overflow: hidden; pointer-events: none; }
+@media (max-width: 767px) {
+  .inkswap__frame { aspect-ratio: 2 / 1; }          /* на телефоне кадр выше — середина рисунка */
+}
+
+/* =========================================================
+   ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ — длинный документ: стили текста сайта, ритм отступов 16 / 24 / 56 / 72.
+   На компьютере заголовок — ровно в две строки, и весь текст — той же ширины (колонку задаёт заголовок);
+   на планшете и телефоне — колонка ~75 знаков, заголовок переносится сам.
+   Слева вверху кнопка «← Назад» на главную; дата публикации — в самом конце
+   ========================================================= */
+.policy { margin-top: var(--s-72); }
+.policy__text { max-width: 680px; }
+.policy__text h1 + h2 { margin-top: var(--s-72); }    /* H1 → первый раздел — 72px */
+.policy__text h2 { margin: var(--s-56) 0 var(--s-24); font-size: var(--fs-h3); font-weight: 500; line-height: 1.25; }   /* разделы политики — стилем H3 */   /* последний абзац → заголовок — 56px, заголовок → текст — 24px */
+.policy__text p + p { margin-top: var(--sp-20); }
+.policy__text .policy__date { margin-top: var(--gap-head); }
+.policy .placeholder { color: var(--red); font-weight: 500; }   /* места, которые нужно заполнить */
+.policy__br { display: none; }
+@media (min-width: 1200px) {
+  /* колонка шириной с заголовок в две строки: остальные блоки не влияют на её ширину (width: 0; min-width: 100%) */
+  .policy__text { display: grid; grid-template-columns: max-content; max-width: none; }
+  .policy__text h1 { white-space: nowrap; }
+  .policy__text > :not(h1) { width: 0; min-width: 100%; }
+  .policy__br { display: inline; }
+}
+@media (max-width: 767px) {
+  .policy { margin-top: var(--gap-head); }
+  .policy__text h1 + h2 { margin-top: var(--gap-head); }  /* телефон: H1 → первый раздел — 48px */
+  .policy__text h2 { margin-top: var(--gap-head); }              /* телефон: последний абзац → заголовок — 40px */
+}
+
+/* =========================================================
+   1200–1599 — узкий десктоп
+   ========================================================= */
+
+@media (max-width: 1365px) {
+  .review { min-height: 0; }
+  .form { flex-basis: 46%; }
+}
+
+/* =========================================================
+   ПЛАНШЕТ 768–1199
+   ========================================================= */
+@media (max-width: 1199px) {
+  :root { --section-gap: 80px; --gap-head: 40px; --gut: 40px; --fs-h1: 56px; --fs-h2: 40px; --fs-strip: 32px; --fs-quote: 26px; --fs-h3: 26px; --fs-h4: 20px; --fs-body: 16px; }
+
+  /* отзывы на главной — лента с прокруткой вбок до краёв экрана (место под тень карточек — лента её не обрезает) */
+  .reviews__list {
+    margin: calc(-1 * var(--s-8)) calc(-1 * var(--gut)) calc(-1 * var(--s-32));
+    padding: var(--s-8) var(--gut) var(--s-32);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gut);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .reviews__list::-webkit-scrollbar { display: none; }
+  .review { flex: 0 0 min(360px, 70%); scroll-snap-align: start; }
+
+  /* лента */
+  .marquee { --gap: var(--col-gap); --card-h: min(480px, calc(100svh - var(--hdr-h) - 2 * var(--hdr-gap) - 20px)); }
+
+  /* о нас: одна колонка, карта во всю ширину */
+  /* на планшете и телефоне показываем из каждой картинки только саму карту, во всю ширину экрана */
+
+  /* блог: лента карточек, видно две и край третьей */
+  .blog { max-height: none; }
+  .post { flex: 0 0 44%; display: flex; flex-direction: column; gap: var(--sp-20); max-height: none; scroll-snap-align: start; }
+  .post .post__img { flex: none; height: auto; min-height: 0; aspect-ratio: 16 / 10; }
+  .post .post__desc { -webkit-line-clamp: 3; }
+  .post .post__link { margin-top: auto; }
+
+  /* контакты */
+  .form { flex-basis: 50%; padding: var(--pad-card); gap: var(--sp-32); }
+  .socials { gap: var(--sp-20) var(--sp-20); }          /* крупные иконки соцсетей — в один ряд и на планшете */
+  .form__fields { gap: var(--sp-20); }
+  .form__note { margin-top: calc(var(--s-16) - var(--s-32)); }
+  .input { padding: var(--s-16) var(--s-24); }
+}
+
+/* шапка: полноценная от 1024px, ниже — компактная */
+@media (max-width: 1023px) {
+  :root { --hdr-h: 50px; --hdr-gap: var(--sp-12); }
+  .contact__inner { flex-direction: column; gap: var(--sp-32); }
+  .form { flex: none; width: 100%; }
+  .input--area { height: clamp(120px, calc(100svh - 700px), 200px); }
+  .header { width: auto; margin-inline: var(--gut); }
+  .header__bar { display: none; }
+  .header__mobile { display: flex; align-items: center; justify-content: flex-end; }
+  .mobile-menu { display: flex; }
+  .mobile-menu__backdrop { display: block; }
+}
+
+@media (max-width: 899px) {
+  .section-head { flex-direction: column; align-items: flex-start; gap: var(--sp-20); }
+
+  /* горизонтальные ленты: отзывы, блог */
+  .scroller {
+    display: flex;
+    gap: var(--col-gap);
+    margin-inline: calc(-1 * var(--gut));
+    padding-inline: var(--gut);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gut);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .scroller::-webkit-scrollbar { display: none; }
+  .scroller > * { scroll-snap-align: start; }
+
+}
+
+/* =========================================================
+   МОБИЛЬНЫЙ < 768
+   ========================================================= */
+@media (max-width: 767px) {
+  :root {
+    --gut: var(--s-16);                               /* поля по краям — 16px */
+    --section-pad: var(--s-64);
+    --pad-card: var(--s-24);
+    --section-gap: 64px;
+    --gap-head: 32px;
+    --fs-h1: 40px;
+    --fs-h2: 32px;
+    --fs-strip: 28px;
+    --fs-quote: 24px;
+    --fs-h3: 22px;
+    --fs-h4: 18px;
+    --fs-body: 16px;                                  /* основной текст на телефоне — 16px */
+  }
+
+  .opening { height: 98vh; height: 98svh; }           /* первый экран — 98% высоты экрана */
+  .btn { min-height: 50px; padding-block: 13px; }     /* кнопки — высотой с кнопку бургер-меню (50px) */
+  /* поля ввода — 16px: при более мелком шрифте iPhone увеличивает страницу, когда нажимаешь на поле */
+  input:not([type="checkbox"]):not([type="radio"]), textarea, select { font-size: 16px; }
+
+  .link-more { color: var(--red); }
+
+  /* лента */
+  .marquee { --gap: var(--col-gap); --card-w: 300px; --card-h: 380px; --duration: 68s; }   /* телефон: карточки выше, чтобы текст целиком помещался */
+  .tag { gap: var(--sp-8); padding: var(--s-8) var(--s-16); border-radius: 100px; color: var(--text); }
+  .tag::before { width: 6px; height: 6px; }
+
+  /* о нас */
+
+  /* отзывы */
+  .review { flex: 0 0 334px; max-width: 84vw; gap: var(--sp-20); min-height: 0; justify-content: flex-start; }
+  .review__author { gap: var(--sp-8); }
+  .review__author img { width: 18px; height: 18px; }
+
+  /* блог */
+  .post { flex: 0 0 336px; max-width: 84vw; gap: var(--sp-20); }
+  .post .post__img { aspect-ratio: 336 / 201; }
+  .post .post__desc { color: var(--text-body); }
+  .post .post__link { color: var(--text); }
+
+  /* форма: красный блок во всю ширину, вплотную к подвалу; отступы блока сверху и снизу — внутри красного */
+  .contact.container { width: 100%; }
+  .contact.section { padding-bottom: 0; }
+  .contact__inner { gap: var(--sp-32); padding: var(--section-pad) var(--gut); border-radius: 0; }
+  .contact__text, .contact .socials { display: none; }
+  .form { gap: var(--sp-32); padding: 0; background: transparent; }
+  .form__fields { gap: var(--sp-20); }
+  .input { padding: var(--s-16); }
+  .input:not(.input--area) { height: 52px; }
+  .input--area { height: clamp(100px, calc(100svh - 520px), 252px); }
+  .check { align-items: flex-start; gap: var(--sp-20); color: var(--white); }
+  .check input { width: 21px; height: 21px; border-color: var(--white); }
+  .check input:checked { background: var(--white); border-color: var(--white); box-shadow: inset 0 0 0 4px var(--red); }
+  .form__submit { width: 100%; height: 50px; background: var(--white); color: var(--text); }
+  .form__submit:hover { background: var(--bg); }
+  .form__note { margin-top: calc(var(--s-16) - var(--s-32)); color: var(--white); }
+
+  /* подвал */
+}
+
+/* планшет и телефон: в блоге вместо круга-курсора — надпись «Читать полностью» со стрелкой; нажатие на карточку
+   (и на эту надпись) открывает пост — как на компьютере, карточку накрывает ссылка .post__link */
+
+@media (min-width: 420px) and (max-width: 767px) {
+  .marquee { --card-w: 330px; --card-h: 400px; }
+}
+
+/* =========================================================
+   БЛОГ — ВАРИАНТ 2 (проба, блок #blog-cards сразу под основным блогом).
+   Каждая статья — белая карточка со скруглением 16px, как в макете:
+   картинка прилегает к краям карточки и скругляется вместе с ней,
+   текст — с отступом внутри карточки. Слева большая карточка ровно той же
+   высоты, что три маленькие справа вместе с промежутками; промежутки между
+   всеми карточками одинаковые (--col-gap) — карточки стоят по сетке.
+   Основной блог выше не меняется
+   ========================================================= */
+/* планшет и телефон: лента карточек — фото сверху во всю ширину карточки, текст под ним */
+
+/* ---------- 768–1199: ссылки в «Отзывах» и «Блоге» красные, в карточках прижаты к низу;
+   от заголовка поста до текста — 24px ---------- */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .reviews .link-more, .blog .link-more { color: var(--red); }
+  .blog .post { display: flex; flex-direction: column; }
+}
+
+/* =========================================================
+   СТРАНИЦА «РОДОСЛОВНАЯ КНИГА» (rodoslovnaya-kniga.html, макет Figma plat-fam, узел 181:732).
+   Сетка, отступы и стили текста — те же, что на главной: .container, .section, .h2 / .h3, --col-gap, --pad-card
+   ========================================================= */
+.opening--kniga .opening__img { object-position: 50% 50%; }
+.opening__video { object-position: 50% 50%; }
+
+/* ---------- Зачем книга: слева текст и список, справа фото ---------- */
+
+/* ---------- Этапы работы: красные карточки в ленту во всю ширину окна, первая карточка — от края контента.
+   Лента прокручивается вбок: пальцем/тачпадом как обычно, мышью — курсором-кругом у краёв (js/main.js) ---------- */
+.stages { position: relative; }
+.stages__pin { position: relative; }
+.stages__viewport {
+  margin-inline: calc(50% - var(--vw) / 2);           /* во всю ширину окна */
+  padding-left: calc(var(--vw) / 2 - 50%);            /* карточки начинаются от края контента */
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+.stages__viewport::-webkit-scrollbar { display: none; }
+/* ширина карточек и поля в конце задана через width (не только flex-basis): иначе Firefox и Safari считают ширину ленты
+   по самой длинной строке текста в карточке, и лента прокручивается дальше последней карточки */
+.stages__track { display: flex; gap: var(--col-gap); width: max-content; }
+.stages__track .stage { flex: none; width: var(--stage-w); }
+/* после последней карточки — поле до края контента, как слева (минус промежуток ленты) */
+.stages__track::after { content: ""; flex: none; width: max(0px, calc((var(--vw) - min(var(--container), var(--vw) - 2 * var(--gut))) / 2 - var(--col-gap))); }
+@media (hover: hover) and (pointer: fine) {
+  .stages.is-scrollable .stages__viewport, .stages.is-scrollable .stages__viewport a { cursor: none; }   /* круг вместо курсора — только если ленту есть куда листать */
+  .stages__bubble { background: var(--white); color: var(--red); box-shadow: 0 8px 24px rgba(60, 40, 30, .18); }
+  .stages.is-cursor .stages__bubble { transform: scale(1); }
+}
+.stage {
+  position: relative;
+  /* ширина — как у карточки отзыва: 4 колонки из 12 (ширина контента − 11 промежутков, делим на 12, берём 4 колонки
+     и 3 промежутка между ними); на планшете и телефоне — min(400px, 80vw), тоже как у отзыва */
+  --stage-w: calc((min(var(--container), var(--vw) - 2 * var(--gut)) - 11 * var(--col-gap)) / 12 * 4 + 3 * var(--col-gap));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--gap-head);
+  min-height: 420px;
+  box-sizing: border-box;
+  padding: var(--pad-card);
+  border-radius: var(--radius);
+  background: var(--red);
+  color: var(--white);
+}
+.stage::after {                                       /* белая точка в правом верхнем углу — как в макете */
+  content: "";
+  position: absolute;
+  top: var(--pad-card);
+  right: var(--pad-card);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--white);
+}
+.stage__top { display: flex; flex-direction: column; align-items: flex-start; }
+.stage__tag { padding: var(--s-8) var(--s-16); border-radius: 12.5px; background: rgba(255, 255, 255, .25); line-height: 1.2; }
+.stage__title { max-width: 576px; margin-top: var(--sp-32); color: var(--white); }
+.stage__text { max-width: 576px; margin-top: var(--sp-20); }   /* H4 → текст — 16px */
+.stage__text p + p { margin-top: var(--sp-20); }
+.stage__bottom { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-20); }
+.stage__num { font-weight: 600; }
+
+/* ---------- Отзывы: всегда в один ряд — три карточки по 4 колонки из 12, на планшете и телефоне лента (см. ниже).
+   Карточки одной высоты: имя и кавычки сверху, текст — по центру оставшейся высоты ---------- */
+.voice__video { position: relative; width: 100%; aspect-ratio: 233 / 115; overflow: hidden; border-radius: var(--radius); background: #8e98a3; }
+.voice__player { display: block; width: 100%; height: 100%; object-fit: cover; }
+.voice__play {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.voice__play::before {                                /* круглая кнопка ▶ по центру обложки */
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 48px;
+  height: 48px;
+  margin: -24px 0 0 -24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .7) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6.5v11l9-5.5z' fill='%23fff'/%3E%3C/svg%3E") 55% 50% / 26px no-repeat;
+  background-color: rgba(255, 255, 255, .55);
+  transition: transform .2s ease, background-color .2s ease;
+}
+.voice__play:hover::before { transform: scale(1.08); background-color: rgba(255, 255, 255, .75); }
+
+/* видеоотзыв в окне поверх страницы (.overlay, общие стили — в конце файла): видео — почти на весь экран */
+.video-modal__player,
+.video-modal__missing {
+  grid-area: 1 / 1;
+  box-sizing: border-box;
+  height: min(100vh - 48px, (100vw - 48px) * 16 / 9);   /* видео вертикальное 9 : 16 — по высоте экрана без 24px сверху и снизу */
+  height: min(100dvh - 48px, (100vw - 48px) * 16 / 9);
+  aspect-ratio: 9 / 16;
+  border-radius: var(--radius);
+  background: #000;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, .35);
+  transform: scale(.96);
+  transition: transform .35s ease;
+}
+.video-modal.is-open .video-modal__player,
+.video-modal.is-open .video-modal__missing { transform: none; }
+.video-modal__missing { display: none; place-items: center; margin: 0; padding: var(--s-24); background: #8e98a3; color: var(--white); text-align: center; }
+.video-modal.is-missing .video-modal__player { visibility: hidden; }
+.video-modal.is-missing .video-modal__missing { display: grid; }
+.video-modal .overlay__close { position: absolute; top: var(--s-16); right: var(--s-16); }   /* крестик — в правом верхнем углу экрана */
+
+/* ---------- Калькулятор: сетка 12 колонок — пояснение занимает 5, анкета и результат — 7 ---------- */
+.calc {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--col-gap);
+  align-items: start;
+}
+.calc__intro { grid-column: 1 / span 5; display: flex; flex-direction: column; gap: var(--sp-20); }
+.calc__panel { grid-column: 7 / span 6; }
+/* анкета/результат плавно меняют высоту (main: js/calculator.js) */
+.calc__panel.is-animating { overflow: hidden; transition: height .45s cubic-bezier(.4, 0, .2, 1); }
+.calc__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-head);
+  padding: var(--pad-card);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+.calc__card[hidden], .calc__result[hidden] { display: none; }
+.calc__lines { display: flex; flex-direction: column; gap: var(--gap-head); width: 100%; }
+.calc-line { display: flex; flex-direction: column; gap: var(--gap-head); min-width: 0; margin: 0; padding: 0; border: 0; }
+.calc-line { transition: opacity .45s ease, transform .45s cubic-bezier(.4, 0, .2, 1); }
+.calc-line.is-entering { opacity: 0; transform: translateY(16px); }
+.calc-line__head { display: none; align-items: center; justify-content: space-between; gap: var(--sp-20); }
+.calc-line--extra .calc-line__head { display: flex; }
+.calc-line__remove {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-8);
+  padding: var(--s-8) var(--s-16);
+  border: 1px solid var(--red);
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--red);
+  font: inherit;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background-color .2s ease;
+}
+.calc-line__remove img { width: 16px; height: 17px; }
+@media (max-width: 767px) {
+  .calc-line__remove { padding: var(--s-8); }
+  .calc-line__remove-text { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+.calc-line__remove:hover { background: rgba(81, 82, 55, .06); }
+
+.calc-q { display: flex; flex-direction: column; gap: var(--sp-20); min-width: 0; margin: 0; padding: 0; border: 0; }
+.calc-q__title {
+  float: left;                                        /* legend без «врезки» в рамку fieldset */
+  width: 100%;
+  padding: 0;
+  font-size: var(--fs-h4);                            /* вопрос анкеты — как заголовок карточки (H4) */
+  font-weight: 500;
+  letter-spacing: -.005em;
+  line-height: 1.3;
+  color: var(--text);
+}
+.calc-q__options { display: flex; flex-direction: column; gap: var(--sp-20); margin-top: var(--sp-8); }
+.calc-q__error { display: none; color: var(--red); }
+.calc-q.is-invalid .calc-q__error { display: block; }
+
+/* переключатель-кружок с красной обводкой */
+.radio { display: inline-flex; align-items: center; gap: var(--sp-20); color: var(--text); cursor: pointer; }
+.radio input[type="radio"] {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  border: 1.5px solid var(--red);
+  border-radius: 50%;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: background-color .15s ease;
+}
+.radio input[type="radio"]:checked { background: var(--red); box-shadow: inset 0 0 0 4px var(--white); }
+.radio input[type="radio"]:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+.calc-q.is-invalid .radio input[type="radio"] { box-shadow: 0 0 0 3px rgba(81, 82, 55, .18); }
+.radio--custom { flex-wrap: wrap; }
+.calc-q__custom.input { width: 120px; padding: var(--s-8) var(--s-16); border-color: rgba(0, 0, 0, .25); border-radius: var(--radius-sm); }
+
+/* поле региона с подсказками */
+.combo { position: relative; width: min(360px, 100%); margin-top: var(--sp-8); }
+.combo__input.input { padding: var(--s-16); border-color: rgba(0, 0, 0, .25); border-radius: var(--radius-sm); }
+.calc-q.is-invalid .combo__input { border-color: var(--red); box-shadow: 0 0 0 2px rgba(81, 82, 55, .15); }
+.combo__list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 5;
+  max-height: 264px;
+  margin: 0;
+  padding: var(--s-8) 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  list-style: none;
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  box-shadow: 0 12px 32px rgba(60, 40, 30, .16);
+}
+.combo__option { padding: var(--s-8) var(--s-16); cursor: pointer; }
+.combo__option:hover, .combo__option.is-active { background: var(--bg); }
+
+.calc__add {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-20);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--red);
+  font: inherit;
+  cursor: pointer;
+}
+.calc__add:hover { text-decoration: underline; }
+
+/* кнопка «Рассчитать»: пока считаем — текст прячется, по центру крутится спиннер */
+.calc__submit { position: relative; width: min(360px, 100%); }
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  border: 2px solid rgba(255, 255, 255, .35);
+  border-top-color: var(--white);
+  border-radius: 50%;
+  opacity: 0;
+  animation: spin .7s linear infinite;
+  animation-play-state: paused;
+}
+.calc__submit.is-loading { pointer-events: none; }
+.calc__submit.is-loading .calc__submit-text { visibility: hidden; }
+.calc__submit.is-loading .spinner { opacity: 1; animation-play-state: running; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* результат — отдельная карточка на месте анкеты */
+.calc__result {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--pad-card) var(--s-48);
+  border-radius: var(--radius);
+  background: var(--white);
+  outline: none;
+}
+.calc__result-label { color: var(--text); }   /* стиль H3 — класс h3 в разметке */
+.calc__result-sum { margin-top: var(--sp-20); font-size: var(--fs-h2); font-weight: 500; letter-spacing: -.01em; line-height: 1.2; color: var(--red); }   /* сумма — размером H2 */
+.calc__result-note { max-width: 640px; margin-top: var(--sp-32); color: var(--muted); }
+.calc__again {
+  margin-top: var(--sp-20);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--red);
+  font: inherit;
+  cursor: pointer;
+}
+.calc__again:hover { text-decoration: underline; }
+
+@media (max-width: 1199px) {
+  .stage { min-height: 380px; }
+  .calc__intro, .calc__panel { grid-column: 1 / -1; }
+  .calc { row-gap: var(--gap-head); }
+  .calc__card { padding: var(--pad-card); }
+}
+/* отзывы на планшете и телефоне: по-прежнему один ряд — лента до краёв экрана, листается пальцем,
+   следующая карточка выглядывает справа */
+@media (max-width: 1023px) {
+  .stage { --stage-w: min(400px, 80vw); }            /* этапы — той же ширины, что отзывы */
+}
+@media (max-width: 767px) {
+  .stage { min-height: 0; }
+  .calc__card { gap: var(--sp-32); padding: var(--s-24); }
+  .calc__lines, .calc-line { gap: var(--sp-32); }
+  .calc__result { padding: var(--s-24); }
+}
+
+/* промежуток между блоками на планшете и телефоне меньше, чем на больших экранах */
+
+/* форма связи в одну колонку (заголовок над формой) — красный блок вплотную к подвалу */
+@media (max-width: 767px) {   /* только телефон: красный блок во всю ширину; на планшете — отступ снизу и скругления, как сбоку */
+  .contact__inner { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+}
+.calc__contact { color: var(--red); font-weight: 600; text-decoration: none; }
+.calc__contact:hover { text-decoration: underline; }
+
+/* =========================================================
+   ОКНА ПОВЕРХ СТРАНИЦЫ: видеоотзыв и «Получить консультацию».
+   Страница под окном затемнена на 20% и размыта, как под мобильным меню. Прокрутку страницы на это время
+   выключаем; если у браузера видимая полоса прокрутки, место под неё остаётся — страница не дёргается
+   ========================================================= */
+.is-overlay-open { overflow: hidden; }
+.is-overlay-open.has-scrollbar { scrollbar-gutter: stable; }
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, .2);
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .35s ease, visibility 0s linear .35s;
+}
+.overlay[hidden] { display: none; }
+.overlay.is-open { opacity: 1; visibility: visible; transition-delay: 0s; }
+.overlay__close {                                      /* белый круг с крестиком */
+  z-index: 1;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E") center / 22px no-repeat;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+  cursor: pointer;
+  transition: transform .2s ease;
+}
+.overlay__close:hover { transform: rotate(90deg); }
+
+/* «Получить консультацию»: красная плашка, как последний блок главной, но в одну колонку — заголовок, текст
+   и соцсети над формой. Если окно выше экрана, оно прокручивается внутри затемнения */
+.consult-modal { place-items: stretch; padding: var(--s-24) var(--gut); overflow-y: auto; overscroll-behavior: contain; }
+.consult-modal__box {
+  position: relative;
+  width: min(760px, 100%);
+  margin: auto;                                       /* по центру экрана, а если не помещается — от верхнего края */
+  transform: translateY(24px);
+  transition: transform .45s cubic-bezier(.2, .75, .15, 1);
+}
+.consult-modal.is-open .consult-modal__box { transform: none; }
+.consult-modal .contact__inner { flex-direction: column; align-items: stretch; gap: var(--sp-32); border-radius: var(--radius); box-shadow: 0 24px 64px rgba(0, 0, 0, .25); }
+.consult-modal .form { flex: none; width: 100%; }
+.consult-modal .input--area { height: 160px; }       /* окно целиком помещается на экране ноутбука */
+.consult-modal .contact__info { padding-right: 56px; }  /* заголовок не заходит под крестик */
+.consult-modal .overlay__close { position: absolute; top: var(--s-16); right: var(--s-16); }   /* крестик — в правом верхнем углу плашки, на положение окна не влияет */
+@media (max-width: 767px) {
+  .consult-modal { padding: var(--s-16); }
+  .consult-modal .contact__inner { padding: var(--s-24) var(--s-16); }
+  .consult-modal .socials { gap: var(--sp-20); }
+  .consult-modal .socials img { width: 44px; height: 44px; }   /* все четыре иконки в один ряд */
+}
+@media (prefers-reduced-motion: reduce) {
+  .overlay, .overlay__close, .consult-modal__box, .video-modal__player, .video-modal__missing { transition: none; }
+}
+
+/* =========================================================
+   СТРАНИЦЫ УСЛУГ: «Родословная книга», «Архивный свиток», «Точечные исследования»
+   (макеты Figma plat-fam: 181:732, 181:1133, 481:387). Сетка, отступы и стили текста — общие для сайта
+   ========================================================= */
+.opening--issl .opening__img { object-position: 50% 40%; }
+.opening--tochno .opening__img { object-position: 50% 30%; }
+
+/* «Об услуге»: заголовок раздела, под ним две колонки — «почему» (текст) и «для кого» (список) */
+.about-svc__chip { display: inline-block; padding: 12px 24px; border-radius: 999px; background: var(--white); color: var(--text); font-size: var(--fs-body); font-weight: 400; line-height: 1.5; }   /* «Об услуге» — плашка, а не крупный заголовок */
+.about-svc__cols { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap-head) var(--col-gap); margin-top: var(--gap-head); align-items: start; }
+@media (min-width: 768px) { .about-svc__cols { margin-top: var(--gap-head); } }   /* H2 → колонки — 60px */
+.about-svc__col { grid-column: 1 / span 6; }   /* текст — по 6 колонок из 12, между ними только зазор сетки */
+.about-svc__col + .about-svc__col { grid-column: 7 / span 6; }
+.about-svc__col { display: flex; flex-direction: column; gap: var(--sp-32); max-width: 880px; }   /* H3 → текст — 32px */
+.about-svc__col p + p { margin-top: var(--sp-20); }   /* абзац → абзац — 16px */
+
+/* список с золотыми точками */
+.dot-list { display: flex; flex-direction: column; gap: var(--sp-20); margin: 0; padding: 0; list-style: none; }
+.dot-list li { display: flex; align-items: center; gap: var(--sp-32); }
+.dot-list li::before { content: ""; flex: none; width: 16px; height: 16px; border-radius: 50%; background: var(--gold); }
+
+/* примеры работ: два фото рядом, под ними подпись */
+.about-svc + .gallery { margin-top: var(--s-96); }   /* фото иллюстрируют «Об услуге»: 96px — ближе, чем обычный отступ между блоками (160px) */
+/* два фото во всю ширину окна, каждое — половина экрана, без промежутков и скруглений */
+.gallery__grid { display: grid; grid-template-columns: 1fr 1fr; margin-inline: calc(50% - var(--vw) / 2); }
+.gallery__grid img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+.gallery__note { margin-top: var(--sp-8); color: var(--muted); }   /* фото → подпись — 8px */
+
+/* «Этапы работы» на страницах книги и свитка — лента (см. «Этапы работы» выше): карточки шириной с карточку отзыва */
+
+/* плашка «Точечные исследования» на странице свитка: фото с затемнением, слева текст, справа кнопка */
+
+/* калькулятор по центру: заголовок и текст над анкетой; по бокам — ветви родословного древа (только на компьютере) */
+.calc--center { row-gap: var(--gap-head); }
+.calc--center .calc__intro { grid-column: 3 / span 8; align-items: center; text-align: center; }
+.calc--center .calc__text { max-width: 680px; }
+.calc--center .calc__stage { position: relative; grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--col-gap); }
+.calc--center .calc__panel { position: relative; z-index: 1; grid-column: 4 / span 6; }
+.calc__tree { display: none; }
+@media (min-width: 1200px) {
+  .calc__tree {                                       /* ветви древа на всю ширину окна, за анкетой */
+    position: absolute;
+    top: 50%;
+    left: calc(50% - var(--vw) / 2);
+    display: block;
+    width: var(--vw);
+    max-width: none;
+    height: auto;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 1199px) {
+  .calc--center .calc__intro, .calc--center .calc__stage, .calc--center .calc__panel { grid-column: 1 / -1; }
+  .calc--center .calc__stage { display: block; }
+}
+@media (max-width: 1023px) {
+  .about-svc__cols { grid-template-columns: 1fr; }
+  .about-svc__col, .about-svc__col + .about-svc__col { grid-column: 1 / -1; }
+}
+@media (max-width: 767px) {
+  .about-svc__cols { gap: var(--gap-head); }                     /* телефон: последний абзац → H3 — 40px */
+  .dot-list li { gap: var(--sp-20); }
+  .dot-list li::before { width: 12px; height: 12px; }
+  .gallery__grid { grid-template-columns: 1fr; }
+  .about-svc + .gallery { margin-top: var(--gap-head); }
+}
+
+/* =========================================================
+   ПЕРЕХОДЫ МЕЖДУ СТРАНИЦАМИ: браузеры с View Transitions плавно сменяют страницы сами;
+   в остальных (класс fade-nav ставится в <head>) страница растворяется перед переходом по ссылке (js/main.js)
+   и проявляется после загрузки. На главной вместо проявления — вступление со знаком
+   ========================================================= */
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .4s; }
+@keyframes page-in { from { opacity: 0; } }
+.fade-nav body { animation: page-in .4s ease both; }
+.fade-nav.is-intro body { animation: none; }
+.fade-nav.is-leaving body { opacity: 0; transition: opacity .25s ease; }
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+  .fade-nav body { animation: none; }
+}
+
+/* =========================================================
+   КОЛЛАЖ (макет Figma plat-fam, узел 743:1524) — второй экран, 100% высоты окна.
+   Координаты фото — в пикселях макета 1920×1084 (--x, --y, --w, --h); --u — сколько экранных px в одном px макета.
+   На компьютере сцена вписана в окно и выровнена по центру; на вертикальных экранах — своя раскладка (--mx, --my в кадре 390×844).
+   Сдвиг от курсора / наклона — переменные --tx, --ty, --rx, --ry ставит js/main.js
+   ========================================================= */
+.collage {
+  --u: min(calc(100vw / 1920), calc(100svh / 1084));
+  --cu: var(--u);                                     /* масштаб карточки */
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  border-radius: 0 0 16px 16px;
+  background: #515237;
+  perspective: 1200px;
+}
+.collage__photo {
+  position: absolute;
+  left: calc(50% + (var(--x) - 960) * var(--u));
+  top: calc(50% + (var(--y) - 541.9) * var(--u));
+  width: calc(var(--w) * var(--u));
+  height: calc(var(--h) * var(--u));
+  overflow: hidden;
+  transform: translate3d(var(--tx, 0px), var(--ty, 0px), 0) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  will-change: transform;
+}
+.collage__photo img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; max-width: none; pointer-events: none; user-select: none; }
+/* карточка с подписью — неподвижна */
+
+/* вертикальные экраны (телефон, планшет стоя) — макет Figma 755:89 (кадр 390 × 801): семь фото над и под карточкой,
+   карточка 342px с полями 24px по бокам. --m — сколько экранных px в одном px макета; сцена по центру экрана */
+@media (max-aspect-ratio: 1/1) {
+  /* масштаб — только по ширине экрана, как в макете: карточка всегда в 24px от краёв; блок не ниже кадра макета */
+  .collage { --m: calc(100vw / 390); height: max(100svh, calc(801 * var(--m))); }
+  .collage__photo { display: none; }
+  .collage__photo[data-m]:has(img[src$="photo-02.webp"]) { z-index: 1; }   /* мама с ребёнком — поверх соседнего фото, как в макете */
+  .collage__photo[data-m] {
+    display: block;
+    left: calc(50% + (var(--mx) - 195) * var(--m));
+    top: calc(50% + (var(--my) - 400.5) * var(--m));
+    width: calc(var(--mw) * var(--m));
+    height: calc(var(--mh) * var(--m));
+  }
+}
+
+/* =========================================================
+   О ПРОЕКТЕ — две колонки (макет Figma plat-fam, узел 743:1558, ширина колонок 877 и 857 на 1920, промежуток 20px).
+   Слева — заголовок H2 красным, справа — «Как мы работаем»:
+   подзаголовок H3 и три пункта основным текстом с квадратными маркерами 8px
+   ========================================================= */
+.about2 { display: grid; grid-template-columns: 877fr 857fr; gap: var(--sp-20); align-items: start; }
+.quote-title { max-width: 760px; font-size: var(--fs-quote); font-style: italic; font-weight: 400; line-height: 1.2; letter-spacing: 0; color: #454329; }   /* стиль надписи в карточке коллажа (Cormorant Italic) */
+.about2__how { display: flex; flex-direction: column; gap: var(--sp-20); }
+.about2__subtitle { font-size: 32px; font-weight: 400; line-height: 1.2; color: var(--text); }
+.about2__list { display: flex; flex-direction: column; gap: var(--sp-20); }
+.about2__list li { display: flex; gap: var(--sp-12); color: var(--text-body); line-height: 1.41; }
+.about2__list li::before {                            /* квадратный маркер 8px в поле 18px, по центру первой строки */
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin: calc((1.41em - 8px) / 2) 5px 0;
+  background: currentColor;
+}
+
+/* ступени размеров (без clamp) */
+@media (max-width: 1023px) {
+  .about2 { grid-template-columns: 1fr; gap: var(--gap-head); }
+}
+@media (max-width: 767px) {
+  .about2 { gap: var(--sp-32); }
+}
+
+/* =========================================================
+   РОДОСЛОВНАЯ КНИГА — страница по макету Figma (plat-fam, узел 690:550).
+   Сетка, поля, размеры текста и скругления — общие с главной
+   ========================================================= */
+/* баннер: 355px под шапкой на 1920, затемнение слева снизу, название — стиль H1 */
+.opening--banner { height: calc(355px + var(--hdr-h) + var(--hdr-gap)); min-height: 0; }
+.opening--banner .opening__img { object-position: 50% 55%; }
+.opening--banner .opening__media::after { background: linear-gradient(68.3deg, rgba(0, 0, 0, .55) .7%, rgba(0, 0, 0, 0) 55.7%); }
+.opening--banner .opening__content { bottom: 49px; }
+
+/* о книге: та же сетка, что «О проекте» на главной; слева крупный текст стилем H3 (первая фраза — красным) и кнопка-«таблетка» */
+.about2__intro { display: flex; flex-direction: column; align-items: flex-start; gap: var(--sp-32); }
+.book-lead { max-width: 733px; font-size: 32px; font-weight: 500; line-height: 1; letter-spacing: -.01em; text-wrap: wrap; color: var(--text); }
+.book-lead em { font-style: italic; font-weight: 400; color: var(--red); }
+
+/* примеры: два фото рядом (889 × 478 на 1920), промежуток 20px, подпись под первым */
+.gallery--pair .gallery__grid { grid-template-columns: 1fr 1fr; gap: var(--sp-20); margin-inline: 0; }
+.gallery--pair .gallery__item { margin: 0; }
+.gallery--pair .gallery__grid img { aspect-ratio: 889 / 478; height: auto; border-radius: var(--radius); }
+.gallery--pair .gallery__note { margin-top: var(--sp-32); }
+
+/* почему мы: фото-карточка (половина ширины) и четыре белые карточки 2 × 2; высота фото = двум карточкам */
+
+/* отзывы: слева заголовок (одна колонка из четырёх), справа три карточки 435 × 437; имя сверху, под ним текст; третья — видео */
+
+/* калькулятор на фоне фото поля: белая карточка по центру (8 колонок из 12), заголовок красным внутри карточки */
+.calc--photo { position: relative; padding-bottom: 360px; }
+.calc--photo::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: calc(50% - var(--vw) / 2);
+  width: var(--vw);
+  height: 1100px;
+  background: linear-gradient(180deg, var(--bg) 6.8%, rgba(241, 238, 233, .2) 74.3%), url("../img/kniga2/field-crop.jpg") 50% 100% / cover no-repeat   /* нижняя четверть фото срезана — виден сюжет */;
+  pointer-events: none;
+}
+.calc--photo .calc__panel { grid-column: 3 / span 8; padding: 70px; border-radius: var(--radius); background: var(--white); }
+.calc--photo .calc__intro { align-items: flex-start; margin-bottom: var(--gap-head); text-align: left; gap: var(--sp-20); }
+.calc--photo .calc__intro .h2 { color: var(--red); }
+.calc--photo .calc__card, .calc--photo .calc__result { padding: 0; border-radius: 0; }
+
+@media (max-width: 1439px) {
+  .opening--banner { height: calc(300px + var(--hdr-h) + var(--hdr-gap)); }
+  .calc--photo .calc__panel { grid-column: 2 / span 10; padding: 56px; }
+}
+@media (max-width: 1199px) {
+  .calc--photo .calc__panel { grid-column: 1 / -1; padding: 40px; }
+}
+@media (max-width: 767px) {
+  .opening--banner { height: calc(220px + var(--hdr-h) + var(--hdr-gap)); }
+  .opening--banner .opening__content { bottom: 28px; }
+  .gallery--pair .gallery__grid { grid-template-columns: 1fr; gap: var(--sp-20); }
+  .gallery--pair .gallery__note { margin-top: var(--sp-8); }
+  .calc--photo { padding-bottom: 220px; }
+  .calc--photo::before { height: 700px; }
+  .calc--photo .calc__panel { padding: 24px; }
+  .calc--photo .calc__intro { margin-bottom: var(--sp-32); }
+}
+
+/* анкета в одну колонку: вопрос → короткая подсказка (прижата к вопросу) → варианты в строку → «Подробнее» по нажатию.
+   Вопросы разделены тонкой линией */
+.calc--split .calc-line { gap: 0; }
+.calc-row { padding: var(--s-48) 0; border-top: 1px solid rgba(60, 60, 60, .14); }
+.calc-line__head + .calc-row { padding-top: var(--sp-32); border-top: 0; }
+.calc-line:not(.calc-line--extra) .calc-row:nth-child(2) { padding-top: var(--sp-20); }   /* первый вопрос — сразу под вводным текстом */
+.calc-row:last-child { padding-bottom: 0; }
+.calc--split .calc-line--extra { padding-top: var(--s-48); border-top: 1px solid rgba(60, 60, 60, .14); }
+/* отступы от смысла: кружок ↔ подпись 10 < вопрос ↔ подсказка 12 < между вариантами 32; подсказка → варианты → «Подробнее» — по 24 */
+.calc--split .calc-q { gap: var(--s-24); }
+.calc--split .radio { gap: 10px; }
+.calc--split .combo { margin-top: 0; }
+.calc--split .calc-q__options { flex-direction: row; flex-wrap: wrap; align-items: center; column-gap: var(--s-32); row-gap: var(--s-16); margin-top: 0; }
+.calc-q__hint { max-width: 60ch; margin-top: calc(var(--sp-12) - var(--s-24)); font-size: 16px; line-height: 1.45; color: var(--muted); text-wrap: pretty; }   /* ближе к вопросу (12), чем к вариантам (24); мельче вопроса */
+.calc-q__more summary { display: inline-flex; font-size: 16px; align-items: center; gap: var(--sp-8); color: var(--text); text-decoration: underline; text-decoration-color: rgba(60, 60, 60, .3); text-underline-offset: 4px; cursor: pointer; list-style: none; }
+.calc-q__more summary::-webkit-details-marker { display: none; }
+.calc-q__more summary::after { content: ""; width: 7px; height: 7px; margin-top: -4px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; rotate: 45deg; transition: rotate .32s ease, margin .32s ease; }
+.calc-q__more[open] summary::after { margin-top: 3px; rotate: 225deg; }
+.calc-q__more summary:hover { text-decoration-color: currentColor; }
+.calc-q__more.is-anim p { overflow: hidden; }   /* пока раскрывается — текст не вылезает за растущую высоту */
+/* «2 фамильная линия» — заголовок новой части анкеты: крупно, номер красным */
+.svcp .calc-line .calc-line__title { font-size: var(--t3); color: var(--text); }   /* сильнее общего .svcp .h3 ниже по файлу */
+.calc-line__num { color: var(--red); }
+.calc-q__more p { max-width: 60ch; margin-top: var(--sp-12); font-size: 16px; line-height: 1.45; color: var(--muted); text-wrap: pretty; }
+@media (max-width: 767px) {
+  .calc-row { padding: var(--sp-32) 0; }
+  .calc--split .calc-line--extra { padding-top: var(--sp-32); }
+  .calc--split .calc-q__options { column-gap: var(--s-24); }
+  .calc--split .calc-q { gap: var(--sp-20); }
+  .calc-q__hint { margin-top: calc(var(--s-8) - var(--sp-20)); }
+}
+
+/* лента карточек на планшете: заголовок → текст 20px, как на телефоне и в карточках блога */
+/* блог: когда карточки встают в один ряд (лента до 1199px), «Читать полностью» у всех — на одной линии, у нижнего края карточки */
+@media (max-width: 1199px) {
+  .blog .post { display: flex; flex-direction: column; }
+}
+
+/* коллаж на ноутбуке и планшете лёжа (горизонтальный экран уже 1440px): сцена уже не уменьшается целиком —
+   у карточки свои размеры текста по ступеням ширины (без clamp), три самые маленькие фотографии убраны,
+   остальные в 1,25 раза крупнее (растут от своего центра, раскладка та же) */
+@media (min-aspect-ratio: 1/1) and (max-width: 1439px) {
+  .collage { --k: 1.25; }
+  .collage__photo[data-small] { display: none; }
+  .collage__photo {
+    left: calc(50% + (var(--x) + var(--w) / 2 - 960) * var(--u) - var(--w) * var(--u) * var(--k) / 2);
+    top: calc(50% + (var(--y) + var(--h) / 2 - 541.9) * var(--u) - var(--h) * var(--u) * var(--k) / 2);
+    width: calc(var(--w) * var(--u) * var(--k));
+    height: calc(var(--h) * var(--u) * var(--k));
+  }
+}
+/* низкий горизонтальный экран (ноутбук 1366 × 768 и ниже по высоте): карточка компактнее, чтобы помещалась целиком */
+
+/* Cormorant-подзаголовки на меньших экранах */
+@media (max-width: 1439px) { .about2__subtitle, .book-lead { font-size: 28px; } }
+@media (max-width: 767px) { .about2__subtitle, .book-lead { font-size: 24px; } }
+
+/* =========================================================
+   УСЛУГИ СТОПКОЙ (после «Направлений услуг»): белые карточки на всю ширину контента, сетка 12 колонок —
+   текст в колонках 1–6, фото в колонках 7–12 с плашками сверху. Каждая карточка прилипает к верху окна (sticky)
+   чуть ниже предыдущей (на 20px), следующая наезжает сверху; после четвёртой список кончается и все уезжают вверх
+   ========================================================= */
+.stack__card {
+  position: sticky;
+  top: calc(var(--hdr-h) + var(--hdr-gap) + var(--sp-20) + var(--i) * var(--sp-20));
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  height: min(640px, calc(100svh - var(--hdr-h) - var(--hdr-gap) - 4 * var(--sp-20) - 3 * var(--sp-20)));
+  min-height: 460px;
+  padding: var(--sp-20);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 -12px 40px rgba(60, 40, 30, calc(.14 * var(--sh, 0)));   /* тень только пока карточка наезжает на предыдущую (--sh задаёт js/main.js) */
+}
+@media (max-width: 1023px) {
+  .stack__card { display: flex; flex-direction: column-reverse; justify-content: flex-end; height: auto; min-height: 0; gap: var(--sp-20); }
+}
+@media (max-width: 767px) {
+  .stack__card { top: calc(var(--hdr-h) + var(--hdr-gap) + var(--sp-12) + var(--i) * var(--sp-12)); padding: var(--sp-12); }
+}
+
+/* =========================================================
+   ОТЗЫВЫ — ВАРИАНТ 3: карточки в один ряд, как на планшете, и на компьютере тоже: ширина карточки — 4 колонки из 12,
+   лента уходит за правый край окна (видно часть следующей), листается колесом/тачпадом, пальцем или мышью (js/main.js)
+   ========================================================= */
+.frow__list {
+  display: flex;
+  gap: var(--col-gap);
+  margin-right: calc(-1 * var(--edge));
+  padding-right: var(--edge);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.frow__list::-webkit-scrollbar { display: none; }
+.frow__list.is-dragging { cursor: grabbing; scroll-snap-type: none; user-select: none; }
+
+/* отзывы, вариант 2: карточки как в блоке «Отзывы клиентов» (звёзды, полный текст), промежуток в 5 раз больше (100px) */
+/* бесшовный круг: набор карточек повторён дважды, после каждой карточки (и последней) — промежуток, поэтому половина ленты = ровно один набор */
+
+/* коллаж: заголовок — Cormorant Medium 56 / 56.2, трекинг −1% (на 1920); надпись над кнопкой — стиль --fs-quote (32px на большом экране) */
+.reviews .review__author { opacity: .5; }             /* имя и значок — прозрачность 50% */
+/* видеоотзыв в ленте отзывов (страница «Родословная книга»): обложка видео на всю карточку, затемнена только в карточке;
+   сверху звёзды, снизу имя; по нажатию видео открывается поверх страницы без затемнения */
+.review--video { position: relative; overflow: hidden; background: #2f2c26; }
+.review--video .review__video { position: absolute; inset: 0; aspect-ratio: auto; border-radius: 0; background: #2f2c26; }
+.review--video .voice__player { position: absolute; inset: 0; }
+.review--video .review__video::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20, 18, 14, .62) 0%, rgba(20, 18, 14, .45) 45%, rgba(20, 18, 14, .7) 100%); pointer-events: none; transition: opacity .3s ease; }
+.review--video:hover .review__video::after { opacity: .75; }
+.review--video .voice__play { z-index: 1; }
+.review--video .voice__play::before { width: 56px; height: 56px; margin: -28px 0 0 -28px; }
+.review--video .review__stars, .review--video .review__author { position: relative; z-index: 2; pointer-events: none; }
+.review--video .review__author { color: var(--white); opacity: 1; }
+.review--video .review__author img { filter: brightness(0) invert(1); }
+
+/* =========================================================
+   ШАПКА: ужатие меню на ноутбуке
+   ========================================================= */
+@media (max-width: 1199px) {
+  .header__cta { padding-inline: var(--s-16); }
+  .nav { gap: var(--sp-12); }
+}
+@media (min-width: 1024px) and (max-width: 1099px) {
+  .header__left { gap: var(--sp-20); }
+  .header__cta { padding-inline: var(--sp-12); }
+  .header__bar { padding-inline: var(--sp-32); }
+}
+
+/* =========================================================
+   ГЛАВНАЯ, ВЕРСИЯ 1 (index.html, класс theme-v1 у <html>) — по макету Figma «Untitled», узел 3:18.
+   Светлый фон #f2f2f1, поля 30px от краёв окна (на 1920), всё набрано Manrope, текст #65625f,
+   акцент — оливковый #8e8868. Карточки — с промежутком 12px, между разделами — 100px.
+   Размеры шрифтов по ступеням ширины (без clamp):
+                 ≥1440   1200–1439   768–1199   <768
+     H1          56      48          44         32
+     H2          44      38          34         28
+     H3          32      28          26         22
+     H4          24      22          20         18
+     текст       18      17          16         16
+   ========================================================= */
+.theme-v1 {
+  --bg: #f2f2f1;
+  --text: #65625f;
+  --text-body: rgba(101, 98, 95, .7);
+  --muted: rgba(101, 98, 95, .7);
+  --red: #8e8868;
+  --red-hover: #7b7656;
+  --olive: #8e8868;
+  --container: 100vw;
+  --gut: 30px;
+  --col-gap: 12px;
+  --section-gap: 200px;                               /* между разделами — 200px */
+  --gap-head: 70px;
+  --hdr-gap: 30px;
+  --v1-h1: 56px;
+  --v1-h2: 44px;
+  --v1-h3: 32px;
+  --v1-h4: 24px;
+  --v1-pad: 60px;                                     /* внутренний отступ первого экрана и оливковых блоков */
+  --v1-near: 30px;                                    /* первый экран → карточки, форма → подвал */
+  --v1-r: 26px;                                       /* скругление карточек */
+  --v1-r-lg: 32px;                                    /* большие блоки */
+  --fs-body: 18px;
+}
+@media (max-width: 1439px) {
+  .theme-v1 { --gut: 24px; --hdr-gap: 24px; --section-gap: 160px; --gap-head: 56px; --v1-h1: 48px; --v1-h2: 38px; --v1-h3: 28px; --v1-h4: 22px; --fs-body: 17px; --v1-pad: 48px; }
+}
+@media (max-width: 1199px) {
+  .theme-v1 { --gut: 20px; --hdr-gap: 20px; --section-gap: 120px; --gap-head: 48px; --v1-h1: 44px; --v1-h2: 34px; --v1-h3: 26px; --v1-h4: 20px; --v1-pad: 32px; --v1-near: 24px; --v1-r: 22px; --v1-r-lg: 26px; --fs-body: 16px; }
+}
+@media (max-width: 767px) {
+  .theme-v1 { --gut: 12px; --hdr-gap: 12px; --section-gap: 80px; --gap-head: 32px; --v1-h1: 32px; --v1-h2: 28px; --v1-h3: 22px; --v1-h4: 18px; --v1-pad: 20px; --v1-near: 12px; --v1-r: 18px; --v1-r-lg: 20px; --fs-body: 16px; }
+}
+.theme-v1 body { background: var(--bg); color: var(--text-body); }
+.theme-v1 h1, .theme-v1 h2, .theme-v1 .h2, .theme-v1 .lead__title { font-family: "Manrope", system-ui, sans-serif; }
+
+/* шапка — оливковая плашка с полями от краёв окна, как остальные блоки */
+.theme-v1 .header { width: auto; margin-inline: var(--gut); }
+/* шапка не занимает места в потоке: появляется поверх страницы при прокрутке вверх (js/main.js) */
+.theme-v1 .header--sticky { position: fixed; top: var(--hdr-gap); left: 0; right: 0; margin-top: 0; }
+.theme-v1 .header__bar { padding-inline: var(--s-24); border-radius: 20px; background: var(--red); }
+.theme-v1 .header__cta { color: var(--text); }
+
+/* первый экран */
+/* светлая дымка: слева (по нижней половине) и полоса сверху — как размытые прямоугольники в макете */
+
+/* четыре белые карточки */
+
+/* общие заголовки разделов */
+.v1-h2 { font-size: var(--v1-h2); font-weight: 600; line-height: 1.2; letter-spacing: -.01em; color: var(--text); }
+
+/* услуги */
+
+/* отзывы */
+
+/* о нас — оливковый блок */
+
+/* блог — как был, но по сетке и цветам версии 1: заголовок Manrope, карточки постов светлые */
+.theme-v1 .blog.section { margin-top: var(--section-gap); }   /* от блока «О нас» — 200px на большом экране*/
+.theme-v1 .blog .section-head { margin-bottom: var(--gap-head); }            /* под заголовком — 70px на 1920 */
+.theme-v1 .blog .quote-title { max-width: none; font-size: var(--v1-h2); font-style: normal; font-weight: 600; line-height: 1.2; letter-spacing: -.01em; color: var(--text); }
+.theme-v1 .blog .link-more { color: var(--text); }
+.theme-v1 .blog .post { padding: 0; border-radius: 0; background: none; }
+.theme-v1 .blog .post__img { border-radius: 16px; }
+.theme-v1 .blog .post__title { font-weight: 500; color: var(--text); }
+.theme-v1 .blog .post__desc { color: var(--text-body); }
+.theme-v1 .blog:not(.blog--cards) .post__link { border-radius: var(--v1-r); }
+
+/* блок заявки — оливковая плашка с полями от краёв окна и скруглением, как «О нас» */
+.theme-v1 .lead.container:not(.lead--modal) { width: min(var(--container), 100% - 2 * var(--gut)); margin-top: var(--section-gap); }
+.theme-v1 .lead:not(.lead--modal) .lead__inner { padding: 0 var(--v1-pad); border-radius: var(--v1-r-lg); background: var(--red); }
+.theme-v1 .lead:not(.lead--modal) .lead__card { padding: var(--v1-pad) 0; }
+.theme-v1 .lead__title { font-size: var(--v1-h2); font-weight: 600; line-height: 1.2; letter-spacing: -.01em; }
+.theme-v1 .lead__submit { color: var(--text); }
+.theme-v1 .lead__agree input:checked { box-shadow: inset 0 0 0 4px var(--red); }
+
+/* подвал — тёмная плашка с полями от краёв, под формой — промежуток 12px */
+
+/* ноутбук */
+/* планшет */
+/* телефон */
+@media (max-width: 767px) {
+  .theme-v1 .lead.container:not(.lead--modal) { width: calc(100% - 2 * var(--gut)); }
+  .theme-v1 .lead:not(.lead--modal) .lead__inner { padding: var(--v1-pad); border-radius: var(--v1-r-lg); }
+  .theme-v1 .lead:not(.lead--modal) .lead__card { padding: 0; }
+  .theme-v1 .header { margin-inline: var(--gut); }
+  .theme-v1 .header__bar { border-radius: 16px; }
+}
+/* =========================================================
+   ВЕСЬ САЙТ: только Manrope, межстрочный интервал 1.2 везде,
+   все кнопки — «таблетки» как «Заказать книгу» (скругление 999px, отступы 12 / 26.667, Bold)
+   ========================================================= */
+body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif !important; line-height: 1.2 !important; }
+.btn, .calc__submit, .lead__submit, .header__cta, .mobile-menu__cta {
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 12px 26.667px !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+}
+/* кнопки на оливковом фоне — контурные белые, как «Заказать книгу» */
+.lead__submit { border: 1px solid var(--white) !important; background: transparent !important; color: var(--white) !important; }
+.lead__submit:hover { background: var(--white) !important; color: var(--text) !important; }
+.lead:not(.lead--modal) .lead__submit, .lead__submit { width: auto !important; align-self: flex-start; }
+/* галочка согласия — по центру первой строки текста */
+.check { align-items: flex-start !important; }
+.check input { margin-top: calc((1.2em - 20.5px) / 2) !important; }
+.lead__agree input { margin-top: calc((1.2em - 20.5px) / 2) !important; }
+/* телефон: в «Как мы работаем» без точек */
+
+/* ГЛАВНАЯ, ВЕРСИЯ 1 — телефон по макету Figma (узел 37:676, iPhone 17): поля 8px, первый экран — с 20px от верха,
+   высота до 746px, заголовок вверху, текст внизу; карточки через 8px; заголовки всех блоков — 24px, текст — 15px */
+@media (max-width: 767px) {
+  .theme-v1 { --gut: 8px; --hdr-gap: 8px; --v1-near: 8px; --v1-h1: 32px; --v1-h2: 24px; --v1-h4: 18px; --v1-r: 27px; --v1-r-lg: 27px; --fs-body: 15px; }
+}
+/* галочка: 1.2em считаем от размера текста подписи, а не от шрифта самого поля */
+.check input, .lead__agree input { font-size: inherit !important; }
+
+/* =========================================================
+   СИСТЕМА ОТСТУПОВ: внутри контейнера связанные элементы ближе друг к другу, чем содержимое — к краям контейнера.
+   Поле контейнера (--v1-pad) ≥ промежуток между группами ≥ промежуток внутри группы
+   ========================================================= */
+.theme-v1 .lead__card { gap: var(--s-16); }
+.theme-v1 .lead__fields { margin-top: var(--s-8); gap: var(--s-8); }
+.theme-v1 .lead__chips { gap: var(--s-8); }
+@media (max-width: 767px) {
+  .theme-v1 { --v1-pad: 24px; }
+  .theme-v1 .lead__card { gap: var(--s-16); }
+  .theme-v1 .lead__fields { margin-top: 0; }
+  /* кнопки на телефоне — во всю ширину */
+  .btn, .lead__submit, .calc__submit { width: 100% !important; align-self: stretch !important; }
+}
+.theme-v1 .lead__agree { gap: var(--sp-12) !important; }
+
+/* =========================================================
+   ИСПРАВЛЕНИЯ ПО АУДИТУ (главная, версия 1)
+   ========================================================= */
+/* контраст: второстепенный текст — 4.7:1 на фоне страницы; оливковый темнее — белый текст на нём 5.2:1 */
+.theme-v1 { --text-body: #6e6b67; --muted: #6e6b67; --red: #736d4e; --red-hover: #5f5a40; --olive: #736d4e; }
+/* первый экран: снизу тёмная подложка под белый текст и кнопка «Получить консультацию» */
+/* карточки преимуществ: текст сразу под заголовком, без пустоты посередине */
+/* отзывы: три карточки, ссылка на Авито справа от заголовка */
+
+/* шапка версии 1 — во всю ширину окна, прижата к верху, без скругления */
+.theme-v1 .header, .theme-v1 .header--sticky { margin: 0 !important; }
+.theme-v1 .header--sticky { top: 0; }
+.theme-v1 .header__bar { border-radius: 0 !important; padding-inline: var(--gut); }
+.theme-v1 .header--sticky.is-hidden { transform: translateY(-100%); }
+@media (max-width: 1023px) { .theme-v1 .header__mobile { padding: var(--s-8) var(--gut); background: var(--red); } }
+
+/* =========================================================
+   ТЕКСТЫ И ОТСТУПЫ
+   Система текста: H2 раздела (--fs-h2) > H3 карточки/шага (--fs-h3) > подзаголовок (--fs-h4, Manrope 500)
+   > основной текст (--fs-body) > подпись (14px, прописные). Без курсива. Цвета с запасом контраста на светлом фоне.
+   Отступы: между разделами --section-gap; заголовок раздела → содержимое --gap-head; внутри группы
+   подпись → заголовок 8, заголовок → текст 12–20, текст → действие 32 — связанное стоит ближе
+   ========================================================= */
+
+/* лента: вдвое ближе к шапке; до следующего блока — обычный отступ между разделами, карточки ниже экрана, чтобы следующий блок выглядывал */
+
+/* о проекте: слева заголовок, справа два абзаца столбиком */
+/* крупный антиквенный заголовок, вторая строка сдвинута вправо (как в референсе). Cormorant — с !important, иначе его перебивает правило «только Manrope» */
+
+/* услуги: бесконечная карусель — активная карточка по центру, соседние за краями окна меньше и размыты (js/main.js) */
+
+/* шаги: слева заголовок «прилипает» к верху окна, справа прокручиваются шаги; линия идёт вдоль всего списка,
+   поэтому при прокрутке она всё время на месте, а по ней проезжают точки шагов */
+.step { position: relative; max-width: 640px; }
+.step::before { content: ""; position: absolute; top: 5px; left: calc(-1 * var(--s-64) + .5px); width: 9px; height: 9px; translate: -50% 0; border-radius: 50%; background: var(--p2-head); }   /* точка — на линии, по центру подписи «Шаг» */
+@media (max-width: 767px) {
+  .step::before { left: calc(-1 * var(--s-32) + .5px); }
+}
+
+/* =========================================================
+   ГЛАВНАЯ, ВЕРСИЯ 3 (index.html, <html class="theme-v1 home3">)
+   Сетка: 12 колонок, зазор --g. Поля страницы --side: 180px на 1920 (9.375vw), не меньше 48px на ноутбуке,
+   40px на планшете, 16px на телефоне. Первый экран и заявка — почти во всю ширину, с маленьким полем --inset.
+   Без скруглений (кроме кнопок). Межстрочный интервал — общий для сайта (1.2).
+     --sec  — между блоками: 240px на 1920 (12.5vw), не меньше 96px; на телефоне 80px
+     --head — заголовок блока → содержимое (64 / 48 / 32)
+     подпись → заголовок 8, заголовок → текст 12, текст → ссылка 24
+   Нет фото — серый прямоугольник .h3-ph
+   ========================================================= */
+.home3 {
+  --red: #a53625;                                     /* фирменный красный */
+  --red-hover: #8f2d1f;
+  --side: clamp(48px, 9.375vw, 180px);
+  --inset: 24px;
+  --hdr-pad: clamp(24px, 3.3vw, 64px);                /* шапка шире контента: логотип и меню ближе к левому краю, кнопки — к правому */
+  --g: 24px;
+  --sec: clamp(96px, 12.5vw, 240px);
+  --head: 64px;
+  --ph: #dcd9d3;
+}
+@media (max-width: 1023px) { .home3 { --side: 40px; --inset: 12px; --g: 16px; --head: 48px; } }
+@media (max-width: 767px)  { .home3 { --side: 16px; --inset: 8px; --sec: 80px; --head: 32px; } }
+
+.h3-ph { background: var(--ph); }
+
+/* текстовые стили */
+.h3-label { font-size: 14px; font-weight: 500; color: var(--text-body); }   /* без капса */
+.h3-title { font-size: var(--v1-h4); font-weight: 500; letter-spacing: -.01em; color: var(--text); }
+.h3-text { font-size: 16px; color: var(--text-body); }
+.h3-head { margin-bottom: var(--head); }
+.h3-head .v1-h2, .h3-head.v1-h2 { max-width: 900px; text-wrap: balance; }
+
+/* блоки с полями */
+.h3-sec { margin-top: var(--sec); padding-inline: var(--side); }
+
+/* ---------- шапка: над первым экраном без заливки, белые надписи; при прокрутке — фон страницы, тёмно-серые надписи ---------- */
+.home3 .header--sticky { position: fixed; top: 0; left: 0; right: 0; margin: 0 !important; transform: none !important; transition: top .35s ease, left .35s ease, right .35s ease; }
+.home3 .header--sticky .header__bar { padding-inline: var(--hdr-pad); background: var(--bg); transition: background-color .35s ease; }
+.home3 .header--sticky.is-top .header__bar { background: transparent; box-shadow: none; }
+.home3 .header .nav a { color: var(--text); transition: color .35s ease, opacity .2s ease; }
+.home3 .header .logo-mark { color: var(--red); transition: color .35s ease; }
+.home3 .header .header__cta { background: var(--red); color: var(--white); }
+.home3 .header.is-top .nav a, .home3 .header.is-top .logo-mark { color: var(--white); }
+.home3 .header.is-top .header__cta { background: var(--white); color: var(--text); }
+@media (max-width: 1023px) {
+  .home3 .header__mobile { padding: var(--s-8) var(--side); background: var(--bg); transition: background-color .35s ease; }
+  .home3 .header.is-top .header__mobile { background: transparent; }
+  .home3 .header .icon-btn { background: transparent; color: var(--text); }
+  .home3 .header.is-top .icon-btn { color: var(--white); }
+  .home3.is-menu-open .header .icon-btn { color: var(--text); }
+}
+
+/* ---------- 1. первый экран: фото с маленьким полем от краёв, справа внизу красная плашка ---------- */
+
+/* ---------- 2. о нас: фото — колонки 1–5, текст сразу за ним — 6–11, по нижнему краю фото ---------- */
+
+/* ---------- 3. этапы работы: 3 + 6 + 3 колонки, фото выровнены по верху; подпись — жирная первая фраза + текст.
+   Обработка фото: 1 — ч/б, 2 — обесцвечено и затемнено, текст поверх; 3 — приглушённый тёплый цвет ---------- */
+.h3-steps__list { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g); align-items: start; margin: 0; padding: 0; list-style: none; }
+.h3-step:nth-child(1) { grid-column: 1 / 4; }
+.h3-step:nth-child(2) { grid-column: 4 / 10; }
+.h3-step:nth-child(3) { grid-column: 10 / 13; }
+.h3-step__img { width: 100%; height: clamp(240px, 46svh, 460px); object-fit: cover; aspect-ratio: auto !important; }   /* все три — одной высоты, весь блок с заголовком и текстом помещается в экран */
+.h3-step:nth-child(1) .h3-step__img { aspect-ratio: 371 / 520; object-position: 50% 55%; filter: grayscale(1) contrast(.85) brightness(1.04); }   /* вытянутое, мягче по контрасту */
+.h3-step:nth-child(2) .h3-step__img { aspect-ratio: 715 / 745; object-position: 40% 50%; filter: grayscale(1) brightness(.85); }
+.h3-step:nth-child(3) .h3-step__img { aspect-ratio: 340 / 597; object-position: 30% 50%; filter: saturate(.8) brightness(.92) sepia(.12); }
+.h3-step__text { max-width: 560px; margin-top: var(--s-24); font-size: 16px; color: var(--text-body); }
+.h3-step__text strong { font-weight: 600; color: var(--text); }
+/* планшет и телефон: фото — текст, фото — текст; все фото одного размера, текст всегда под фото (без текста поверх) */
+@media (max-width: 1023px) {
+  .h3-steps__list { grid-template-columns: 1fr; row-gap: var(--s-48); }
+  .h3-step:nth-child(n) { grid-column: 1; }
+  .h3-step:nth-child(n) .h3-step__img { height: auto; aspect-ratio: 16 / 11 !important; }
+}
+
+/* ---------- карточки: услуги, отзывы, посты — три в ряд; на планшете и телефоне лента с выглядывающей следующей ---------- */
+
+/* услуги: фото, под ним белая плашка — заголовок, текст, ссылка прижата к низу */
+
+/* отзывы: белые карточки, выровнены по верху */
+
+/* посты из ВК: фото, заголовок — 2 строки, текст — 2 строки, у всех одинаково */
+
+/* ---------- 8. заявка: фон с маленьким полем от краёв, по центру красная карточка с формой ---------- */
+.h3-lead { position: relative; margin: var(--sec) 0 0; padding: var(--s-128) var(--s-24); overflow: hidden; }   /* во всю ширину окна, вплотную к подвалу */
+.h3-lead__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
+.h3-lead__card { position: relative; max-width: 680px; margin-inline: auto; padding: var(--s-48); border-radius: 0; background: var(--red); }
+@media (max-width: 767px) {
+  .h3-lead { padding: var(--s-48) var(--s-8); }
+  .h3-lead__card { padding: var(--s-32) var(--s-16); }
+}
+
+/* ---------- подвал (по макету): ширина как у шапки; слева столбик мессенджеров с крупными иконками, справа вверху — политика,
+   справа внизу — крупная светлая надпись, опущена ниже ссылок и срезана нижним краем подвала ---------- */
+.h3-footer {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  column-gap: var(--s-48);
+  padding: var(--s-24) var(--hdr-pad) var(--s-16);   /* надпись чуть ниже ссылок, но целиком, не срезана */
+  overflow: hidden;
+  background: var(--red);
+  color: var(--white);
+}
+.h3-footer__top { display: contents; }
+.h3-footer__links { grid-column: 1; grid-row: 1 / 3; display: flex; flex-direction: column; gap: var(--s-8); margin: 0; padding: 0 0 var(--s-48); list-style: none; }
+.h3-footer__policy { grid-column: 2; grid-row: 1; justify-self: end; font-size: 18px; }
+.h3-footer a { color: var(--white); text-decoration: none; transition: opacity .2s ease; }
+.h3-footer a:hover { opacity: .7; }
+.h3-footer__links a { display: inline-flex; align-items: center; gap: var(--sp-12); font-size: 24px; }
+.h3-footer__links a span, .h3-footer__policy { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.h3-footer__links img { flex: none; width: 44px; height: 44px; }   /* иконки крупные, как в макете */
+.h3-footer__mark {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: end;
+  font-size: calc((100vw - var(--sbw, 0px) - 2 * var(--hdr-pad) - 260px) / 7.1);   /* по ширине справа от мессенджеров */
+  font-weight: 500;
+  line-height: 1 !important;
+  letter-spacing: -.03em;
+  text-align: right;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, .2);
+}
+@media (max-width: 767px) {
+  .h3-footer { grid-template-columns: 1fr; grid-template-rows: none; row-gap: var(--s-24); padding-inline: var(--side); }
+  .h3-footer__policy, .h3-footer__links, .h3-footer__mark { grid-column: 1; grid-row: auto; }
+  .h3-footer__policy { justify-self: start; }
+  .h3-footer__links { padding-bottom: 0; }
+  .h3-footer__mark { font-size: calc((100vw - 2 * var(--side)) / 7.1); }
+}
+
+/* =========================================================
+   ГЛАВНАЯ: кнопки и мелкий текст
+   ========================================================= */
+
+/* главная, версия 3: кнопки — с небольшим скруглением и большими внутренними отступами (общий стиль сайта — «таблетки») */
+.home3 .btn, .home3 .header__cta, .home3 .lead__submit, .home3 .mobile-menu__cta { border-radius: 6px !important; padding: 16px 32px !important; }
+.home3 .header__cta { padding: 12px 28px !important; }   /* в шапке ниже, чтобы поместились в её высоту */
+
+/* главная, по комментариям заказчика (24.10): мелкий текст крупнее на ноутбуке; строка-формула услуги в карточке;
+   на телефоне текст блока «документы» — по левому краю */
+@media (min-width: 1024px) {
+  .h3-text, .h3-step__text { font-size: 18px; }
+}   /* на телефоне текст по левому краю, а не по центру */
+
+/* =========================================================
+   СТРАНИЦЫ УСЛУГ В СТИЛЕ ГЛАВНОЙ (родословная книга, архивный свиток, точечные исследования:
+   <html class="theme-v1 home3 svcp">). Те же поля --side, отступы между блоками --sec, сетка, шрифты и цвета,
+   что на главной; без скруглений (кроме кнопок). Первый экран — баннер только вверху страницы, с полями --inset
+   ========================================================= */
+.svcp { --gut: var(--side); --container: 100vw; --col-gap: var(--g); --section-gap: var(--sec); --gap-head: var(--head); --radius: 0px; }
+.svcp main * { font-style: normal; }
+
+/* текст — как на главной */
+.svcp .h2, .svcp .quote-title { font-size: var(--v1-h2); font-weight: 600; line-height: 1.2; letter-spacing: -.01em; color: var(--text); }
+.svcp .h3, .svcp .h4, .svcp .about2__subtitle { font-size: var(--v1-h4); font-weight: 500; line-height: 1.2; letter-spacing: -.01em; color: var(--text); }
+.svcp .book-lead { font-size: var(--v1-h3); font-weight: 500; letter-spacing: -.01em; color: var(--text); }
+.svcp .book-note { max-width: 560px; color: var(--text-body); }
+
+/* баннер: фото только вверху страницы, поля как у первого экрана главной; шапка над ним целиком лежит на фото */
+.svcp .opening { height: clamp(380px, 50svh, 560px); min-height: 0; margin: var(--hdr-h) var(--inset) 0; border-radius: 0; }   /* вплотную под шапкой с заливкой */
+.svcp .opening__media::after { background: linear-gradient(68deg, rgba(0, 0, 0, .65) 0%, rgba(0, 0, 0, 0) 62%); }
+.svcp .opening__content { left: calc(var(--side) - var(--inset)); right: calc(var(--side) - var(--inset)); bottom: var(--s-48); max-width: 900px; }
+.svcp .opening__title { max-width: none; font-size: var(--v1-h1); font-weight: 600; line-height: 1.1; letter-spacing: -.01em; }
+@media (max-width: 1023px) { .svcp .opening { margin-top: 66px; } }   /* высота мобильной шапки */
+@media (max-width: 767px) { .svcp .opening { height: clamp(300px, 50svh, 440px); } .svcp .opening__content { bottom: var(--s-32); } }
+
+/* калькулятор книги: белая карточка на фоне пунктирных ветвей древа (как у архивного свитка) вместо фото поля */
+.svcp .calc--tree { padding-bottom: 0; }
+.svcp .calc--tree::before { display: none; }
+
+/* политика конфиденциальности: шрифты и цвета текста как на главной (без перестройки страницы) */
+
+/* страницы услуг, правки 25.10: плотнее — меньше отступ между блоками; после калькулятора — отступ до подвала;
+   списки без жёлтых точек — пункты разделены тонкой линией */
+.svcp { --sec: clamp(80px, 8.3vw, 160px); }
+.svcp .calc { margin-bottom: var(--sec); }
+.svcp .dot-list, .svcp .about2__list { gap: 0; }
+.svcp .dot-list li, .svcp .about2__list li { display: block; padding: var(--s-16) 0; border-top: 1px solid rgba(101, 98, 95, .2); }
+.svcp .dot-list li:last-child, .svcp .about2__list li:last-child { border-bottom: 1px solid rgba(101, 98, 95, .2); }
+.svcp .dot-list li::before, .svcp .about2__list li::before { content: none; }
+
+/* точечные исследования. Иерархия: заголовок H2 → названия случаев (H3) → обычный текст → подписи.
+   Слева (5 колонок): заголовок, одна фраза «что это», ниже — «Что вы получите». Справа (6 колонок): «С чем к нам приходят» —
+   два случая строками через линию, название слева, текст справа.
+   «Дизайн древа»: фото (6 колонок) и текст (6 колонок) рядом, между ними — обычный зазор сетки */
+.spot { padding-bottom: var(--sec); }   /* следующий блок (заявка) не прилипает */
+.spot__top { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g); align-items: start; }
+.spot__intro { grid-column: 1 / 7; }
+.spot__lead { max-width: 28em; margin-top: var(--s-24); color: var(--text-body); }
+.spot__result { max-width: 28em; margin-top: var(--s-48); padding-top: var(--s-24); border-top: 1px solid var(--line3); }
+.spot__result .h3-text { margin-top: var(--s-8); }
+.spot__cases { grid-column: 7 / 13; }   /* половина на половину, как второй блок главной; между ними только зазор сетки */
+.spot__cases > .h3-label { padding-bottom: var(--s-16); }
+.spot__points { margin: 0; padding: 0; list-style: none; border-bottom: 1px solid var(--line3); }
+.spot__points li { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); column-gap: var(--g); padding: var(--s-32) 0; border-top: 1px solid var(--line3); }
+.spot__case { font-size: var(--t3); line-height: 1.15; color: var(--text); }
+.spot__design { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g); row-gap: var(--s-32); align-items: start; margin-top: var(--sec); }   /* текст — от верха фото, без выравнивания по центру */
+.spot__img { grid-column: 1 / 7; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; filter: saturate(.5) sepia(.15) hue-rotate(-30deg) contrast(.96) brightness(1.03); }
+.spot__design-text { grid-column: 7 / 13; display: flex; flex-direction: column; align-items: flex-start; }
+.spot__design-text .v1-h2 { margin-top: var(--s-8); }
+.spot__design-text .h3-text { max-width: 34em; margin-top: var(--s-24); }
+.spot__design .spot__steps { width: 100%; max-width: none; margin-top: var(--s-48); }   /* сильнее общего .i3-steps { margin: 0 } ниже по файлу */
+.spot__btn { margin-top: var(--s-32); }
+@media (max-width: 1023px) {
+  .spot__intro, .spot__cases { grid-column: 1 / -1; }
+  .spot__cases { margin-top: var(--s-48); }
+  .spot__img, .spot__design-text { grid-column: 1 / -1; }
+}
+@media (max-width: 767px) {
+  .spot__points li { grid-template-columns: 1fr; row-gap: var(--s-8); padding: var(--s-24) 0; }
+}
+
+/* =========================================================
+   ШКАЛА ТЕКСТА (главная, страницы услуг, политика): на широком экране — только 24 / 32 / 44 / 56px.
+   Ниже 1440px шкала пропорционально уменьшается. Огромная надпись «Древо предков» в подвале — графика, вне шкалы
+   ========================================================= */
+.home3 { --t1: 56px; --t2: 44px; --t3: 32px; --t4: 24px; }
+@media (max-width: 1439px) { .home3 { --t1: 48px; --t2: 38px; --t3: 28px; --t4: 20px; } }
+@media (max-width: 1023px) { .home3 { --t1: 40px; --t2: 34px; --t3: 26px; --t4: 18px; } }
+@media (max-width: 767px)  { .home3 { --t1: 32px; --t2: 28px; --t3: 22px; --t4: 16px; } }
+.home3 {
+  --fs-body: var(--t4); --fs-h1: var(--t1); --fs-h2: var(--t2); --fs-h3: var(--t3); --fs-h4: var(--t4); --fs-quote: var(--t3);
+  --v1-h1: var(--t1); --v1-h2: var(--t2); --v1-h3: var(--t3); --v1-h4: var(--t4);
+}
+.h3-label { font-size: var(--t4); letter-spacing: 0; text-transform: none; }
+.h3-text, .h3-step__text, .h3-footer__policy, .h3-footer__links a { font-size: var(--t4); }
+/* поля формы: текст 24px; подпись внутри поля — как подсказка, при вводе исчезает (мелкой подписи сверху нет) */
+.home3 .field__input { height: 64px; padding: 0 24px; font-size: var(--t4); }
+.home3 .field--area .field__input { height: 140px; padding-top: 18px; }
+.home3 .field__label { top: 32px; font-size: var(--t4); transition: opacity .2s ease; }
+.home3 .field--area .field__label { top: 18px; }
+.home3 .field__input:focus + .field__label,
+.home3 .field__input:not(:placeholder-shown) + .field__label { top: 32px; font-size: var(--t4); opacity: 0; transform: translateY(-50%); }
+.home3 .field--area .field__input:focus + .field__label,
+.home3 .field--area .field__input:not(:placeholder-shown) + .field__label { top: 18px; transform: none; }
+
+/* первый экран главной — по макету: красная плашка справа на 41% ширины и 71% высоты, подпись вверху, текст внизу */
+
+/* шапка с текстом 24px: на экранах уже 1700px кнопка «Другая версия» не помещается — она остаётся в мобильном меню */
+@media (min-width: 1024px) and (max-width: 1279px) { .home3 .header__left { gap: var(--s-24); } .home3 .nav { gap: var(--s-16); } }
+
+/* шкала текста, уточнение: обычный (наборный) текст — 18px; шкала на широком экране — 18 / 24 / 32 / 44 / 56 */
+.home3 { --t5: 18px; }
+@media (max-width: 1439px) { .home3 { --t5: 17px; } }
+@media (max-width: 767px)  { .home3 { --t5: 16px; } }
+.home3 { --fs-body: var(--t5); }
+.h3-label, .h3-text, .h3-step__text, .h3-footer__policy, .home3 .field__input, .home3 .field__label, .home3 .field__input:focus + .field__label, .home3 .field__input:not(:placeholder-shown) + .field__label { font-size: var(--t5); }
+.home3 .field__input { height: 58px; }
+.home3 .field__label { top: 29px; }
+.home3 .field__input:focus + .field__label, .home3 .field__input:not(:placeholder-shown) + .field__label { top: 29px; }
+
+/* шапка главной и страниц услуг: при прокрутке вниз уезжает вверх, при прокрутке вверх возвращается (класс is-hidden — js/main.js) */
+.home3 .header--sticky { transition: transform .35s ease, top .35s ease, left .35s ease, right .35s ease !important; }
+.home3 .header--sticky.is-hidden { transform: translateY(-100%) !important; }
+
+/* =========================================================
+   2. ФОРМАТЫ (главная) — три карточки друг под другом, без анимации при прокрутке.
+   Поля — как у остальных блоков (--side). Сетка сайта: 12 колонок, зазор --g;
+   фото — 6 колонок, текст — 6, слева/справа по очереди. Фото по высоте — как колонка текста: низ фото = низ кнопки.
+   Цвета текста — как в блоке «О нас»: --text и --text-body
+   ========================================================= */
+/* планшет и телефон: фото сверху (3:2), под ним текст */
+
+/* шрифт заголовков: Brygada 1918 (главная и страницы услуг — html.home3; текст остаётся Manrope).
+   html body … — чтобы перебить общее правило «везде Manrope» (body *:not(svg) … !important) и у самих заголовков,
+   и у строк внутри них (построчное появление H2 оборачивает текст в span). Плашка «Об услуге» — не заголовок по виду */
+html.home3 body :is(h1, h2, h3, h4, .h3-intro__lead):not(.about-svc__chip),
+html.home3 body :is(h1, h2, h3, h4, .h3-intro__lead):not(.about-svc__chip) *:not(svg) { font-family: "Brygada 1918", Georgia, serif !important; }
+html.home3 :is(h1, h2, h3, h4, .h3-intro__lead):not(.about-svc__chip) { font-weight: 500; letter-spacing: -.01em; }
+
+/* =========================================================
+   2. «КОРНИ» (главная): зелёная секция во всю ширину, текст по центру, по бокам — ветки.
+   Ветки — одно фото (img/home/branches.jpg: чёрные ветки на белом небе), справа как есть, слева — отражённое.
+   Наложение: фото обесцвечено и инвертировано (небо — чёрное, ветки — белые) и наложено в режиме «экран»:
+   чёрное на зелёном не видно, белое светлит фон — ветки получаются бело-зелёными. Белый текст на зелёном — 7,4:1
+   ========================================================= */
+.roots { position: relative; isolation: isolate; display: grid; place-items: center; min-height: 80svh; margin-top: var(--sec); padding: var(--s-128) var(--side); overflow: hidden; background: #4a5a3f; color: var(--white); text-align: center; }
+.roots::before, .roots::after { content: ""; position: absolute; top: 0; z-index: -1; width: 40%; height: 122%; background: url("../img/home/branches.jpg") right top / cover no-repeat; filter: grayscale(1) invert(1); mix-blend-mode: screen; opacity: .6; pointer-events: none; -webkit-mask-image: linear-gradient(to left, #000 45%, transparent); mask-image: linear-gradient(to left, #000 45%, transparent); }   /* к центру ветки растворяются — под текстом их нет */
+.roots::before { right: 0; }
+.roots::after { left: 0; transform: scaleX(-1); }   /* отражение: слева ветка растёт от левого края */
+.roots__in { display: flex; flex-direction: column; align-items: center; max-width: 760px; }
+.roots__label { font-size: var(--t5); }
+.roots__title { margin-top: var(--s-16); font-size: var(--v1-h2); color: var(--white); text-wrap: balance; }
+.roots__text { margin-top: var(--s-24); font-size: var(--t5); text-wrap: pretty; }
+.home3 .roots__btn { margin-top: var(--s-48); background: var(--white) !important; color: #4a5a3f !important; }
+.home3 .roots__btn:hover { background: rgba(255, 255, 255, .88) !important; }
+/* вариант с циферблатом: вместо веток — круг из белых штрихов по центру; круг выше блока, сверху и снизу обрезается.
+   Прозрачность каждого штриха задаёт js/main.js по прокрутке */
+.roots--dial::before, .roots--dial::after { display: none; }
+.roots__dial { position: absolute; top: 50%; left: 50%; z-index: -1; height: 112%; aspect-ratio: 1; translate: -50% -50%; overflow: visible; pointer-events: none; }
+.roots__dial line { stroke: #fff; stroke-width: 2.5px; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.roots--dial .roots__in { max-width: 600px; }
+.idx3 .roots + .roots--dial { margin-top: var(--s-24); }   /* небольшой зазор между двумя зелёными блоками */
+@media (max-width: 767px) {
+  .roots { min-height: 0; padding: var(--s-128) var(--side) var(--s-48); }
+  .roots::before, .roots::after { width: 60%; height: 50%; opacity: .45; }
+  .home3 .roots__btn { width: 100%; }
+}
+
+/* =========================================================
+   3. ФОРМАТЫ, вариант как на neutomni.com (блок «Selected Work»). Широкий экран: дорожка (--n + 1) экранов,
+   внутри — закреплённый экран: слева 40% — услуга, справа 60% — фото.
+   js/main.js на каждом кадре ставит: у фото --r (раскрытие 0…1: прямоугольник растёт из правого нижнего угла)
+   и --s (масштаб: новое 1,1 → 1, уходящее 1 → 1,2); у услуги слева --o (только прозрачность).
+   Телефон и планшет: услуги подряд — фото, под ним текст
+   ========================================================= */   /* низкий экран: колонки «Как работаем / Что вы получите» не влезают */
+
+/* =========================================================
+   ГЛАВНАЯ (index.html, <html class="theme-v1 home3 idx3">) — по мотивам siha.com.au.
+   Поля страницы — как у шапки (--hdr-pad); блоки разделены тонкими линиями 1px (--line3), без теней.
+   Заголовки — Playfair Display, текст — Manrope. Шрифты на пару ступеней крупнее, чем у siha (по шкале сайта)
+   ========================================================= */
+.idx3 { --g3: var(--hdr-pad); --line3: rgba(101, 98, 95, .25); }
+html.home3.idx3 body :is(h1, h2, h3, h4, .i3-side__title, .h3-footer__mark):not(.about-svc__chip),
+html.home3.idx3 body :is(h1, h2, h3, h4, .i3-side__title, .h3-footer__mark):not(.about-svc__chip) *:not(svg) { font-family: "Playfair Display", Georgia, serif !important; }
+html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-spacing: -.01em; }
+/* шапка — тонкая линия снизу (над первым экраном — белая полупрозрачная), без тени */
+.idx3 .header--sticky .header__bar { border-bottom: 1px solid var(--line3); box-shadow: none !important; }
+.idx3 .header--sticky.is-top .header__bar { border-bottom-color: rgba(255, 255, 255, .35); }
+.idx3 .roots, .idx3 .h3-lead { margin-top: 0; border-bottom: 1px solid var(--line3); }
+
+/* фото страницы (кроме первого экрана) — одна цветокоррекция, чтобы тёплые и пёстрые фото сочетались с первым экраном:
+   цвет приглушён, тон холоднее, с лёгким розовым (sepia даёт бежевый, hue-rotate уводит его к пыльной розе) */
+.idx3 :is(.i3-side__img, .reel__mask img, .h3-lead__img) { filter: saturate(.5) sepia(.15) hue-rotate(-30deg) contrast(.96) brightness(1.03); }
+/* фото статей — чёрно-белые, при наведении на карточку — в своих цветах */
+.idx3 .i3-post__img { filter: grayscale(1); transition: filter .4s ease; }
+.idx3 .h3-steps .i3-post__img { filter: saturate(.5) sepia(.15) hue-rotate(-30deg) contrast(.96) brightness(1.03); }   /* этапы работы — цветные, как остальные фото */
+.idx3 .i3-post:hover .i3-post__img { filter: none; }
+
+/* 1. первый экран */
+.i3-hero { position: relative; height: 100svh; min-height: 600px; overflow: hidden; color: var(--white); border-bottom: 1px solid var(--line3); }
+.i3-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }   /* шкатулка с фото — справа, слева размытый фон под текстом */
+.i3-hero::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(20, 16, 12, .6), rgba(20, 16, 12, .15) 65%), linear-gradient(rgba(20, 16, 12, .45), rgba(20, 16, 12, 0) 200px); pointer-events: none; }   /* под белым текстом и шапкой */
+.i3-hero__text { position: absolute; top: 50%; left: var(--g3); z-index: 2; max-width: 760px; padding-right: var(--g3); transform: translateY(-50%); }
+.i3-hero__title { font-size: var(--t2); color: var(--white); text-wrap: balance; }
+.i3-hero__lead { max-width: 580px; margin-top: var(--s-24); font-size: var(--t5); color: rgba(255, 255, 255, .92); }
+.i3-hero__link { display: inline-flex; align-items: center; gap: .5em; margin-top: var(--s-24); font-size: var(--t5); font-weight: 500; color: var(--white); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+.i3-hero__link svg { width: .8em; height: .8em; }
+
+/* 2. чем мы занимаемся: слева прокручивается текст, справа фото закреплено под шапкой */
+.i3-about { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); column-gap: var(--g); align-items: start; padding: var(--s-128) var(--g3); }   /* без линии снизу — над «Услугами» её нет */
+.i3-about__main { grid-column: 1 / 6; }
+.i3-about__side { grid-column: 6 / 11; position: sticky; top: calc(var(--hdr-h) + var(--g)); }   /* фото — до правого края сетки, как карточки «Услуг» ниже */
+.i3-label { font-size: var(--t5); font-weight: 500; color: var(--red); }
+.i3-about__title { max-width: 18em; margin-top: var(--s-24); font-size: var(--t2); color: var(--text); text-wrap: balance; }
+.i3-about__text { max-width: 680px; }
+.i3-about__text p { margin-top: var(--s-24); font-size: var(--t5); color: var(--text-body); text-wrap: pretty; }
+.i3-about__sub { margin: var(--s-96) 0 var(--s-24); font-size: var(--t3); color: var(--text); }
+.i3-lines, .i3-steps { max-width: 760px; margin: 0; padding: 0; list-style: none; border-bottom: 1px solid var(--line3); }
+.i3-lines li { padding: var(--s-24) 0; border-top: 1px solid var(--line3); font-size: var(--t5); color: var(--text); }
+.i3-steps li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--g); padding: var(--s-24) 0; border-top: 1px solid var(--line3); }
+.i3-steps__name { font-size: var(--t4); font-family: "Playfair Display", Georgia, serif !important; color: var(--text); }
+.i3-steps__text { font-size: var(--t5); color: var(--text-body); }
+.i3-side { position: relative; height: calc(100svh - var(--hdr-h) - 2 * var(--g)); min-height: 480px; overflow: hidden; background: var(--red); }
+.i3-side__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.i3-side::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20, 16, 12, 0) 40%, rgba(20, 16, 12, .75)); }
+.i3-side__text { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: var(--s-32); color: var(--white); }
+.i3-side__title { font-size: var(--t2); line-height: 1.1 !important; color: var(--white); }
+.i3-side__sub { margin-top: var(--sp-12); font-size: var(--t5); color: rgba(255, 255, 255, .92); }
+
+/* 6. сообщество: фон страницы, 3 статьи через тонкие линии; фото — над текстом, во всю ширину карточки */
+.i3-news { padding: var(--s-96) var(--g3); border-bottom: 1px solid var(--line3); }
+.i3-news__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--s-16); margin-bottom: var(--s-48); }
+.i3-news__title { font-size: var(--t2); color: var(--text); }
+.i3-news__all { font-size: var(--t5); color: var(--red); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+/* карточки — строки общей сетки (subgrid): картинки одной высоты, заголовки, тексты и ссылки у всех трёх на одном уровне */
+.i3-news__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
+.i3-post { display: grid; grid-template-rows: subgrid; grid-row: span 4; padding-right: var(--s-24); border-right: 1px solid var(--line3); }
+.i3-post > div { display: contents; }
+.i3-post + .i3-post { padding-left: var(--s-24); }
+.i3-post:last-child { border-right: 0; }
+.i3-post__title { margin-top: var(--s-24); font-size: var(--t4); color: var(--text); }
+.i3-post__text { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; overflow: hidden; margin-top: var(--sp-12); font-size: var(--t5); color: var(--text-body); }
+.i3-post__link { display: inline-block; justify-self: start; align-self: end; margin-top: var(--s-24); font-size: var(--t5); font-weight: 500; color: var(--red); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+.i3-post__img { width: 100%; height: clamp(200px, 19vw, 320px); object-fit: cover; background: var(--ph); }   /* одна высота у всех, независимо от ширины карточки */
+
+@media (max-width: 1023px) {
+  .i3-about { grid-template-columns: minmax(0, 1fr); row-gap: var(--s-48); padding-block: var(--s-96); }
+  .i3-about__main, .i3-about__side { grid-column: 1; }
+  .i3-about__side { position: static; }
+  .i3-side { height: auto; min-height: 0; aspect-ratio: 3 / 4; }
+  .i3-news__list { grid-template-columns: minmax(0, 1fr); row-gap: var(--s-48); }
+  .i3-post { display: flex; flex-direction: column; grid-row: auto; }   /* в одну колонку выравнивать не с чем — обычная карточка */
+  .i3-post__img { height: auto; aspect-ratio: 3 / 2; }
+  .i3-post, .i3-post + .i3-post { padding: 0 0 var(--s-48); border-right: 0; border-bottom: 1px solid var(--line3); }
+  .i3-post:last-child { border-bottom: 0; padding-bottom: 0; }
+}
+@media (max-width: 767px) {
+  .i3-steps li { grid-template-columns: minmax(0, 1fr); gap: var(--s-8); }
+}
+
+/* =========================================================
+   ГЛАВНАЯ, «УСЛУГИ» — карусель по референсу «Best Choice».
+   Карточки-фото лежат на «сцене» абсолютно; место задаёт data-pos (ставит js/main.js):
+     active — большая слева; next — маленькая бледная справа; prev — уменьшилась и уехала за левый край;
+     wait — ждёт за правым краем (оттуда приезжает новая «следующая»).
+   Двигаются left / top / width / height (только сами прямоугольники); текст рядом — только гаснет и появляется
+   ========================================================= */
+.svx { --e: cubic-bezier(.65, 0, .35, 1); border-bottom: 1px solid var(--line3); }
+.svx__track { position: relative; height: calc(var(--n) * 100svh); }   /* экран прокрутки на услугу */
+.svx__sticky { position: sticky; top: 0; height: 100svh; min-height: 600px; overflow: hidden; padding: calc(var(--hdr-h) + var(--s-24)) var(--g3) var(--s-48); }   /* сверху — место под шапку: при прокрутке вверх она возвращается и не закрывает контент */
+.svx__stage { position: relative; height: 100%; }
+.svx__card { position: absolute; overflow: hidden; padding: 0; border: 0; transition: left .8s var(--e), top .8s var(--e), width .8s var(--e), height .8s var(--e), opacity .8s var(--e); }
+.svx__card[data-pos="active"] { left: 0; top: 0; width: 45%; height: 100%; pointer-events: none; }
+.svx__card[data-pos="next"] { left: calc(100% + var(--g3) - 6%); top: 11%; width: 6%; height: 82%; opacity: .55; pointer-events: none; }   /* узкая полоса у правого края окна, бледнее */
+.svx__card[data-pos="prev"] { left: -24%; top: 11%; width: 20%; height: 82%; opacity: 0; pointer-events: none; }
+.svx__card[data-pos="wait"] { left: calc(100% + var(--g3)); top: 11%; width: 6%; height: 82%; opacity: 0; pointer-events: none; }
+.svx__card.is-jump { transition: none; }
+.svx__card img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.5) sepia(.15) hue-rotate(-30deg) contrast(.96) brightness(1.03); }   /* та же цветокоррекция, что у остальных фото */
+.svx__text { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity .2s ease; }
+.svx__text.is-on { opacity: 1; transition: opacity .4s ease .35s; }   /* прежний текст гаснет, новый появляется, когда карточки почти встали */
+.svx__info { position: absolute; top: 11%; bottom: 0; left: calc(45% + var(--s-48)); width: calc(42% - var(--s-48)); display: flex; flex-direction: column; align-items: flex-start; }   /* по макету: текст начинается вровень с верхом узкой карточки справа (11% высоты), не по центру */
+.svx__text.is-on .svx__info { pointer-events: auto; }
+.svx__chips { display: flex; flex-wrap: wrap; gap: var(--s-8); margin: var(--s-24) 0 0; padding: 0; list-style: none; }   /* под названием: срок и цена */
+.svx__chips li { padding: 12px 20px; border-radius: 999px; white-space: nowrap; background: rgba(101, 98, 95, .1); font-size: var(--t5); color: var(--text); }
+.svx__name { font-size: var(--t2); color: var(--red); text-wrap: balance; }   /* размер H2, фирменный красный */
+.svx__body { display: flex; flex-direction: column; align-items: flex-start; }
+/* по макету: название → 24 → плашки → 96 → «Что это такое?» (H4) → 20 → описание (обычный текст) → 56 → кнопка */
+.svx__label { margin-top: var(--s-96); font-size: var(--t4); line-height: 1.2; color: var(--text); }
+.svx__desc { max-width: 36em; margin-top: var(--sp-20); font-size: var(--t5); line-height: 1.5; color: var(--text-body); text-wrap: pretty; }
+.home3 .svx__btn { display: flex; width: fit-content; min-height: 64px; margin-top: var(--s-56); padding: 20px 56px !important; font-weight: 500; }
+.svx__btn svg { width: 1em; height: 1em; }
+@media (max-width: 1023px) {
+  .svx__info { left: calc(45% + var(--s-24)); width: calc(55% - var(--s-24)); }
+  .svx__card[data-pos="next"] { display: none; }
+}
+@media (max-width: 767px) {
+  .svx__track { height: auto; }
+  .svx__sticky { position: static; height: auto; min-height: 0; }
+  .svx__stage { display: flex; flex-direction: column; gap: var(--s-24); height: auto; }
+  .svx__card, .svx__card[data-pos] { display: block; position: relative; left: auto; top: auto; width: 100%; height: 75vw; opacity: 1; transition: none; order: calc(var(--k) * 2); }   /* 4:3 */
+  .svx__text, .svx__text.is-on { position: static; opacity: 1; transition: none; order: calc(var(--k) * 2 + 1); }
+  .svx__info { position: static; width: auto; gap: var(--s-24); margin-bottom: var(--s-32); pointer-events: auto; }
+  .home3 .svx__btn { width: 100%; }
+  .svx__label { margin-top: var(--s-32); }
+  .svx__info { padding-top: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .svx__card, .svx__text { transition: none !important; } }
+
+/* =====================================================================
+   ПОДСТРАНИЦЫ В СТИЛЕ ГЛАВНОЙ (<html class="theme-v1 home3 idx3 svcp">): та же сетка — поля как у шапки (--g3),
+   фото вверху во всю ширину и под прозрачной шапкой, без отступа сверху
+   ===================================================================== */
+.idx3 { --side: var(--g3); }
+.idx3.svcp .opening { height: calc(clamp(380px, 50svh, 560px) + var(--hdr-h)); margin: 0; }
+.idx3.svcp .opening__media::after { background: linear-gradient(68deg, rgba(0, 0, 0, .65) 0%, rgba(0, 0, 0, 0) 62%), linear-gradient(rgba(20, 16, 12, .45), rgba(20, 16, 12, 0) 200px); }   /* сверху — под белой шапкой */
+.idx3.svcp .opening__content { left: var(--side); right: var(--side); }
+.idx3.svcp .opening__title { font-size: var(--t1); font-weight: 400; }
+
+/* политика: текст по сетке страницы; разделы — стилем H3 */
+.idx3 .policy { margin: 0; padding: var(--s-96) var(--side) var(--s-128); }
+.idx3 .policy__text h2 { font-size: var(--t3); }
+.idx3 .policy__text > h2:first-child { margin-top: 0; }
+.idx3 .policy__text { display: block; max-width: 760px; }   /* заголовок теперь в баннере — ширину текста задаём сами */
+.opening--policy .opening__content { max-width: none; }     /* название — ровно в две строки */
+
+/* калькулятор на страницах услуг — как второй блок главной (i3-about): сетка 10 колонок, половина на половину, между ними только зазор сетки.
+   Слева заголовок, текст и фото стоят на месте, пока листается анкета; справа — белая карточка с анкетой или результатом */
+.idx3 .calc--split .calc__stage { display: block; }
+.idx3 .calc--split .calc__tree { display: none; }
+.idx3 .calc--split .calc__panel { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); column-gap: var(--g); align-items: start; padding: 0; background: none; }
+.idx3 .calc--split .calc__intro { grid-column: 1 / 6; position: sticky; top: calc(var(--hdr-h) + var(--s-24)); margin: 0; }
+.idx3 .calc--split .calc__box { grid-column: 6 / 11; padding: var(--s-56); background: var(--white); }
+.calc__box.is-animating { overflow: hidden; transition: height .45s cubic-bezier(.4, 0, .2, 1); }
+.calc__photo { width: 100%; height: auto; aspect-ratio: 4 / 3; margin-top: var(--s-16); object-fit: cover; filter: saturate(.5) sepia(.15) hue-rotate(-30deg) contrast(.96) brightness(1.03); }
+@media (max-width: 1023px) {
+  .idx3 .calc--split .calc__intro { grid-column: 1 / -1; position: static; margin-bottom: var(--s-32); }
+  .idx3 .calc--split .calc__box { grid-column: 1 / -1; }
+  .calc__photo { display: none; }
+}
+@media (max-width: 767px) { .idx3 .calc--split .calc__box { padding: var(--s-24); } }
