@@ -2463,6 +2463,24 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
   .i3-steps li { grid-template-columns: minmax(0, 1fr); gap: var(--s-8); }
 }
 
+/* страницы услуг, «Этапы работы»: каждая карточка — папка. Корешок-вкладка слева сверху со скошенным правым краем,
+   внутри фото, заголовок и текст, внизу — номер этапа (счётчик CSS). Тот же subgrid, что у статей: фото, заголовки и тексты на одном уровне */
+.h3-steps { --folder: #e6e2db; --folder-r: 8px; --tab-h: 16px; }   /* на страницах услуг --radius = 0, у папки — свой радиус */
+.h3-steps .i3-news__list { column-gap: var(--g); padding-top: var(--tab-h); counter-reset: step; }
+.h3-steps .i3-post, .h3-steps .i3-post + .i3-post { position: relative; padding: var(--s-24); border: 0; border-radius: 0 var(--folder-r) var(--folder-r) var(--folder-r); background: var(--folder); counter-increment: step; }
+.h3-steps .i3-post::before { content: ""; position: absolute; bottom: 100%; left: 0; width: 42%; height: var(--tab-h); border-radius: var(--folder-r) 0 0 0; background: var(--folder); clip-path: polygon(0 0, calc(100% - var(--tab-h)) 0, 100% 100%, 0 100%); }
+.h3-steps .i3-post::after { content: "Этап " counter(step); align-self: end; margin-top: var(--s-48); font-size: 14px; font-weight: 500; color: var(--text); }
+.h3-steps .i3-post__img { border-radius: var(--radius-sm); }
+.h3-steps .i3-post__text { color: var(--text); }   /* на фоне папки бледный --text-body слишком слабый */
+@media (max-width: 1023px) {
+  .h3-steps .i3-news__list { row-gap: calc(var(--s-24) + var(--tab-h)); }
+  .h3-steps .i3-post, .h3-steps .i3-post + .i3-post, .h3-steps .i3-post:last-child { padding: var(--s-24); border: 0; }
+  .h3-steps .i3-post::after { align-self: flex-start; margin-top: auto; padding-top: var(--s-32); }
+}
+@media (max-width: 767px) {
+  .h3-steps .i3-post, .h3-steps .i3-post + .i3-post, .h3-steps .i3-post:last-child { padding: var(--s-16) var(--s-16) var(--s-24); }
+}
+
 /* =========================================================
    ГЛАВНАЯ, «УСЛУГИ» — карусель по референсу «Best Choice».
    Карточки-фото лежат на «сцене» абсолютно; место задаёт data-pos (ставит js/main.js):
