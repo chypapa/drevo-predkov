@@ -382,7 +382,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 
 /* =========================================================
    ПЕРВЫЙ ЭКРАН — по макету Figma (plat-fam, узел 230:178): фото на весь экран
-   (img/hero-album.jpg), снизу затемнение-градиент, чуть наклонённый вправо,
+   (img/hero-album.webp), снизу затемнение-градиент, чуть наклонённый вправо,
    поверх — заголовок (Manrope 64px), текст и кнопка. Шапка лежит поверх фото.
    При прокрутке фото чуть приближается, а текст уходит вверх и гаснет (--hp ставит main.js)
    ========================================================= */
@@ -1728,7 +1728,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   left: calc(50% - var(--vw) / 2);
   width: var(--vw);
   height: 1100px;
-  background: linear-gradient(180deg, var(--bg) 6.8%, rgba(241, 238, 233, .2) 74.3%), url("../img/kniga2/field-crop.jpg") 50% 100% / cover no-repeat   /* нижняя четверть фото срезана — виден сюжет */;
+  background: linear-gradient(180deg, var(--bg) 6.8%, rgba(241, 238, 233, .2) 74.3%), url("../img/kniga2/field-crop.webp") 50% 100% / cover no-repeat   /* нижняя четверть фото срезана — виден сюжет */;
   pointer-events: none;
 }
 .calc--photo .calc__panel { grid-column: 3 / span 8; padding: 70px; border-radius: var(--radius); background: var(--white); }
@@ -2254,8 +2254,10 @@ body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif
 .svcp { --sec: clamp(80px, 8.3vw, 160px); }
 .svcp .calc { margin-bottom: var(--sec); }
 .svcp .dot-list, .svcp .about2__list { gap: 0; }
-.svcp .dot-list li, .svcp .about2__list li { display: block; padding: var(--s-16) 0; border-top: 1px solid rgba(101, 98, 95, .2); }
-.svcp .dot-list li:last-child, .svcp .about2__list li:last-child { border-bottom: 1px solid rgba(101, 98, 95, .2); }
+.svcp .dot-list li, .svcp .about2__list li { display: block; padding: var(--s-16) 0; }
+.svcp .dot-list li + li, .svcp .about2__list li + li { border-top: 1px solid rgba(101, 98, 95, .2); }   /* линии только между пунктами */
+.svcp .dot-list li:first-child, .svcp .about2__list li:first-child { padding-top: var(--s-8); }
+@media (max-width: 767px) { .svcp .about2__subtitle { font-size: var(--t3); } }   /* на телефоне H4 = размеру текста — подзаголовок не читался бы как заголовок */
 .svcp .dot-list li::before, .svcp .about2__list li::before { content: none; }
 
 /* точечные исследования. Иерархия: заголовок H2 → названия случаев (H3) → обычный текст → подписи.
@@ -2325,9 +2327,19 @@ body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif
 @media (max-width: 767px)  { .home3 { --t5: 16px; } }
 .home3 { --fs-body: var(--t5); }
 .h3-label, .h3-text, .h3-step__text, .h3-footer__policy, .home3 .field__input, .home3 .field__label, .home3 .field__input:focus + .field__label, .home3 .field__input:not(:placeholder-shown) + .field__label { font-size: var(--t5); }
-.home3 .field__input { height: 58px; }
-.home3 .field__label { top: 29px; }
-.home3 .field__input:focus + .field__label, .home3 .field__input:not(:placeholder-shown) + .field__label { top: 29px; }
+/* поля заявки — компактные, как поля калькулятора: 52px на компьютере, 44px на телефоне */
+.home3 .field__input { height: 52px; padding-inline: var(--s-16); }
+.home3 .field__label { top: 26px; left: 17px; }
+.home3 .field__input:focus + .field__label, .home3 .field__input:not(:placeholder-shown) + .field__label { top: 26px; }
+.home3 .field--area .field__input { height: 120px; padding-top: 14px; }
+.home3 .field--area .field__label, .home3 .field--area .field__input:focus + .field__label, .home3 .field--area .field__input:not(:placeholder-shown) + .field__label { top: 14px; }
+@media (max-width: 767px) {
+  .home3 .field__input { height: 44px; padding-inline: var(--sp-12); }
+  .home3 .field__label { top: 22px; left: 13px; }
+  .home3 .field__input:focus + .field__label, .home3 .field__input:not(:placeholder-shown) + .field__label { top: 22px; }
+  .home3 .field--area .field__input { height: 96px; padding-top: 11px; }
+  .home3 .field--area .field__label, .home3 .field--area .field__input:focus + .field__label, .home3 .field--area .field__input:not(:placeholder-shown) + .field__label { top: 11px; }
+}
 
 /* шапка главной и страниц услуг: при прокрутке вниз уезжает вверх, при прокрутке вверх возвращается (класс is-hidden — js/main.js) */
 .home3 .header--sticky { transition: transform .35s ease, top .35s ease, left .35s ease, right .35s ease !important; }
@@ -2350,12 +2362,12 @@ html.home3 :is(h1, h2, h3, h4, .h3-intro__lead):not(.about-svc__chip) { font-wei
 
 /* =========================================================
    2. «КОРНИ» (главная): зелёная секция во всю ширину, текст по центру, по бокам — ветки.
-   Ветки — одно фото (img/home/branches.jpg: чёрные ветки на белом небе), справа как есть, слева — отражённое.
+   Ветки — одно фото (img/home/branches.webp: чёрные ветки на белом небе), справа как есть, слева — отражённое.
    Наложение: фото обесцвечено и инвертировано (небо — чёрное, ветки — белые) и наложено в режиме «экран»:
    чёрное на зелёном не видно, белое светлит фон — ветки получаются бело-зелёными. Белый текст на зелёном — 7,4:1
    ========================================================= */
 .roots { position: relative; isolation: isolate; display: grid; place-items: center; min-height: 80svh; margin-top: var(--sec); padding: var(--s-128) var(--side); overflow: hidden; background: #4a5a3f; color: var(--white); text-align: center; }
-.roots::before, .roots::after { content: ""; position: absolute; top: 0; z-index: -1; width: 40%; height: 122%; background: url("../img/home/branches.jpg") right top / cover no-repeat; filter: grayscale(1) invert(1); mix-blend-mode: screen; opacity: .6; pointer-events: none; -webkit-mask-image: linear-gradient(to left, #000 45%, transparent); mask-image: linear-gradient(to left, #000 45%, transparent); }   /* к центру ветки растворяются — под текстом их нет */
+.roots::before, .roots::after { content: ""; position: absolute; top: 0; z-index: -1; width: 40%; height: 122%; background: url("../img/home/branches.webp") right top / cover no-repeat; filter: grayscale(1) invert(1); mix-blend-mode: screen; opacity: .5; pointer-events: none; -webkit-mask-image: linear-gradient(to left, #000 10%, rgba(0, 0, 0, .35) 55%, transparent 90%); mask-image: linear-gradient(to left, #000 10%, rgba(0, 0, 0, .35) 55%, transparent 90%); }   /* к центру ветки постепенно зеленеют и растворяются — под текстом их нет */
 .roots::before { right: 0; }
 .roots::after { left: 0; transform: scaleX(-1); }   /* отражение: слева ветка растёт от левого края */
 .roots__in { display: flex; flex-direction: column; align-items: center; max-width: 760px; }
@@ -2367,13 +2379,11 @@ html.home3 :is(h1, h2, h3, h4, .h3-intro__lead):not(.about-svc__chip) { font-wei
 @media (max-width: 767px) {
   .roots { min-height: 0; padding: var(--s-128) var(--side) var(--s-48); }
   /* ветки отражены по вертикали: длинная ветвь уходит вверх, над текстом, а не пересекает его */
-  .roots { padding-top: 176px; }
-  .roots::before, .roots::after { width: 60%; height: 176px; opacity: .5; background-position: right bottom;
-    -webkit-mask-image: linear-gradient(to left, #000 45%, transparent), linear-gradient(to top, #000 70%, transparent);
-            mask-image: linear-gradient(to left, #000 45%, transparent), linear-gradient(to top, #000 70%, transparent);
-    -webkit-mask-composite: source-in; mask-composite: intersect; }   /* ветки — только в полосе над текстом и гаснут к нему */
-  .roots::before { transform: scaleY(-1); }
-  .roots::after { transform: scale(-1, -1); }
+  .roots { padding-top: 232px; }
+  .roots::before, .roots::after { width: 62%; height: 240px; opacity: .5; background-size: auto 150%; background-position: right top;
+    -webkit-mask-image: linear-gradient(to left, #000 15%, rgba(0, 0, 0, .35) 60%, transparent), linear-gradient(to top, transparent, #000 45%);
+            mask-image: linear-gradient(to left, #000 15%, rgba(0, 0, 0, .35) 60%, transparent), linear-gradient(to top, transparent, #000 45%);
+    -webkit-mask-composite: source-in; mask-composite: intersect; }   /* ветки — только в полосе над текстом: видна густая верхняя часть, длинная нижняя ветвь гаснет до текста */
   .roots__label { font-size: 14px; }
   .roots__text { text-wrap: wrap; }   /* строки во всю ширину, без выравнивания длины */
   .home3 .roots__btn { width: 100%; }
@@ -2427,10 +2437,14 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .i3-about__title { max-width: 18em; margin-top: var(--s-24); font-size: var(--t2); color: var(--text); text-wrap: balance; }
 .i3-about__text { max-width: 680px; }
 .i3-about__text p { margin-top: var(--s-24); font-size: var(--t5); color: var(--text-body); text-wrap: pretty; }
-.i3-about__sub { margin: var(--s-96) 0 var(--s-24); font-size: var(--t3); color: var(--text); }
-.i3-lines, .i3-steps { max-width: 760px; margin: 0; padding: 0; list-style: none; border-bottom: 1px solid var(--line3); }
-.i3-lines li { padding: var(--s-24) 0; border-top: 1px solid var(--line3); font-size: var(--t5); color: var(--text); }
-.i3-steps li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--g); padding: var(--s-24) 0; border-top: 1px solid var(--line3); }
+.i3-about__sub { margin: var(--s-96) 0 var(--s-32); font-size: var(--t3); color: var(--text); }
+/* линии — только между пунктами: над первым и под последним их нет, крайние пункты без внешнего отступа */
+.i3-lines, .i3-steps { max-width: 760px; margin: 0; padding: 0; list-style: none; }
+.i3-lines li { padding: var(--s-24) 0; font-size: var(--t5); color: var(--text); }
+.i3-steps li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--g); padding: var(--s-24) 0; }
+.i3-lines li + li, .i3-steps li + li { border-top: 1px solid var(--line3); }
+.i3-lines li:first-child, .i3-steps li:first-child { padding-top: 0; }
+.i3-lines li:last-child, .i3-steps li:last-child { padding-bottom: 0; }
 .i3-steps__name { font-size: var(--t4); font-family: "Playfair Display", Georgia, serif !important; color: var(--text); }
 .i3-steps__text { font-size: var(--t5); color: var(--text-body); }
 .i3-side { position: relative; height: calc(100svh - var(--hdr-h) - 2 * var(--g)); min-height: 480px; overflow: hidden; background: var(--red); }
@@ -2469,6 +2483,11 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 }
 @media (max-width: 767px) {
   .i3-steps li { grid-template-columns: minmax(0, 1fr); gap: var(--s-8); }
+  /* на телефоне плотнее: меньше воздуха между пунктами и перед подзаголовками */
+  .i3-lines li, .i3-steps li { padding-block: var(--s-16); }
+  .i3-lines li:first-child, .i3-steps li:first-child { padding-top: 0; }
+  .i3-lines li:last-child, .i3-steps li:last-child { padding-bottom: 0; }
+  .i3-about__sub { margin: var(--s-64) 0 var(--s-24); }
 }
 
 /* страницы услуг, «Этапы работы»: каждая карточка — папка. Корешок-вкладка слева сверху со скошенным правым краем,
