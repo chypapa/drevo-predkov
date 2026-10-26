@@ -2655,3 +2655,20 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
   filter: saturate(.75) sepia(.08) brightness(1.04);
 }
 .calc__photo.book-calculator { object-position: 50% 38%; }
+
+/* Keep the researcher's close-up inside the stage photograph frame. */
+.h3-steps .step-photo-zoom {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--ph);
+}
+.h3-steps .step-photo-zoom .step-researcher {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.55);
+  transform-origin: 61% 71%;
+}
