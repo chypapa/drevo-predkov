@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 117 24" width="117" height="24">
+  <defs>
+    <path id="s" d="M12 1.6l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.7l-6.4 3.5L7 14.1l-5.3-5 7.2-.9z"/>
+  </defs>
+  <g fill="#F2B01E">
+    <use href="#s"/>
+    <use href="#s" x="23.25"/>
+    <use href="#s" x="46.5"/>
+    <use href="#s" x="69.75"/>
+    <use href="#s" x="93"/>
+  </g>
+</svg>
