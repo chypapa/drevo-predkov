@@ -2656,15 +2656,21 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 }
 .calc__photo.book-calculator { object-position: 50% 38%; }
 
-/* Keep the researcher's close-up inside the stage photograph frame. */
-.h3-steps .step-photo-zoom {
+/* Clip the close-up in an explicit box; card text wrappers use display: contents. */
+.h3-steps .i3-post > .step-photo-zoom {
+  display: block;
+  position: relative;
   width: 100%;
+  min-width: 0;
+  min-height: 0;
   aspect-ratio: 3 / 2;
   overflow: hidden;
   border-radius: var(--radius-sm);
   background: var(--ph);
 }
-.h3-steps .step-photo-zoom .step-researcher {
+.idx3 .h3-steps .step-photo-zoom .step-researcher {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;

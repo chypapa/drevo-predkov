@@ -178,7 +178,7 @@
   var addLine = function () {
     uid++;
     var line = tpl.content.firstElementChild.cloneNode(true);
-    line.querySelectorAll('input[type="radio"]').forEach(function (r) { r.name = r.name + '-' + uid; });
+    line.querySelectorAll('input[type="radio"]').forEach(function (r) { r.name = r.name + '-' + uid; r.defaultChecked = false; r.checked = false; });
     var input = line.querySelector('.combo__input');
     var list = line.querySelector('.combo__list');
     var label = line.querySelector('label[for="region"]');
