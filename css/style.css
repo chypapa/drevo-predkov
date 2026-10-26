@@ -2636,3 +2636,22 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
   .svx__head { margin-bottom: var(--head); }
   .svx__sticky { padding-top: 0; }
 }
+
+/* Service photographs: muted warm tones and crops matched to the supplied reference. */
+.idx3 .h3-steps .i3-post__img,
+.idx3 .h3-steps .i3-post:hover .i3-post__img {
+  filter: saturate(.65) sepia(.12) contrast(.94) brightness(1.04);
+  aspect-ratio: 3 / 2;
+  height: auto;
+}
+.h3-steps .step-consultation { object-position: 50% 54%; }
+.h3-steps .step-catalog { object-position: 50% 59%; }
+.h3-steps .step-researcher { object-position: 50% 53%; }
+.h3-steps .step-family-tree { object-position: 50% 50%; }
+.h3-steps .step-documents { object-position: 50% 55%; }
+.formats__img.book-digital { object-position: 50% 58%; }
+.formats__img.book-printed { object-position: 50% 50%; }
+.formats__img.book-digital, .formats__img.book-printed {
+  filter: saturate(.75) sepia(.08) brightness(1.04);
+}
+.calc__photo.book-calculator { object-position: 50% 38%; }
