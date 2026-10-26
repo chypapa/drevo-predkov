@@ -2530,7 +2530,7 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .svx__card[data-pos="prev"] { left: calc(-45% * var(--mini) - 4%); top: calc((1 - var(--mini)) * 50%); width: calc(45% * var(--mini)); height: calc(100% * var(--mini)); opacity: 0; pointer-events: none; }
 .svx__card[data-pos="wait"] { left: calc(100% + var(--g3)); top: calc((1 - var(--mini)) * 50%); width: calc(45% * var(--mini)); height: calc(100% * var(--mini)); opacity: 0; pointer-events: none; }
 .svx__card.is-jump { transition: none; }
-.svx__card img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.5) sepia(.15) hue-rotate(-30deg) contrast(.96) brightness(1.03); }   /* та же цветокоррекция, что у остальных фото */
+.svx__card img { width: 100%; height: 100%; object-fit: cover; filter: none; }
 .svx__text { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity .2s ease; }
 .svx__text.is-on { opacity: 1; transition: opacity .4s ease .35s; }   /* прежний текст гаснет, новый появляется, когда карточки почти встали */
 .svx__info { position: absolute; top: 11%; bottom: 0; left: calc(45% + var(--s-48)); width: calc(42% - var(--s-48)); display: flex; flex-direction: column; align-items: flex-start; }   /* по макету: текст начинается вровень с верхом узкой карточки справа (11% высоты), не по центру */
