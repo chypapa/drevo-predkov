@@ -2415,7 +2415,7 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .idx3 :is(.i3-side__img, .reel__mask img, .h3-lead__img) { filter: saturate(.5) sepia(.15) hue-rotate(-30deg) contrast(.96) brightness(1.03); }
 /* фото статей — чёрно-белые, при наведении на карточку — в своих цветах */
 .idx3 .i3-post__img { filter: grayscale(1); transition: filter .4s ease; }
-.idx3 .h3-steps .i3-post__img { filter: saturate(.5) sepia(.15) hue-rotate(-30deg) contrast(.96) brightness(1.03); }   /* этапы работы — цветные, как остальные фото */
+.idx3 .h3-steps .i3-post__img, .idx3 .h3-steps .i3-post:hover .i3-post__img { filter: none; transition: none; }   /* этапы работы — фото как есть, без обработки и без эффекта при наведении */
 .idx3 .i3-post:hover .i3-post__img { filter: none; }
 @media (hover: none) { .idx3 .i3-post__img { filter: none; } }   /* без курсора (телефон, планшет) навести нельзя — фото статей сразу в цвете */
 
@@ -2600,4 +2600,33 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
   /* поля ввода ниже: «Свой вариант» — компактное поле в строку с подписью, регион — обычной высоты */
   .idx3 .calc--split .calc-q__custom.input { width: 88px; height: 40px; padding: 0 var(--sp-12); }
   .idx3 .calc--split .combo__input.input { height: 44px; padding: 0 var(--sp-12); }
+}
+
+/* =========================================================
+   СТРАНИЦЫ УСЛУГ: «Электронная и печатная книга» и «Можно добавить к исследованию»
+   ========================================================= */
+.formats__list { display: grid; grid-template-columns: 1fr 1fr; gap: var(--g); margin: 0; padding: 0; list-style: none; }
+.formats__img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; background: var(--ph); }
+.formats__name { margin-top: var(--s-24); font-size: var(--t3); line-height: 1.15; color: var(--text); }
+.formats__text { max-width: 36em; margin-top: var(--sp-12); font-size: var(--t5); color: var(--text-body); text-wrap: pretty; }
+
+/* дизайн древа — как карточка услуги на главной: фото 45% ширины, текст справа от него с отступом 48px */
+.spot .addon { display: grid; grid-template-columns: 45fr 55fr; column-gap: var(--s-48); align-items: start; }
+.addon__img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; filter: saturate(.5) sepia(.15) hue-rotate(-30deg) contrast(.96) brightness(1.03); }
+.addon__info { display: flex; flex-direction: column; align-items: flex-start; padding-top: var(--s-48); }
+.addon__info .svx__label { margin-top: var(--s-48); }
+.addon__steps { width: 100%; max-width: none; margin-top: var(--s-32); }
+.addon__info .svx__btn { margin-top: var(--s-48); }
+@media (max-width: 1023px) {
+  .spot .addon { grid-template-columns: 1fr; row-gap: var(--s-32); }
+  .addon__img { aspect-ratio: 5 / 3; }
+  .addon__info { padding-top: 0; }
+}
+@media (max-width: 767px) {
+  .formats__list { grid-template-columns: 1fr; row-gap: var(--s-48); }
+  .formats__name { margin-top: var(--s-16); }
+  .addon__info .svx__chips { margin-top: var(--sp-12); }
+  .addon__info .svx__label { margin-top: var(--s-24); }
+  .addon__info .svx__desc { margin-top: var(--s-8); }
+  .addon__info .svx__btn { margin-top: var(--s-32); }
 }
