@@ -2723,3 +2723,45 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .idx3 .calc--split .calc__box { padding-top: var(--s-32); }
 
 .community-photo-link:not([hidden]) { display: flex; align-items: center; justify-content: center; min-height: 180px; padding: 24px; background: #e6e2db; color: var(--text); text-align: center; text-decoration: underline; }
+
+/* Единые пропорции заголовков этапов и расстояние до кнопки формы. */
+.book-stages__number { font-size: var(--t4); }
+.book-stages__title { font-size: var(--t3); }
+.h3-lead__card .lead__agree + .lead__submit { margin-top: var(--s-16); }
+@media (min-width: 768px) {
+  .h3-footer__links { padding-bottom: 0; }
+  .h3-footer__mark { align-self: center; }
+}
+
+/* На вертикальном планшете блоки читаются сверху вниз. */
+@media (min-width: 768px) and (max-width: 1199px) and (orientation: portrait) {
+  .book-stages .i3-news__list { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: calc(var(--s-24) + var(--tab-h)); }
+  .book-stages .i3-post:last-child { grid-column: 1 / -1; }
+  .book-stages .i3-post, .book-stages .i3-post + .i3-post { min-height: 0; }
+  .i3-about { grid-template-columns: minmax(0, 1fr); row-gap: var(--s-48); }
+  .i3-about__main, .i3-about__side { grid-column: 1; }
+  .i3-about__side { position: static; }
+  .i3-side { height: auto; min-height: 0; aspect-ratio: 3 / 2; }
+  .svx__track { height: auto; }
+  .svx__sticky { position: static; height: auto; min-height: 0; overflow: visible; padding: 0 var(--g3) var(--s-48); }
+  .svx__stage { display: flex; flex-direction: column; gap: var(--s-24); height: auto; }
+  .svx__card, .svx__card[data-pos] {
+    display: block; position: relative; left: auto; top: auto; width: 100%;
+    height: auto; aspect-ratio: 5 / 3; opacity: 1; transition: none; order: calc(var(--k) * 2);
+  }
+  .svx__text, .svx__text.is-on { position: static; opacity: 1; transition: none; order: calc(var(--k) * 2 + 1); }
+  .svx__info { position: static; width: auto; gap: 0; margin-bottom: var(--s-48); padding-top: 0; pointer-events: auto; }
+  .svx__chips { margin-top: var(--sp-12); }
+  .svx__label { margin-top: var(--s-24); }
+  .svx__desc { margin-top: var(--s-8); }
+  .home3 .svx__btn { margin-top: var(--s-24); }
+  .i3-hero__text { top: 62%; }
+}
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+  .spot .addon__info { padding-top: 0; }
+}
+.i3-hero::before {
+  background: radial-gradient(ellipse 75% 60% at 0% 100%, rgba(0,0,0,.16), transparent 72%),
+              linear-gradient(90deg, rgba(20,16,12,.6), rgba(20,16,12,.15) 65%),
+              linear-gradient(rgba(20,16,12,.45), rgba(20,16,12,0) 200px);
+}

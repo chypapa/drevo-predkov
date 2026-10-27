@@ -854,7 +854,7 @@
   var cards = Array.prototype.slice.call(sec.querySelectorAll('.svx__card'));
   var texts = Array.prototype.slice.call(sec.querySelectorAll('.svx__text'));
   var n = cards.length, cur = 0, busy = false;
-  var wide = window.matchMedia('(min-width: 768px)');
+  var wide = window.matchMedia('(min-width: 768px) and (orientation: landscape), (min-width: 1200px)');
   // после последней услуги справа пусто: первая карточка ждёт за краем, а не показывается как «следующая»
   var posOf = function (rel, k) { return rel === 0 ? 'active' : rel === 1 && k < n - 1 ? 'next' : rel === n - 1 ? 'prev' : 'wait'; };
   var hidden = function (pos) { return pos === 'prev' || pos === 'wait'; };
