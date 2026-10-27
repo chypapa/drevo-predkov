@@ -2765,3 +2765,52 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
               linear-gradient(90deg, rgba(20,16,12,.6), rgba(20,16,12,.15) 65%),
               linear-gradient(rgba(20,16,12,.45), rgba(20,16,12,0) 200px);
 }
+
+/* Расположение заголовков и содержимого на вертикальных экранах. */
+@media (max-width: 767px), (min-width: 768px) and (max-width: 1199px) and (orientation: portrait) {
+  .i3-hero__text { top: auto; bottom: clamp(40px, 8svh, 100px); transform: none; }
+  .svx__head { margin-bottom: var(--s-48); }
+}
+@media (min-width: 768px) and (max-width: 1199px) and (orientation: portrait) {
+  .roots { min-height: 0; padding-block: var(--s-64); }
+}
+/* Уменьшаем расстояние над каруселью, сохраняя место для закреплённой шапки. */
+@media (min-width: 768px) and (max-width: 1366px) and (orientation: landscape) {
+  .svx__head { margin-bottom: var(--s-16); }
+  .svx__sticky {
+    top: calc(var(--hdr-h) + var(--s-8));
+    height: calc(100svh - var(--hdr-h) - var(--s-8));
+    min-height: 0;
+    padding-top: var(--s-16);
+  }
+}
+
+/* Горизонтальная лента сообщества, не затрагивает карточки этапов. */
+.i3-news .i3-news__list {
+  display: flex;
+  gap: var(--s-24);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  padding-bottom: var(--s-16);
+  scrollbar-width: thin;
+  scrollbar-color: var(--text) transparent;
+}
+.i3-news .i3-post, .i3-news .i3-post + .i3-post, .i3-news .i3-post:last-child {
+  display: flex;
+  flex: 0 0 clamp(280px, 42vw, 620px);
+  flex-direction: column;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  grid-row: auto;
+  scroll-snap-align: start;
+}
+.i3-news .i3-post__img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.i3-news .i3-post__link { margin-top: var(--s-24); }
+@media (max-width: 767px) {
+  .i3-news .i3-post, .i3-news .i3-post + .i3-post, .i3-news .i3-post:last-child {
+    flex-basis: 82vw;
+  }
+}
