@@ -2711,7 +2711,7 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .idx3 .calc--split .calc-q__hint { margin-top: 0; }
 
 /* Древо показано в исходном цвете. */
-.svcp .spot .addon__img { filter: saturate(.5) sepia(.15) hue-rotate(-30deg) contrast(.96) brightness(1.03); }
+.svcp .spot .addon__img { filter: none; }
 
 /* Сохраняем место для плашки, если срок этапа не указан. */
 .book-stages .book-stages__duration--placeholder { visibility: hidden; }
@@ -2721,3 +2721,5 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .idx3 .svx__card[data-k="0"] img { filter: saturate(.88) contrast(.97) brightness(1.03); }
 .idx3 .svx__card[data-k="1"] img { filter: saturate(.76) contrast(.96) brightness(1.04); }
 .idx3 .calc--split .calc__box { padding-top: var(--s-32); }
+
+.community-photo-link:not([hidden]) { display: flex; align-items: center; justify-content: center; min-height: 180px; padding: 24px; background: #e6e2db; color: var(--text); text-align: center; text-decoration: underline; }
