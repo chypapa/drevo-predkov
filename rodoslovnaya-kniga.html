@@ -10,6 +10,23 @@
   <link rel="stylesheet" href="css/style.css?v=20261026-crop3">
   <script>if (!('onpagereveal' in window)) document.documentElement.classList.add('fade-nav');</script>
   <style>
+    .book-stages .i3-post,
+    .book-stages .i3-post + .i3-post {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      min-height: 400px;
+      grid-row: auto;
+    }
+    .book-stages .i3-post::after { content: none; }
+    .book-stages__number { margin: 0; font-size: clamp(32px, 3.4vw, 52px); line-height: 1.05; color: var(--text); font-weight: 400; }
+    .book-stages__title { margin: clamp(72px, 8vw, 130px) 0 0; font-size: var(--t4); color: var(--text); font-weight: 400; }
+    .book-stages .book-stages__duration { margin-top: var(--s-16); }
+    .book-stages__text { margin: var(--s-24) 0 0; font-size: var(--t5); color: var(--text); }
+    @media (max-width: 1023px) {
+      .book-stages .i3-post, .book-stages .i3-post + .i3-post { min-height: 0; }
+      .book-stages__title { margin-top: var(--s-48); }
+    }
     /* Цвет и контраст подготовлены для этой подборки изображений. */
     .matched-book .h3-steps .i3-post__img,
     .matched-book .h3-steps .i3-post:hover .i3-post__img,
@@ -114,7 +131,7 @@
          затемнение слева снизу, название услуги Cormorant ============ -->
     <section class="opening opening--kniga opening--banner" aria-labelledby="opening-title">
       <div class="opening__media" aria-hidden="true">
-        <img class="opening__img" src="img/photos/book-spread.webp" srcset="img/photos/book-spread-960.webp 960w, img/photos/book-spread.webp 1920w" sizes="100vw" width="1920" height="1317" alt="" fetchpriority="high" decoding="async">
+        <img class="opening__img" src="img/photos/matched-book-printed.webp" width="1515" height="1038" alt="" fetchpriority="high" decoding="async">
       </div>
       <div class="opening__content">
         <h1 class="opening__title" id="opening-title"><span class="line"><span>Родословная книга</span></span></h1>
@@ -138,30 +155,27 @@
       </div>
     </section>
 
-    <!-- ============ ЭТАПЫ РАБОТЫ — как на главной: три фото разной высоты, под каждым — этап ============ -->
-    <section class="h3-sec h3-steps" aria-labelledby="h3-steps-title">
+    <!-- ============ ЭТАПЫ РАБОТЫ: номер, название, срок и описание ============ -->
+    <section class="h3-sec h3-steps book-stages" aria-labelledby="h3-steps-title">
       <h2 class="v1-h2 h3-head" id="h3-steps-title">Этапы работы</h2>
       <ol class="i3-news__list">
         <li class="i3-post">
-          <img class="step-consultation i3-post__img" src="img/photos/matched-stage-video.webp" width="1254" height="1254" alt="Консультация по видеосвязи на ноутбуке" loading="lazy" decoding="async">
-          <div>
-            <h3 class="i3-post__title">Интервью и&nbsp;архивный поиск&nbsp;— 14–30&nbsp;дней</h3>
-            <p class="i3-post__text">Беседуем с&nbsp;семьёй, собираем известные сведения и&nbsp;ищем предков в&nbsp;государственных и&nbsp;частных архивах. О&nbsp;ключевых находках сообщаем по&nbsp;мере их&nbsp;появления.</p>
-          </div>
+          <h3 class="book-stages__number">Этап 1</h3>
+          <h4 class="book-stages__title">Интервью и&nbsp;архивный поиск</h4>
+          <ul class="svx__chips book-stages__duration" aria-label="Срок этапа"><li>14–30&nbsp;дней</li></ul>
+          <p class="book-stages__text">Беседуем с&nbsp;семьёй, собираем известные сведения и&nbsp;ищем предков в&nbsp;государственных и&nbsp;частных архивах. О&nbsp;ключевых находках сообщаем по&nbsp;мере их&nbsp;появления.</p>
         </li>
         <li class="i3-post">
-          <img class="step-catalog i3-post__img" src="img/photos/matched-stage-catalog.webp" width="1254" height="1254" alt="Поиск документов в архивной картотеке" loading="lazy" decoding="async">
-          <div>
-            <h3 class="i3-post__title">История рода и&nbsp;содержание книги&nbsp;— 14–30&nbsp;дней</h3>
-            <p class="i3-post__text">Расшифровываем документы, рассказываем о&nbsp;каждом поколении на&nbsp;фоне эпохи и&nbsp;согласовываем с&nbsp;вами содержание книги.</p>
-          </div>
+          <h3 class="book-stages__number">Этап 2</h3>
+          <h4 class="book-stages__title">История рода и&nbsp;содержание книги</h4>
+          <ul class="svx__chips book-stages__duration" aria-label="Срок этапа"><li>14–30&nbsp;дней</li></ul>
+          <p class="book-stages__text">Расшифровываем документы, рассказываем о&nbsp;каждом поколении на&nbsp;фоне эпохи и&nbsp;согласовываем с&nbsp;вами содержание книги.</p>
         </li>
         <li class="i3-post">
-          <div class="step-photo-zoom"><img class="step-researcher i3-post__img" src="img/photos/matched-stage-researcher.webp" width="1254" height="1254" alt="Исследователь изучает архивную книгу" loading="lazy" decoding="async"></div>
-          <div>
-            <h3 class="i3-post__title">Дизайн и&nbsp;вёрстка&nbsp;— 7–14&nbsp;дней</h3>
-            <p class="i3-post__text">Оформляем издание: расшифровки документов, исторические справки и&nbsp;древо для&nbsp;печати на&nbsp;холсте. Книга готова в&nbsp;электронном виде, печать&nbsp;— по&nbsp;желанию.</p>
-          </div>
+          <h3 class="book-stages__number">Этап 3</h3>
+          <h4 class="book-stages__title">Дизайн и&nbsp;вёрстка</h4>
+          <ul class="svx__chips book-stages__duration" aria-label="Срок этапа"><li>7–14&nbsp;дней</li></ul>
+          <p class="book-stages__text">Оформляем издание: расшифровки документов, исторические справки и&nbsp;древо для&nbsp;печати на&nbsp;холсте. Книга готова в&nbsp;электронном виде, печать&nbsp;— по&nbsp;желанию.</p>
         </li>
       </ol>
     </section>
