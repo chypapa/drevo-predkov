@@ -10,6 +10,11 @@
   <link rel="stylesheet" href="css/style.css?v=20261026-crop3">
   <script>if (!('onpagereveal' in window)) document.documentElement.classList.add('fade-nav');</script>
   <style>
+    .idx3.svcp .opening--kniga .opening__media::after {
+      background: radial-gradient(ellipse 75% 65% at 0% 100%, rgba(0, 0, 0, .16), transparent 72%),
+                  linear-gradient(68deg, rgba(0, 0, 0, .65) 0%, transparent 62%),
+                  linear-gradient(rgba(20, 16, 12, .45), rgba(20, 16, 12, 0) 200px);
+    }
     .book-stages .i3-post,
     .book-stages .i3-post + .i3-post {
       display: flex;
@@ -19,7 +24,7 @@
       grid-row: auto;
     }
     .book-stages .i3-post::after { content: none; }
-    .book-stages__number { margin: 0; font-size: clamp(32px, 3.4vw, 52px); line-height: 1.05; color: var(--text); font-weight: 400; }
+    .book-stages__number { margin: 0; font-size: var(--t3); line-height: 1.05; color: var(--text); font-weight: 400; }
     .book-stages__title { margin: clamp(72px, 8vw, 130px) 0 0; font-size: var(--t4); color: var(--text); font-weight: 400; }
     .book-stages .book-stages__duration { margin-top: var(--s-16); }
     .book-stages__text { margin: var(--s-24) 0 0; font-size: var(--t5); color: var(--text); }
@@ -191,7 +196,7 @@
           <p class="formats__text">Основной формат: та&nbsp;же книга с&nbsp;разворотами, фотографиями и&nbsp;копиями документов. Её&nbsp;удобно читать с&nbsp;телефона, пересылать родным в&nbsp;другие города и&nbsp;страны и&nbsp;хранить&nbsp;— она не&nbsp;потеряется и&nbsp;не&nbsp;выцветет.</p>
         </li>
         <li class="formats__item">
-          <img class="book-printed formats__img" src="img/photos/matched-book-printed.webp" width="1515" height="1038" alt="Печатная родословная книга в раскрытом виде" loading="lazy" decoding="async">
+          <img class="book-printed formats__img" src="img/photos/printed-book-original-v3.webp" width="1800" height="1005" alt="Печатная родословная книга в раскрытом виде" loading="lazy" decoding="async">
           <h3 class="formats__name">Печатное издание</h3>
           <p class="formats__text">По&nbsp;желанию напечатаем книгу в&nbsp;типографии&nbsp;— в&nbsp;твёрдом переплёте, с&nbsp;архивными фотографиями и&nbsp;копиями документов. Семейная реликвия, которую можно подарить и&nbsp;передать детям и&nbsp;внукам. Печать&nbsp;— по&nbsp;предоплате.</p>
         </li>
@@ -332,7 +337,7 @@
           <div class="calc__intro">
             <h2 class="h2" id="calc-title">Калькулятор стоимости услуги</h2>
             <p class="calc__text">Итоговая стоимость зависит от&nbsp;нескольких факторов. Ответьте на&nbsp;вопросы ниже, чтобы узнать ориентировочную сумму, или <a class="calc__contact" href="index.html#contact" data-consult>свяжитесь с&nbsp;нами</a>&nbsp;— уточним цену на&nbsp;консультации.</p>
-            <img class="book-calculator calc__photo" src="img/photos/matched-book-reader.webp" width="1254" height="1254" alt="Читатель с книгой среди архивных стеллажей" loading="lazy" decoding="async">
+            <img class="book-calculator calc__photo" src="img/photos/book-reader-logo-v3.webp" width="1254" height="1254" alt="Читатель с книгой среди архивных стеллажей" loading="lazy" decoding="async">
           </div>
         <!-- анкета и результат — в одной карточке: её высота меняется плавно (js/calculator.js) -->
         <div class="calc__box">
