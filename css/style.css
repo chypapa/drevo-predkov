@@ -2678,3 +2678,37 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
   transform: scale(1.55);
   transform-origin: 61% 71%;
 }
+
+/* Единое оформление этапов на страницах услуг. */
+.book-stages .i3-post, .book-stages .i3-post + .i3-post {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 400px;
+  grid-row: auto;
+}
+.book-stages .i3-post::after { content: none; }
+.book-stages__number { margin: 0; font-size: var(--t3); line-height: 1.05; color: var(--text); font-weight: 400; }
+.book-stages .book-stages__duration { margin-top: clamp(72px, 8vw, 130px); }
+.book-stages .book-stages__duration li { background: #f4f1eb; }
+.book-stages__title { margin: var(--s-16) 0 0; font-size: var(--t4); color: var(--text); font-weight: 400; }
+.book-stages__number + .book-stages__title { margin-top: clamp(72px, 8vw, 130px); }
+.book-stages__text { margin: var(--s-24) 0 0; font-size: var(--t5); color: var(--text); }
+@media (max-width: 1023px) {
+  .book-stages .i3-post, .book-stages .i3-post + .i3-post { min-height: 0; }
+  .book-stages .book-stages__duration,
+  .book-stages__number + .book-stages__title { margin-top: var(--s-48); }
+}
+
+/* Вопросы обоих калькуляторов — как названия этапов; подсказки не прижаты к вопросу. */
+.idx3 .calc--split .calc-q__title {
+  font-family: "Playfair Display", Georgia, serif !important;
+  font-size: var(--t4);
+  font-weight: 400;
+  letter-spacing: -.01em;
+  color: var(--text);
+}
+.idx3 .calc--split .calc-q__hint { margin-top: 0; }
+
+/* Древо показано в исходном цвете. */
+.svcp .spot .addon__img { filter: none; }
