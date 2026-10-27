@@ -2814,3 +2814,30 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
     flex-basis: 82vw;
   }
 }
+
+/* В горизонтальной карточке текст центрируется в высоте изображения. */
+@media (min-width: 1200px), (min-width: 768px) and (orientation: landscape) {
+  .svx__info {
+    top: 0;
+    bottom: 0;
+    left: calc(45% + var(--g));
+    width: calc(55% - var(--g));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  .svx__body { flex: 0 0 auto; width: 100%; margin-block: auto; }
+}
+@media (min-width: 768px) and (max-width: 1366px) and (orientation: landscape) {
+  .svx__label { margin-top: clamp(12px, 3vh, 32px); }
+  .home3 .svx__btn { margin-top: clamp(16px, 3vh, 32px); min-height: 52px; }
+}
+/* Два ряда этапов на планшете: все вкладки папок имеют одинаковую ширину. */
+@media (min-width: 768px) and (max-width: 1199px) and (orientation: portrait) {
+  .book-stages .i3-post::before { width: clamp(100px, 17vw, 180px); }
+}
+/* В поле legend заголовок не участвует в flex-gap, поэтому отступ задаётся явно. */
+@media (min-width: 768px) and (max-width: 1366px) {
+  .idx3 .calc--split fieldset.calc-q > .calc-q__hint { margin-top: var(--s-24); }
+  .h3-footer__mark { align-self: end; transform: translateY(var(--s-16)); }
+}
