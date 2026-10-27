@@ -2711,4 +2711,7 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .idx3 .calc--split .calc-q__hint { margin-top: 0; }
 
 /* Древо показано в исходном цвете. */
-.svcp .spot .addon__img { filter: none; }
+.svcp .spot .addon__img { filter: saturate(.5) sepia(.15) hue-rotate(-30deg) contrast(.96) brightness(1.03); }
+
+/* Сохраняем место для плашки, если срок этапа не указан. */
+.book-stages .book-stages__duration--placeholder { visibility: hidden; }
