@@ -858,6 +858,12 @@
     queued = false;
     const story = wide.matches && !reduced.matches;
     section.classList.toggle('is-story', story);
+    const visual = section.querySelector('.directions__visual');
+    const travel = Math.max(0, track.offsetHeight - innerHeight);
+    visual.style.transform = story ? 'translateY(' + Math.max(0, Math.min(travel, -track.getBoundingClientRect().top)) + 'px)' : '';
+    const header = document.querySelector('.header');
+    const bounds = section.getBoundingClientRect();
+    if (header) header.classList.toggle('is-over-directions', bounds.top <= 0 && bounds.bottom > header.offsetHeight);
     const progress = -track.getBoundingClientRect().top / innerHeight;
     photos.forEach((photo, i) => {
       const reveal = i === 0 ? 1 : clamp((progress - (i - 0.75)) / 0.6);
@@ -946,18 +952,18 @@
   const progress = (scrollY - top) / innerHeight;
   let target = null;
   for (let i = 0; i < 2; i++) {
-   if (progress > i + .12 && progress < i + .96) target = top + (i + (direction > 0 ? 1 : 0)) * innerHeight;
+   if (progress > i + .06 && progress < i + .94) target = top + Math.round(progress) * innerHeight;
   }
   if (target === null) return;
   snapping = true;
   const done = () => { snapping = false; };
-  if (window.lenis) window.lenis.scrollTo(target, { duration: .65, onComplete: done });
-  else { window.scrollTo({ top: target, behavior: 'smooth' }); setTimeout(done, 850); }
+  if (window.lenis) window.lenis.scrollTo(target, { duration: 1.35, easing: t => t < .5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2, onComplete: done });
+  else { window.scrollTo({ top: target, behavior: 'smooth' }); setTimeout(done, 1500); }
  }
  addEventListener('scroll', () => {
   if (Math.abs(scrollY - last) > 1) direction = scrollY > last ? 1 : -1;
   last = scrollY;
   clearTimeout(timer);
-  if (!snapping) timer = setTimeout(settle, 220);
+  if (!snapping) timer = setTimeout(settle, 450);
  }, { passive: true });
 })();

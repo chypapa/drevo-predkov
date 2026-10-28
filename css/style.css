@@ -2946,3 +2946,16 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .i3-news .community-photo-link:not([hidden]) { width: 100%; aspect-ratio: 3 / 2; height: auto; min-height: 0; flex: 0 0 auto; object-fit: cover; box-sizing: border-box; }
 .idx3 .h3-lead { height: 100svh; max-height: 100vh; min-height: 0; padding: clamp(12px, 3vh, 32px) var(--s-24); display: grid; place-items: center; box-sizing: border-box; }
 .idx3 .h3-lead__card { max-height: 100%; overflow-y: auto; overscroll-behavior: contain; padding: clamp(16px, 3vh, 32px); }
+
+/* The visual travels only inside its own three-screen section, then leaves with it. */
+.directions.is-story .directions__visual { position: absolute; top: 0; left: 0; width: 100%; margin: 0; will-change: transform; }
+main > section[hidden] { display: none !important; }
+.home3 .header.is-over-directions .header__bar,
+.home3 .header.is-over-directions .header__mobile,
+.home3 .header.is-over-directions .icon-btn { background: transparent; box-shadow: none; }
+.home3 .header.is-over-directions .header__bar { border-bottom-color: rgba(255,255,255,.35); }
+.home3 .header.is-over-directions .nav a,
+.home3 .header.is-over-directions .logo-mark,
+.home3 .header.is-over-directions .header__brand,
+.home3 .header.is-over-directions .icon-btn { color: #fff; }
+.home3 .header.is-over-directions .header__cta { background: #fff; color: var(--text); }
