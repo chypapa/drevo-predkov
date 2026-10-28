@@ -2911,3 +2911,5 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 @media (prefers-reduced-motion: reduce) {
   .directions *, .directions__scene.is-visible .directions__copy { animation: none !important; transition: none !important; }
 }
+
+.i3-news .i3-post__img[hidden] { display: none; }
