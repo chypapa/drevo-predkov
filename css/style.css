@@ -2879,7 +2879,8 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .directions__backdrop { position: absolute; inset: -4%; width: 108%; height: 108%; object-fit: cover; filter: blur(18px); opacity: .38; z-index: -2; pointer-events: none; }
 .directions__scene::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #17161433, #17161465); z-index: -1; pointer-events: none; }
 .directions__inner { width: 100%; max-width: 1440px; margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--content-gap); align-items: stretch; padding: clamp(48px, 8svh, 112px) var(--g3); }
-.directions__photo { display: block; width: 100%; height: 100%; min-height: 480px; object-fit: cover; object-position: center; }
+.directions__media { position: relative; min-height: clamp(480px, 42vw, 620px); }
+.directions__photo { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .directions__copy { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; justify-content: center; }
 .directions__title { font-size: var(--t2); line-height: 1.12; color: #fff; text-wrap: balance; }
 .directions__chips { display: flex; flex-wrap: wrap; gap: var(--s-8); margin: var(--s-24) 0 0; padding: 0; list-style: none; }
@@ -2892,7 +2893,7 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 @keyframes directions-enter { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: translateX(0); } }
 @media (min-width: 900px) and (min-height: 650px) and (orientation: landscape) {
   .directions__inner { padding-block: 60px; }
-  .directions__photo { min-height: min(480px, 65svh); }
+  .directions__media { min-height: min(520px, 65svh); }
   .directions.is-pinned .directions__track { height: 300svh; }
   .directions.is-pinned .directions__viewport { position: sticky; top: 0; height: 100svh; }
   .directions.is-pinned .directions__scene { position: absolute; inset: 0; display: flex; align-items: center; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .65s ease, visibility .65s; }
@@ -2904,7 +2905,7 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 }
 @media (max-width: 899px), (orientation: portrait) {
   .directions__inner { grid-template-columns: minmax(0, 1fr); gap: var(--s-32); }
-  .directions__photo { height: auto; min-height: 0; aspect-ratio: 4 / 3; }
+  .directions__media { min-height: 0; aspect-ratio: 4 / 3; }
   .directions__label { margin-top: var(--s-32); }
 }
 @media (prefers-reduced-motion: reduce) {
