@@ -842,34 +842,36 @@
   })();
 })();
 
-/* Directions: natural scrolling drives one pinned scene; no wheel interception. */
+/* Directions: photo masks scrub independently while the text scrolls in normal flow. */
 (function () {
   const section = document.querySelector('.directions');
   if (!section) return;
   const track = section.querySelector('.directions__track');
   const scenes = [...section.querySelectorAll('.directions__scene')];
+  const photos = [...section.querySelectorAll('.directions__image-stack img')];
+  const backgrounds = [...section.querySelectorAll('.directions__visual > img')];
   const wide = matchMedia('(min-width: 900px) and (min-height: 650px) and (orientation: landscape)');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const clamp = x => Math.max(0, Math.min(1, x));
   let queued = false;
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('is-visible');
-    });
-  }, { threshold: 0.12 });
-  scenes.forEach(scene => observer.observe(scene));
   function update() {
     queued = false;
-    // Long copy or browser zoom must never crop the button or create an inner scroller.
-    const fits = scenes.every(scene => scene.querySelector('.directions__inner').scrollHeight <= innerHeight);
-    const pinned = wide.matches && !reduced.matches && fits;
-    section.classList.toggle('is-pinned', pinned);
-    const step = Math.max(0, Math.min(scenes.length - 1, Math.round(-track.getBoundingClientRect().top / innerHeight)));
-    scenes.forEach((scene, i) => {
-      const active = !pinned || i === step;
-      scene.classList.toggle('is-active', active);
-      scene.inert = !active;
-      if (pinned) scene.setAttribute('aria-hidden', String(!active));
-      else scene.removeAttribute('aria-hidden');
+    const story = wide.matches && !reduced.matches;
+    section.classList.toggle('is-story', story);
+    const progress = -track.getBoundingClientRect().top / innerHeight;
+    photos.forEach((photo, i) => {
+      const reveal = i === 0 ? 1 : clamp((progress - (i - 0.75)) / 0.6);
+      photo.style.clipPath = 'inset(' + (50 * (1 - reveal)) + '%)';
+      backgrounds[i].style.opacity = reveal;
+    });
+    scenes.forEach(scene => {
+      scene.inert = false;
+      scene.removeAttribute('aria-hidden');
+      const title = scene.querySelector('.directions__title');
+      const rect = title.getBoundingClientRect();
+      const entrance = story ? clamp((innerHeight - rect.top) / (innerHeight * 0.22)) : 1;
+      title.style.opacity = entrance;
+      title.style.transform = 'translateY(' + (16 * (1 - entrance)) + 'px)';
     });
   }
   function schedule() { if (!queued) { queued = true; requestAnimationFrame(update); } }

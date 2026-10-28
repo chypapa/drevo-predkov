@@ -2913,3 +2913,24 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 }
 
 .i3-news .i3-post__img[hidden] { display: none; }
+
+/* Independent sticky photography + ordinary flowing text (Forge reference). */
+.directions__visual { display: none; }
+.directions__backdrop { filter: blur(10px); opacity: .65; }
+.directions__scene::after { background: rgba(0,0,0,.58); }
+.directions__chips li { font: inherit; font-size: var(--t5); line-height: 1.5; }
+.directions__scene .directions__copy { animation: none !important; }
+.directions.is-story .directions__visual { display: block; position: sticky; top: 0; height: 100svh; margin-bottom: -100svh; overflow: hidden; background: #171614; isolation: isolate; pointer-events: none; }
+.directions__visual > .directions__backdrop { z-index: auto; opacity: 1; }
+.directions__visual::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.62); }
+.directions__image-stack { position: absolute; z-index: 1; left: var(--g3); top: 50%; transform: translateY(-50%); width: min(calc(50% - var(--g3) - var(--g) / 2), 65svh); aspect-ratio: 1; overflow: hidden; }
+.directions__image-stack .directions__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: none; border-radius: 0; }
+.directions.is-story .directions__viewport { position: relative; }
+.directions.is-story .directions__scene { position: relative; overflow: visible; background: transparent; isolation: auto; min-height: 100svh; }
+.directions.is-story .directions__scene::after,
+.directions.is-story .directions__scene > .directions__backdrop,
+.directions.is-story .directions__media { display: none; }
+.directions.is-story .directions__inner { display: flex; justify-content: flex-end; align-items: center; min-height: 100svh; max-width: none; padding: 60px var(--g3); }
+.directions.is-story .directions__copy { width: calc(50% - var(--g) / 2); transform: none; opacity: 1; }
+.directions.is-story .directions__title { will-change: transform, opacity; }
+@media (prefers-reduced-motion: reduce) { .directions__title { transform: none !important; opacity: 1 !important; } }
