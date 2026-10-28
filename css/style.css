@@ -2841,3 +2841,72 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
   .idx3 .calc--split fieldset.calc-q > .calc-q__hint { margin-top: var(--s-24); }
   .h3-footer__mark { align-self: end; transform: translateY(var(--s-16)); }
 }
+
+
+/* Shared layout rules: page gutters, card widths and left-aligned links. */
+.idx3 {
+  --content-gap: var(--g);
+  --mobile-card-width: min(334px, 84vw);
+}
+.i3-news .i3-post__link { align-self: flex-start; justify-self: start; text-align: left; }
+.i3-news .i3-post > div { display: flex; flex-direction: column; align-items: flex-start; }
+@media (orientation: landscape) {
+  .i3-news .i3-news__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--content-gap); overflow: visible; padding-bottom: 0; }
+  .i3-news .i3-post { width: auto; max-width: none; }
+}
+@media (max-width: 767px) {
+  .idx3 .review,
+  .i3-news .i3-post, .i3-news .i3-post + .i3-post, .i3-news .i3-post:last-child {
+    flex-basis: var(--mobile-card-width); max-width: var(--mobile-card-width);
+  }
+  .idx3 .spot { padding-inline: var(--g3); }
+  .spot .addon { width: 100%; min-width: 0; grid-template-columns: minmax(0, 1fr); }
+  .spot .addon__info { min-width: 0; width: 100%; }
+  .spot .addon__img { max-width: 100%; }
+  .spot .svx__chips { max-width: 100%; }
+  .spot .svx__chips li { white-space: normal; }
+}
+@media (max-width: 767px) and (orientation: landscape) {
+  .i3-news .i3-post, .i3-news .i3-post + .i3-post, .i3-news .i3-post:last-child { max-width: none; }
+}
+
+/* Directions replaces the old carousel. Typography uses the existing t2–t5 scale. */
+.directions { color: #fff; }
+.directions__heading { padding: 0 var(--g3); margin-bottom: var(--s-32); color: var(--text); font-size: var(--t2); }
+.directions__track { position: relative; }
+.directions__viewport { position: relative; }
+.directions__scene { position: relative; isolation: isolate; overflow: hidden; background: #292724; }
+.directions__backdrop { position: absolute; inset: -4%; width: 108%; height: 108%; object-fit: cover; filter: blur(18px); opacity: .38; z-index: -2; pointer-events: none; }
+.directions__scene::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #17161433, #17161465); z-index: -1; pointer-events: none; }
+.directions__inner { width: 100%; max-width: 1440px; margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--content-gap); align-items: stretch; padding: clamp(48px, 8svh, 112px) var(--g3); }
+.directions__photo { display: block; width: 100%; height: 100%; min-height: 480px; object-fit: cover; object-position: center; }
+.directions__copy { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; justify-content: center; }
+.directions__title { font-size: var(--t2); line-height: 1.12; color: #fff; text-wrap: balance; }
+.directions__chips { display: flex; flex-wrap: wrap; gap: var(--s-8); margin: var(--s-24) 0 0; padding: 0; list-style: none; }
+.directions__chips li { padding: 6px 14px; border: 1px solid #ffffff80; border-radius: 999px; font-size: 14px; line-height: 1.4; color: #fff; }
+.directions__label { margin-top: var(--s-48); font-size: var(--t4); line-height: 1.2; color: #fff; }
+.directions__description { margin-top: var(--s-16); font-size: var(--t5); line-height: 1.5; color: #f4f1eb; max-width: 38em; }
+.home3 .directions__button { margin-top: var(--s-32); min-height: 48px; padding: 14px 32px; align-self: flex-start; gap: 12px; }
+.directions__button svg { width: 16px; height: 16px; }
+.directions__scene.is-visible .directions__copy { animation: directions-enter .65s ease both; }
+@keyframes directions-enter { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: translateX(0); } }
+@media (min-width: 900px) and (min-height: 650px) and (orientation: landscape) {
+  .directions__inner { padding-block: 60px; }
+  .directions__photo { min-height: min(480px, 65svh); }
+  .directions.is-pinned .directions__track { height: 300svh; }
+  .directions.is-pinned .directions__viewport { position: sticky; top: 0; height: 100svh; }
+  .directions.is-pinned .directions__scene { position: absolute; inset: 0; display: flex; align-items: center; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .65s ease, visibility .65s; }
+  .directions.is-pinned .directions__scene.is-active { opacity: 1; visibility: visible; pointer-events: auto; z-index: 1; }
+  .directions.is-pinned .directions__copy { animation: none; opacity: 0; transform: translateX(-24px); transition: opacity .5s ease, transform .65s ease; }
+  .directions.is-pinned .is-active .directions__copy { opacity: 1; transform: translateX(0); transition-delay: .12s; }
+  .directions.is-pinned .directions__photo { transform: scale(.98); transition: transform .8s ease; }
+  .directions.is-pinned .is-active .directions__photo { transform: scale(1); }
+}
+@media (max-width: 899px), (orientation: portrait) {
+  .directions__inner { grid-template-columns: minmax(0, 1fr); gap: var(--s-32); }
+  .directions__photo { height: auto; min-height: 0; aspect-ratio: 4 / 3; }
+  .directions__label { margin-top: var(--s-32); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .directions *, .directions__scene.is-visible .directions__copy { animation: none !important; transition: none !important; }
+}

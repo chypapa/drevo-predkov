@@ -842,52 +842,41 @@
   })();
 })();
 
-/* главная, «Услуги» — карусель, переключается прокруткой (стили — css/style.css). Блок закреплён на экране, на услугу —
-   экран прокрутки; услуга меняется на середине своего экрана. У каждой карточки-фото data-pos — active / next / prev / wait.
-   Вперёд: текущая → prev (уменьшается, уезжает влево), следующая → active (растёт и встаёт на её место),
-   ушедшая влево → сначала мгновенно за правый край (wait), потом приезжает как новая «следующая». Назад — наоборот.
-   Если прокрутили сразу на несколько услуг — карточки меняются по одной, пока не дойдут до нужной */
+/* Directions: natural scrolling drives one pinned scene; no wheel interception. */
 (function () {
-  var sec = document.querySelector('.svx');
-  if (!sec) return;
-  var track = sec.querySelector('.svx__track');
-  var cards = Array.prototype.slice.call(sec.querySelectorAll('.svx__card'));
-  var texts = Array.prototype.slice.call(sec.querySelectorAll('.svx__text'));
-  var n = cards.length, cur = 0, busy = false;
-  var wide = window.matchMedia('(min-width: 768px) and (orientation: landscape), (min-width: 1200px)');
-  // после последней услуги справа пусто: первая карточка ждёт за краем, а не показывается как «следующая»
-  var posOf = function (rel, k) { return rel === 0 ? 'active' : rel === 1 && k < n - 1 ? 'next' : rel === n - 1 ? 'prev' : 'wait'; };
-  var hidden = function (pos) { return pos === 'prev' || pos === 'wait'; };
-  cards.forEach(function (c, i) { c.style.setProperty('--k', i); c.tabIndex = -1; });
-  texts.forEach(function (t, i) { t.style.setProperty('--k', i); });
-  function step(k) {
-    var forward = (k - cur + n) % n === 1;
-    busy = true;
-    cards.forEach(function (c, i) {
-      var from = c.dataset.pos, to = posOf((i - k + n) % n, k);
-      if (hidden(from) && hidden(to)) { c.classList.add('is-jump'); c.dataset.pos = to; void c.offsetWidth; c.classList.remove('is-jump'); return; }   // невидимую карточку переносим без анимации
-      if (forward && from === 'prev' && to === 'next') { c.classList.add('is-jump'); c.dataset.pos = 'wait'; void c.offsetWidth; c.classList.remove('is-jump'); }
-      if (!forward && from === 'next' && to === 'prev') {
-        c.dataset.pos = 'wait';
-        setTimeout(function () { c.classList.add('is-jump'); c.dataset.pos = 'prev'; void c.offsetWidth; c.classList.remove('is-jump'); }, 820);
-        return;
-      }
-      c.dataset.pos = to;
+  const section = document.querySelector('.directions');
+  if (!section) return;
+  const track = section.querySelector('.directions__track');
+  const scenes = [...section.querySelectorAll('.directions__scene')];
+  const wide = matchMedia('(min-width: 900px) and (min-height: 650px) and (orientation: landscape)');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  let queued = false;
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('is-visible');
     });
-    texts.forEach(function (t, i) { var on = i === k; t.classList.toggle('is-on', on); t.inert = !on; });
-    cur = k;
-    setTimeout(function () { busy = false; update(); }, 850);
-  }
-  var tick = false;
+  }, { threshold: 0.12 });
+  scenes.forEach(scene => observer.observe(scene));
   function update() {
-    tick = false;
-    if (!wide.matches) { texts.forEach(function (t) { t.inert = false; }); return; }
-    var t = -track.getBoundingClientRect().top / window.innerHeight;
-    var want = Math.max(0, Math.min(n - 1, Math.round(t)));
-    if (busy || want === cur) return;
-    step(want > cur ? cur + 1 : cur - 1);
+    queued = false;
+    // Long copy or browser zoom must never crop the button or create an inner scroller.
+    const fits = scenes.every(scene => scene.querySelector('.directions__inner').scrollHeight <= innerHeight);
+    const pinned = wide.matches && !reduced.matches && fits;
+    section.classList.toggle('is-pinned', pinned);
+    const step = Math.max(0, Math.min(scenes.length - 1, Math.round(-track.getBoundingClientRect().top / innerHeight)));
+    scenes.forEach((scene, i) => {
+      const active = !pinned || i === step;
+      scene.classList.toggle('is-active', active);
+      scene.inert = !active;
+      if (pinned) scene.setAttribute('aria-hidden', String(!active));
+      else scene.removeAttribute('aria-hidden');
+    });
   }
-  window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(update); } }, { passive: true });
-  window.addEventListener('resize', update);
+  function schedule() { if (!queued) { queued = true; requestAnimationFrame(update); } }
+  addEventListener('scroll', schedule, { passive: true });
+  addEventListener('resize', schedule);
+  wide.addEventListener('change', schedule);
+  reduced.addEventListener('change', schedule);
+  if (document.fonts) document.fonts.ready.then(schedule);
   update();
 })();
