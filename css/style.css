@@ -2934,3 +2934,15 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .directions.is-story .directions__copy { width: calc(50% - var(--g) / 2); transform: none; opacity: 1; }
 .directions.is-story .directions__title { will-change: transform, opacity; }
 @media (prefers-reduced-motion: reduce) { .directions__title { transform: none !important; opacity: 1 !important; } }
+
+/* Each animated section owns its paint and sticky lifetime. */
+.directions { position: relative; isolation: isolate; overflow: clip; contain: paint; }
+.directions.is-story .directions__viewport { display: flow-root; }
+.directions.is-story .directions__visual { z-index: 0; }
+.directions.is-story .directions__scene { z-index: 1; }
+.svx { position: relative; isolation: isolate; overflow: clip; }
+/* Real photos and unavailable-photo links share the same media slot. */
+.i3-news .i3-post__img,
+.i3-news .community-photo-link:not([hidden]) { width: 100%; aspect-ratio: 3 / 2; height: auto; min-height: 0; flex: 0 0 auto; object-fit: cover; box-sizing: border-box; }
+.idx3 .h3-lead { height: 100svh; max-height: 100vh; min-height: 0; padding: clamp(12px, 3vh, 32px) var(--s-24); display: grid; place-items: center; box-sizing: border-box; }
+.idx3 .h3-lead__card { max-height: 100%; overflow-y: auto; overscroll-behavior: contain; padding: clamp(16px, 3vh, 32px); }

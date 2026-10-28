@@ -882,3 +882,82 @@
   if (document.fonts) document.fonts.ready.then(schedule);
   update();
 })();
+
+/* главная, «Услуги» — карусель, переключается прокруткой (стили — css/style.css). Блок закреплён на экране, на услугу —
+   экран прокрутки; услуга меняется на середине своего экрана. У каждой карточки-фото data-pos — active / next / prev / wait.
+   Вперёд: текущая → prev (уменьшается, уезжает влево), следующая → active (растёт и встаёт на её место),
+   ушедшая влево → сначала мгновенно за правый край (wait), потом приезжает как новая «следующая». Назад — наоборот.
+   Если прокрутили сразу на несколько услуг — карточки меняются по одной, пока не дойдут до нужной */
+(function () {
+  var sec = document.querySelector('.svx');
+  if (!sec) return;
+  var track = sec.querySelector('.svx__track');
+  var cards = Array.prototype.slice.call(sec.querySelectorAll('.svx__card'));
+  var texts = Array.prototype.slice.call(sec.querySelectorAll('.svx__text'));
+  var n = cards.length, cur = 0, busy = false;
+  var wide = window.matchMedia('(min-width: 768px) and (orientation: landscape), (min-width: 1200px)');
+  // после последней услуги справа пусто: первая карточка ждёт за краем, а не показывается как «следующая»
+  var posOf = function (rel, k) { return rel === 0 ? 'active' : rel === 1 && k < n - 1 ? 'next' : rel === n - 1 ? 'prev' : 'wait'; };
+  var hidden = function (pos) { return pos === 'prev' || pos === 'wait'; };
+  cards.forEach(function (c, i) { c.style.setProperty('--k', i); c.tabIndex = -1; });
+  texts.forEach(function (t, i) { t.style.setProperty('--k', i); });
+  function step(k) {
+    var forward = (k - cur + n) % n === 1;
+    busy = true;
+    cards.forEach(function (c, i) {
+      var from = c.dataset.pos, to = posOf((i - k + n) % n, k);
+      if (hidden(from) && hidden(to)) { c.classList.add('is-jump'); c.dataset.pos = to; void c.offsetWidth; c.classList.remove('is-jump'); return; }   // невидимую карточку переносим без анимации
+      if (forward && from === 'prev' && to === 'next') { c.classList.add('is-jump'); c.dataset.pos = 'wait'; void c.offsetWidth; c.classList.remove('is-jump'); }
+      if (!forward && from === 'next' && to === 'prev') {
+        c.dataset.pos = 'wait';
+        setTimeout(function () { c.classList.add('is-jump'); c.dataset.pos = 'prev'; void c.offsetWidth; c.classList.remove('is-jump'); }, 820);
+        return;
+      }
+      c.dataset.pos = to;
+    });
+    texts.forEach(function (t, i) { var on = i === k; t.classList.toggle('is-on', on); t.inert = !on; });
+    cur = k;
+    setTimeout(function () { busy = false; update(); }, 850);
+  }
+  var tick = false;
+  function update() {
+    tick = false;
+    if (!wide.matches) { texts.forEach(function (t) { t.inert = false; }); return; }
+    var t = -track.getBoundingClientRect().top / window.innerHeight;
+    var want = Math.max(0, Math.min(n - 1, Math.round(t)));
+    if (busy || want === cur) return;
+    step(want > cur ? cur + 1 : cur - 1);
+  }
+  window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(update); } }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+
+
+/* Settle incomplete photo transitions after scrolling stops. Never snap outside this section. */
+(function () {
+ const section = document.querySelector('.directions');
+ if (!section) return;
+ let timer, last = scrollY, direction = 1, snapping = false;
+ function settle() {
+  if (!section.classList.contains('is-story') || snapping) return;
+  const track = section.querySelector('.directions__track');
+  const top = scrollY + track.getBoundingClientRect().top;
+  const progress = (scrollY - top) / innerHeight;
+  let target = null;
+  for (let i = 0; i < 2; i++) {
+   if (progress > i + .12 && progress < i + .96) target = top + (i + (direction > 0 ? 1 : 0)) * innerHeight;
+  }
+  if (target === null) return;
+  snapping = true;
+  const done = () => { snapping = false; };
+  if (window.lenis) window.lenis.scrollTo(target, { duration: .65, onComplete: done });
+  else { window.scrollTo({ top: target, behavior: 'smooth' }); setTimeout(done, 850); }
+ }
+ addEventListener('scroll', () => {
+  if (Math.abs(scrollY - last) > 1) direction = scrollY > last ? 1 : -1;
+  last = scrollY;
+  clearTimeout(timer);
+  if (!snapping) timer = setTimeout(settle, 220);
+ }, { passive: true });
+})();
