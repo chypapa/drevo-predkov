@@ -11,7 +11,7 @@
 
   /* плавная прокрутка колесом мыши и по якорям (Lenis); на телефоне и при «уменьшении движения» — обычная */
   if (window.Lenis && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var lenis = new window.Lenis({ duration: 1.1, anchors: { offset: -88 }, smoothWheel: true });
+    var lenis = new window.Lenis({ duration: 1.1, anchors: { offset: -88 }, smoothWheel: false });
     window.lenis = lenis;
     var raf = function (t) { lenis.raf(t); requestAnimationFrame(raf); };
     requestAnimationFrame(raf);
@@ -850,7 +850,7 @@
   const scenes = [...section.querySelectorAll('.directions__scene')];
   const photos = [...section.querySelectorAll('.directions__image-stack img')];
   const backgrounds = [...section.querySelectorAll('.directions__visual > img')];
-  const wide = matchMedia('(min-width: 900px) and (min-height: 650px) and (orientation: landscape)');
+  const wide = matchMedia('(min-width: 768px)');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const clamp = x => Math.max(0, Math.min(1, x));
   let queued = false;
@@ -858,13 +858,18 @@
     queued = false;
     const story = wide.matches && !reduced.matches;
     section.classList.toggle('is-story', story);
+    section.classList.toggle('is-tablet-story', story && matchMedia('(orientation: portrait), (max-height: 649px)').matches);
     const visual = section.querySelector('.directions__visual');
-    const travel = Math.max(0, track.offsetHeight - innerHeight);
-    visual.style.transform = story ? 'translateY(' + Math.max(0, Math.min(travel, -track.getBoundingClientRect().top)) + 'px)' : '';
+    visual.style.transform = '';
     const header = document.querySelector('.header');
     const bounds = section.getBoundingClientRect();
-    if (header) header.classList.toggle('is-over-directions', bounds.top <= 0 && bounds.bottom > header.offsetHeight);
-    const progress = -track.getBoundingClientRect().top / innerHeight;
+    if (header) header.classList.toggle('is-over-directions', story && bounds.top <= 0 && bounds.bottom > header.offsetHeight);
+    const distance = -track.getBoundingClientRect().top;
+    let progress = 0;
+    for (let i = 0; i < scenes.length - 1; i++) {
+      const start = scenes[i].offsetTop, end = scenes[i + 1].offsetTop;
+      if (distance >= start) progress = i + clamp((distance - start) / Math.max(1, end - start));
+    }
     photos.forEach((photo, i) => {
       const reveal = i === 0 ? 1 : clamp((progress - (i - 0.75)) / 0.6);
       photo.style.clipPath = 'inset(' + (50 * (1 - reveal)) + '%)';
@@ -877,7 +882,12 @@
       const rect = scene.getBoundingClientRect();
       const entrance = story ? clamp((innerHeight - rect.top) / (innerHeight * 0.22)) : 1;
       title.style.opacity = entrance;
-      title.style.transform = 'translateY(' + (16 * (1 - entrance)) + 'px)';
+      title.style.transform = 'none';
+      if (section.classList.contains('is-tablet-story')) {
+        const center = rect.top + rect.height / 2;
+        const fade = clamp(1 - Math.max(0, Math.abs(center - innerHeight / 2) - innerHeight * .22) / (innerHeight * .3));
+        scene.querySelector('.directions__copy').style.opacity = fade;
+      } else scene.querySelector('.directions__copy').style.opacity = ''; 
     });
   }
   function schedule() { if (!queued) { queued = true; requestAnimationFrame(update); } }
@@ -949,9 +959,10 @@
   clearTimeout(timer);
   if (snapping && window.lenis) window.lenis.scrollTo(scrollY, { immediate: true });
   snapping = false;
+  timer = setTimeout(settle, 900);
  }, { passive: true });
  function settle() {
-  if (!section.classList.contains('is-story') || snapping) return;
+  if (!section.classList.contains('is-story') || section.classList.contains('is-tablet-story') || snapping) return;
   const track = section.querySelector('.directions__track');
   const top = scrollY + track.getBoundingClientRect().top;
   const progress = (scrollY - top) / innerHeight;
@@ -968,7 +979,6 @@
  addEventListener('scroll', () => {
   if (Math.abs(scrollY - last) > 1) direction = scrollY > last ? 1 : -1;
   last = scrollY;
-  clearTimeout(timer);
-  if (!snapping) timer = setTimeout(settle, 450);
+  // Scroll animations must never arm another scroll animation.
  }, { passive: true });
 })();
