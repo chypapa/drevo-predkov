@@ -3080,3 +3080,24 @@ main > section[hidden] { display: none !important; }
  .idx3 .calc--immersive .calc__box { max-width: none; padding: 32px var(--g3); }
  .idx3 .calc--immersive .calc__intro { margin-bottom: 32px; }
 }
+
+/* Short inset separators; white duration pills. */
+.book-stages .i3-post, .book-stages .i3-post + .i3-post { position: relative; border: 0; }
+.book-stages .i3-post + .i3-post::before { content: ''; position: absolute; left: 0; top: 24px; bottom: 24px; width: 1px; background: var(--text); }
+.book-stages .book-stages__duration li { background: #fff; }
+/* The photograph enters with the section, pins at the viewport edge, then leaves with it. */
+.idx3 .calc.calc--immersive { isolation: isolate; background: #282522; overflow: clip; }
+.calc__backdrop-boundary { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.calc__backdrop { display: block; position: sticky; top: 0; width: 100%; height: 100svh; max-width: none; object-fit: cover; }
+.idx3 .calc--immersive .calc__box { background: #fff; color: #1c1c1c; }
+.idx3 .calc--immersive .calc__intro h2,
+.idx3 .calc--immersive :is(.calc__text,.calc-q__title,.calc-q__hint,.radio,.calc-q__more,.calc__add,.calc__contact,.calc-line__title,.calc__result-label,.calc__result-sum,.calc__result-note,.calc__again) { color: #1c1c1c; }
+.idx3 .calc--immersive .radio input[type='radio'] { border-color: var(--red); }
+.idx3 .calc--immersive .radio input[type='radio']:checked { background: var(--red); box-shadow: inset 0 0 0 4px #fff; }
+.idx3 .calc--immersive .calc__submit { background: var(--red); color: #fff; }
+.idx3 .reviews { padding-bottom: 64px; }
+@media (min-width:768px) and (max-width:1199px) and (orientation:portrait) {
+ .book-stages .i3-post:last-child { border: 0; }
+ .book-stages .i3-post:last-child::before { top: 0; bottom: auto; left: 32px; width: calc(100% - 64px); height: 1px; }
+}
+@media (max-width:767px) { .idx3 .reviews { padding-bottom: 32px; } }
