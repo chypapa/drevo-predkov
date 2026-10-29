@@ -3023,3 +3023,25 @@ main > section[hidden] { display: none !important; }
  .calc__photo { display: block; width: calc(100% + 2 * var(--g3)); max-width: none; margin-inline: calc(-1 * var(--g3)); }
  .idx3 .h3-footer { background: var(--text); }
 }
+
+/* Move the desktop photograph inward by exactly one of twelve grid columns. */
+@media (min-width: 768px) {
+ .directions.is-story:not(.is-tablet-story) .directions__image-stack {
+  left: calc(var(--g3) + (100% - 2 * var(--g3) + var(--g)) / 12);
+  width: min(calc((100% - 2 * var(--g3) - var(--g)) / 2 - (100% - 2 * var(--g3) + var(--g)) / 12), 65svh);
+ }
+}
+/* Stronger black gradients behind opening text on every page. */
+.idx3 .i3-hero::before { background: linear-gradient(70deg, rgba(0,0,0,.82), rgba(0,0,0,.28) 70%, rgba(0,0,0,.12)), linear-gradient(rgba(0,0,0,.5), transparent 240px); }
+.idx3.svcp .opening .opening__media::after,
+.idx3.svcp .opening.opening--kniga .opening__media::after { background: linear-gradient(68deg, rgba(0,0,0,.84) 0%, rgba(0,0,0,.3) 65%, rgba(0,0,0,.12)), linear-gradient(rgba(0,0,0,.5), transparent 240px); }
+@media (max-width: 767px) {
+ .directions__media .directions__chips--mobile { display: none; }
+ .directions__copy > .directions__chips { display: flex; position: static; margin-top: 24px; }
+ .directions__copy > .directions__chips li { background: #fff; color: var(--text); border-color: #fff; }
+ .idx3 .h3-footer { background: #1c1c1c; }
+ .idx3.svcp .calc { margin-bottom: 0; padding-bottom: 0; }
+ .idx3 .calc--split .calc__box { padding-top: 32px; padding-bottom: 32px; }
+ .idx3 .calc--split .calc__card { padding: 0; margin: 0; }
+ .idx3 .calc--split .calc__submit { margin-bottom: 0; }
+}

@@ -959,7 +959,7 @@
   clearTimeout(timer);
   if (snapping && window.lenis) window.lenis.scrollTo(scrollY, { immediate: true });
   snapping = false;
-  timer = setTimeout(settle, 900);
+  timer = setTimeout(settle, 300);
  }, { passive: true });
  function settle() {
   if (!section.classList.contains('is-story') || section.classList.contains('is-tablet-story') || snapping) return;
