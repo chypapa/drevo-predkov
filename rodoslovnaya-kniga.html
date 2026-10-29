@@ -7,7 +7,7 @@
   <meta name="description" content="Генеалогическое исследование по архивам: ищем и расшифровываем документы о ваших предках и оформляем результат в родословную книгу с родословным древом. Рассчитайте стоимость онлайн.">
   <link rel="icon" href="img/favicon.ico" sizes="32x32">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css?v=20261029-spacing">
+  <link rel="stylesheet" href="css/style.css?v=20261029-open-stages">
   <script>if (!('onpagereveal' in window)) document.documentElement.classList.add('fade-nav');</script>
   <style>
     .idx3.svcp .opening--kniga .opening__media::after {
@@ -148,19 +148,16 @@
       <h2 class="v1-h2 h3-head" id="h3-steps-title">Этапы работы</h2>
       <ol class="i3-news__list">
         <li class="i3-post">
-          <h3 class="book-stages__number">Этап 1</h3>
           <ul class="svx__chips book-stages__duration" aria-label="Срок этапа"><li>1–2&nbsp;дня</li></ul>
           <h4 class="book-stages__title">Интервью и&nbsp;архивный поиск</h4>
           <p class="book-stages__text">Беседуем с&nbsp;семьёй, собираем известные сведения и&nbsp;ищем предков в&nbsp;государственных и&nbsp;частных архивах. О&nbsp;ключевых находках сообщаем по&nbsp;мере их&nbsp;появления.</p>
         </li>
         <li class="i3-post">
-          <h3 class="book-stages__number">Этап 2</h3>
           <ul class="svx__chips book-stages__duration" aria-label="Срок этапа"><li>от&nbsp;20&nbsp;дней</li></ul>
           <h4 class="book-stages__title">История рода и&nbsp;содержание книги</h4>
           <p class="book-stages__text">Расшифровываем документы, рассказываем о&nbsp;каждом поколении на&nbsp;фоне эпохи и&nbsp;согласовываем с&nbsp;вами содержание книги.</p>
         </li>
         <li class="i3-post">
-          <h3 class="book-stages__number">Этап 3</h3>
           <ul class="svx__chips book-stages__duration" aria-label="Срок этапа"><li>от&nbsp;7&nbsp;дней</li></ul>
           <h4 class="book-stages__title">Дизайн и&nbsp;вёрстка</h4>
           <p class="book-stages__text">Оформляем издание: расшифровки документов, исторические справки и&nbsp;древо для&nbsp;печати на&nbsp;холсте. Книга готова в&nbsp;электронном виде, печать&nbsp;— по&nbsp;желанию.</p>
@@ -312,18 +309,18 @@
 
     <!-- ============ КАЛЬКУЛЯТОР: заголовок и текст по центру, под ними анкета; по бокам — ветви родословного древа.
          Базовая цена — 60 000 ₽ (атрибут data-base). Логика — js/calculator.js ============ -->
-    <section class="calc calc--center calc--photo calc--tree calc--split container section" id="calc" aria-labelledby="calc-title" data-base="60000">
+    <section class="calc calc--center calc--photo calc--tree calc--split calc--immersive container section" id="calc" aria-labelledby="calc-title" data-base="60000">
 
       <div class="calc__stage">
         <img class="calc__tree" src="img/calc-tree.webp" width="1930" height="576" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <div class="calc__panel">
+
+        <!-- анкета и результат — в одной карточке: её высота меняется плавно (js/calculator.js) -->
+        <div class="calc__box">
           <div class="calc__intro">
             <h2 class="h2" id="calc-title">Калькулятор стоимости услуги</h2>
             <p class="calc__text">Итоговая стоимость зависит от&nbsp;нескольких факторов. Ответьте на&nbsp;вопросы ниже, чтобы узнать ориентировочную сумму, или <a class="calc__contact" href="index.html#contact" data-consult>свяжитесь с&nbsp;нами</a>&nbsp;— уточним цену на&nbsp;консультации.</p>
-            <img class="book-calculator calc__photo" src="img/photos/book-reader-logo-v3.webp" width="1254" height="1254" alt="Читатель с книгой среди архивных стеллажей" loading="lazy" decoding="async">
           </div>
-        <!-- анкета и результат — в одной карточке: её высота меняется плавно (js/calculator.js) -->
-        <div class="calc__box">
           <form class="calc__card" novalidate>
             <div class="calc__lines"></div>
             <button class="calc__add" type="button">
@@ -508,7 +505,7 @@
 </div>
 
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="js/main.js?v=20261029-spacing"></script>
+<script src="js/main.js?v=20261029-open-stages"></script>
 <script src="js/calculator.js?v=20261026-empty"></script>
 </body>
 </html>

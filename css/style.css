@@ -3045,3 +3045,38 @@ main > section[hidden] { display: none !important; }
  .idx3 .calc--split .calc__card { padding: 0; margin: 0; }
  .idx3 .calc--split .calc__submit { margin-bottom: 0; }
 }
+
+/* A dedicated pin boundary ends with the last service row. */
+.directions__pin-boundary { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.directions.is-story .directions__visual { margin: 0; }
+/* Open stages, separated only by fine rules. */
+.book-stages .i3-news__list { gap: 0; }
+.book-stages .i3-post, .book-stages .i3-post + .i3-post { background: transparent; border-radius: 0; min-height: 0; padding: 0 32px; border: 0; clip-path: none; }
+.book-stages .i3-post + .i3-post { border-left: 1px solid var(--text); }
+.book-stages .i3-post::before, .book-stages .i3-post::after { content: none; }
+.book-stages .book-stages__duration { margin-top: 0; }
+.review--video .voice__play::before { width: 64px; height: 64px; margin: -32px 0 0 -32px; background-image: none; background-color: rgba(0,0,0,.5); }
+.review--video .voice__play::after { content: ''; position: absolute; left: calc(50% + 2px); top: 50%; transform: translate(-50%,-50%); width: 28px; height: 32px; background: #fff; clip-path: polygon(0 0,100% 50%,0 100%); pointer-events: none; }
+/* Book calculator: contact-card proportions over a stationary photograph. */
+.idx3 .calc.calc--immersive { display: block; position: relative; margin: 0; width: 100%; max-width: none; padding: 64px var(--g3); background: #282522 url('../img/photos/book-reader-logo-v3.webp') center / cover fixed no-repeat; }
+.idx3 .calc--immersive .calc__panel { display: block; }
+.idx3 .calc--immersive .calc__box { width: 100%; max-width: 680px; margin: 0 auto; padding: 48px; background: var(--red); color: #fff; box-sizing: border-box; }
+.idx3 .calc--immersive .calc__intro { position: static; margin: 0 0 48px; gap: 24px; }
+.idx3 .calc--immersive .calc__intro h2,
+.idx3 .calc--immersive :is(.calc__text,.calc-q__title,.calc-q__hint,.radio,.calc-q__more,.calc__add,.calc__contact,.calc-line__title,.calc__result-label,.calc__result-sum,.calc__result-note,.calc__again) { color: #fff; }
+.idx3 .calc--immersive .calc__text { font-size: var(--t5); }
+.idx3 .calc--immersive .calc-q__hint { font-size: 16px; }
+.idx3 .calc--immersive .calc__card { padding: 0; background: transparent; }
+.idx3 .calc--immersive .calc__result { background: transparent; }
+.idx3 .calc--immersive .radio input[type='radio'] { border-color: #fff; }
+.idx3 .calc--immersive .radio input[type='radio']:checked { background: #fff; box-shadow: inset 0 0 0 4px var(--red); }
+.idx3 .calc--immersive .calc__submit { background: #fff; color: var(--text); }
+@media (min-width: 768px) and (max-width:1199px) and (orientation:portrait) {
+ .book-stages .i3-post:last-child { border-left: 0; border-top: 1px solid var(--text); margin-top: 32px; padding-top: 32px; }
+}
+@media (max-width:767px) {
+ .book-stages .i3-post, .book-stages .i3-post + .i3-post { padding: 0 16px; }
+ .idx3 .calc.calc--immersive { padding: 32px 0 0; background-attachment: scroll; }
+ .idx3 .calc--immersive .calc__box { max-width: none; padding: 32px var(--g3); }
+ .idx3 .calc--immersive .calc__intro { margin-bottom: 32px; }
+}
