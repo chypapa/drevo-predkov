@@ -874,7 +874,7 @@
       scene.inert = false;
       scene.removeAttribute('aria-hidden');
       const title = scene.querySelector('.directions__title');
-      const rect = title.getBoundingClientRect();
+      const rect = scene.getBoundingClientRect();
       const entrance = story ? clamp((innerHeight - rect.top) / (innerHeight * 0.22)) : 1;
       title.style.opacity = entrance;
       title.style.transform = 'translateY(' + (16 * (1 - entrance)) + 'px)';
@@ -896,7 +896,7 @@
    Если прокрутили сразу на несколько услуг — карточки меняются по одной, пока не дойдут до нужной */
 (function () {
   var sec = document.querySelector('.svx');
-  if (!sec) return;
+  if (!sec || sec.hidden) return;
   var track = sec.querySelector('.svx__track');
   var cards = Array.prototype.slice.call(sec.querySelectorAll('.svx__card'));
   var texts = Array.prototype.slice.call(sec.querySelectorAll('.svx__text'));
@@ -945,6 +945,11 @@
  const section = document.querySelector('.directions');
  if (!section) return;
  let timer, last = scrollY, direction = 1, snapping = false;
+ addEventListener('wheel', () => {
+  clearTimeout(timer);
+  if (snapping && window.lenis) window.lenis.scrollTo(scrollY, { immediate: true });
+  snapping = false;
+ }, { passive: true });
  function settle() {
   if (!section.classList.contains('is-story') || snapping) return;
   const track = section.querySelector('.directions__track');

@@ -7,7 +7,7 @@
   <meta name="description" content="Исследуем историю семьи по архивам России, Украины и Беларуси: метрические книги, ревизские сказки и другие документы. Родословная книга или архивный свиток. Начните с консультации.">
   <link rel="icon" href="img/favicon.ico" sizes="32x32">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/style.css?v=20261028-gentle">
+  <link rel="stylesheet" href="css/style.css?v=20261029-editorial">
   <script>if (!('onpagereveal' in window)) document.documentElement.classList.add('fade-nav');</script>
 </head>
 <body>
@@ -114,9 +114,25 @@
       </div>
     </section>
 
+    <section class="about-editorial" id="about" aria-labelledby="about-editorial-title">
+      <div class="about-editorial__left">
+        <h2 id="about-editorial-title">Восстанавливаем историю рода по&nbsp;документам, а&nbsp;не&nbsp;по&nbsp;догадкам</h2>
+        <img src="img/photos/photos-letters.webp" alt="Старинные семейные фотографии" loading="lazy" decoding="async">
+      </div>
+      <div class="about-editorial__copy">
+        <p>«Древо Предков» — команда генеалогов. Мы проводим генеалогические исследования: ищем сведения о предках в архивах, восстанавливаем родственные связи и собираем подтверждённую документами историю семьи.</p>
+        <p>Помогаем сохранить память о старшем поколении, подготовить семейную книгу в подарок или найти конкретный документ — например, для подтверждения родства, наследства или гражданства. Начать можно даже с одного имени, приблизительной даты или названия деревни.</p>
+        <h3>Как проходит работа</h3>
+        <p><strong>Начинаем с консультации.</strong> Расспрашиваем вас о семье, изучаем сохранившиеся фотографии, документы и рассказы близких. Вместе определяем, что нужно узнать и какой результат вы хотите получить.</p>
+        <p><strong>Ищем и проверяем архивные сведения.</strong> Работаем с метрическими книгами, ревизскими сказками, переписями и другими источниками. Сопоставляем записи, расшифровываем документы и сообщаем вам о главных находках по мере поиска.</p>
+        <p><strong>Оформляем результат исследования.</strong> В зависимости от задачи готовим родословную книгу, подробный архивный отчёт, копии отдельных документов или семейное древо.</p>
+        <p><strong>Сроки и стоимость рассчитываем индивидуально.</strong> Они зависят от глубины поиска, числа семейных линий и доступности архивов. Например, создание родословной книги об истории семьи за 100 лет в среднем занимает около 30 дней. Это ориентир: для вашей задачи срок может отличаться.</p>
+        <p><strong>Обратитесь на консультацию, чтобы обсудить вашу задачу.</strong> После знакомства с исходными сведениями сможем уточнить объём работы, сроки и стоимость.</p>
+      </div>
+    </section>
     <!-- 2. чем мы занимаемся (как блок с закреплённой правой колонкой на siha): слева прокручивается текст — о компании,
          кому подходит, как проходит работа; справа фото с надписью стоит на месте, пока листается левая колонка -->
-    <section class="i3-about" id="about" aria-labelledby="i3-about-title">
+    <section class="i3-about" hidden id="about-original" aria-labelledby="i3-about-title">
       <div class="i3-about__main">
         <p class="i3-label">Чем мы занимаемся</p>
         <h2 class="i3-about__title" id="i3-about-title">Восстанавливаем историю рода по&nbsp;документам, а&nbsp;не&nbsp;по&nbsp;догадкам</h2>
@@ -158,11 +174,10 @@
           <article class="directions__scene is-active" aria-label="1 из 3">
             <img class="directions__backdrop" src="img/photos/directions-book-800.webp" alt="" loading="lazy" decoding="async" aria-hidden="true">
             <div class="directions__inner">
-              <div class="directions__media"><img class="directions__photo" src="img/photos/directions-book-1600.webp" srcset="img/photos/directions-book-800.webp 800w, img/photos/directions-book-1600.webp 1600w" sizes="(min-width: 900px) 43vw, 90vw" alt="Разворот родословной книги с архивными документами" width="800" height="800" loading="lazy" decoding="async"></div>
+              <div class="directions__media"><img class="directions__photo" src="img/photos/directions-book-1600.webp" srcset="img/photos/directions-book-800.webp 800w, img/photos/directions-book-1600.webp 1600w" sizes="(min-width: 900px) 43vw, 90vw" alt="Разворот родословной книги с архивными документами" width="800" height="800" loading="lazy" decoding="async"><ul class="directions__chips directions__chips--mobile" aria-label="Срок и стоимость"><li>от&nbsp;1&nbsp;месяца</li><li>от&nbsp;60&nbsp;000&nbsp;₽</li></ul></div>
               <div class="directions__copy">
                   <h3 class="directions__title">Родословная книга</h3>
                   <ul class="directions__chips" aria-label="Срок и стоимость"><li>от&nbsp;1&nbsp;месяца</li><li>от&nbsp;60&nbsp;000&nbsp;₽</li></ul>
-                  <h4 class="directions__label">Что это такое?</h4>
                   <p class="directions__description">Цельная история вашей семьи в&nbsp;одной книге. Мы&nbsp;находим предков в&nbsp;метрических книгах, ревизских сказках и&nbsp;переписях, а&nbsp;затем пишем живой рассказ о&nbsp;каждом поколении: где жили, чем занимались, как большие события эпохи отзывались в&nbsp;их&nbsp;судьбах. В&nbsp;книгу входят копии документов с&nbsp;расшифровкой, исторические справки и&nbsp;родословное древо. Книга готовится в&nbsp;электронном виде, а&nbsp;по&nbsp;желанию печатается в&nbsp;твёрдом переплёте.</p>
                   <a class="btn directions__button" href="rodoslovnaya-kniga.html">Подробнее<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1 6h10M6.5 1.5 11 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>
               </div>
@@ -171,11 +186,10 @@
           <article class="directions__scene" aria-label="2 из 3">
             <img class="directions__backdrop" src="img/photos/directions-archive-800.webp" alt="" loading="lazy" decoding="async" aria-hidden="true">
             <div class="directions__inner">
-              <div class="directions__media"><img class="directions__photo" src="img/photos/directions-archive-1600.webp" srcset="img/photos/directions-archive-800.webp 800w, img/photos/directions-archive-1600.webp 1600w" sizes="(min-width: 900px) 43vw, 90vw" alt="Коллекция старинных семейных фотографий" width="800" height="800" loading="lazy" decoding="async"></div>
+              <div class="directions__media"><img class="directions__photo" src="img/photos/directions-archive-1600.webp" srcset="img/photos/directions-archive-800.webp 800w, img/photos/directions-archive-1600.webp 1600w" sizes="(min-width: 900px) 43vw, 90vw" alt="Коллекция старинных семейных фотографий" width="800" height="800" loading="lazy" decoding="async"><ul class="directions__chips directions__chips--mobile" aria-label="Срок и стоимость"><li>от&nbsp;1&nbsp;месяца</li><li>от&nbsp;30&nbsp;000&nbsp;₽</li></ul></div>
               <div class="directions__copy">
                   <h3 class="directions__title">Архивный свиток</h3>
                   <ul class="directions__chips" aria-label="Срок и стоимость"><li>от&nbsp;1&nbsp;месяца</li><li>от&nbsp;30&nbsp;000&nbsp;₽</li></ul>
-                  <h4 class="directions__label">Что это такое?</h4>
                   <p class="directions__description">Подробное исследование семьи по&nbsp;архивным документам&nbsp;— с&nbsp;опорой на&nbsp;факты и&nbsp;без&nbsp;художественного рассказа. Вы&nbsp;получаете фотокопии найденных документов, их&nbsp;расшифровку и&nbsp;поколенную роспись в&nbsp;подробном электронном отчёте. Подходит, когда важны конкретные сведения: имена предков, где&nbsp;они жили, какие документы о&nbsp;них сохранились,&nbsp;— или&nbsp;когда книгу вы&nbsp;хотите собрать сами.</p>
                   <a class="btn directions__button" href="issledovanie.html">Подробнее<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1 6h10M6.5 1.5 11 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>
               </div>
@@ -184,11 +198,10 @@
           <article class="directions__scene" aria-label="3 из 3">
             <img class="directions__backdrop" src="img/photos/directions-research-800.webp" alt="" loading="lazy" decoding="async" aria-hidden="true">
             <div class="directions__inner">
-              <div class="directions__media"><img class="directions__photo" src="img/photos/directions-research-1600.webp" srcset="img/photos/directions-research-800.webp 800w, img/photos/directions-research-1600.webp 1600w" sizes="(min-width: 900px) 43vw, 90vw" alt="Старинная карта с измерительным циркулем" width="800" height="800" loading="lazy" decoding="async"></div>
+              <div class="directions__media"><img class="directions__photo" src="img/photos/directions-research-1600.webp" srcset="img/photos/directions-research-800.webp 800w, img/photos/directions-research-1600.webp 1600w" sizes="(min-width: 900px) 43vw, 90vw" alt="Старинная карта с измерительным циркулем" width="800" height="800" loading="lazy" decoding="async"><ul class="directions__chips directions__chips--mobile" aria-label="Срок и стоимость"><li>срок и&nbsp;цена&nbsp;— под&nbsp;задачу</li></ul></div>
               <div class="directions__copy">
                   <h3 class="directions__title">Точечные исследования</h3>
                   <ul class="directions__chips" aria-label="Срок и стоимость"><li>срок и&nbsp;цена&nbsp;— под&nbsp;задачу</li></ul>
-                  <h4 class="directions__label">Что это такое?</h4>
                   <p class="directions__description">Ответ на&nbsp;один конкретный вопрос о&nbsp;предке, а&nbsp;не&nbsp;история всего рода. Найдём запись о&nbsp;рождении, венчании или&nbsp;службе, подтвердим родство для&nbsp;наследства, суда или&nbsp;гражданства по&nbsp;происхождению, проверим семейную легенду. Вы&nbsp;получите копии найденных документов с&nbsp;расшифровкой. А&nbsp;если сведения о&nbsp;семье уже собраны, оформим их&nbsp;в&nbsp;дизайн родословного древа.</p>
                   <a class="btn directions__button" href="tochechnye-issledovaniya.html">Подробнее<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1 6h10M6.5 1.5 11 6l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>
               </div>
@@ -264,8 +277,7 @@
       </div>
       <div class="i3-news__list" role="region" aria-label="Публикации сообщества" tabindex="0">
           <article class="i3-post">
-            <img referrerpolicy="no-referrer" class="i3-post__img" src="https://sun9-57.vkuserphoto.ru/s/v1/ig2/vi1DBRthe_U-Eu406gLm0ZncodinImf2RdQdP_9PGj3OyPxVohfhkEpY28KJeD5R9xbN90BLUhEDaSgGPvS2iVWW.jpg?quality=95&amp;as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080&amp;from=bu&amp;u=MSmhdUww6Kh-TCCy1Ifwu7X7OXn09U9IX2xeTPh0aKM&amp;cs=1280x0" alt="Фото из публикации ВКонтакте" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
-            <a class="community-photo-link" hidden href="https://vk.com/wall-228395135_43" target="_blank" rel="noopener">Посмотреть фото во&nbsp;ВКонтакте →</a>
+            <img class="i3-post__img" src="img/photos/community-cover-1.webp" width="960" height="720" alt="Обложка публикации сообщества" loading="lazy" decoding="async">
             <div>
               <h3 class="i3-post__title">Илья Репин (1844-1930)</h3>
               <p class="i3-post__text">Родился в Чугуеве Харьковской губернии. Дед — Василий Ефимович Репин — неслуживый казак, владел постоялым двором и вёл торговлю. Отец — Ефим Васильевич Репин после введения военных поселений в 1817 году получил статус «военного поселянина».</p>
@@ -273,8 +285,7 @@
             </div>
           </article>
           <article class="i3-post">
-            <img referrerpolicy="no-referrer" class="i3-post__img" src="https://sun9-23.vkuserphoto.ru/s/v1/ig2/YWb3jC3WW3fZ70lcfDXVkipRxDRTKxERm_Io78vdp7DJU8pCMaiEVVm5M_qMs9lwxqyMTyOw386jStXNfG2NsLfv.jpg?quality=95&amp;as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080&amp;from=bu&amp;u=yVFAjkIFJ0VKnxijMuq-SH07NiXx2-yMan15Vcvuvig&amp;cs=640x0" alt="Фото из публикации ВКонтакте" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
-            <a class="community-photo-link" hidden href="https://vk.com/wall-228395135_39" target="_blank" rel="noopener">Посмотреть фото во&nbsp;ВКонтакте →</a>
+            <img class="i3-post__img" src="img/photos/community-cover-2.webp" width="960" height="720" alt="Обложка публикации сообщества" loading="lazy" decoding="async">
             <div>
               <h3 class="i3-post__title">Бор, Боровичи, Борок, Боровая, Боровня…</h3>
               <p class="i3-post__text">Путешествуя по Новгородской области, можно встретить многочисленные населенные пункты, названия которых восходят к корню бор-. Если взглянуть на растительность в округе, часто интуитивно становится понятно, что эти названия – вариации на тему бора как соснового леса.</p>
@@ -282,7 +293,7 @@
             </div>
           </article>
           <article class="i3-post">
-            <img class="i3-post__img" src="img/photos/community-toponyms.webp" width="640" height="480" alt="Топонимы Новгородчины — обложка публикации" loading="lazy" decoding="async">
+            <img class="i3-post__img" src="img/photos/community-cover-3.webp" width="960" height="720" alt="Обложка публикации сообщества" loading="lazy" decoding="async">
             <div>
               <h3 class="i3-post__title">Продолжаем изучать места, где жили наши предки</h3>
               <p class="i3-post__text">А есть ли единая классификация топонимов? На примере топонимов, образованных по природным признакам, а именно хвойного леса — бора, рассмотрим словообразование топонимов.</p>
@@ -345,7 +356,7 @@
 
 </div>
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="js/main.js?v=20261028-gentle"></script>
+<script src="js/main.js?v=20261029-editorial"></script>
 </body>
 </html>
 

@@ -2959,3 +2959,27 @@ main > section[hidden] { display: none !important; }
 .home3 .header.is-over-directions .header__brand,
 .home3 .header.is-over-directions .icon-btn { color: #fff; }
 .home3 .header.is-over-directions .header__cta { background: #fff; color: var(--text); }
+
+/* Alternate about layout: static photograph and flowing editorial copy. */
+.about-editorial { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: clamp(32px,7vw,128px); padding: var(--s-96) var(--g3); align-items: start; }
+.about-editorial__left h2 { font-size: var(--t2); margin: 0 0 var(--s-32); }
+.about-editorial__left img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; filter: none; }
+.about-editorial__copy { font-size: var(--t5); color: var(--text); letter-spacing: normal; }
+.about-editorial__copy p + p { margin-top: var(--s-24); }
+.about-editorial__copy h3 { font-size: var(--t3); margin: var(--s-48) 0 var(--s-24); }
+.about-editorial__copy strong { font-weight: 700; }
+.directions__chips--mobile { display: none; }
+.directions__description { margin-top: var(--s-40, 40px); }
+.idx3 .calc--split .calc-q__title { font-size: var(--t3); }
+@media (max-width: 767px) {
+ .about-editorial { grid-template-columns: minmax(0,1fr); gap: var(--s-32); }
+ .directions__backdrop, .directions__scene::after { display: none; }
+ .directions__scene { background: var(--bg); }
+ .directions__copy .directions__chips { display: none; }
+ .directions__chips--mobile { display: flex; position: absolute; z-index: 2; left: 16px; right: 16px; bottom: 16px; margin: 0; }
+ .directions__chips--mobile li { background: #fff; color: var(--text); border-color: #fff; }
+ .directions__title, .directions__description { color: var(--text); }
+ .directions__description { margin-top: var(--s-24); }
+ .i3-news .i3-news__list { margin-right: calc(-1 * var(--g3)); padding-right: var(--g3); }
+ .idx3 .review, .i3-news .i3-post, .i3-news .i3-post + .i3-post, .i3-news .i3-post:last-child { flex: 0 0 min(334px, 80vw); max-width: min(334px, 80vw); }
+}
