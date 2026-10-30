@@ -3209,3 +3209,43 @@ html.theme-v1.home3.idx3 {
  .about-editorial__left img {transform:none;}
  .about-editorial__copy h3 {margin-top:32px;margin-bottom:16px;}
 }
+
+/* Semantic spacing shared by equal type roles, always at least one line high. */
+html.theme-v1.home3.idx3 {--heading-gap:40px;--section-title-gap:64px;}
+.idx3 .about-editorial__copy h3 {line-height:1.25;margin-bottom:var(--heading-gap);}
+.idx3 .about-editorial {row-gap:var(--section-title-gap);}
+.idx3 .calc--split .calc-q__title {line-height:1.25;}
+.idx3 .calc--split fieldset.calc-q > .calc-q__hint {margin-top:var(--heading-gap);}
+.idx3 .calc--split .calc-q:not(fieldset) > .calc-q__hint {margin-top:calc(var(--heading-gap) - 24px);}
+.idx3 .formats__text,.idx3 .book-stages__text {margin-top:var(--heading-gap);}
+.idx3 .i3-news .i3-post__title {font-size:var(--type-heading);line-height:1.25;}
+.idx3 .i3-news .i3-post__text {margin-top:var(--heading-gap);}
+.idx3 .h3-head,.idx3 .i3-news__head {margin-bottom:var(--section-title-gap);}
+.idx3 .calc__intro {gap:var(--section-title-gap);}
+@media(min-width:768px) {
+ .directions.is-story:not(.is-tablet-story) .directions__copy {
+  margin-right:calc((100% + var(--g)) / 6);
+  min-height:0;justify-content:center;
+ }
+ .directions.is-story:not(.is-tablet-story) .directions__description {margin-top:40px;padding-top:0;}
+}
+@media(max-width:767px) {
+ html.theme-v1.home3.idx3 {--heading-gap:32px;--section-title-gap:40px;--sec:40px;--section-gap:40px;}
+ .idx3 .about-editorial {padding-block:48px;}
+ .idx3 .i3-news {padding-block:48px;}
+ .idx3 .i3-about {padding-block:48px;}
+ .idx3 .h3-sec {margin-top:40px;}
+ .idx3 .formats__list {row-gap:24px;}
+ .idx3 .formats__img {width:100%;max-width:100%;margin-inline:0;}
+ .idx3 .about-editorial__copy h3 {margin-bottom:var(--heading-gap);}
+ .idx3 .h3-footer {background:#1c1c1c;}
+ .idx3 .h3-footer__mark {color:rgba(255,255,255,.1);}
+ .idx3 .h3-footer__links img {display:block;flex:0 0 44px;width:44px;height:44px;max-width:44px;margin:0;object-fit:contain;}
+}
+
+/* Major titles have a larger following interval than the smaller headings. */
+.idx3 .i3-hero__lead {margin-top:var(--section-title-gap);}
+.idx3 .calc--immersive .calc__intro {gap:var(--section-title-gap);}
+.directions__copy > .directions__chips {margin-top:56px;}
+@media(max-width:1199px) { .directions__copy > .directions__chips {margin-top:48px;} }
+@media(max-width:767px) { .directions__copy > .directions__chips {margin-top:40px;} }
