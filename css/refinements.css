@@ -26,7 +26,8 @@
 }
 .idx3 .i3-news .i3-post__text {
   display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
-  line-clamp: 4; overflow: hidden; min-height: 6em; max-height: 6em;
+  line-clamp: 4; overflow: hidden;
+  min-height: calc(4 * var(--lh-body) * 1em); max-height: calc(4 * var(--lh-body) * 1em);
 }
 .idx3 .i3-news .i3-post__link {
   margin-top: auto; padding-top: var(--s-24); align-self: flex-start;
