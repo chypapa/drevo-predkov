@@ -1,9 +1,9 @@
 /* A stationary photo stack revealed from bottom to top by the scrolling text. */
 .idx3 main#top > .scroll-stages { width: 100%; padding: 0; background: var(--bg); }
 .scroll-stages__layout { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
-.scroll-stages__layout::before {
-  content: ''; grid-column: 1; grid-row: 1; position: sticky; top: 0; height: 100svh;
-  background: var(--bg) url('../img/photos/stages-map-background.png') center / cover no-repeat;
+.scroll-stages__paper {
+  grid-column: 1; grid-row: 1; position: sticky; top: 0; align-self: start; height: 100vh; height: 100svh;
+  background: linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.25)), url('../img/photos/stages-map-background-v2.webp') center / cover no-repeat;
 }
 .scroll-stages__copy { grid-column: 1; grid-row: 1; z-index: 1; min-width: 0; }
 .scroll-stage { position: relative; min-width: 0; min-height: 100svh; display: flex; align-items: center; padding: 64px; color: #fff; box-sizing: border-box; }
@@ -23,7 +23,7 @@
 @media (min-width:768px) and (max-width:1199px) { .scroll-stage { padding: 48px; } }
 @media (max-width:767px), (min-width:768px) and (max-width:1199px) and (orientation:portrait) {
   .scroll-stages__layout { grid-template-columns: minmax(0,1fr); }
-  .scroll-stages__layout::before { display: none; }
+  .scroll-stages__paper { display: none; }
   .scroll-stages__visual { grid-column: 1; grid-row: 1; }
   .scroll-stages__copy { background: transparent; }
   .scroll-stage { min-height: 75svh; padding: 64px 24px; }
@@ -55,6 +55,6 @@
 
 /* On wide screens, scrolling copy sits directly on the light page surface. */
 @media (min-width:768px) and (orientation:landscape), (min-width:1200px) {
-  .scroll-stage { color: #242320; }
-  .scroll-stage__button:focus-visible { outline-color: var(--text); }
+  .scroll-stage { color: #fff; }
+  .scroll-stage__button:focus-visible { outline-color: #fff; }
 }
