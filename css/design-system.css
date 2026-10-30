@@ -432,3 +432,16 @@ html.theme-v1.home3.idx3 {
   .idx3 .service-intro .story-intro__media { order: 0; }
   .idx3 .service-intro .story-intro__body { order: 1; margin-top: 0; padding-top: 0; }
 }
+
+/* Fine alignment and calculator controls requested for the service pages. */
+.idx3 .h3-footer { border-top: 0; }
+.idx3 .calc.calc--immersive .calc__add { color: var(--red); gap: 8px; }
+@media (min-width:768px) {
+  .idx3 #family-tree .story-intro__copy { grid-column: 1 / 6; }
+  .idx3 #family-tree .story-intro__media { grid-column: 7 / 13; }
+}
+@media (max-width:767px) {
+  .idx3 .h3-footer { border-top: 1px solid rgba(255,255,255,.35); }
+  .idx3 .h3-lead { border-bottom: 0; }
+  .idx3 .calc--immersive :is(.calc-q__custom,.combo__input) { background: transparent; }
+}
