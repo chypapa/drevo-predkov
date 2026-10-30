@@ -137,3 +137,22 @@ html.theme-v1.home3.idx3 {
   .idx3 .story-intro__body { margin-top: 32px; }
   .idx3 .book-stages > .h3-head { margin-bottom: 40px; }
 }
+
+/* Keep the book introduction, stage heading/cards and print section on one shared grid. */
+@media (min-width: 768px) {
+  .idx3 .book-stages {
+    width: 100%;
+    padding-inline: 0;
+  }
+  .idx3 .book-stages > :is(.h3-head,.i3-news__list) {
+    width: min(83.3333%, calc(100% - 2 * var(--g3)));
+    max-width: none;
+    margin-inline: auto;
+  }
+  .idx3 .book-stages > .h3-head {
+    text-align: left;
+  }
+  .idx3 .print-edition {
+    width: min(83.3333%, calc(100% - 2 * var(--g3)));
+  }
+}
