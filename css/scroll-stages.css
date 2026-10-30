@@ -45,12 +45,13 @@
   color: inherit;
   font-size: var(--type-body);
   line-height: 1.5;
+  letter-spacing: .12em;
 }
 .idx3 .scroll-stage__title {
   margin-top: 24px;
   color: inherit;
   font-family: 'Cormorant', Georgia, serif;
-  font-size: var(--type-h2);
+  font-size: var(--type-section);
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: normal;
@@ -114,7 +115,7 @@
   height: 116%;
   object-fit: cover;
   object-position: center;
-  transform: translate3d(0, 8%, 0) scale(1.1);
+  transform: translate3d(0, 0, 0) scale(1.08);
   will-change: transform;
 }
 .scroll-stages__frame:nth-child(3) img { object-position: center 40%; }
@@ -175,4 +176,16 @@
     transform: none !important;
   }
   .scroll-stage__button { transition: none; }
+}
+
+/* Preserve natural text flow; only the photograph inside each clipped frame has parallax. */
+.scroll-stage__button:focus-visible { outline: 2px solid #fff; outline-offset: 5px; }
+.scroll-stage__button:active { transform: translateY(1px); }
+@media (max-width: 767px) {
+  .scroll-stage[data-stage='1'] .scroll-stage__mobile-img { object-position: 62% center; }
+  .scroll-stage[data-stage='2'] .scroll-stage__mobile-img { object-position: 45% center; }
+}
+@media (prefers-reduced-motion: reduce) and (min-width: 768px) {
+  .scroll-stages__sticky { position: static; height: auto; overflow: visible; }
+  .scroll-stages__frame { position: relative; inset: auto; transform: none !important; }
 }

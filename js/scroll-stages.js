@@ -1,77 +1,53 @@
+/* Scroll position is the timeline: no easing, timers, snapping or retained direction. */
 (function () {
   'use strict';
-
   var section = document.querySelector('[data-scroll-stages]');
   if (!section) return;
-
-  var frames = Array.prototype.slice.call(section.querySelectorAll('.scroll-stages__frame'));
-  var photos = frames.map(function (frame) { return frame.querySelector('img'); });
-  var mobilePhotos = Array.prototype.slice.call(section.querySelectorAll('.scroll-stage__mobile-img'));
-  var articles = Array.prototype.slice.call(section.querySelectorAll('.scroll-stage'));
-  var desktop = window.matchMedia('(min-width: 768px)');
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var articles = Array.from(section.querySelectorAll('.scroll-stage'));
+  var frames = Array.from(section.querySelectorAll('.scroll-stages__frame'));
+  var sticky = section.querySelector('.scroll-stages__sticky');
+  var desktop = matchMedia('(min-width: 768px)');
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)');
   var queued = false;
-
-  function clamp(value, min, max) {
-    return Math.min(max, Math.max(min, value));
-  }
-
-  function updateDesktop() {
-    var sectionTop = section.getBoundingClientRect().top;
-    var scrolled = -sectionTop;
-    var starts = articles.map(function (article) {
-      return article.getBoundingClientRect().top - sectionTop;
-    });
-    var progress = 0;
-    for (var index = 0; index < starts.length - 1; index += 1) {
-      if (scrolled >= starts[index]) {
-        progress = index + (scrolled - starts[index]) / (starts[index + 1] - starts[index]);
-      }
-    }
-    progress = clamp(progress, 0, frames.length - 1);
-
-    frames.forEach(function (frame, index) {
-      frame.style.transform = 'translate3d(0, ' + ((index - progress) * 100) + '%, 0)';
-      if (reduced.matches) {
-        photos[index].style.transform = 'none';
-        return;
-      }
-      var local = clamp(progress - index, -1, 1);
-      var y = local * -8;
-      var scale = 1.1 - (local + 1) * 0.01;
-      photos[index].style.transform = 'translate3d(0, ' + y + '%, 0) scale(' + scale + ')';
-    });
-  }
-
-  function updateMobile() {
-    var viewport = window.innerHeight;
-    mobilePhotos.forEach(function (photo) {
-      if (reduced.matches) {
-        photo.style.transform = 'none';
-        return;
-      }
-      var rect = photo.parentElement.getBoundingClientRect();
-      var offset = clamp((rect.top + rect.height / 2 - viewport / 2) / viewport, -1, 1);
-      photo.style.transform = 'translate3d(0, ' + (offset * 4) + '%, 0) scale(1.1)';
-    });
-  }
-
+  var visible = true;
+  function clamp(n) { return Math.max(-1, Math.min(1, n)); }
   function update() {
     queued = false;
-    if (desktop.matches) updateDesktop();
-    else updateMobile();
+    if (!visible) return;
+    // Read all geometry before writing transforms to avoid repeated layouts.
+    var viewport = innerHeight;
+    var rects = articles.map(function (article) { return article.getBoundingClientRect(); });
+    var stickyTop = sticky.getBoundingClientRect().top;
+    rects.forEach(function (rect, index) {
+      var frame = frames[index];
+      var photo = desktop.matches ? frame.querySelector('img') : articles[index].querySelector('.scroll-stage__mobile-img');
+      var progress = clamp((viewport / 2 - rect.top - rect.height / 2) / ((viewport + rect.height) / 2));
+      if (desktop.matches) {
+        // Frame edges track the corresponding article edges, including tall text.
+        frame.style.height = rect.height + 'px';
+        frame.style.transform = reduced.matches ? 'none' : 'translate3d(0,' + (rect.top - stickyTop) + 'px,0)';
+      }
+      photo.style.transform = reduced.matches ? 'none' :
+        'translate3d(0,' + (-progress * 4) + '%,0) scale(' + (1.08 + progress * .02) + ')';
+    });
   }
-
   function schedule() {
-    if (!queued) {
-      queued = true;
-      requestAnimationFrame(update);
-    }
+    if (!queued) { queued = true; requestAnimationFrame(update); }
   }
-
-  window.addEventListener('scroll', schedule, { passive: true });
-  window.addEventListener('resize', schedule);
+  addEventListener('scroll', schedule, { passive: true });
+  addEventListener('resize', schedule);
   desktop.addEventListener('change', schedule);
   reduced.addEventListener('change', schedule);
+  if ('ResizeObserver' in window) {
+    var resizeObserver = new ResizeObserver(schedule);
+    articles.forEach(function (article) { resizeObserver.observe(article); });
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+      if (visible) schedule();
+    }, { rootMargin: '100% 0px' }).observe(section);
+  }
+  if (document.fonts) document.fonts.ready.then(schedule);
   update();
 })();
