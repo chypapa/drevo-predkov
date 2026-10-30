@@ -7,8 +7,8 @@
   <meta name="description" content="Генеалогическое исследование по архивам: ищем и расшифровываем документы о ваших предках и оформляем результат в родословную книгу с родословным древом. Рассчитайте стоимость онлайн.">
   <link rel="icon" href="img/favicon.ico?v=20261030-new" type="image/x-icon" sizes="16x16">
   <link rel="stylesheet" href="css/style.css?v=20261030-proximity-fix">
-  <link rel="stylesheet" href="css/design-system.css?v=20261030-footer-opacity">
-  <link rel="stylesheet" href="css/scroll-stages.css?v=20261030-bottom-reveal">
+  <link rel="stylesheet" href="css/design-system.css?v=20261030-footer-large">
+  <link rel="stylesheet" href="css/scroll-stages.css?v=20261030-stage-settle">
   <script>if (!('onpagereveal' in window)) document.documentElement.classList.add('fade-nav');</script>
   <style>
     .idx3.svcp .opening--kniga .opening__media::after {
@@ -136,30 +136,8 @@
       </div>
     </section>
 
-    <!-- ============ ЭТАПЫ РАБОТЫ: номер, название, срок и описание ============ -->
-    <section class="h3-sec h3-steps book-stages" aria-label="Этапы работы">
-      <h2 class="v1-h2 h3-head">Этапы работы</h2>
-      <ol class="i3-news__list">
-        <li class="i3-post">
-          <ul class="svx__chips book-stages__duration" aria-label="Срок этапа"><li>1–2&nbsp;дня</li></ul>
-          <h4 class="book-stages__title">Интервью и&nbsp;архивный поиск</h4>
-          <p class="book-stages__text">Беседуем с&nbsp;семьёй, собираем известные сведения и&nbsp;ищем предков в&nbsp;государственных и&nbsp;частных архивах. О&nbsp;ключевых находках сообщаем по&nbsp;мере их&nbsp;появления.</p>
-        </li>
-        <li class="i3-post">
-          <ul class="svx__chips book-stages__duration" aria-label="Срок этапа"><li>от&nbsp;20&nbsp;дней</li></ul>
-          <h4 class="book-stages__title">История рода и&nbsp;содержание книги</h4>
-          <p class="book-stages__text">Расшифровываем документы, рассказываем о&nbsp;каждом поколении на&nbsp;фоне эпохи и&nbsp;согласовываем с&nbsp;вами содержание книги.</p>
-        </li>
-        <li class="i3-post">
-          <ul class="svx__chips book-stages__duration" aria-label="Срок этапа"><li>от&nbsp;7&nbsp;дней</li></ul>
-          <h4 class="book-stages__title">Дизайн и&nbsp;вёрстка</h4>
-          <p class="book-stages__text">Оформляем издание: расшифровки документов, исторические справки и&nbsp;древо для&nbsp;печати на&nbsp;холсте. Книга готова в&nbsp;электронном виде, печать&nbsp;— по&nbsp;желанию.</p>
-        </li>
-      </ol>
-    </section>
-
-    <!-- Новый scroll-сценарий: исходный блок этапов выше сохранён без изменений. -->
-    <section class="scroll-stages" aria-label="Этапы работы над родословной книгой" data-scroll-stages>
+    <!-- Этапы работы: текст прокручивается, фотографии открываются снизу. -->
+    <section id="book-stages" class="scroll-stages" aria-label="Этапы работы над родословной книгой" data-scroll-stages>
       <div class="scroll-stages__layout">
         <div class="scroll-stages__copy">
           <article class="scroll-stage" data-stage="1">
@@ -533,7 +511,7 @@
 
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="js/main.js?v=20261029-system"></script>
-<script src="js/scroll-stages.js?v=20261030-bottom-reveal"></script>
+<script src="js/scroll-stages.js?v=20261030-stage-settle"></script>
 <script src="js/calculator.js?v=20261026-empty"></script>
 </body>
 </html>
