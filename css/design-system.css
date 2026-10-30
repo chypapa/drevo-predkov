@@ -414,3 +414,21 @@ html.theme-v1.home3.idx3 {
   .idx3.matched-book .story-intro__body { order: 1; margin-top: 0; padding-top: 0; }
   .idx3 .scroll-stages__copy { padding-inline: var(--g3); }
 }
+
+/* Hero consultation link uses button styling wherever it is visible. */
+.idx3 .i3-hero__link {
+  background: #fff; color: var(--text); border: 1px solid #fff; border-radius: 6px;
+  padding: 16px 32px; min-height: 48px; text-decoration: none; justify-content: center; box-sizing: border-box;
+}
+.idx3 .calc--immersive .calc-q__more p { color: var(--text); opacity: 1 !important; transition: none; }
+@media (min-width:768px) {
+  .idx3 .scroll-stages__layout { grid-template-columns: minmax(0,calc(50% - var(--card-gap) / 2)) minmax(0,1fr); }
+}
+@media (max-width:767px) {
+  .idx3 .i3-hero__link { display: flex; width: 100%; }
+  .idx3 .h3-footer .h3-footer__mark { text-align: left; text-align-last: justify; letter-spacing: -.03em; }
+  .idx3 .service-intro .story-intro__copy { display: contents; }
+  .idx3 .service-intro h2 { order: -1; }
+  .idx3 .service-intro .story-intro__media { order: 0; }
+  .idx3 .service-intro .story-intro__body { order: 1; margin-top: 0; padding-top: 0; }
+}

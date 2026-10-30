@@ -7,7 +7,8 @@
   <meta name="description" content="Генеалогическое исследование семьи по архивам России, Украины и Беларуси с результатом в электронном виде: копии документов с расшифровкой и поколенная роспись. Рассчитайте стоимость.">
   <link rel="icon" href="img/favicon.ico?v=20261030-new" type="image/x-icon" sizes="16x16">
   <link rel="stylesheet" href="css/style.css?v=20261030-proximity-fix">
-  <link rel="stylesheet" href="css/design-system.css?v=20261030-mobile-headings">
+  <link rel="stylesheet" href="css/design-system.css?v=20261031-service-layout">
+  <link rel="stylesheet" href="css/scroll-stages.css?v=20261031-service-layout">
   <script>if (!('onpagereveal' in window)) document.documentElement.classList.add('fade-nav');</script>
 </head>
 <body>
@@ -117,42 +118,53 @@
     </section>
 
     <!-- ============ ОБ УСЛУГЕ — как «О книге» на странице родословной книги: слева крупный текст и кнопка, справа подробности ============ -->
-    <section class="about2 about2--book container section" aria-labelledby="svc-intro-title">
-      <div class="about2__intro">
-        <h2 class="book-lead" id="svc-intro-title"><em>Архивный свиток&nbsp;— это документы о&nbsp;ваших предках, собранные в&nbsp;одном отчёте.</em> Мы&nbsp;подробно исследуем архивные записи о&nbsp;семье и&nbsp;собираем факты: кто, где и&nbsp;когда жил.</h2>
-        <p class="book-note">Подходит, если хочется узнать историю семьи и&nbsp;получить документы, которые её подтверждают, или&nbsp;если вы&nbsp;планируете написать книгу о&nbsp;роде сами.</p>
-        <a class="btn" href="index.html#contact" data-consult>Заказать исследование</a>
-      </div>
-      <div class="about2__how">
-        <h3 class="about2__subtitle">Что входит в&nbsp;свиток</h3>
-        <ul class="about2__list">
-          <li>Фотокопии всех найденных документов: метрических книг, ревизских сказок, переписей. К&nbsp;каждому&nbsp;— расшифровка: старый почерк и&nbsp;дореформенную орфографию переводим в&nbsp;понятный современный текст.</li>
-          <li>Поколенная роспись&nbsp;— ваши предки по&nbsp;поколениям: кто чей сын или&nbsp;дочь, годы жизни, где жили и&nbsp;чем занимались. По&nbsp;ней видна вся линия рода&nbsp;— от&nbsp;вас вглубь веков.</li>
-          <li>Свиток приходит в&nbsp;электронном виде: его удобно хранить и&nbsp;пересылать родственникам в&nbsp;других городах и&nbsp;странах. Результат оформляется как подробный отчёт, без&nbsp;художественного рассказа и&nbsp;дизайнерской вёрстки.</li>
-        </ul>
+    <section class="story-intro service-intro" id="service-intro" aria-labelledby="service-intro-title">
+      <div class="story-intro__media"><img src="img/photos/directions-archive-v2-1600.webp" alt="Семейные фотографии, архивные документы и схема родственных связей" loading="lazy" decoding="async"></div>
+      <div class="story-intro__copy">
+        <h2 id="service-intro-title">Архивный свиток — история вашего рода, подтверждённая документами</h2>
+        <div class="story-intro__body"><p>Архивные записи помогают узнать, где жили ваши предки, чем занимались и как связаны поколения. Мы исследуем историю семьи, проверяем родство и собираем найденные сведения в подробный отчёт.</p><p>В архивный свиток входят фотокопии найденных документов, расшифровки старого почерка и поколенная роспись: имена, даты, места и родственные связи. У каждой находки сохраняем ссылку на источник, чтобы было понятно, на чём основан вывод.</p><p>Результат готовим в электронном виде — его удобно хранить и пересылать близким. Этот формат подойдёт, если вам важны документы и факты или вы планируете написать семейную книгу самостоятельно.</p></div>
       </div>
     </section>
 
     <!-- ============ ЭТАПЫ РАБОТЫ — как на главной: три фото разной высоты, под каждым — этап ============ -->
-    <section class="h3-sec h3-steps book-stages" aria-label="Этапы работы">
-      <h2 class="v1-h2 h3-head">Этапы работы</h2>
-      <ol class="i3-news__list">
-        <li class="i3-post">
-          <ul class="svx__chips book-stages__duration" aria-label="Срок этапа"><li>1–2&nbsp;дня</li></ul>
-          <h4 class="book-stages__title">Интервью</h4>
-          <p class="book-stages__text">Беседуем с&nbsp;членами семьи в&nbsp;удобном формате, собираем сведения и&nbsp;материалы. Вместе решаем, что&nbsp;войдёт в&nbsp;отчёт.</p>
-        </li>
-        <li class="i3-post">
-          <ul class="svx__chips book-stages__duration" aria-label="Срок этапа"><li>от&nbsp;20&nbsp;дней</li></ul>
-          <h4 class="book-stages__title">Архивный поиск</h4>
-          <p class="book-stages__text">Работаем с&nbsp;государственными и&nbsp;частными архивами, собираем данные. О&nbsp;ключевых находках сообщаем по&nbsp;мере их&nbsp;появления.</p>
-        </li>
-        <li class="i3-post">
-          <ul class="svx__chips book-stages__duration" aria-label="Срок этапа"><li>1–2&nbsp;дня</li></ul>
-          <h4 class="book-stages__title">Оформление отчёта</h4>
-          <p class="book-stages__text">Собираем фотокопии документов, их&nbsp;расшифровку и&nbsp;поколенную роспись в&nbsp;подробный отчёт. Без&nbsp;дизайна и&nbsp;исторической обработки данных, только факты.</p>
-        </li>
-      </ol>
+    <section class="scroll-stages" aria-label="Этапы работы" data-scroll-stages>
+      <h2 class="mobile-section-title">Этапы работы</h2>
+      <div class="scroll-stages__layout">
+        <div class="scroll-stages__copy">
+          <article class="scroll-stage" data-stage="1">
+            <img class="scroll-stage__mobile-img" src="img/photos/stage-consultation.jpg" alt="" loading="lazy" decoding="async">
+            <div class="scroll-stage__content">
+              <p class="scroll-stage__label">Этап 1</p>
+              <h3 class="scroll-stage__title">Расскажите, что вы хотите узнать о своих предках</h3>
+              <p class="scroll-stage__description">На бесплатной консультации обсудим известные имена, даты и места, посмотрим семейные документы и выберем линии для поиска. Согласуем глубину исследования, предварительные сроки и стоимость. Консультация ни к чему вас не обязывает.</p>
+              <a class="scroll-stage__button" href="index.html#contact" data-consult>Получить консультацию</a>
+            </div>
+          </article>
+          <article class="scroll-stage" data-stage="2">
+            <img class="scroll-stage__mobile-img" src="img/photos/stage-archive.jpg" alt="" loading="lazy" decoding="async">
+            <div class="scroll-stage__content">
+              <p class="scroll-stage__label">Этап 2</p>
+              <h3 class="scroll-stage__title">Найдём архивные записи и проверим родственные связи</h3>
+              <p class="scroll-stage__description">Изучим метрические книги, ревизские сказки, переписи и другие источники. Сопоставим имена, даты и места, чтобы проследить историю семьи по поколениям. Будем сообщать о находках и объяснять, что удалось подтвердить. Исследование занимает от месяца; срок зависит от задачи и сохранности документов.</p>
+
+            </div>
+          </article>
+          <article class="scroll-stage" data-stage="3">
+            <img class="scroll-stage__mobile-img" src="img/photos/directions-archive-v2-1600.webp" alt="" loading="lazy" decoding="async">
+            <div class="scroll-stage__content">
+              <p class="scroll-stage__label">Этап 3</p>
+              <h3 class="scroll-stage__title">Соберём документы и сведения в подробный отчёт</h3>
+              <p class="scroll-stage__description">Передадим электронный архивный свиток: копии найденных записей, их расшифровки, ссылки на источники и поколенную роспись. Вы сможете увидеть подтверждённые родственные связи, сохранить материалы для семьи или использовать их для собственной книги. Если сведения найти не удалось, поясним, какие источники проверили и где можно продолжить поиск.</p>
+
+            </div>
+          </article>
+        </div>
+        <div class="scroll-stages__visual" aria-hidden="true"><div class="scroll-stages__sticky">
+          <div class="scroll-stages__frame"><img src="img/photos/stage-consultation.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="scroll-stages__frame"><img src="img/photos/stage-archive.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="scroll-stages__frame"><img src="img/photos/directions-archive-v2-1600.webp" alt="" loading="lazy" decoding="async"></div>
+        </div></div>
+      </div>
     </section>
 
     <!-- ============ КАЛЬКУЛЯТОР: заголовок и текст по центру, под ними анкета; по бокам — ветви родословного древа.
@@ -347,6 +359,7 @@
 
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="js/main.js?v=20261029-system"></script>
+<script src="js/scroll-stages.js?v=20261031-service-layout"></script>
 <script src="js/calculator.js?v=20261026-empty"></script>
 </body>
 </html>
