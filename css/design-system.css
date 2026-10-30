@@ -110,3 +110,30 @@ html.theme-v1.home3.idx3 {
 .idx3 .calc--immersive .calc-row + .calc-row { padding-top: var(--group-gap); }
 .idx3 .story-intro + .book-stages { margin-top: 0; }
 .idx3 .i3-news .i3-post__title { text-wrap: wrap; }
+/* Shared editorial blocks use the same inset, tall rhythm and title spacing. */
+@media (min-width: 768px) {
+  .idx3 .story-intro {
+    min-height: 100svh;
+    box-sizing: border-box;
+    padding-block: clamp(72px, 10svh, 144px);
+  }
+  .idx3 .story-intro__body { margin-top: clamp(48px, 6svh, 80px); }
+  .idx3 .book-stages {
+    width: calc(100% - 2 * var(--g3));
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+  .idx3 .book-stages > :is(.h3-head,.i3-news__list) {
+    width: 83.3333%;
+    margin-inline: auto;
+  }
+  .idx3 .book-stages > .h3-head { margin-bottom: clamp(56px, 7svh, 88px); }
+  .idx3 .print-edition {
+    width: calc(100% - 2 * var(--g3));
+    margin-inline: auto;
+  }
+}
+@media (max-width: 767px) {
+  .idx3 .story-intro__body { margin-top: 32px; }
+  .idx3 .book-stages > .h3-head { margin-bottom: 40px; }
+}
