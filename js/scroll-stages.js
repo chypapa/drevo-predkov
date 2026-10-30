@@ -28,7 +28,7 @@
         frame.style.transform = reduced.matches ? 'none' : 'translate3d(0,' + (rect.top - stickyTop) + 'px,0)';
       }
       photo.style.transform = reduced.matches ? 'none' :
-        'translate3d(0,' + (-progress * 4) + '%,0) scale(' + (1.08 + progress * .02) + ')';
+        'translate3d(0,' + (-progress * 8) + '%,0) scale(' + (1.14 + progress * .06) + ')';
     });
   }
   function schedule() {
