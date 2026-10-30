@@ -446,18 +446,6 @@ html.theme-v1.home3.idx3 {
   .idx3 .calc--immersive :is(.calc-q__custom,.combo__input) { background: transparent; }
 }
 
-/* Service arrivals: a compact title band followed by one editorial photograph. */
-.service-page.idx3.svcp .opening {
-  height: auto; min-height: 0; padding: 64px var(--g3); background: #191919;
-}
-.service-page .opening__media { display: none; }
-.service-page.idx3.svcp .opening__content {
-  position: relative; inset: auto; max-width: 100%; padding: 0;
-  transform: none !important; opacity: 1;
-}
-@media (max-width:767px) {
-  .service-page.idx3.svcp .opening { padding-block: 40px; }
-}
 @media (min-width:768px) and (max-width:1199px) and (orientation:portrait) {
   /* Keep the title, full-width photo and prose in a single reading column. */
   .idx3 .story-intro { grid-template-columns: minmax(0,1fr); height: auto; min-height: 0; row-gap: 32px; padding-block: 0; }
