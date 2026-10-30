@@ -3277,3 +3277,11 @@ html.theme-v1.home3.idx3 {--heading-gap:16px;--section-title-gap:40px;}
  .idx3 .about-editorial {row-gap:32px;}
  .idx3 .about-editorial__copy h3 {margin-top:48px;margin-bottom:16px;}
 }
+
+/* Body copy by device class; heading roles remain unchanged. */
+html.theme-v1.home3.idx3 {--type-body:17px;}
+@media(max-width:1199px) {html.theme-v1.home3.idx3 {--type-body:16px;}}
+@media(max-width:767px) {
+ html.theme-v1.home3.idx3 {--type-body:15px;}
+ .idx3 .h3-footer {background:#48413a;}
+}
