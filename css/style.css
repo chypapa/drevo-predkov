@@ -3176,3 +3176,22 @@ html.theme-v1.home3.idx3 {
   width:calc((100% + var(--g)) * 5 / 12 - var(--g));
  }
 }
+
+/* About: text at the left page edge, smaller photograph at the right. */
+@media(min-width:768px) {
+ .about-editorial > h2 {grid-column:1 / 7;}
+ .about-editorial__copy {grid-column:1 / 7;}
+ .about-editorial__left {grid-column:8 / 12;}
+ .directions.is-story:not(.is-tablet-story) .directions__image-stack {
+  width:calc((100% - 2 * var(--g3) + var(--g)) * 5 / 12 - var(--g));
+  height:min(72svh,720px);
+ }
+ .directions.is-story:not(.is-tablet-story) .directions__copy {
+  width:calc((100% + var(--g)) / 3 - var(--g));
+  min-height:min(72svh,720px);justify-content:flex-start;
+ }
+ .directions.is-story:not(.is-tablet-story) .directions__description {margin-top:auto;padding-top:32px;}
+}
+.home3 .directions__button {background:#fff;color:var(--text);border-color:#fff;}
+.home3 .directions__button:hover {background:#f2f2f1;color:var(--text);border-color:#f2f2f1;}
+@media(min-width:1024px) { .home3 .i3-hero__link {display:none;} }
