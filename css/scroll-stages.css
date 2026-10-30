@@ -3,7 +3,7 @@
 .scroll-stages__layout { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
 .scroll-stages__layout::before {
   content: ''; grid-column: 1; grid-row: 1; position: sticky; top: 0; height: 100svh;
-  background: var(--bg);
+  background: var(--bg) url('../img/photos/stages-map-background.png') center / cover no-repeat;
 }
 .scroll-stages__copy { grid-column: 1; grid-row: 1; z-index: 1; min-width: 0; }
 .scroll-stage { position: relative; min-width: 0; min-height: 100svh; display: flex; align-items: center; padding: 64px; color: #fff; box-sizing: border-box; }
@@ -55,6 +55,6 @@
 
 /* On wide screens, scrolling copy sits directly on the light page surface. */
 @media (min-width:768px) and (orientation:landscape), (min-width:1200px) {
-  .scroll-stage { color: var(--text); }
+  .scroll-stage { color: #242320; }
   .scroll-stage__button:focus-visible { outline-color: var(--text); }
 }
