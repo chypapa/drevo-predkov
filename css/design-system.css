@@ -222,3 +222,113 @@ html.theme-v1.home3.idx3 { --section-heading-space: 32px; }
 
 /* Halve the existing footer wordmark opacity on every screen size. */
 .idx3 .h3-footer__mark { opacity: .5; }
+
+/* Four fixed type roles. Every breakpoint uses the same four values. */
+html.theme-v1.home3.idx3 {
+  --type-h1: 48px;
+  --type-h2: 36px;
+  --type-h3: 24px;
+  --type-body: 17px;
+  --type-heading: var(--type-h3);
+  --type-section: var(--type-h2);
+  --t1: var(--type-h1);
+  --t2: var(--type-h2);
+  --t3: var(--type-h3);
+  --t4: var(--type-h3);
+  --t5: var(--type-body);
+  --fs-h1: var(--type-h1);
+  --fs-h2: var(--type-h2);
+  --fs-h3: var(--type-h3);
+  --fs-h4: var(--type-h3);
+  --fs-strip: var(--type-h3);
+  --fs-quote: var(--type-h3);
+  --fs-body: var(--type-body);
+  --v1-h1: var(--type-h1);
+  --v1-h2: var(--type-h2);
+  --v1-h3: var(--type-h3);
+  --v1-h4: var(--type-h3);
+
+  /* One 8 px rhythm: outer intervals exceed related inner intervals. */
+  --gut: var(--g3);
+  --g: var(--grid-gap);
+  --content-gap: var(--grid-gap);
+  --col-gap: var(--grid-gap);
+  --card-gap: 24px;
+  --pad-card: var(--form-padding);
+  --gap-head: var(--section-heading-space);
+  --gap-text: var(--text-gap);
+  --section-gap: var(--section-space);
+  --section-pad: var(--section-space);
+  --v1-pad: 64px;
+  --v1-near: 32px;
+  --hdr-gap: 32px;
+  --heading-gap: 24px;
+  --section-title-gap: 32px;
+}
+.idx3 :is(h1, .h1) { font-size: var(--type-h1); }
+.idx3 :is(h2, .h2) { font-size: var(--type-h2); }
+.idx3 :is(h3, h4, .h3, .h4) { font-size: var(--type-h3); }
+.idx3 :is(p, .h3-label, .h3-text, .h3-step__text, .h3-footer__policy, .h3-footer__links a) {
+  font-size: var(--type-body);
+}
+.idx3 .i3-hero__title { font-size: var(--type-h1); }
+/* These editorial and service titles use the H2 visual role. */
+.idx3 .story-intro h2,
+.idx3 .print-edition h2,
+.idx3 .directions__title { font-size: var(--type-h2); }
+
+/* Light text on photographs is pure white, not warm off-white. */
+.idx3 :is(.i3-hero__lead, .i3-side__sub, .directions__description) { color: #fff; }
+
+/* Community: four lines of excerpt and bottom-aligned read-more links. */
+.idx3 main#top > .i3-news { border-bottom: 0; }
+.idx3 .i3-news .i3-news__list { gap: var(--card-gap); }
+.idx3 .i3-news .i3-post > div { flex: 1; width: 100%; }
+.idx3 .i3-news .i3-post__text {
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  min-height: 6em;
+  margin-top: var(--text-gap);
+}
+.idx3 .i3-news .i3-post__link {
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+/* Editorial prose replaces the former list in the family-tree service. */
+.spot--immersive .addon__prose { margin-top: 24px; }
+.spot--immersive .addon__prose p { color: #fff; font-size: var(--type-body); line-height: 1.5; }
+.spot--immersive .addon__prose p + p { margin-top: 16px; }
+.spot--immersive .addon__prose strong { color: #fff; font-weight: 700; }
+
+@media (min-width: 1910px) {
+  html.theme-v1.home3.idx3 { --type-body: 18px; }
+}
+@media (min-width: 1600px) {
+  html.theme-v1.home3.idx3 { --type-h1: 52px; --type-h2: 40px; }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  html.theme-v1.home3.idx3 {
+    --type-h1: 40px;
+    --type-h2: 32px;
+    --type-h3: 22px;
+    --type-body: 16px;
+    --v1-pad: 48px;
+    --v1-near: 24px;
+    --hdr-gap: 24px;
+  }
+}
+@media (max-width: 767px) {
+  html.theme-v1.home3.idx3 {
+    --type-h1: 32px;
+    --type-h2: 24px;
+    --type-h3: 20px;
+    --type-body: 15px;
+    --v1-pad: 32px;
+    --v1-near: 16px;
+    --hdr-gap: 16px;
+    --sec: var(--section-space);
+    --section-gap: var(--section-space);
+  }
+  .idx3 .directions__description { color: var(--text); }
+}

@@ -8,6 +8,7 @@
   <link rel="icon" href="img/favicon.ico?v=20261030-new" type="image/x-icon" sizes="16x16">
   <link rel="stylesheet" href="css/style.css?v=20261030-proximity-fix">
   <link rel="stylesheet" href="css/design-system.css?v=20261030-footer-opacity">
+  <link rel="stylesheet" href="css/scroll-stages.css?v=20261030-fixed-dark">
   <script>if (!('onpagereveal' in window)) document.documentElement.classList.add('fade-nav');</script>
   <style>
     .idx3.svcp .opening--kniga .opening__media::after {
@@ -157,6 +158,45 @@
       </ol>
     </section>
 
+    <!-- Новый scroll-сценарий: исходный блок этапов выше сохранён без изменений. -->
+    <section class="scroll-stages" aria-label="Этапы работы над родословной книгой" data-scroll-stages>
+      <div class="scroll-stages__layout">
+        <div class="scroll-stages__copy">
+          <article class="scroll-stage" data-stage="1">
+            <img class="scroll-stage__mobile-img" src="img/photos/stage-consultation.jpg" alt="" loading="lazy" decoding="async">
+            <div class="scroll-stage__content">
+              <p class="scroll-stage__label">Этап 1</p>
+              <h3 class="scroll-stage__title">Расскажите о своей семье на бесплатной консультации</h3>
+              <p class="scroll-stage__description">Обсудим, что вы хотите узнать о предках и какие сведения уже сохранились: имена, фотографии, документы и рассказы близких. Подскажем, с чего начать поиск, согласуем объём исследования и предварительно оценим сроки и стоимость. Консультация бесплатная и ни к чему вас не обязывает.</p>
+              <a class="scroll-stage__button" href="index.html#contact" data-consult>Получить консультацию</a>
+            </div>
+          </article>
+          <article class="scroll-stage" data-stage="2">
+            <img class="scroll-stage__mobile-img" src="img/photos/stage-archive.jpg" alt="" loading="lazy" decoding="async">
+            <div class="scroll-stage__content">
+              <p class="scroll-stage__label">Этап 2</p>
+              <h3 class="scroll-stage__title">Найдём документы и восстановим историю вашего рода</h3>
+              <p class="scroll-stage__description">После согласования задачи начнём поиск в архивах. Изучим записи о рождении, браке, службе и других событий, проверим родственные связи и проследим историю семьи по поколениям. В ходе работы будем рассказывать о находках и уточнять сведения вместе с вами. Исследование занимает от месяца — срок зависит от задачи и доступности архивов.</p>
+            </div>
+          </article>
+          <article class="scroll-stage" data-stage="3">
+            <img class="scroll-stage__mobile-img" src="img/photos/stage-book.jpg" alt="" loading="lazy" decoding="async">
+            <div class="scroll-stage__content">
+              <p class="scroll-stage__label">Этап 3</p>
+              <h3 class="scroll-stage__title">Соберём историю вашей семьи в родословную книгу</h3>
+              <p class="scroll-stage__description">На основе найденных документов напишем связный рассказ о ваших предках. Дополним его фотографиями, копиями архивных записей и родословным древом, согласуем с вами содержание и оформим книгу. Готовое электронное издание можно читать и пересылать близким, а печатную версию в переплёте — заказать отдельно за дополнительную плату.</p>
+            </div>
+          </article>
+        </div>
+        <div class="scroll-stages__visual" aria-hidden="true">
+          <div class="scroll-stages__sticky">
+            <div class="scroll-stages__frame"><img src="img/photos/stage-consultation.jpg" alt="" loading="lazy" decoding="async"></div>
+            <div class="scroll-stages__frame"><img src="img/photos/stage-archive.jpg" alt="" loading="lazy" decoding="async"></div>
+            <div class="scroll-stages__frame"><img src="img/photos/stage-book.jpg" alt="" loading="lazy" decoding="async"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ============ ФОРМАТЫ КНИГИ: две карточки рядом — электронная и печатная версия; фото сверху, под ним название и текст ============ -->
     <section class="h3-sec print-edition" aria-labelledby="formats-title">
@@ -493,6 +533,7 @@
 
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="js/main.js?v=20261029-system"></script>
+<script src="js/scroll-stages.js?v=20261030-fixed-dark"></script>
 <script src="js/calculator.js?v=20261026-empty"></script>
 </body>
 </html>
