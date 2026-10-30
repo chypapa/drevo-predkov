@@ -7,11 +7,17 @@
   var frames = Array.from(section.querySelectorAll('.scroll-stages__frame'));
   var sticky = section.querySelector('.scroll-stages__sticky');
   var reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  var mobile = matchMedia('(max-width: 767px)');
   var queued = false, visible = true;
   function clamp(n) { return Math.max(0, Math.min(1, n)); }
   function update() {
     queued = false;
     if (!visible) return;
+    if (mobile.matches) {
+      frames.forEach(function (frame) { frame.style.height = ''; frame.style.clipPath = 'none'; frame.querySelector('img').style.transform = 'none'; });
+      section.querySelectorAll('.scroll-stage__mobile-img').forEach(function (photo) { photo.style.transform = 'none'; });
+      return;
+    }
     var rects = articles.map(function (article) { return article.getBoundingClientRect(); });
     var windowRect = sticky.getBoundingClientRect();
     // Reveal each incoming frame as its text section crosses the photo viewport.
@@ -32,6 +38,7 @@
   addEventListener('scroll', schedule, { passive: true });
   addEventListener('resize', schedule);
   reduced.addEventListener('change', schedule);
+  mobile.addEventListener('change', schedule);
   if ('ResizeObserver' in window) {
     var resizeObserver = new ResizeObserver(schedule);
     articles.forEach(function (article) { resizeObserver.observe(article); });
@@ -53,6 +60,7 @@
   if (!section) return;
   var articles = Array.from(section.querySelectorAll('.scroll-stage'));
   var reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  var mobile = matchMedia('(max-width: 767px)');
   var timer = 0, animation = 0, snapping = false;
   function cancel() {
     clearTimeout(timer);
@@ -62,7 +70,7 @@
     snapping = false;
   }
   function settle() {
-    if (reduce.matches || document.querySelector('.overlay.is-open')) return;
+    if (mobile.matches || reduce.matches || document.querySelector('.overlay.is-open')) return;
     var stops = articles.map(function (e) { return scrollY + e.getBoundingClientRect().top; });
     if (scrollY < stops[0] || scrollY > stops[stops.length - 1] + 1) return;
     var target = stops.reduce(function (best, y) { return Math.abs(y - scrollY) < Math.abs(best - scrollY) ? y : best; }, stops[0]);
@@ -82,7 +90,7 @@
       animation = requestAnimationFrame(step);
     }
   }
-  function arm() { cancel(); if (!reduce.matches) timer = setTimeout(settle, 300); }
+  function arm() { cancel(); if (!mobile.matches && !reduce.matches) timer = setTimeout(settle, 300); }
   addEventListener('wheel', arm, { passive: true });
   addEventListener('touchstart', cancel, { passive: true });
   addEventListener('touchmove', cancel, { passive: true });
@@ -94,4 +102,5 @@
   });
   addEventListener('resize', cancel);
   reduce.addEventListener('change', cancel);
+  mobile.addEventListener('change', cancel);
 })();

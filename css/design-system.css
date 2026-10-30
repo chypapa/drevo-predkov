@@ -371,3 +371,27 @@ html.theme-v1.home3.idx3 {
 .idx3 .consult-modal .lead__chips li { border-color: #ffffffb3; background: transparent; }
 .idx3 .consult-modal .lead__agree input { border-color: #fff; }
 .idx3 .lead__card .lead__submit { width: 100% !important; align-self: stretch !important; }
+
+/* Mobile-only layout refinements. Desktop keeps its existing composition. */
+@media (max-width:767px) {
+  .idx3 .directions__copy > .directions__chips { margin-top: 16px; }
+  .idx3 .directions__copy .directions__description { margin-top: 16px; }
+  .idx3 .directions__scene + .directions__scene { border-top: 0; }
+  .idx3 .directions .directions__button { background: var(--red); border-color: var(--red); color: #fff; }
+  .idx3 .i3-news .i3-news__list { scrollbar-width: none; -ms-overflow-style: none; padding-bottom: 0; }
+  .idx3 .i3-news .i3-news__list::-webkit-scrollbar { display: none; }
+
+  .idx3 main#top > .h3-lead { height: auto; max-height: none; padding: 32px var(--g3); background: var(--red); }
+  .idx3 .h3-lead__img,.idx3 .calc__backdrop-boundary,.idx3 .calc__backdrop { display: none; }
+  .idx3 .h3-lead .h3-lead__card { width: 100%; max-width: none; padding: 0; margin: 0; background: transparent; border-radius: 0; box-shadow: none; max-height: none; overflow: visible; }
+  .idx3 .calc.calc--immersive { padding: 32px var(--g3); background: var(--bg); background-image: none; }
+  .idx3 .calc--immersive :is(.calc__box,.calc__card,.calc__panel) { width: 100%; max-width: none; padding: 0; margin: 0; border: 0; border-radius: 0; box-shadow: none; background: transparent; }
+  .idx3 .consult-modal .lead__inner { padding: 32px 16px; border-radius: 0; }
+  .idx3 .consult-modal .lead__card { padding: 0; }
+
+  .idx3 .h3-footer { grid-template-columns: minmax(0,1fr); gap: 24px 0; }
+  .idx3 .h3-footer__links { grid-column: 1; grid-row: 1; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; padding: 0; gap: 16px; }
+  .idx3 .h3-footer__links a span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .idx3 .h3-footer .h3-footer__mark { grid-column: 1; grid-row: 2; width: 100%; transform: none; line-height: 1.1 !important; }
+  .idx3 .h3-footer__policy { grid-column: 1; grid-row: 2; align-self: center; justify-self: center; z-index: 1; text-align: center; }
+}

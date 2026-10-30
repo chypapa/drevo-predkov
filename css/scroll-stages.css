@@ -40,3 +40,15 @@
   .scroll-stages__frame { position: relative; inset: auto; clip-path: none !important; will-change: auto; }
   .scroll-stages__frame img { transform: none !important; will-change: auto; }
 }
+
+/* Mobile stages are ordinary separate panels, without a pinned photo stack. */
+@media (max-width:767px) {
+  .idx3 main#top > .scroll-stages { background: transparent; }
+  .scroll-stages__layout { display: block; }
+  .scroll-stages__visual { display: none; }
+  .scroll-stages__copy { display: grid; gap: 24px; }
+  .scroll-stage { min-height: 0; padding: 32px 24px; overflow: hidden; isolation: isolate; background: #191919; }
+  .scroll-stage__mobile-img { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: none !important; z-index: -2; }
+  .scroll-stage::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.65); z-index: -1; pointer-events: none; }
+  .scroll-stage__content { transform: none; }
+}
