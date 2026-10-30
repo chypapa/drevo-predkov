@@ -21,7 +21,7 @@
 .scroll-stages__frame img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center; transform: scale(1.08); transform-origin: center; will-change: transform; }
 .scroll-stages__frame:nth-child(3) img { object-position: center 40%; }
 @media (min-width:768px) and (max-width:1199px) { .scroll-stage { padding: 48px; } }
-@media (max-width:767px) {
+@media (max-width:767px), (min-width:768px) and (max-width:1199px) and (orientation:portrait) {
   .scroll-stages__layout { grid-template-columns: minmax(0,1fr); }
   .scroll-stages__layout::before { display: none; }
   .scroll-stages__visual { grid-column: 1; grid-row: 1; }
@@ -42,7 +42,7 @@
 }
 
 /* Mobile stages are ordinary separate panels, without a pinned photo stack. */
-@media (max-width:767px) {
+@media (max-width:767px), (min-width:768px) and (max-width:1199px) and (orientation:portrait) {
   .idx3 main#top > .scroll-stages { background: transparent; }
   .scroll-stages__layout { display: block; }
   .scroll-stages__visual { display: none; }

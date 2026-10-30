@@ -445,3 +445,40 @@ html.theme-v1.home3.idx3 {
   .idx3 .h3-lead { border-bottom: 0; }
   .idx3 .calc--immersive :is(.calc-q__custom,.combo__input) { background: transparent; }
 }
+
+/* Service arrivals: a compact title band followed by one editorial photograph. */
+.service-page.idx3.svcp .opening {
+  height: auto; min-height: 0; padding: 64px var(--g3); background: #191919;
+}
+.service-page .opening__media { display: none; }
+.service-page.idx3.svcp .opening__content {
+  position: relative; inset: auto; max-width: 100%; padding: 0;
+  transform: none !important; opacity: 1;
+}
+@media (max-width:767px) {
+  .service-page.idx3.svcp .opening { padding-block: 40px; }
+}
+@media (min-width:768px) and (max-width:1199px) and (orientation:portrait) {
+  /* Keep the title, full-width photo and prose in a single reading column. */
+  .idx3 .story-intro { grid-template-columns: minmax(0,1fr); height: auto; min-height: 0; row-gap: 32px; padding-block: 0; }
+  .idx3 .story-intro__copy { display: contents; }
+  .idx3 .scroll-stages__copy { padding-inline: var(--g3); }
+  .idx3 .story-intro h2 { grid-column: 1; grid-row: auto; order: -1; }
+  .idx3 .story-intro__media,
+  .idx3 #family-tree .story-intro__media { grid-column: 1; grid-row: auto; order: 0; aspect-ratio: 16 / 10; }
+  .idx3 .story-intro__body { grid-column: 1; grid-row: auto; order: 1; margin: 0; padding: 0; }
+
+  .idx3 .mobile-section-title { display: block; margin: 0 var(--g3) 32px; }
+  .idx3 .directions.is-tablet-story .directions__image-stack {
+    left: var(--g3); top: 88px; width: calc(100% - 2 * var(--g3));
+    height: clamp(260px,38svh,450px); aspect-ratio: auto; transform: none;
+  }
+  .idx3 .directions.is-tablet-story .directions__inner { padding-top: calc(clamp(260px,38svh,450px) + 120px); padding-bottom: 48px; }
+  .idx3 .directions.is-tablet-story .directions__copy { opacity: 1 !important; }
+  .idx3 .directions.is-tablet-story .directions__description { margin-top: 24px; }
+
+  .idx3 .h3-footer .h3-footer__mark {
+    grid-column: 1 / -1; grid-row: 3; width: 130vw; max-width: none;
+    font-size: 20vw; margin: 16px 0 0; text-align: left; transform: translateY(.12em);
+  }
+}

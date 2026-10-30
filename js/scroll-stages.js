@@ -7,7 +7,7 @@
   var frames = Array.from(section.querySelectorAll('.scroll-stages__frame'));
   var sticky = section.querySelector('.scroll-stages__sticky');
   var reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  var mobile = matchMedia('(max-width: 767px)');
+  var mobile = matchMedia('(max-width: 767px), (max-width: 1199px) and (orientation: portrait)');
   var queued = false, visible = true;
   function clamp(n) { return Math.max(0, Math.min(1, n)); }
   function update() {
@@ -60,7 +60,7 @@
   if (!section) return;
   var articles = Array.from(section.querySelectorAll('.scroll-stage'));
   var reduce = matchMedia('(prefers-reduced-motion: reduce)');
-  var mobile = matchMedia('(max-width: 767px)');
+  var mobile = matchMedia('(max-width: 767px), (max-width: 1199px) and (orientation: portrait)');
   var timer = 0, animation = 0, snapping = false;
   function cancel() {
     clearTimeout(timer);
