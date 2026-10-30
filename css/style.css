@@ -2838,7 +2838,7 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 }
 /* В поле legend заголовок не участвует в flex-gap, поэтому отступ задаётся явно. */
 @media (min-width: 768px) and (max-width: 1366px) {
-  .idx3 .calc--split fieldset.calc-q > .calc-q__hint { margin-top: var(--s-24); }
+  
   .h3-footer__mark { align-self: end; transform: translateY(var(--s-16)); }
 }
 
@@ -3121,7 +3121,7 @@ html.theme-v1.home3.idx3 {
 .idx3 .calc--immersive :is(.calc-q__title,.calc-q__more,.calc__add,.calc-line__title,.calc__result-label,.calc__result-sum,.calc__again) {color:var(--text);}
 .idx3 .calc--split .calc-q__title {font-size:var(--type-heading);line-height:1.25;}
 .idx3 .calc--split .calc-q {gap:24px;}
-.idx3 .calc--split fieldset.calc-q > .calc-q__hint {margin-top:24px;}
+
 .idx3 .calc--split .radio {gap:8px;}
 /* Independent short rules, with no remaining folder mask or extra card padding. */
 .idx3 .book-stages {padding-inline:var(--g3);}
@@ -3215,8 +3215,8 @@ html.theme-v1.home3.idx3 {--heading-gap:40px;--section-title-gap:64px;}
 .idx3 .about-editorial__copy h3 {line-height:1.25;margin-bottom:var(--heading-gap);}
 .idx3 .about-editorial {row-gap:var(--section-title-gap);}
 .idx3 .calc--split .calc-q__title {line-height:1.25;}
-.idx3 .calc--split fieldset.calc-q > .calc-q__hint {margin-top:var(--heading-gap);}
-.idx3 .calc--split .calc-q:not(fieldset) > .calc-q__hint {margin-top:calc(var(--heading-gap) - 24px);}
+
+
 .idx3 .formats__text,.idx3 .book-stages__text {margin-top:var(--heading-gap);}
 .idx3 .i3-news .i3-post__title {font-size:var(--type-heading);line-height:1.25;}
 .idx3 .i3-news .i3-post__text {margin-top:var(--heading-gap);}
@@ -3249,3 +3249,31 @@ html.theme-v1.home3.idx3 {--heading-gap:40px;--section-title-gap:64px;}
 .directions__copy > .directions__chips {margin-top:56px;}
 @media(max-width:1199px) { .directions__copy > .directions__chips {margin-top:48px;} }
 @media(max-width:767px) { .directions__copy > .directions__chips {margin-top:40px;} }
+
+/* A heading and its explanation form one group; controls form the next group.
+   Block layout makes legend and label spacing identical without flex/float offsets. */
+html.theme-v1.home3.idx3 {--heading-gap:16px;--section-title-gap:40px;}
+.idx3 .calc--split .calc-q {display:block;}
+.idx3 .calc--split .calc-q > .calc-q__title {
+ float:none;display:block;width:100%;padding:0;margin:0 0 16px;
+}
+.idx3 .calc--split .calc-q > .calc-q__hint {margin:0 0 32px;}
+.idx3 .calc--split .calc-q > .calc-q__options,
+.idx3 .calc--split .calc-q > .combo {margin:0;}
+.idx3 .calc--split .calc-q > .calc-q__more {margin-top:24px;}
+.idx3 .about-editorial {row-gap:40px;}
+.idx3 .about-editorial__copy h3 {margin:64px 0 16px;}
+.idx3 .about-editorial__copy p + p {margin-top:24px;}
+.directions__copy > .directions__chips {margin-top:16px;}
+.directions__description,
+.directions.is-story:not(.is-tablet-story) .directions__description {margin-top:32px;padding-top:0;}
+.home3 .directions__button {margin-top:24px;}
+@media(min-width:768px) {
+ .about-editorial__copy {grid-column:1 / 6;}
+ .about-editorial__left {grid-column:8 / 12;}
+}
+@media(max-width:767px) {
+ html.theme-v1.home3.idx3 {--heading-gap:16px;--section-title-gap:32px;}
+ .idx3 .about-editorial {row-gap:32px;}
+ .idx3 .about-editorial__copy h3 {margin-top:48px;margin-bottom:16px;}
+}
