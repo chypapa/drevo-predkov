@@ -8,6 +8,7 @@
   <link rel="icon" href="img/favicon.ico" sizes="32x32">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css?v=20261030-proximity-fix">
+  <link rel="stylesheet" href="css/design-system.css?v=20261030-system-1">
   <script>if (!('onpagereveal' in window)) document.documentElement.classList.add('fade-nav');</script>
 </head>
 <body>
@@ -156,18 +157,19 @@
 
     <!-- ============ КАЛЬКУЛЯТОР: заголовок и текст по центру, под ними анкета; по бокам — ветви родословного древа.
          Те же вопросы, что для родословной книги, базовая цена — 30 000 ₽ (атрибут data-base). Логика — js/calculator.js ============ -->
-    <section class="calc calc--center calc--photo calc--tree calc--split container section" id="calc" aria-labelledby="calc-title" data-base="30000">
+    <section class="calc calc--center calc--photo calc--tree calc--split calc--immersive container section" id="calc" aria-labelledby="calc-title" data-base="30000">
+<div class="calc__backdrop-boundary" aria-hidden="true"><img class="calc__backdrop" src="img/photos/album-opt-1600.webp" srcset="img/photos/album-opt-960.webp 960w, img/photos/album-opt-1600.webp 1600w" sizes="100vw" alt="" loading="lazy" decoding="async"></div>
 
       <div class="calc__stage">
         <img class="calc__tree" src="img/calc-tree.webp" width="1930" height="576" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <div class="calc__panel">
+
+        <!-- анкета и результат — в одной карточке: её высота меняется плавно (js/calculator.js) -->
+        <div class="calc__box">
           <div class="calc__intro">
             <h2 class="h2" id="calc-title">Калькулятор стоимости услуги</h2>
             <p class="calc__text">Итоговая стоимость зависит от&nbsp;нескольких факторов. Ответьте на&nbsp;вопросы ниже, чтобы узнать ориентировочную сумму, или <a class="calc__contact" href="index.html#contact" data-consult>свяжитесь с&nbsp;нами</a>&nbsp;— уточним цену на&nbsp;консультации.</p>
-            <img class="calc__photo" src="img/photos/photos-letters.webp" width="1500" height="1000" alt="Старые фотографии солдат и рукописное письмо" loading="lazy" decoding="async">
           </div>
-        <!-- анкета и результат — в одной карточке: её высота меняется плавно (js/calculator.js) -->
-        <div class="calc__box">
           <form class="calc__card" novalidate>
             <div class="calc__lines"></div>
             <button class="calc__add" type="button">

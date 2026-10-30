@@ -2465,7 +2465,7 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .i3-post > div { display: contents; }
 .i3-post + .i3-post { padding-left: var(--s-24); }
 .i3-post:last-child { border-right: 0; }
-.i3-post__title { margin-top: var(--s-24); font-size: var(--t4); color: var(--text); }
+.i3-post__title { margin-top: var(--s-24); font-size: var(--t4); color: var(--text); text-wrap: wrap; }
 .i3-post__text { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; overflow: hidden; margin-top: var(--sp-12); font-size: var(--t5); color: var(--text-body); }
 .i3-post__link { display: inline-block; justify-self: start; align-self: end; margin-top: var(--s-24); font-size: var(--t5); font-weight: 500; color: var(--red); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
 .i3-post__img { width: 100%; height: clamp(200px, 19vw, 320px); object-fit: cover; background: var(--ph); }   /* одна высота у всех, независимо от ширины карточки */

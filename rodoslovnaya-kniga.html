@@ -8,6 +8,7 @@
   <link rel="icon" href="img/favicon.ico" sizes="32x32">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css?v=20261030-proximity-fix">
+  <link rel="stylesheet" href="css/design-system.css?v=20261030-system-1">
   <script>if (!('onpagereveal' in window)) document.documentElement.classList.add('fade-nav');</script>
   <style>
     .idx3.svcp .opening--kniga .opening__media::after {
@@ -127,24 +128,17 @@
     </section>
 
     <!-- ============ О КНИГЕ — две колонки, как блок «О проекте» на главной: слева крупный текст и кнопка, справа «Как создаётся книга» ============ -->
-    <section class="about2 about2--book container section" aria-labelledby="book-intro-title">
-      <div class="about2__intro">
-        <h2 class="book-lead" id="book-intro-title"><em>Родословная книга&nbsp;— это история вашего рода, рассказанная живым языком.</em> Когда исследование завершено и&nbsp;имена предков найдены, мы&nbsp;превращаем архивные записи в&nbsp;повествование о&nbsp;людях, их&nbsp;судьбах и&nbsp;времени, в&nbsp;котором они жили.</h2>
-        <p class="book-note">Вы&nbsp;получите не&nbsp;просто красивое издание, а&nbsp;историю рода, подкреплённую документами,&nbsp;— семейную реликвию, которая со&nbsp;временем становится только ценнее.</p>
-        <a class="btn" href="index.html#contact" data-consult>Заказать книгу</a>
-      </div>
-      <div class="about2__how">
-        <h3 class="about2__subtitle">Как создаётся книга</h3>
-        <ul class="about2__list">
-          <li>Всё начинается с&nbsp;исследования. Мы&nbsp;находим ваших предков в&nbsp;метрических книгах, ревизских сказках и&nbsp;переписях, восстанавливаем имена, даты и&nbsp;родственные связи. Каждое поколение в&nbsp;книге подтверждено документами&nbsp;— это не&nbsp;легенда, а&nbsp;история, на&nbsp;которую можно опереться.</li>
-          <li>Затем мы&nbsp;пишем текст. Не&nbsp;сухой перечень дат, а&nbsp;живой рассказ: где стоял дом вашей семьи, чем занимались прадеды, как большие события эпохи отзывались в&nbsp;судьбе каждого из&nbsp;них. Мы&nbsp;бережно сохраняем точность документа, но&nbsp;рассказываем так, чтобы книгу хотелось читать вслух и&nbsp;перечитывать.</li>
-          <li>Книга готовится в&nbsp;электронном виде: её&nbsp;удобно читать с&nbsp;телефона, пересылать родным и&nbsp;хранить. А&nbsp;если хочется держать историю семьи в&nbsp;руках, напечатаем её&nbsp;в&nbsp;типографии&nbsp;— в&nbsp;твёрдом переплёте, с&nbsp;архивными фотографиями и&nbsp;копиями документов. Печатное издание выполняется по&nbsp;предоплате.</li>
-        </ul>
+    <section class="story-intro" id="book-intro" aria-labelledby="book-intro-title">
+      <div class="story-intro__media"><img src="img/photos/matched-book-tablet.webp"  alt="Электронная родословная книга на планшете" loading="lazy" decoding="async"></div>
+      <div class="story-intro__copy">
+        <h2 id="book-intro-title">Родословная книга — история вашего рода, рассказанная живым языком и сохранённая для&nbsp;близких</h2>
+        <div class="story-intro__body"><p>За&nbsp;каждым именем в&nbsp;архивной записи стоит человек. Мы восстанавливаем родственные связи, изучаем документы и складываем из&nbsp;них связный рассказ о&nbsp;семье: где жили ваши предки, чем занимались и как менялась их жизнь на&nbsp;фоне событий эпохи.</p><p>Из&nbsp;проверенных фактов рождается повествование, которое хочется читать и обсуждать с&nbsp;родными. В&nbsp;нём есть место семейным воспоминаниям, фотографиям, картам и копиям документов. Живой язык помогает увидеть за&nbsp;датами характеры и судьбы, сохраняя точность источников.</p><p>Такую книгу приятно подарить родителям, бабушке или дедушке и передать детям. Мы оформляем её как цельное издание с&nbsp;продуманной вёрсткой. Готовую электронную версию можно читать и пересылать близким, а печатную книгу в&nbsp;переплёте — заказать отдельно.</p></div>
       </div>
     </section>
 
     <!-- ============ ЭТАПЫ РАБОТЫ: номер, название, срок и описание ============ -->
     <section class="h3-sec h3-steps book-stages" aria-label="Этапы работы">
+      <h2 class="v1-h2 h3-head">Этапы работы</h2>
       <ol class="i3-news__list">
         <li class="i3-post">
           <ul class="svx__chips book-stages__duration" aria-label="Срок этапа"><li>1–2&nbsp;дня</li></ul>
@@ -166,20 +160,14 @@
 
 
     <!-- ============ ФОРМАТЫ КНИГИ: две карточки рядом — электронная и печатная версия; фото сверху, под ним название и текст ============ -->
-    <section class="h3-sec formats" aria-labelledby="formats-title">
-      <h2 class="v1-h2 h3-head" id="formats-title">Электронная и&nbsp;печатная книга</h2>
-      <ul class="formats__list">
-        <li class="formats__item">
-          <img class="book-digital formats__img" src="img/photos/matched-book-tablet.webp" width="1536" height="1024" alt="Электронная родословная книга на планшете" loading="lazy" decoding="async">
-          <h3 class="formats__name">Электронная версия</h3>
-          <p class="formats__text">Основной формат: та&nbsp;же книга с&nbsp;разворотами, фотографиями и&nbsp;копиями документов. Её&nbsp;удобно читать с&nbsp;телефона, пересылать родным в&nbsp;другие города и&nbsp;страны и&nbsp;хранить&nbsp;— она не&nbsp;потеряется и&nbsp;не&nbsp;выцветет.</p>
-        </li>
-        <li class="formats__item">
-          <img class="book-printed formats__img" src="img/photos/printed-book-original-v3.webp" width="1800" height="1005" alt="Печатная родословная книга в раскрытом виде" loading="lazy" decoding="async">
-          <h3 class="formats__name">Печатное издание</h3>
-          <p class="formats__text">По&nbsp;желанию напечатаем книгу в&nbsp;типографии&nbsp;— в&nbsp;твёрдом переплёте, с&nbsp;архивными фотографиями и&nbsp;копиями документов. Семейная реликвия, которую можно подарить и&nbsp;передать детям и&nbsp;внукам. Печать&nbsp;— по&nbsp;предоплате.</p>
-        </li>
-      </ul>
+    <section class="h3-sec print-edition" aria-labelledby="formats-title">
+      <div class="print-edition__copy">
+        <h2 id="formats-title">История семьи, которую можно держать в&nbsp;руках</h2>
+        <p>По&nbsp;вашему желанию подготовим печатное издание в&nbsp;твёрдом переплёте: с&nbsp;семейными фотографиями, архивными документами и красивыми разворотами.</p>
+        <p>Электронная книга входит в&nbsp;результат работы. Печать заказывается отдельно и оплачивается дополнительно. Стоимость согласуем заранее — она зависит от&nbsp;объёма, оформления и числа экземпляров.</p>
+        <a class="btn" href="index.html#contact" data-consult>Обсудить печатную книгу</a>
+      </div>
+      <img src="img/photos/printed-book-original-v3.webp" width="1800" height="1005" alt="Разворот печатной родословной книги" loading="lazy" decoding="async">
     </section>
 
     <!-- ============ ОТЗЫВЫ — как на главной; вторая карточка — видеоотзыв: обложка видео на всю карточку с затемнением,
@@ -309,7 +297,7 @@
     <!-- ============ КАЛЬКУЛЯТОР: заголовок и текст по центру, под ними анкета; по бокам — ветви родословного древа.
          Базовая цена — 60 000 ₽ (атрибут data-base). Логика — js/calculator.js ============ -->
     <section class="calc calc--center calc--photo calc--tree calc--split calc--immersive container section" id="calc" aria-labelledby="calc-title" data-base="60000">
-      <div class="calc__backdrop-boundary" aria-hidden="true"><img class="calc__backdrop" src="img/photos/calculator-memory-1600.webp" srcset="img/photos/calculator-memory-800.webp 800w, img/photos/calculator-memory-1600.webp 1600w" sizes="100vw" alt="" loading="lazy" decoding="async"></div>
+      <div class="calc__backdrop-boundary" aria-hidden="true"><img class="calc__backdrop" src="img/photos/album-opt-1600.webp" srcset="img/photos/album-opt-960.webp 960w, img/photos/album-opt-1600.webp 1600w" sizes="100vw" alt="" loading="lazy" decoding="async"></div>
 
       <div class="calc__stage">
         <img class="calc__tree" src="img/calc-tree.webp" width="1930" height="576" alt="" aria-hidden="true" loading="lazy" decoding="async">
