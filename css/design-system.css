@@ -156,3 +156,51 @@ html.theme-v1.home3.idx3 {
     width: min(83.3333%, calc(100% - 2 * var(--g3)));
   }
 }
+/* Requested section proportions and shared card spacing. */
+html.theme-v1.home3.idx3 { --card-gap: calc(var(--grid-gap) / 2); }
+.idx3 #about .story-intro__media img { filter: saturate(.75); }
+.idx3 .story-intro__copy { display: flex; flex-direction: column; }
+.idx3 .story-intro__body { margin-top: auto; padding-top: var(--group-gap); }
+.idx3 .i3-news .i3-news__list,
+.idx3 .book-stages .i3-news__list,
+.idx3 .reviews__list,
+.idx3 .stages__track { gap: var(--card-gap); }
+@media (min-width: 768px) {
+  .idx3 .story-intro { height: 75vh; min-height: min-content; padding-block: 48px; }
+  .idx3 .book-stages > :is(.h3-head,.i3-news__list) {
+    /* Same outer columns as the introduction, including its eleven gutters. */
+    width: calc((100% - 2 * var(--g3) - 11 * var(--grid-gap)) * 5 / 6 + 9 * var(--grid-gap));
+  }
+}
+/* Family-tree service: a clear foreground photograph over its blurred backdrop. */
+.idx3 .spot--immersive {
+  position: relative; isolation: isolate; overflow: hidden;
+  width: 100%; max-width: none; padding: 64px var(--g3);
+  background: #292724; color: #fff;
+}
+.spot--immersive::before {
+  content: ''; position: absolute; inset: -24px; z-index: -2;
+  background: url('../img/photos/tree-opt.webp') center / cover no-repeat;
+  filter: blur(10px);
+}
+.spot--immersive::after { content: ''; position: absolute; inset: 0; z-index: -1; background: rgba(0,0,0,.74); }
+.idx3 .spot--immersive .addon {
+  grid-template-columns: repeat(12,minmax(0,1fr)); gap: var(--grid-gap);
+  background: transparent; overflow: visible;
+}
+.spot--immersive .addon__img { grid-column: 2 / 7; margin: 0; height: 100%; max-height: 720px; min-height: 480px; }
+.spot--immersive .addon__info { grid-column: 7 / 12; padding: 0; }
+.idx3 .spot--immersive :is(.svx__name,.svx__label,.svx__desc,.i3-steps__name,.i3-steps__text) { color: #fff; }
+.spot--immersive .svx__chips li { background: transparent; color: #fff; border: 1px solid #ffffff80; }
+.spot--immersive .i3-steps li { border-color: #ffffff40; }
+@media (max-width: 1023px) {
+  .idx3 .spot--immersive .addon { grid-template-columns: 1fr; gap: 32px; }
+  .spot--immersive .addon__img,.spot--immersive .addon__info { grid-column: 1; }
+  .spot--immersive .addon__img { min-height: 0; height: auto; max-height: 560px; object-fit: contain; }
+}
+@media (max-width: 767px) {
+  .idx3 .spot--immersive { padding-block: 48px; }
+}
+@media (max-width: 1199px) {
+  .idx3 .i3-news .i3-news__list { gap: 12px; }
+}
