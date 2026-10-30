@@ -1,191 +1,42 @@
-/* Scroll-led book workflow: naturally scrolling text and a synchronized photo track. */
-.idx3 main#top > .scroll-stages {
-  width: 100%;
-  padding: 0;
-  background: #292724;
-}
-.scroll-stages__layout {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-/* The paper stays fixed while the text scrolls over it. */
+/* A stationary photo stack revealed from bottom to top by the scrolling text. */
+.idx3 main#top > .scroll-stages { width: 100%; padding: 0; background: #292724; }
+.scroll-stages__layout { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
 .scroll-stages__layout::before {
-  content: '';
-  grid-column: 1;
-  grid-row: 1;
-  position: sticky;
-  top: 0;
-  height: 100svh;
+  content: ''; grid-column: 1; grid-row: 1; position: sticky; top: 0; height: 100svh;
   background: #292724 url('../img/photos/old-paper-dark.png') center / 917px auto repeat;
 }
-.scroll-stages__copy {
-  grid-column: 1;
-  grid-row: 1;
-  z-index: 1;
-  min-width: 0;
-}
-.scroll-stage {
-  position: relative;
-  min-width: 0;
-  min-height: 100svh;
-  display: flex;
-  align-items: center;
-  padding: 64px;
-  color: #fff;
-  box-sizing: border-box;
-}
-.scroll-stage__content {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 560px;
-}
-.idx3 .scroll-stage__label {
-  margin: 0;
-  color: inherit;
-  font-size: var(--type-body);
-  line-height: 1.5;
-  letter-spacing: .12em;
-}
-.idx3 .scroll-stage__title {
-  margin-top: 24px;
-  color: inherit;
-  font-family: 'Cormorant', Georgia, serif;
-  font-size: var(--type-section);
-  font-weight: 400;
-  line-height: 1.15;
-  letter-spacing: normal;
-  text-wrap: wrap;
-}
-.idx3 .scroll-stage__description {
-  margin-top: 32px;
-  color: inherit;
-  font-size: var(--type-body);
-  line-height: 1.5;
-}
-.scroll-stage__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 48px;
-  margin-top: 32px;
-  padding: 8px 24px;
-  border: 1px solid currentColor;
-  border-radius: 0;
-  color: inherit;
-  font-size: var(--type-body);
-  line-height: 1.5;
-  text-decoration: none;
-  transition: background-color 180ms ease, color 180ms ease;
-}
-@media (hover: hover) and (pointer: fine) {
-  .scroll-stage__button:hover {
-    background: #fff;
-    color: var(--text);
-  }
-}
+.scroll-stages__copy { grid-column: 1; grid-row: 1; z-index: 1; min-width: 0; }
+.scroll-stage { position: relative; min-width: 0; min-height: 100svh; display: flex; align-items: center; padding: 64px; color: #fff; box-sizing: border-box; }
+.scroll-stage__content { position: relative; z-index: 1; width: 100%; max-width: 560px; }
+.idx3 .scroll-stage__label { margin: 0; color: inherit; font-size: var(--type-body); line-height: 1.5; letter-spacing: .12em; }
+.idx3 .scroll-stage__title { margin-top: 24px; color: inherit; font-family: 'Cormorant',Georgia,serif; font-size: var(--type-section); font-weight: 400; line-height: 1.15; letter-spacing: normal; text-wrap: wrap; }
+.idx3 .scroll-stage__description { margin-top: 32px; color: inherit; font-size: var(--type-body); line-height: 1.5; }
+.scroll-stage__button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; margin-top: 32px; padding: 8px 24px; border: 1px solid currentColor; border-radius: 0; color: inherit; font-size: var(--type-body); line-height: 1.5; text-decoration: none; }
+.scroll-stage__button:focus-visible { outline: 2px solid #fff; outline-offset: 5px; }
 .scroll-stage__mobile-img { display: none; }
-.scroll-stages__visual {
-  grid-column: 2;
-  grid-row: 1;
-  position: relative;
-  min-width: 0;
-}
-.scroll-stages__sticky {
-  position: sticky;
-  top: 0;
-  height: 100svh;
-  overflow: hidden;
-  background: #292724;
-}
-.scroll-stages__frame {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  transform: translate3d(0, 100%, 0);
-  will-change: transform;
-}
-.scroll-stages__frame:first-child { transform: translate3d(0, 0, 0); }
-.scroll-stages__frame img {
-  position: absolute;
-  top: -8%;
-  left: 0;
-  width: 100%;
-  max-width: none;
-  height: 116%;
-  object-fit: cover;
-  object-position: center;
-  transform: translate3d(0, 0, 0) scale(1.08);
-  will-change: transform;
-}
+.scroll-stages__visual { grid-column: 2; grid-row: 1; position: relative; min-width: 0; }
+.scroll-stages__sticky { position: sticky; top: 0; height: 100svh; overflow: hidden; background: #292724; }
+.scroll-stages__frame { position: absolute; inset: 0; overflow: hidden; clip-path: inset(100% 0 0); will-change: clip-path; }
+.scroll-stages__frame:first-child { clip-path: inset(0); }
+.scroll-stages__frame img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center; transform: scale(1.08); transform-origin: center; will-change: transform; }
 .scroll-stages__frame:nth-child(3) img { object-position: center 40%; }
-
-@media (min-width: 768px) and (max-width: 1199px) {
-  .scroll-stage { padding: 48px; }
-}
-@media (max-width: 767px) {
-  .scroll-stages__layout { display: block; }
+@media (min-width:768px) and (max-width:1199px) { .scroll-stage { padding: 48px; } }
+@media (max-width:767px) {
+  .scroll-stages__layout { grid-template-columns: minmax(0,1fr); }
   .scroll-stages__layout::before { display: none; }
-  .scroll-stages__copy { background: #292724; }
-  .scroll-stage {
-    min-height: 75svh;
-    padding: 64px 24px;
-    overflow: hidden;
-    color: #fff;
-    isolation: isolate;
-  }
-  .scroll-stage::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background: rgba(0, 0, 0, .58);
-  }
+  .scroll-stages__visual { grid-column: 1; grid-row: 1; }
+  .scroll-stages__copy { background: transparent; }
+  .scroll-stage { min-height: 75svh; padding: 64px 24px; }
   .scroll-stage__content { max-width: none; }
   .idx3 .scroll-stage__title { margin-top: 16px; }
-  .idx3 .scroll-stage__description { margin-top: 24px; }
-  .scroll-stage__button { margin-top: 24px; }
-  .scroll-stage__mobile-img {
-    display: block;
-    position: absolute;
-    z-index: -1;
-    top: -8%;
-    left: 0;
-    width: 100%;
-    max-width: none;
-    height: 116%;
-    object-fit: cover;
-    object-position: center;
-    transform: scale(1.1);
-    will-change: transform;
-  }
-  .scroll-stage[data-stage='3'] .scroll-stage__mobile-img { object-position: 52% 40%; }
-  .scroll-stages__visual { display: none; }
+  .idx3 .scroll-stage__description,.scroll-stage__button { margin-top: 24px; }
+  .scroll-stages__sticky::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: rgba(0,0,0,.58); }
+  .scroll-stages__frame:nth-child(1) img { object-position: 62% center; }
+  .scroll-stages__frame:nth-child(2) img { object-position: 45% center; }
+  .scroll-stages__frame:nth-child(3) img { object-position: 52% 40%; }
 }
-@media (hover: hover) and (pointer: fine) and (max-width: 767px) {
-  .scroll-stage__button:hover { background: #fff; color: var(--text); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .scroll-stages__frame,
-  .scroll-stages__frame img,
-  .scroll-stage__mobile-img { will-change: auto; }
-  .scroll-stages__frame img,
-  .scroll-stage__mobile-img {
-    top: 0;
-    height: 100%;
-    transform: none !important;
-  }
-  .scroll-stage__button { transition: none; }
-}
-
-/* Preserve natural text flow; only the photograph inside each clipped frame has parallax. */
-.scroll-stage__button:focus-visible { outline: 2px solid #fff; outline-offset: 5px; }
-.scroll-stage__button:active { transform: translateY(1px); }
-@media (max-width: 767px) {
-  .scroll-stage[data-stage='1'] .scroll-stage__mobile-img { object-position: 62% center; }
-  .scroll-stage[data-stage='2'] .scroll-stage__mobile-img { object-position: 45% center; }
-}
-@media (prefers-reduced-motion: reduce) and (min-width: 768px) {
+@media (prefers-reduced-motion:reduce) {
   .scroll-stages__sticky { position: static; height: auto; overflow: visible; }
-  .scroll-stages__frame { position: relative; inset: auto; transform: none !important; }
+  .scroll-stages__frame { position: relative; inset: auto; clip-path: none !important; will-change: auto; }
+  .scroll-stages__frame img { transform: none !important; will-change: auto; }
 }
