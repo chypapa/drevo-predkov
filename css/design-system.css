@@ -355,3 +355,19 @@ html.theme-v1.home3.idx3 {
   .idx3 .h3-footer__policy { grid-column: 1 / -1; grid-row: 1; justify-self: end; }
   .idx3 .h3-footer .h3-footer__mark { grid-column: 1 / -1; grid-row: 3; font-size: calc((100vw - 2 * var(--hdr-pad)) / 7.1); }
 }
+
+/* Requested editorial image alignment, tighter article links and photo corners. */
+@media (min-width:768px) {
+  .idx3 .story-intro__media { grid-column: 1 / 7; }
+}
+.idx3 .i3-news .i3-post__link { margin-top: 12px; padding-top: 0; }
+.idx3 .review--video .review__stars { filter: brightness(0) invert(1); }
+.idx3 :is(img,video,.story-intro__media,.opening,.opening__media,.directions__image-stack,.i3-side,.addon,.review--video,.review__video,.voice__video,.voice__player) {
+  border-radius: 0 !important;
+}
+/* Red consultation popup, with the existing white input fields. */
+.idx3 .consult-modal :is(.lead__inner,.lead__card) { background: var(--red); color: #fff; }
+.idx3 .consult-modal :is(.lead__title,.lead__head p,.lead__agree,.lead__agree a,.lead__note,.lead__chips li) { color: #fff; }
+.idx3 .consult-modal .lead__chips li { border-color: #ffffffb3; background: transparent; }
+.idx3 .consult-modal .lead__agree input { border-color: #fff; }
+.idx3 .lead__card .lead__submit { width: 100% !important; align-self: stretch !important; }
