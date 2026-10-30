@@ -395,3 +395,22 @@ html.theme-v1.home3.idx3 {
   .idx3 .h3-footer .h3-footer__mark { grid-column: 1; grid-row: 2; width: 100%; transform: none; line-height: 1.1 !important; }
   .idx3 .h3-footer__policy { grid-column: 1; grid-row: 2; align-self: center; justify-self: center; z-index: 1; text-align: center; }
 }
+
+/* Square review and form surfaces on every device. */
+.idx3 :is(.review,.calc,.calc__box,.calc__card,.calc__panel,.h3-lead,.lead__inner,.lead__card,.consult-modal__box,.contact__inner,.form) { border-radius: 0 !important; }
+.idx3 .review .review__author { margin-top: auto; }
+.mobile-section-title { display: none; }
+@media (max-width:767px) {
+  .idx3 .mobile-section-title { display: block; margin: 0 var(--g3) 32px; }
+  .idx3 .directions__inner { padding-block: 24px; }
+  .idx3 .h3-footer { border-top: 8px solid #fff; }
+  .idx3 .h3-footer .h3-footer__mark {
+    width: 100vw; margin-inline: calc(-1 * var(--hdr-pad)); font-size: calc(100vw / 7.1);
+  }
+  /* Expose the existing heading as the first grid item without duplicating copy. */
+  .idx3.matched-book .story-intro__copy { display: contents; }
+  .idx3.matched-book .story-intro h2 { order: -1; }
+  .idx3.matched-book .story-intro__media { order: 0; }
+  .idx3.matched-book .story-intro__body { order: 1; margin-top: 0; padding-top: 0; }
+  .idx3 .scroll-stages__copy { padding-inline: var(--g3); }
+}
