@@ -1,0 +1,20 @@
+name: Recover Pages publication
+on:
+  push:
+    branches: [pages-recovery]
+permissions:
+  contents: read
+  pages: write
+  actions: write
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel orphaned Pages deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST repos/${{ github.repository }}/pages/deployments/05ff2a12f50dc00618b19a67a3d2a58ab43526ab/cancel
+      - name: Request publication from main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST repos/${{ github.repository }}/pages/builds
