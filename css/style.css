@@ -3152,3 +3152,27 @@ html.theme-v1.home3.idx3 {
  .idx3 .book-stages .i3-post + .i3-post::before {left:24px;right:24px;top:-24px;bottom:auto;width:auto;height:1px;}
  .idx3 .book-stages__title {min-height:0;}
 }
+
+/* Shared 12-column composition: wider service photographs, five-column copy. */
+.directions__visual::after {background:rgba(0,0,0,.74);}
+.directions__scene::after {background:rgba(0,0,0,.74);}
+.directions__backdrop {object-position:center top;}
+.directions__visual > .directions__backdrop {top:0;bottom:auto;left:-24px;width:calc(100% + 48px);height:calc(100% + 24px);}
+.directions__visual > .directions__backdrop:first-child,
+.directions__scene:first-of-type > .directions__backdrop {filter:blur(6px);}
+.directions__photo {object-position:left center;}
+@media(min-width:768px) {
+ .about-editorial {grid-template-columns:repeat(12,minmax(0,1fr));}
+ .about-editorial > h2 {grid-column:7 / 13;}
+ .about-editorial__left {grid-column:2 / 6;}
+ .about-editorial__copy {grid-column:7 / 13;}
+ .about-editorial__left img {max-height:520px;}
+ .directions.is-story:not(.is-tablet-story) .directions__image-stack {
+  left:calc(var(--g3) + (100% - 2 * var(--g3) + var(--g)) / 12);
+  width:calc((100% - 2 * var(--g3) + var(--g)) / 2 - var(--g));
+  height:min(65svh,640px);aspect-ratio:auto;
+ }
+ .directions.is-story:not(.is-tablet-story) .directions__copy {
+  width:calc((100% + var(--g)) * 5 / 12 - var(--g));
+ }
+}
