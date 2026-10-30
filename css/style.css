@@ -2966,7 +2966,7 @@ main > section[hidden] { display: none !important; }
 .about-editorial__left img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; filter: none; }
 .about-editorial__copy { font-size: var(--t5); color: var(--text); letter-spacing: normal; }
 .about-editorial__copy p + p { margin-top: var(--s-24); }
-.about-editorial__copy h3 { font-size: var(--t3); margin: var(--s-48) 0 var(--s-24); }
+.about-editorial__copy h3 { font-size: var(--t3); margin: var(--s-32) 0 var(--s-16); }
 .about-editorial__copy strong { font-weight: 700; }
 .directions__chips--mobile { display: none; }
 .directions__description { margin-top: var(--s-40, 40px); }
@@ -2985,7 +2985,7 @@ main > section[hidden] { display: none !important; }
 }
 
 /* Shared six-column split: the same content gutter and right-column origin. */
-.about-editorial { column-gap: var(--content-gap); row-gap: var(--s-32); align-items: stretch; }
+.about-editorial { column-gap: var(--content-gap); row-gap: var(--s-64); align-items: stretch; }
 .about-editorial > h2 { grid-column: 1; grid-row: 1; font-size: var(--t2); margin: 0; }
 .about-editorial__left { grid-column: 1; grid-row: 2; position: relative; min-height: 0; }
 .about-editorial__left img { position: absolute; inset: 0 auto auto 0; height: 100%; max-height: 520px; aspect-ratio: auto; object-fit: cover; }
@@ -3195,3 +3195,17 @@ html.theme-v1.home3.idx3 {
 .home3 .directions__button {background:#fff;color:var(--text);border-color:#fff;}
 .home3 .directions__button:hover {background:#f2f2f1;color:var(--text);border-color:#f2f2f1;}
 @media(min-width:1024px) { .home3 .i3-hero__link {display:none;} }
+
+/* Proximity: section title, content groups, and their internal details. */
+@media(min-width:768px) {
+ .about-editorial__left img {top:50%;transform:translateY(-50%);}
+ .directions.is-story:not(.is-tablet-story) .directions__copy {
+  margin-right:calc((100% + var(--g)) / 12);
+  min-height:min(64svh,640px);
+ }
+}
+@media(max-width:767px) {
+ .about-editorial {row-gap:48px;}
+ .about-editorial__left img {transform:none;}
+ .about-editorial__copy h3 {margin-top:32px;margin-bottom:16px;}
+}
