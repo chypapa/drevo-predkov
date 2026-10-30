@@ -204,3 +204,18 @@ html.theme-v1.home3.idx3 { --card-gap: calc(var(--grid-gap) / 2); }
 @media (max-width: 1199px) {
   .idx3 .i3-news .i3-news__list { gap: 12px; }
 }
+
+/* One inter-section interval; headings stay closer to their own content. */
+html.theme-v1.home3.idx3 { --section-heading-space: 32px; }
+.idx3 main#top > section {
+  margin-block: var(--section-space) 0;
+}
+.idx3 main#top > section:first-child { margin-top: 0; }
+.idx3 main#top > :is(.story-intro,.i3-news,.reviews) { padding-block: 0; }
+.idx3 main#top > .story-intro + .book-stages { margin-top: var(--section-space); }
+.idx3 :is(.h3-head,.i3-news__head,.section-head),
+.idx3 .book-stages > .h3-head { margin-bottom: var(--section-heading-space); }
+/* Service conditions use the existing body size, including on phones. */
+.idx3 :is(.svx__chips,.directions__chips) li {
+  font-size: var(--type-body); line-height: 1.5; white-space: normal;
+}
