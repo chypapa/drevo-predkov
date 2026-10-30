@@ -219,3 +219,6 @@ html.theme-v1.home3.idx3 { --section-heading-space: 32px; }
 .idx3 :is(.svx__chips,.directions__chips) li {
   font-size: var(--type-body); line-height: 1.5; white-space: normal;
 }
+
+/* Halve the existing footer wordmark opacity on every screen size. */
+.idx3 .h3-footer__mark { opacity: .5; }
