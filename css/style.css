@@ -2,46 +2,18 @@
    Древо предков — сайт
    Брейкпоинты: десктоп ≥ 1200 · планшет 768–1199 · мобильный < 768
 
-   ТИПОГРАФИКА — одна система на весь сайт, только Manrope, без размеров «по месту».
-                 размер (телефон)   начертание     межстрочный   трекинг
-   H1 — заголовок страницы     56 (36)   Medium 500     120%   −1%
-   H2 — заголовок раздела      40 (28)   Medium 500     120%   −1%
-   H3 — подраздел              32 (22)   Medium 500     125%   −0,5%
-   H4 — заголовок карточки     24 (18)   Medium 500     130%   −0,5%
-   P  — текст                  16        Regular 400    150%   0
-   Выделение в тексте — Medium 500 того же размера. Уровень заголовка (тег) — по смыслу (H1 → H2 → H3 → H4),
-   вид заголовка карточки — класс .h4.
+   ТИПОГРАФИКА — css/typography.css, единая система для всех страниц.
 
    ОТСТУПЫ — см. «СИСТЕМА ОТСТУПОВ» в токенах ниже: между колонками 20px, по вертикали 8 · 12 · 20 · 32 · 48, между блоками 120.
    ПОЛЯ ПО КРАЯМ — 70px на 1920, 56 / 40px на меньших экранах, на телефоне 16px.
    ФОТО — скругление 16px, без рамок и тяжёлых теней.
    ========================================================= */
 
-/* ---------- Шрифты (только из папки font) ---------- */
-@font-face { font-family: "Manrope"; src: url("../font/Manrope-ExtraLight.ttf") format("truetype"); font-weight: 200; font-display: swap; }
-@font-face { font-family: "Manrope"; src: url("../font/Manrope-Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
-@font-face { font-family: "Manrope"; src: url("../font/Manrope-Medium.ttf") format("truetype"); font-weight: 500; font-display: swap; }
-@font-face { font-family: "Manrope"; src: url("../font/Manrope-SemiBold.ttf") format("truetype"); font-weight: 600; font-display: swap; }
-/* заголовки — Brygada 1918 (бесплатный, лицензия OFL; латиница + кириллица); текст — Manrope */
-@font-face { font-family: "Brygada 1918"; src: url("../font/brygada-1918-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
-@font-face { font-family: "Brygada 1918"; src: url("../font/brygada-1918-cyrillic-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
-@font-face { font-family: "Brygada 1918"; src: url("../font/brygada-1918-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
-@font-face { font-family: "Brygada 1918"; src: url("../font/brygada-1918-cyrillic-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
-@font-face { font-family: "Brygada 1918"; src: url("../font/brygada-1918-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
-@font-face { font-family: "Brygada 1918"; src: url("../font/brygada-1918-cyrillic-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
-/* заголовки всех страниц — Playfair Display (бесплатный, лицензия OFL; латиница + кириллица) */
-@font-face { font-family: "Playfair Display"; src: url("../font/playfair-display-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
-@font-face { font-family: "Playfair Display"; src: url("../font/playfair-display-cyrillic-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
-@font-face { font-family: "Playfair Display"; src: url("../font/playfair-display-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
-@font-face { font-family: "Playfair Display"; src: url("../font/playfair-display-cyrillic-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
-/* Cormorant — только для карточки в блоке-коллаже (третий блок главной). Вариативный шрифт: одна пара файлов на все начертания 300–700 */
-@font-face { font-family: "Cormorant"; src: url("../font/Cormorant-cyr.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: swap; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
-@font-face { font-family: "Cormorant"; src: url("../font/Cormorant-lat.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-@font-face { font-family: "Cormorant"; src: url("../font/Cormorant-Italic-cyr.woff2") format("woff2"); font-weight: 300 700; font-style: italic; font-display: swap; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
-@font-face { font-family: "Cormorant"; src: url("../font/Cormorant-Italic-lat.woff2") format("woff2"); font-weight: 300 700; font-style: italic; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-
 /* ---------- Токены ---------- */
 :root {
+  /* Shared inset for the feedback form and calculator card. */
+  --form-card-pad-block: clamp(16px, 3vh, 32px);
+  --form-card-pad-inline: var(--form-card-pad-block);
   --bg: #f1eee9;
   --red: #515237;             /* акцентный цвет — тёмно-зелёный (раньше был красный) */
   --red-hover: #3f402b;
@@ -50,11 +22,11 @@
   --gold: #af8c4c;
   --green: #9ba089;
   --olive: #515237;                                   /* тёмно-оливковый: блок-коллаж и блок заявки */
-  --text: #3c3c3c;            /* заголовки */
-  --text-body: #85857e;       /* основной текст на светлом фоне */
+              /* заголовки */
+         /* основной текст на светлом фоне */
   --dark: #3c3c3c;
   --slate: #3c3c3c;            /* цвет шапки */
-  --muted: var(--text-body);                          /* второстепенный текст — тем же цветом, что и основной */
+                            /* второстепенный текст — тем же цветом, что и основной */
   --placeholder: rgba(0, 0, 0, .5);
   --white: #fff;
 
@@ -107,24 +79,9 @@
   /* секция не выше видимой части окна под шапкой (с небольшим «воздухом») */
   --fit: calc(100svh - var(--hdr-h) - var(--hdr-gap) - 32px);  /* с учётом закреплённой шапки и отступа над ней */
 
-  /* размеры текста: плавно меняются между шириной окна 375px (телефон) и 1440px (компьютер) */
-  /* пять стилей текста на весь сайт (Manrope), размеры — ступенями по ширине окна (без clamp):
-                 ≥1440   1200–1439   768–1199   <768
-     H1          56      50          44         34     первый экран и баннеры страниц
-     H2          40      36          32         28     заголовки блоков, карточки ленты, сумма калькулятора
-     H3          32      28          26         22     названия карточек, подзаголовки
-     H4          24      22          20         18     заголовки постов, этапов, вопросов калькулятора
-     текст       18      17          16         16     весь основной текст, кнопки, подписи */
-  --fs-h1: 80px;                                      /* H1, H2 — Cormorant (как в макете 745:1715) */
-  --fs-h2: 55px;
-  --fs-strip: 40px;                                   /* заголовки карточек ленты (второй блок) — Manrope, как сейчас */
-  --fs-quote: 32px;                                   /* Cormorant Italic: надпись в коллаже, «Древо Предков…», подзаголовки карточек */
-  --fs-h3: 32px;
-  --fs-h4: 24px;
-  --fs-body: 18px;
 }
 /* основной текст и поля страницы по ступеням ширины окна */
-@media (max-width: 1439px) { :root { --section-gap: 96px; --gut: 56px; --fs-h1: 68px; --fs-h2: 48px; --fs-strip: 36px; --fs-quote: 28px; --fs-h3: 28px; --fs-h4: 22px; --fs-body: 17px; } }
+@media (max-width: 1439px) { :root { --section-gap: 96px; --gut: 56px;        } }
 
 /* ---------- База ---------- */
 *, *::before, *::after { box-sizing: border-box; }
@@ -134,18 +91,14 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text-body);
-  font-family: "Manrope", system-ui, sans-serif;
-  font-weight: 400;
-  font-size: var(--fs-body);
-  line-height: 1.5;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 .page { overflow-x: clip; }
 img { max-width: 100%; display: block; }
 a { color: inherit; }
-h1, h2, h3, h4, p, ul { margin: 0; }
-strong, b { font-weight: 500; }                       /* выделение в тексте — Medium */
+h1, h2, h3, h4, p, ul { margin: 0; }                       /* выделение в тексте — Medium */
 ul { padding: 0; list-style: none; }
 button, input, textarea { font: inherit; }
 :focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
@@ -180,15 +133,10 @@ section[hidden] { display: none !important; }       /* скрытые блоки
    Уровень задаётся тегом (h1 / h2 / h3) по смыслу; заголовки карточек — класс .h4 (на теге h3 или h4).
    В блоках размер, начертание и межстрочный интервал заголовков не переопределяются */
 h1, h2, h3, h4, .h2, .h3, .h4 {
-  font-family: "Manrope", system-ui, sans-serif;
+
   text-wrap: balance;                                 /* ровные строки, без одного слова на последней */
 }
 h1, h2, h3, h4, .h2, .h3, .h4 { color: var(--text); }
-h1, h2, .h2, .lead__title, .about2__subtitle, .book-lead { font-family: "Cormorant", Georgia, serif; }   /* заголовки — Cormorant; H3/H4 (названия карточек) — Manrope */
-h1 { font-size: var(--fs-h1); font-weight: 500; line-height: 1.05; letter-spacing: -.01em; }
-h2, .h2 { font-size: var(--fs-h2); font-weight: 400; line-height: 1; letter-spacing: -.01em; }
-h3, .h3 { font-size: var(--fs-h3); font-weight: 500; line-height: 1.25; letter-spacing: -.005em; }
-h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-spacing: -.005em; }
 /* ---------- Заголовки H2 появляются построчно (классы ставит js/main.js; без JS всё видно сразу):
    каждая строка выезжает снизу из-под своей нижней границы, строки — одна за другой (.tl > .tl__in) */
 .text-lines .tl {
@@ -222,8 +170,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   border-radius: var(--radius-sm);
   background: var(--red);
   color: var(--white);
-  font-size: var(--fs-body);
-  line-height: 24px;
+
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
@@ -266,7 +213,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 .nav { display: flex; gap: var(--sp-32); }
 .nav a {
   color: var(--white);
-  line-height: 1;
+
   text-decoration: none;
   white-space: nowrap;
   transition: opacity .2s ease;
@@ -315,7 +262,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 /* знак с названием — в шапке телефона и планшета слева, на одной линии с бургером */
 .header__brand { display: inline-flex; align-items: center; gap: var(--sp-8); margin-right: auto; color: var(--white); text-decoration: none; }
 .header__brand-mark { flex: none; width: 26px; height: 28px; }
-.header__brand-text { width: 72px; font-weight: 200; line-height: 1; }
+.header__brand-text { width: 72px;   }
 .burger { display: block; width: 50px; height: 50px; overflow: visible; }
 .burger__line {
   stroke: currentColor;
@@ -368,7 +315,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   transition: transform .45s cubic-bezier(.65, 0, .35, 1), visibility 0s linear .45s;
 }
 .mobile-menu.is-open { transform: none; visibility: visible; transition-delay: 0s; }
-.mobile-menu__nav { display: flex; flex-direction: column; gap: var(--sp-20); margin-top: var(--s-64); font-size: 20px; }   /* знака в меню нет — пункты начинаются под крестиком; на ступень крупнее основного текста */
+.mobile-menu__nav { display: flex; flex-direction: column; gap: var(--sp-20); margin-top: var(--s-64);  }   /* знака в меню нет — пункты начинаются под крестиком; на ступень крупнее основного текста */
 .mobile-menu__nav a { color: var(--white); text-decoration: none; }
 .mobile-menu__nav a:hover { opacity: .75; }
 .mobile-menu__cta {
@@ -376,7 +323,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   padding-inline: var(--s-16);
   background: var(--white);
   color: var(--red);
-  text-align: center;
+
 }
 .mobile-menu__cta:hover { background: var(--bg); box-shadow: none; }
 
@@ -478,9 +425,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   position: absolute;
   left: 0;
   top: 0;
-  font-weight: 500;
-  line-height: 1.1;
-  letter-spacing: -.01em;
+
   white-space: nowrap;
   color: var(--red);
   opacity: 0;
@@ -616,8 +561,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
     border-radius: 50%;
     background: var(--red);
     color: var(--white);
-    font-size: var(--fs-body);
-    line-height: 1.3;
+
     white-space: nowrap;
     pointer-events: none;
     transform: scale(0);
@@ -648,7 +592,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   border-radius: 12.5px;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.3;
+
   white-space: nowrap;
 }
 .tag::before {
@@ -717,7 +661,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   inset: 0;
   z-index: 1;
   margin: 0;
-  font-size: 0;
+
   color: transparent;
   border-radius: var(--radius);
 }
@@ -757,7 +701,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 }
 .contact__info { flex: 1; min-width: 0; color: var(--white); }
 .contact__title { max-width: 760px; color: var(--white); }
-.contact__text { margin-top: var(--sp-20); font-weight: 400; }
+.contact__text { margin-top: var(--sp-20);  }
 .socials { display: flex; flex-wrap: wrap; gap: var(--sp-20) var(--sp-32); margin-top: var(--sp-20); }
 .socials a { display: block; flex: none; transition: opacity .2s ease; }
 .socials a:hover { opacity: .75; }
@@ -796,7 +740,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   width: 20.5px;
   height: 20.5px;
   margin: 0;
-  border: 1.5px solid var(--text);
+  border: 1.5px solid #65625f;
   border-radius: 2px;
   background: transparent;
   appearance: none;
@@ -836,10 +780,10 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   padding: var(--s-48) var(--s-56) var(--s-32);   /* под кнопкой — меньше */
   color: var(--white);
 }
-.lead__title { color: var(--white); font-size: var(--fs-h2); font-weight: 400; line-height: 1; letter-spacing: -.01em; }   /* стиль H2 */
+.lead__title { color: var(--white);     }   /* стиль H2 */
 .lead__head p { max-width: 640px; margin-top: var(--sp-20); }   /* основной текст сайта */
 .lead__chips { display: flex; flex-wrap: wrap; gap: var(--sp-20); margin: 0; padding: 0; list-style: none; }
-.lead__chips li { padding: var(--s-8) var(--s-24); border: 1px solid rgba(255, 255, 255, .8); border-radius: 999px; line-height: 1.5; }
+.lead__chips li { padding: var(--s-8) var(--s-24); border: 1px solid rgba(255, 255, 255, .8); border-radius: 999px;  }
 .lead__fields { display: flex; flex-direction: column; gap: var(--sp-12); margin-top: var(--sp-20); }   /* над полями — больше воздуха */
 .field { position: relative; }
 .field__input {
@@ -851,8 +795,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   border-radius: 5.5px;
   background: var(--white);
   color: var(--text);
-  font-size: var(--fs-body);
-  line-height: 1.3;
+
   outline: none;
   transition: border-color .2s ease, box-shadow .2s ease;
 }
@@ -866,8 +809,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   right: 25px;
   overflow: hidden;
   color: var(--placeholder);
-  font-size: var(--fs-body);
-  line-height: 1.2;
+
   white-space: nowrap;
   text-overflow: ellipsis;
   pointer-events: none;
@@ -876,7 +818,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 }
 .field--area .field__label { top: 22px; transform: none; white-space: normal; }
 .field__input:focus + .field__label,
-.field__input:not(:placeholder-shown) + .field__label { top: 8px; font-size: 13px; transform: none; }
+.field__input:not(:placeholder-shown) + .field__label { top: 8px;  transform: none; }
 .lead__agree { align-items: flex-start; }
 .lead__agree { color: var(--white); }
 .lead__agree input { margin-top: 0; border: 2px solid var(--white); }
@@ -916,15 +858,14 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   .lead__card { padding: 0; background: transparent; color: var(--white); }
   .lead__title { color: var(--white); }
   .lead__chips { gap: var(--sp-8); }
-  .lead__chips li { border-color: rgba(255, 255, 255, .8); padding: 6px var(--s-16); }
-  .field__input { font-size: 16px; }   /* 16px: иначе iPhone увеличивает страницу при вводе */
+  .lead__chips li { border-color: rgba(255, 255, 255, .8); padding: 6px var(--s-16); }   /* 16px: иначе iPhone увеличивает страницу при вводе */
   .field__input { height: 56px; padding: 24px 16px 6px; }
   .field--area .field__input { height: 112px; padding-top: 28px; }
   .field__label { top: 28px; left: 17px; right: 17px; }
   .field--area .field__label { top: 18px; }
   .field__input:focus, .field__input.is-invalid { border-color: var(--white); box-shadow: 0 0 0 3px rgba(255, 255, 255, .35); }
   .field__input:focus + .field__label,
-  .field__input:not(:placeholder-shown) + .field__label { top: 7px; font-size: 12px; }
+  .field__input:not(:placeholder-shown) + .field__label { top: 7px;  }
   .lead__agree { color: var(--white); }
   .lead__agree input { border-color: var(--white); }
   .lead__agree input:checked { background: var(--white); box-shadow: inset 0 0 0 4px var(--olive); }
@@ -975,10 +916,10 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 .policy { margin-top: var(--s-72); }
 .policy__text { max-width: 680px; }
 .policy__text h1 + h2 { margin-top: var(--s-72); }    /* H1 → первый раздел — 72px */
-.policy__text h2 { margin: var(--s-56) 0 var(--s-24); font-size: var(--fs-h3); font-weight: 500; line-height: 1.25; }   /* разделы политики — стилем H3 */   /* последний абзац → заголовок — 56px, заголовок → текст — 24px */
+.policy__text h2 { margin: var(--s-56) 0 var(--s-24);    }   /* разделы политики — стилем H3 */   /* последний абзац → заголовок — 56px, заголовок → текст — 24px */
 .policy__text p + p { margin-top: var(--sp-20); }
 .policy__text .policy__date { margin-top: var(--gap-head); }
-.policy .placeholder { color: var(--red); font-weight: 500; }   /* места, которые нужно заполнить */
+.policy .placeholder { color: var(--red);  }   /* места, которые нужно заполнить */
 .policy__br { display: none; }
 @media (min-width: 1200px) {
   /* колонка шириной с заголовок в две строки: остальные блоки не влияют на её ширину (width: 0; min-width: 100%) */
@@ -1006,7 +947,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
    ПЛАНШЕТ 768–1199
    ========================================================= */
 @media (max-width: 1199px) {
-  :root { --section-gap: 80px; --gap-head: 40px; --gut: 40px; --fs-h1: 56px; --fs-h2: 40px; --fs-strip: 32px; --fs-quote: 26px; --fs-h3: 26px; --fs-h4: 20px; --fs-body: 16px; }
+  :root { --section-gap: 80px; --gap-head: 40px; --gut: 40px;        }
 
   /* отзывы на главной — лента с прокруткой вбок до краёв экрана (место под тень карточек — лента её не обрезает) */
   .reviews__list {
@@ -1085,19 +1026,12 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
     --pad-card: var(--s-24);
     --section-gap: 64px;
     --gap-head: 32px;
-    --fs-h1: 40px;
-    --fs-h2: 32px;
-    --fs-strip: 28px;
-    --fs-quote: 24px;
-    --fs-h3: 22px;
-    --fs-h4: 18px;
-    --fs-body: 16px;                                  /* основной текст на телефоне — 16px */
+
+                                      /* основной текст на телефоне — 16px */
   }
 
   .opening { height: 98vh; height: 98svh; }           /* первый экран — 98% высоты экрана */
-  .btn { min-height: 50px; padding-block: 13px; }     /* кнопки — высотой с кнопку бургер-меню (50px) */
-  /* поля ввода — 16px: при более мелком шрифте iPhone увеличивает страницу, когда нажимаешь на поле */
-  input:not([type="checkbox"]):not([type="radio"]), textarea, select { font-size: 16px; }
+  .btn { min-height: 50px; padding-block: 13px; }
 
   .link-more { color: var(--red); }
 
@@ -1223,12 +1157,11 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   background: var(--white);
 }
 .stage__top { display: flex; flex-direction: column; align-items: flex-start; }
-.stage__tag { padding: var(--s-8) var(--s-16); border-radius: 12.5px; background: rgba(255, 255, 255, .25); line-height: 1.2; }
+.stage__tag { padding: var(--s-8) var(--s-16); border-radius: 12.5px; background: rgba(255, 255, 255, .25);  }
 .stage__title { max-width: 576px; margin-top: var(--sp-32); color: var(--white); }
 .stage__text { max-width: 576px; margin-top: var(--sp-20); }   /* H4 → текст — 16px */
 .stage__text p + p { margin-top: var(--sp-20); }
 .stage__bottom { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-20); }
-.stage__num { font-weight: 600; }
 
 /* ---------- Отзывы: всегда в один ряд — три карточки по 4 колонки из 12, на планшете и телефоне лента (см. ниже).
    Карточки одной высоты: имя и кавычки сверху, текст — по центру оставшейся высоты ---------- */
@@ -1274,7 +1207,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 }
 .video-modal.is-open .video-modal__player,
 .video-modal.is-open .video-modal__missing { transform: none; }
-.video-modal__missing { display: none; place-items: center; margin: 0; padding: var(--s-24); background: #8e98a3; color: var(--white); text-align: center; }
+.video-modal__missing { display: none; place-items: center; margin: 0; padding: var(--s-24); background: #8e98a3; color: var(--white);  }
 .video-modal.is-missing .video-modal__player { visibility: hidden; }
 .video-modal.is-missing .video-modal__missing { display: grid; }
 .video-modal .overlay__close { position: absolute; top: var(--s-16); right: var(--s-16); }   /* крестик — в правом верхнем углу экрана */
@@ -1317,7 +1250,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   background: none;
   color: var(--red);
   font: inherit;
-  line-height: 1.5;
+
   cursor: pointer;
   transition: background-color .2s ease;
 }
@@ -1333,10 +1266,8 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   float: left;                                        /* legend без «врезки» в рамку fieldset */
   width: 100%;
   padding: 0;
-  font-size: var(--fs-h4);                            /* вопрос анкеты — как заголовок карточки (H4) */
-  font-weight: 500;
-  letter-spacing: -.005em;
-  line-height: 1.3;
+                              /* вопрос анкеты — как заголовок карточки (H4) */
+
   color: var(--text);
 }
 .calc-q__options { display: flex; flex-direction: column; gap: var(--sp-20); margin-top: var(--sp-8); }
@@ -1432,7 +1363,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   outline: none;
 }
 .calc__result-label { color: var(--text); }   /* стиль H3 — класс h3 в разметке */
-.calc__result-sum { margin-top: var(--sp-20); font-size: var(--fs-h2); font-weight: 500; letter-spacing: -.01em; line-height: 1.2; color: var(--red); }   /* сумма — размером H2 */
+.calc__result-sum { margin-top: var(--sp-20);     color: var(--red); }   /* сумма — размером H2 */
 .calc__result-note { max-width: 640px; margin-top: var(--sp-32); color: var(--muted); }
 .calc__again {
   margin-top: var(--sp-20);
@@ -1469,7 +1400,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 @media (max-width: 767px) {   /* только телефон: красный блок во всю ширину; на планшете — отступ снизу и скругления, как сбоку */
   .contact__inner { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
 }
-.calc__contact { color: var(--red); font-weight: 600; text-decoration: none; }
+.calc__contact { color: var(--red);  text-decoration: none; }
 .calc__contact:hover { text-decoration: underline; }
 
 /* =========================================================
@@ -1542,7 +1473,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 .opening--tochno .opening__img { object-position: 50% 30%; }
 
 /* «Об услуге»: заголовок раздела, под ним две колонки — «почему» (текст) и «для кого» (список) */
-.about-svc__chip { display: inline-block; padding: 12px 24px; border-radius: 999px; background: var(--white); color: var(--text); font-size: var(--fs-body); font-weight: 400; line-height: 1.5; }   /* «Об услуге» — плашка, а не крупный заголовок */
+.about-svc__chip { display: inline-block; padding: 12px 24px; border-radius: 999px; background: var(--white); color: var(--text);    }   /* «Об услуге» — плашка, а не крупный заголовок */
 .about-svc__cols { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap-head) var(--col-gap); margin-top: var(--gap-head); align-items: start; }
 @media (min-width: 768px) { .about-svc__cols { margin-top: var(--gap-head); } }   /* H2 → колонки — 60px */
 .about-svc__col { grid-column: 1 / span 6; }   /* текст — по 6 колонок из 12, между ними только зазор сетки */
@@ -1568,7 +1499,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 
 /* калькулятор по центру: заголовок и текст над анкетой; по бокам — ветви родословного древа (только на компьютере) */
 .calc--center { row-gap: var(--gap-head); }
-.calc--center .calc__intro { grid-column: 3 / span 8; align-items: center; text-align: center; }
+.calc--center .calc__intro { grid-column: 3 / span 8; align-items: center;  }
 .calc--center .calc__text { max-width: 680px; }
 .calc--center .calc__stage { position: relative; grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--col-gap); }
 .calc--center .calc__panel { position: relative; z-index: 1; grid-column: 4 / span 6; }
@@ -1671,11 +1602,11 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
    подзаголовок H3 и три пункта основным текстом с квадратными маркерами 8px
    ========================================================= */
 .about2 { display: grid; grid-template-columns: 877fr 857fr; gap: var(--sp-20); align-items: start; }
-.quote-title { max-width: 760px; font-size: var(--fs-quote); font-style: italic; font-weight: 400; line-height: 1.2; letter-spacing: 0; color: #454329; }   /* стиль надписи в карточке коллажа (Cormorant Italic) */
+.quote-title { max-width: 760px;  font-style: italic;    color: #454329; }
 .about2__how { display: flex; flex-direction: column; gap: var(--sp-20); }
-.about2__subtitle { font-size: 32px; font-weight: 400; line-height: 1.2; color: var(--text); }
+.about2__subtitle {    color: var(--text); }
 .about2__list { display: flex; flex-direction: column; gap: var(--sp-20); }
-.about2__list li { display: flex; gap: var(--sp-12); color: var(--text-body); line-height: 1.41; }
+.about2__list li { display: flex; gap: var(--sp-12); color: var(--text-body);  }
 .about2__list li::before {                            /* квадратный маркер 8px в поле 18px, по центру первой строки */
   content: "";
   flex: none;
@@ -1705,8 +1636,8 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 
 /* о книге: та же сетка, что «О проекте» на главной; слева крупный текст стилем H3 (первая фраза — красным) и кнопка-«таблетка» */
 .about2__intro { display: flex; flex-direction: column; align-items: flex-start; gap: var(--sp-32); }
-.book-lead { max-width: 733px; font-size: 32px; font-weight: 500; line-height: 1; letter-spacing: -.01em; text-wrap: wrap; color: var(--text); }
-.book-lead em { font-style: italic; font-weight: 400; color: var(--red); }
+.book-lead { max-width: 733px;     text-wrap: wrap; color: var(--text); }
+.book-lead em { font-style: italic;  color: var(--red); }
 
 /* примеры: два фото рядом (889 × 478 на 1920), промежуток 20px, подпись под первым */
 .gallery--pair .gallery__grid { grid-template-columns: 1fr 1fr; gap: var(--sp-20); margin-inline: 0; }
@@ -1732,7 +1663,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   pointer-events: none;
 }
 .calc--photo .calc__panel { grid-column: 3 / span 8; padding: 70px; border-radius: var(--radius); background: var(--white); }
-.calc--photo .calc__intro { align-items: flex-start; margin-bottom: var(--gap-head); text-align: left; gap: var(--sp-20); }
+.calc--photo .calc__intro { align-items: flex-start; margin-bottom: var(--gap-head);  gap: var(--sp-20); }
 .calc--photo .calc__intro .h2 { color: var(--red); }
 .calc--photo .calc__card, .calc--photo .calc__result { padding: 0; border-radius: 0; }
 
@@ -1767,17 +1698,17 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 .calc--split .radio { gap: 10px; }
 .calc--split .combo { margin-top: 0; }
 .calc--split .calc-q__options { flex-direction: row; flex-wrap: wrap; align-items: center; column-gap: var(--s-32); row-gap: var(--s-16); margin-top: 0; }
-.calc-q__hint { max-width: 60ch; margin-top: calc(var(--sp-12) - var(--s-24)); font-size: 16px; line-height: 1.45; color: var(--muted); text-wrap: pretty; }   /* ближе к вопросу (12), чем к вариантам (24); мельче вопроса */
-.calc-q__more summary { display: inline-flex; font-size: 16px; align-items: center; gap: var(--sp-8); color: var(--text); text-decoration: underline; text-decoration-color: rgba(60, 60, 60, .3); text-underline-offset: 4px; cursor: pointer; list-style: none; }
+.calc-q__hint { max-width: 60ch; margin-top: calc(var(--sp-12) - var(--s-24));   color: var(--muted); text-wrap: pretty; }   /* ближе к вопросу (12), чем к вариантам (24); мельче вопроса */
+.calc-q__more summary { display: inline-flex;  align-items: center; gap: var(--sp-8); color: var(--text); text-decoration: underline; text-decoration-color: rgba(60, 60, 60, .3); text-underline-offset: 4px; cursor: pointer; list-style: none; }
 .calc-q__more summary::-webkit-details-marker { display: none; }
 .calc-q__more summary::after { content: ""; width: 7px; height: 7px; margin-top: -4px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; rotate: 45deg; transition: rotate .32s ease, margin .32s ease; }
 .calc-q__more[open] summary::after { margin-top: 3px; rotate: 225deg; }
 .calc-q__more summary:hover { text-decoration-color: currentColor; }
 .calc-q__more.is-anim p { overflow: hidden; }   /* пока раскрывается — текст не вылезает за растущую высоту */
 /* «2 фамильная линия» — заголовок новой части анкеты: крупно, номер красным */
-.svcp .calc-line .calc-line__title { font-size: var(--t3); color: var(--text); }   /* сильнее общего .svcp .h3 ниже по файлу */
+.svcp .calc-line .calc-line__title {  color: var(--text); }   /* сильнее общего .svcp .h3 ниже по файлу */
 .calc-line__num { color: var(--red); }
-.calc-q__more p { max-width: 60ch; margin-top: var(--sp-12); font-size: 16px; line-height: 1.45; color: var(--muted); text-wrap: pretty; }
+.calc-q__more p { max-width: 60ch; margin-top: var(--sp-12);   color: var(--muted); text-wrap: pretty; }
 @media (max-width: 767px) {
   .calc-row { padding: var(--sp-32) 0; }
   .calc--split .calc-line--extra { padding-top: var(--sp-32); }
@@ -1806,10 +1737,6 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   }
 }
 /* низкий горизонтальный экран (ноутбук 1366 × 768 и ниже по высоте): карточка компактнее, чтобы помещалась целиком */
-
-/* Cormorant-подзаголовки на меньших экранах */
-@media (max-width: 1439px) { .about2__subtitle, .book-lead { font-size: 28px; } }
-@media (max-width: 767px) { .about2__subtitle, .book-lead { font-size: 24px; } }
 
 /* =========================================================
    УСЛУГИ СТОПКОЙ (после «Направлений услуг»): белые карточки на всю ширину контента, сетка 12 колонок —
@@ -1856,7 +1783,6 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 /* отзывы, вариант 2: карточки как в блоке «Отзывы клиентов» (звёзды, полный текст), промежуток в 5 раз больше (100px) */
 /* бесшовный круг: набор карточек повторён дважды, после каждой карточки (и последней) — промежуток, поэтому половина ленты = ровно один набор */
 
-/* коллаж: заголовок — Cormorant Medium 56 / 56.2, трекинг −1% (на 1920); надпись над кнопкой — стиль --fs-quote (32px на большом экране) */
 .reviews .review__author { opacity: .5; }             /* имя и значок — прозрачность 50% */
 /* видеоотзыв в ленте отзывов (страница «Родословная книга»): обложка видео на всю карточку, затемнена только в карточке;
    сверху звёзды, снизу имя; по нажатию видео открывается поверх страницы без затемнения */
@@ -1898,9 +1824,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
    ========================================================= */
 .theme-v1 {
   --bg: #f2f2f1;
-  --text: #65625f;
-  --text-body: rgba(101, 98, 95, .7);
-  --muted: rgba(101, 98, 95, .7);
+
   --red: #8e8868;
   --red-hover: #7b7656;
   --olive: #8e8868;
@@ -1910,27 +1834,23 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   --section-gap: 200px;                               /* между разделами — 200px */
   --gap-head: 70px;
   --hdr-gap: 30px;
-  --v1-h1: 56px;
-  --v1-h2: 44px;
-  --v1-h3: 32px;
-  --v1-h4: 24px;
+
   --v1-pad: 60px;                                     /* внутренний отступ первого экрана и оливковых блоков */
   --v1-near: 30px;                                    /* первый экран → карточки, форма → подвал */
   --v1-r: 26px;                                       /* скругление карточек */
   --v1-r-lg: 32px;                                    /* большие блоки */
-  --fs-body: 18px;
+
 }
 @media (max-width: 1439px) {
-  .theme-v1 { --gut: 24px; --hdr-gap: 24px; --section-gap: 160px; --gap-head: 56px; --v1-h1: 48px; --v1-h2: 38px; --v1-h3: 28px; --v1-h4: 22px; --fs-body: 17px; --v1-pad: 48px; }
+  .theme-v1 { --gut: 24px; --hdr-gap: 24px; --section-gap: 160px; --gap-head: 56px;      --v1-pad: 48px; }
 }
 @media (max-width: 1199px) {
-  .theme-v1 { --gut: 20px; --hdr-gap: 20px; --section-gap: 120px; --gap-head: 48px; --v1-h1: 44px; --v1-h2: 34px; --v1-h3: 26px; --v1-h4: 20px; --v1-pad: 32px; --v1-near: 24px; --v1-r: 22px; --v1-r-lg: 26px; --fs-body: 16px; }
+  .theme-v1 { --gut: 20px; --hdr-gap: 20px; --section-gap: 120px; --gap-head: 48px;     --v1-pad: 32px; --v1-near: 24px; --v1-r: 22px; --v1-r-lg: 26px;  }
 }
 @media (max-width: 767px) {
-  .theme-v1 { --gut: 12px; --hdr-gap: 12px; --section-gap: 80px; --gap-head: 32px; --v1-h1: 32px; --v1-h2: 28px; --v1-h3: 22px; --v1-h4: 18px; --v1-pad: 20px; --v1-near: 12px; --v1-r: 18px; --v1-r-lg: 20px; --fs-body: 16px; }
+  .theme-v1 { --gut: 12px; --hdr-gap: 12px; --section-gap: 80px; --gap-head: 32px;     --v1-pad: 20px; --v1-near: 12px; --v1-r: 18px; --v1-r-lg: 20px;  }
 }
 .theme-v1 body { background: var(--bg); color: var(--text-body); }
-.theme-v1 h1, .theme-v1 h2, .theme-v1 .h2, .theme-v1 .lead__title { font-family: "Manrope", system-ui, sans-serif; }
 
 /* шапка — оливковая плашка с полями от краёв окна, как остальные блоки */
 .theme-v1 .header { width: auto; margin-inline: var(--gut); }
@@ -1945,7 +1865,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 /* четыре белые карточки */
 
 /* общие заголовки разделов */
-.v1-h2 { font-size: var(--v1-h2); font-weight: 600; line-height: 1.2; letter-spacing: -.01em; color: var(--text); }
+.v1-h2 {     color: var(--text); }
 
 /* услуги */
 
@@ -1956,11 +1876,11 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 /* блог — как был, но по сетке и цветам версии 1: заголовок Manrope, карточки постов светлые */
 .theme-v1 .blog.section { margin-top: var(--section-gap); }   /* от блока «О нас» — 200px на большом экране*/
 .theme-v1 .blog .section-head { margin-bottom: var(--gap-head); }            /* под заголовком — 70px на 1920 */
-.theme-v1 .blog .quote-title { max-width: none; font-size: var(--v1-h2); font-style: normal; font-weight: 600; line-height: 1.2; letter-spacing: -.01em; color: var(--text); }
+.theme-v1 .blog .quote-title { max-width: none;  font-style: normal;    color: var(--text); }
 .theme-v1 .blog .link-more { color: var(--text); }
 .theme-v1 .blog .post { padding: 0; border-radius: 0; background: none; }
 .theme-v1 .blog .post__img { border-radius: 16px; }
-.theme-v1 .blog .post__title { font-weight: 500; color: var(--text); }
+.theme-v1 .blog .post__title {  color: var(--text); }
 .theme-v1 .blog .post__desc { color: var(--text-body); }
 .theme-v1 .blog:not(.blog--cards) .post__link { border-radius: var(--v1-r); }
 
@@ -1968,7 +1888,6 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 .theme-v1 .lead.container:not(.lead--modal) { width: min(var(--container), 100% - 2 * var(--gut)); margin-top: var(--section-gap); }
 .theme-v1 .lead:not(.lead--modal) .lead__inner { padding: 0 var(--v1-pad); border-radius: var(--v1-r-lg); background: var(--red); }
 .theme-v1 .lead:not(.lead--modal) .lead__card { padding: var(--v1-pad) 0; }
-.theme-v1 .lead__title { font-size: var(--v1-h2); font-weight: 600; line-height: 1.2; letter-spacing: -.01em; }
 .theme-v1 .lead__submit { color: var(--text); }
 .theme-v1 .lead__agree input:checked { box-shadow: inset 0 0 0 4px var(--red); }
 
@@ -1984,17 +1903,12 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   .theme-v1 .header { margin-inline: var(--gut); }
   .theme-v1 .header__bar { border-radius: 16px; }
 }
-/* =========================================================
-   ВЕСЬ САЙТ: только Manrope, межстрочный интервал 1.2 везде,
-   все кнопки — «таблетки» как «Заказать книгу» (скругление 999px, отступы 12 / 26.667, Bold)
-   ========================================================= */
-body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif !important; line-height: 1.2 !important; }
 .btn, .calc__submit, .lead__submit, .header__cta, .mobile-menu__cta {
   min-height: 0 !important;
   height: auto !important;
   padding: 12px 26.667px !important;
   border-radius: 999px !important;
-  font-weight: 700 !important;
+
 }
 /* кнопки на оливковом фоне — контурные белые, как «Заказать книгу» */
 .lead__submit { border: 1px solid var(--white) !important; background: transparent !important; color: var(--white) !important; }
@@ -2009,10 +1923,8 @@ body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif
 /* ГЛАВНАЯ, ВЕРСИЯ 1 — телефон по макету Figma (узел 37:676, iPhone 17): поля 8px, первый экран — с 20px от верха,
    высота до 746px, заголовок вверху, текст внизу; карточки через 8px; заголовки всех блоков — 24px, текст — 15px */
 @media (max-width: 767px) {
-  .theme-v1 { --gut: 8px; --hdr-gap: 8px; --v1-near: 8px; --v1-h1: 32px; --v1-h2: 24px; --v1-h4: 18px; --v1-r: 27px; --v1-r-lg: 27px; --fs-body: 15px; }
+  .theme-v1 { --gut: 8px; --hdr-gap: 8px; --v1-near: 8px;    --v1-r: 27px; --v1-r-lg: 27px;  }
 }
-/* галочка: 1.2em считаем от размера текста подписи, а не от шрифта самого поля */
-.check input, .lead__agree input { font-size: inherit !important; }
 
 /* =========================================================
    СИСТЕМА ОТСТУПОВ: внутри контейнера связанные элементы ближе друг к другу, чем содержимое — к краям контейнера.
@@ -2034,7 +1946,7 @@ body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif
    ИСПРАВЛЕНИЯ ПО АУДИТУ (главная, версия 1)
    ========================================================= */
 /* контраст: второстепенный текст — 4.7:1 на фоне страницы; оливковый темнее — белый текст на нём 5.2:1 */
-.theme-v1 { --text-body: #6e6b67; --muted: #6e6b67; --red: #736d4e; --red-hover: #5f5a40; --olive: #736d4e; }
+.theme-v1 {   --red: #736d4e; --red-hover: #5f5a40; --olive: #736d4e; }
 /* первый экран: снизу тёмная подложка под белый текст и кнопка «Получить консультацию» */
 /* карточки преимуществ: текст сразу под заголовком, без пустоты посередине */
 /* отзывы: три карточки, ссылка на Авито справа от заголовка */
@@ -2057,7 +1969,6 @@ body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif
 /* лента: вдвое ближе к шапке; до следующего блока — обычный отступ между разделами, карточки ниже экрана, чтобы следующий блок выглядывал */
 
 /* о проекте: слева заголовок, справа два абзаца столбиком */
-/* крупный антиквенный заголовок, вторая строка сдвинута вправо (как в референсе). Cormorant — с !important, иначе его перебивает правило «только Manrope» */
 
 /* услуги: бесконечная карусель — активная карточка по центру, соседние за краями окна меньше и размыты (js/main.js) */
 
@@ -2096,9 +2007,9 @@ body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif
 .h3-ph { background: var(--ph); }
 
 /* текстовые стили */
-.h3-label { font-size: 14px; font-weight: 500; color: var(--text-body); }   /* без капса */
-.h3-title { font-size: var(--v1-h4); font-weight: 500; letter-spacing: -.01em; color: var(--text); }
-.h3-text { font-size: 16px; color: var(--text-body); }
+.h3-label {   color: var(--text-body); }   /* без капса */
+.h3-title {    color: var(--text); }
+.h3-text {  color: var(--text-body); }
 .h3-head { margin-bottom: var(--head); }
 .h3-head .v1-h2, .h3-head.v1-h2 { max-width: 900px; text-wrap: balance; }
 
@@ -2138,8 +2049,8 @@ body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif
 .h3-step:nth-child(1) .h3-step__img { aspect-ratio: 371 / 520; object-position: 50% 55%; filter: grayscale(1) contrast(.85) brightness(1.04); }   /* вытянутое, мягче по контрасту */
 .h3-step:nth-child(2) .h3-step__img { aspect-ratio: 715 / 745; object-position: 40% 50%; filter: grayscale(1) brightness(.85); }
 .h3-step:nth-child(3) .h3-step__img { aspect-ratio: 340 / 597; object-position: 30% 50%; filter: saturate(.8) brightness(.92) sepia(.12); }
-.h3-step__text { max-width: 560px; margin-top: var(--s-24); font-size: 16px; color: var(--text-body); }
-.h3-step__text strong { font-weight: 600; color: var(--text); }
+.h3-step__text { max-width: 560px; margin-top: var(--s-24);  color: var(--text-body); }
+.h3-step__text strong {  color: var(--text); }
 /* планшет и телефон: фото — текст, фото — текст; все фото одного размера, текст всегда под фото (без текста поверх) */
 @media (max-width: 1023px) {
   .h3-steps__list { grid-template-columns: 1fr; row-gap: var(--s-48); }
@@ -2178,21 +2089,18 @@ body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif
 }
 .h3-footer__top { display: contents; }
 .h3-footer__links { grid-column: 1; grid-row: 1 / 3; display: flex; flex-direction: column; gap: var(--s-8); margin: 0; padding: 0 0 var(--s-48); list-style: none; }
-.h3-footer__policy { grid-column: 2; grid-row: 1; justify-self: end; font-size: 18px; }
+.h3-footer__policy { grid-column: 2; grid-row: 1; justify-self: end;  }
 .h3-footer a { color: var(--white); text-decoration: none; transition: opacity .2s ease; }
 .h3-footer a:hover { opacity: .7; }
-.h3-footer__links a { display: inline-flex; align-items: center; gap: var(--sp-12); font-size: 24px; }
+.h3-footer__links a { display: inline-flex; align-items: center; gap: var(--sp-12);  }
 .h3-footer__links a span, .h3-footer__policy { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .h3-footer__links img { flex: none; width: 44px; height: 44px; }   /* иконки крупные, как в макете */
 .h3-footer__mark {
   grid-column: 2;
   grid-row: 2;
   align-self: end;
-  font-size: calc((100vw - var(--sbw, 0px) - 2 * var(--hdr-pad) - 260px) / 7.1);   /* по ширине справа от мессенджеров */
-  font-weight: 500;
-  line-height: 1 !important;
-  letter-spacing: -.03em;
-  text-align: right;
+     /* по ширине справа от мессенджеров */
+
   white-space: nowrap;
   color: rgba(255, 255, 255, .2);
 }
@@ -2204,7 +2112,7 @@ body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif
   .h3-footer__links { flex-direction: row; flex-wrap: wrap; gap: var(--s-24); padding-bottom: 0; }
   .h3-footer__links a span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   /* надпись — по центру и чуть шире экрана: края слегка срезаны */
-  .h3-footer__mark { margin-inline: calc(-1 * var(--side) - 4vw); font-size: calc(100vw * 1.08 / 7.1); text-align: center; }
+  .h3-footer__mark { margin-inline: calc(-1 * var(--side) - 4vw);   }
 }
 
 /* =========================================================
@@ -2217,9 +2125,7 @@ body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif
 
 /* главная, по комментариям заказчика (24.10): мелкий текст крупнее на ноутбуке; строка-формула услуги в карточке;
    на телефоне текст блока «документы» — по левому краю */
-@media (min-width: 1024px) {
-  .h3-text, .h3-step__text { font-size: 18px; }
-}   /* на телефоне текст по левому краю, а не по центру */
+   /* на телефоне текст по левому краю, а не по центру */
 
 /* =========================================================
    СТРАНИЦЫ УСЛУГ В СТИЛЕ ГЛАВНОЙ (родословная книга, архивный свиток, точечные исследования:
@@ -2230,16 +2136,16 @@ body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif
 .svcp main * { font-style: normal; }
 
 /* текст — как на главной */
-.svcp .h2, .svcp .quote-title { font-size: var(--v1-h2); font-weight: 600; line-height: 1.2; letter-spacing: -.01em; color: var(--text); }
-.svcp .h3, .svcp .h4, .svcp .about2__subtitle { font-size: var(--v1-h4); font-weight: 500; line-height: 1.2; letter-spacing: -.01em; color: var(--text); }
-.svcp .book-lead { font-size: var(--v1-h3); font-weight: 500; letter-spacing: -.01em; color: var(--text); }
+.svcp .h2, .svcp .quote-title {     color: var(--text); }
+.svcp .h3, .svcp .h4, .svcp .about2__subtitle {     color: var(--text); }
+.svcp .book-lead {    color: var(--text); }
 .svcp .book-note { max-width: 560px; color: var(--text-body); }
 
 /* баннер: фото только вверху страницы, поля как у первого экрана главной; шапка над ним целиком лежит на фото */
 .svcp .opening { height: clamp(380px, 50svh, 560px); min-height: 0; margin: var(--hdr-h) var(--inset) 0; border-radius: 0; }   /* вплотную под шапкой с заливкой */
 .svcp .opening__media::after { background: linear-gradient(68deg, rgba(0, 0, 0, .65) 0%, rgba(0, 0, 0, 0) 62%); }
 .svcp .opening__content { left: calc(var(--side) - var(--inset)); right: calc(var(--side) - var(--inset)); bottom: var(--s-48); max-width: 900px; }
-.svcp .opening__title { max-width: none; font-size: var(--v1-h1); font-weight: 600; line-height: 1.1; letter-spacing: -.01em; }
+.svcp .opening__title { max-width: none;     }
 @media (max-width: 1023px) { .svcp .opening { margin-top: 66px; } }   /* высота мобильной шапки */
 @media (max-width: 767px) { .svcp .opening { height: clamp(300px, 50svh, 440px); } .svcp .opening__content { bottom: var(--s-32); } }
 
@@ -2257,7 +2163,7 @@ body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif
 .svcp .dot-list li, .svcp .about2__list li { display: block; padding: var(--s-16) 0; }
 .svcp .dot-list li + li, .svcp .about2__list li + li { border-top: 1px solid rgba(101, 98, 95, .2); }   /* линии только между пунктами */
 .svcp .dot-list li:first-child, .svcp .about2__list li:first-child { padding-top: var(--s-8); }
-@media (max-width: 767px) { .svcp .about2__subtitle { font-size: var(--t3); } }   /* на телефоне H4 = размеру текста — подзаголовок не читался бы как заголовок */
+   /* на телефоне H4 = размеру текста — подзаголовок не читался бы как заголовок */
 .svcp .dot-list li::before, .svcp .about2__list li::before { content: none; }
 
 /* точечные исследования. Иерархия: заголовок H2 → названия случаев (H3) → обычный текст → подписи.
@@ -2274,7 +2180,7 @@ body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif
 .spot__cases > .h3-label { padding-bottom: var(--s-16); }
 .spot__points { margin: 0; padding: 0; list-style: none; border-bottom: 1px solid var(--line3); }
 .spot__points li { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); column-gap: var(--g); padding: var(--s-32) 0; border-top: 1px solid var(--line3); }
-.spot__case { font-size: var(--t3); line-height: 1.15; color: var(--text); }
+.spot__case {   color: var(--text); }
 .spot__design { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g); row-gap: var(--s-32); align-items: start; margin-top: var(--sec); }   /* текст — от верха фото, без выравнивания по центру */
 .spot__design:first-child { margin-top: 0; }   /* блок «Об услуге» вынесен отдельно — дизайн древа открывает секцию */
 .spot__img { grid-column: 1 / 7; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; filter: saturate(.5) sepia(.15) hue-rotate(-30deg) contrast(.96) brightness(1.03); }
@@ -2292,27 +2198,14 @@ body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif
   .spot__points li { grid-template-columns: 1fr; row-gap: var(--s-8); padding: var(--s-24) 0; }
 }
 
-/* =========================================================
-   ШКАЛА ТЕКСТА (главная, страницы услуг, политика): на широком экране — только 24 / 32 / 44 / 56px.
-   Ниже 1440px шкала пропорционально уменьшается. Огромная надпись «Древо предков» в подвале — графика, вне шкалы
-   ========================================================= */
-.home3 { --t1: 56px; --t2: 44px; --t3: 32px; --t4: 24px; }
-@media (max-width: 1439px) { .home3 { --t1: 48px; --t2: 38px; --t3: 28px; --t4: 20px; } }
-@media (max-width: 1023px) { .home3 { --t1: 40px; --t2: 34px; --t3: 26px; --t4: 18px; } }
-@media (max-width: 767px)  { .home3 { --t1: 32px; --t2: 28px; --t3: 22px; --t4: 16px; } }
-.home3 {
-  --fs-body: var(--t4); --fs-h1: var(--t1); --fs-h2: var(--t2); --fs-h3: var(--t3); --fs-h4: var(--t4); --fs-quote: var(--t3);
-  --v1-h1: var(--t1); --v1-h2: var(--t2); --v1-h3: var(--t3); --v1-h4: var(--t4);
-}
-.h3-label { font-size: var(--t4); letter-spacing: 0; text-transform: none; }
-.h3-text, .h3-step__text, .h3-footer__policy, .h3-footer__links a { font-size: var(--t4); }
+.h3-label {   text-transform: none; }
 /* поля формы: текст 24px; подпись внутри поля — как подсказка, при вводе исчезает (мелкой подписи сверху нет) */
-.home3 .field__input { height: 64px; padding: 0 24px; font-size: var(--t4); }
+.home3 .field__input { height: 64px; padding: 0 24px;  }
 .home3 .field--area .field__input { height: 140px; padding-top: 18px; }
-.home3 .field__label { top: 32px; font-size: var(--t4); transition: opacity .2s ease; }
+.home3 .field__label { top: 32px;  transition: opacity .2s ease; }
 .home3 .field--area .field__label { top: 18px; }
 .home3 .field__input:focus + .field__label,
-.home3 .field__input:not(:placeholder-shown) + .field__label { top: 32px; font-size: var(--t4); opacity: 0; transform: translateY(-50%); }
+.home3 .field__input:not(:placeholder-shown) + .field__label { top: 32px;  opacity: 0; transform: translateY(-50%); }
 .home3 .field--area .field__input:focus + .field__label,
 .home3 .field--area .field__input:not(:placeholder-shown) + .field__label { top: 18px; transform: none; }
 
@@ -2321,12 +2214,6 @@ body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif
 /* шапка с текстом 24px: на экранах уже 1700px кнопка «Другая версия» не помещается — она остаётся в мобильном меню */
 @media (min-width: 1024px) and (max-width: 1279px) { .home3 .header__left { gap: var(--s-24); } .home3 .nav { gap: var(--s-16); } }
 
-/* шкала текста, уточнение: обычный (наборный) текст — 18px; шкала на широком экране — 18 / 24 / 32 / 44 / 56 */
-.home3 { --t5: 18px; }
-@media (max-width: 1439px) { .home3 { --t5: 17px; } }
-@media (max-width: 767px)  { .home3 { --t5: 16px; } }
-.home3 { --fs-body: var(--t5); }
-.h3-label, .h3-text, .h3-step__text, .h3-footer__policy, .home3 .field__input, .home3 .field__label, .home3 .field__input:focus + .field__label, .home3 .field__input:not(:placeholder-shown) + .field__label { font-size: var(--t5); }
 /* поля заявки — компактные, как поля калькулятора: 52px на компьютере, 44px на телефоне */
 .home3 .field__input { height: 52px; padding-inline: var(--s-16); }
 .home3 .field__label { top: 26px; left: 17px; }
@@ -2346,34 +2233,18 @@ body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif
 .home3 .header--sticky.is-hidden { transform: translateY(-100%) !important; }
 
 /* =========================================================
-   2. ФОРМАТЫ (главная) — три карточки друг под другом, без анимации при прокрутке.
-   Поля — как у остальных блоков (--side). Сетка сайта: 12 колонок, зазор --g;
-   фото — 6 колонок, текст — 6, слева/справа по очереди. Фото по высоте — как колонка текста: низ фото = низ кнопки.
-   Цвета текста — как в блоке «О нас»: --text и --text-body
-   ========================================================= */
-/* планшет и телефон: фото сверху (3:2), под ним текст */
-
-/* шрифт заголовков: Brygada 1918 (главная и страницы услуг — html.home3; текст остаётся Manrope).
-   html body … — чтобы перебить общее правило «везде Manrope» (body *:not(svg) … !important) и у самих заголовков,
-   и у строк внутри них (построчное появление H2 оборачивает текст в span). Плашка «Об услуге» — не заголовок по виду */
-html.home3 body :is(h1, h2, h3, h4, .h3-intro__lead):not(.about-svc__chip),
-html.home3 body :is(h1, h2, h3, h4, .h3-intro__lead):not(.about-svc__chip) *:not(svg) { font-family: "Brygada 1918", Georgia, serif !important; }
-html.home3 :is(h1, h2, h3, h4, .h3-intro__lead):not(.about-svc__chip) { font-weight: 500; letter-spacing: -.01em; }
-
-/* =========================================================
    2. «КОРНИ» (главная): зелёная секция во всю ширину, текст по центру, по бокам — ветки.
    Ветки — одно фото (img/home/branches.webp: чёрные ветки на белом небе), справа как есть, слева — отражённое.
    Наложение: фото обесцвечено и инвертировано (небо — чёрное, ветки — белые) и наложено в режиме «экран»:
    чёрное на зелёном не видно, белое светлит фон — ветки получаются бело-зелёными. Белый текст на зелёном — 7,4:1
    ========================================================= */
-.roots { position: relative; isolation: isolate; display: grid; place-items: center; min-height: 80svh; margin-top: var(--sec); padding: var(--s-128) var(--side); overflow: hidden; background: #4a5a3f; color: var(--white); text-align: center; }
+.roots { position: relative; isolation: isolate; display: grid; place-items: center; min-height: 80svh; margin-top: var(--sec); padding: var(--s-128) var(--side); overflow: hidden; background: #4a5a3f; color: var(--white);  }
 .roots::before, .roots::after { content: ""; position: absolute; top: 0; z-index: -1; width: 40%; height: 122%; background: url("../img/home/branches.webp") right top / cover no-repeat; filter: grayscale(1) invert(1); mix-blend-mode: screen; opacity: .5; pointer-events: none; -webkit-mask-image: linear-gradient(to left, #000 10%, rgba(0, 0, 0, .35) 55%, transparent 90%); mask-image: linear-gradient(to left, #000 10%, rgba(0, 0, 0, .35) 55%, transparent 90%); }   /* к центру ветки постепенно зеленеют и растворяются — под текстом их нет */
 .roots::before { right: 0; }
 .roots::after { left: 0; transform: scaleX(-1); }   /* отражение: слева ветка растёт от левого края */
 .roots__in { display: flex; flex-direction: column; align-items: center; max-width: 760px; }
-.roots__label { font-size: var(--t5); }
-.roots__title { margin-top: var(--s-16); font-size: var(--v1-h2); color: var(--white); text-wrap: balance; }
-.roots__text { margin-top: var(--s-24); font-size: var(--t5); text-wrap: pretty; }
+.roots__title { margin-top: var(--s-16);  color: var(--white); text-wrap: balance; }
+.roots__text { margin-top: var(--s-24);  text-wrap: pretty; }
 .home3 .roots__btn { margin-top: var(--s-48); background: var(--white) !important; color: #4a5a3f !important; }
 .home3 .roots__btn:hover { background: rgba(255, 255, 255, .88) !important; }
 @media (max-width: 767px) {
@@ -2383,7 +2254,6 @@ html.home3 :is(h1, h2, h3, h4, .h3-intro__lead):not(.about-svc__chip) { font-wei
   .roots::before, .roots::after { top: 32%; width: 66%; height: 80%; opacity: .45; background-size: auto 100%; background-position: right top;   /* длинная ветвь фото (на 65% его высоты) — на уровне кнопки */
     -webkit-mask-image: linear-gradient(to left, #000 10%, rgba(0, 0, 0, .25) 50%, transparent 85%);
             mask-image: linear-gradient(to left, #000 10%, rgba(0, 0, 0, .25) 50%, transparent 85%); }
-  .roots__label { font-size: 14px; }
   .roots__text { text-wrap: wrap; }   /* строки во всю ширину, без выравнивания длины */
   .home3 .roots__btn { width: 100%; }
 }
@@ -2402,9 +2272,6 @@ html.home3 :is(h1, h2, h3, h4, .h3-intro__lead):not(.about-svc__chip) { font-wei
    Заголовки — Playfair Display, текст — Manrope. Шрифты на пару ступеней крупнее, чем у siha (по шкале сайта)
    ========================================================= */
 .idx3 { --g3: var(--hdr-pad); --line3: rgba(101, 98, 95, .25); }
-html.home3.idx3 body :is(h1, h2, h3, h4, .i3-side__title, .h3-footer__mark):not(.about-svc__chip),
-html.home3.idx3 body :is(h1, h2, h3, h4, .i3-side__title, .h3-footer__mark):not(.about-svc__chip) *:not(svg) { font-family: "Playfair Display", Georgia, serif !important; }
-html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-spacing: -.01em; }
 /* шапка — тонкая линия снизу (над первым экраном — белая полупрозрачная), без тени */
 .idx3 .header--sticky .header__bar { border-bottom: 1px solid var(--line3); box-shadow: none !important; }
 .idx3 .header--sticky.is-top .header__bar { border-bottom-color: rgba(255, 255, 255, .35); }
@@ -2424,50 +2291,50 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .i3-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }   /* шкатулка с фото — справа, слева размытый фон под текстом */
 .i3-hero::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(20, 16, 12, .6), rgba(20, 16, 12, .15) 65%), linear-gradient(rgba(20, 16, 12, .45), rgba(20, 16, 12, 0) 200px); pointer-events: none; }   /* под белым текстом и шапкой */
 .i3-hero__text { position: absolute; top: 50%; left: var(--g3); z-index: 2; max-width: 760px; padding-right: var(--g3); transform: translateY(-50%); }
-.i3-hero__title { font-size: var(--t2); color: var(--white); text-wrap: balance; }
-.i3-hero__lead { max-width: 580px; margin-top: var(--s-24); font-size: var(--t5); color: rgba(255, 255, 255, .92); }
-.i3-hero__link { display: inline-flex; align-items: center; gap: .5em; margin-top: var(--s-24); font-size: var(--t5); font-weight: 500; color: var(--white); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+.i3-hero__title {  color: var(--white); text-wrap: balance; }
+.i3-hero__lead { max-width: 580px; margin-top: var(--s-24);  color: rgba(255, 255, 255, .92); }
+.i3-hero__link { display: inline-flex; align-items: center; gap: .5em; margin-top: var(--s-24);   color: var(--white); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
 .i3-hero__link svg { width: .8em; height: .8em; }
 
 /* 2. чем мы занимаемся: слева прокручивается текст, справа фото закреплено под шапкой */
 .i3-about { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); column-gap: var(--g); align-items: start; padding: var(--s-128) var(--g3); }   /* без линии снизу — над «Услугами» её нет */
 .i3-about__main { grid-column: 1 / 6; }
 .i3-about__side { grid-column: 6 / 11; position: sticky; top: calc(var(--hdr-h) + var(--g)); }   /* фото — до правого края сетки, как карточки «Услуг» ниже */
-.i3-label { font-size: var(--t5); font-weight: 500; color: var(--red); }
-.i3-about__title { max-width: 18em; margin-top: var(--s-24); font-size: var(--t2); color: var(--text); text-wrap: balance; }
+.i3-label {   color: var(--red); }
+.i3-about__title { max-width: 18em; margin-top: var(--s-24);  color: var(--text); text-wrap: balance; }
 .i3-about__text { max-width: 680px; }
-.i3-about__text p { margin-top: var(--s-24); font-size: var(--t5); color: var(--text-body); text-wrap: pretty; }
-.i3-about__sub { margin: var(--s-96) 0 var(--s-48); font-size: var(--t3); color: var(--text); }   /* заголовок → первый пункт заметно больше, чем между пунктами: пункты читаются одной группой */
+.i3-about__text p { margin-top: var(--s-24);  color: var(--text-body); text-wrap: pretty; }
+.i3-about__sub { margin: var(--s-96) 0 var(--s-48);  color: var(--text); }   /* заголовок → первый пункт заметно больше, чем между пунктами: пункты читаются одной группой */
 /* линии — только между пунктами: над первым и под последним их нет, крайние пункты без внешнего отступа */
 .i3-lines, .i3-steps { max-width: 760px; margin: 0; padding: 0; list-style: none; }
-.i3-lines li { padding: var(--s-16) 0; font-size: var(--t5); color: var(--text); }
+.i3-lines li { padding: var(--s-16) 0;  color: var(--text); }
 .i3-steps li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--g); padding: var(--s-16) 0; }
 .i3-lines li + li, .i3-steps li + li { border-top: 1px solid var(--line3); }
 .i3-lines li:first-child, .i3-steps li:first-child { padding-top: 0; }
 .i3-lines li:last-child, .i3-steps li:last-child { padding-bottom: 0; }
-.i3-steps__name { font-size: var(--t4); font-family: "Playfair Display", Georgia, serif !important; color: var(--text); }
-.i3-steps__text { font-size: var(--t5); color: var(--text-body); }
+.i3-steps__name {   color: var(--text); }
+.i3-steps__text {  color: var(--text-body); }
 .i3-side { position: relative; height: calc(100svh - var(--hdr-h) - 2 * var(--g)); min-height: 480px; overflow: hidden; background: var(--red); }
 .i3-side__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .i3-side::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(20, 16, 12, 0) 40%, rgba(20, 16, 12, .75)); }
 .i3-side__text { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: var(--s-32); color: var(--white); }
-.i3-side__title { font-size: var(--t2); line-height: 1.1 !important; color: var(--white); }
-.i3-side__sub { margin-top: var(--sp-12); font-size: var(--t5); color: rgba(255, 255, 255, .92); }
+.i3-side__title {   color: var(--white); }
+.i3-side__sub { margin-top: var(--sp-12);  color: rgba(255, 255, 255, .92); }
 
 /* 6. сообщество: фон страницы, 3 статьи через тонкие линии; фото — над текстом, во всю ширину карточки */
 .i3-news { padding: var(--s-96) var(--g3); border-bottom: 1px solid var(--line3); }
 .i3-news__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--s-16); margin-bottom: var(--s-48); }
-.i3-news__title { font-size: var(--t2); color: var(--text); }
-.i3-news__all { font-size: var(--t5); color: var(--red); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+.i3-news__title {  color: var(--text); }
+.i3-news__all {  color: var(--red); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
 /* карточки — строки общей сетки (subgrid): картинки одной высоты, заголовки, тексты и ссылки у всех трёх на одном уровне */
 .i3-news__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
 .i3-post { display: grid; grid-template-rows: subgrid; grid-row: span 4; padding-right: var(--s-24); border-right: 1px solid var(--line3); }
 .i3-post > div { display: contents; }
 .i3-post + .i3-post { padding-left: var(--s-24); }
 .i3-post:last-child { border-right: 0; }
-.i3-post__title { margin-top: var(--s-24); font-size: var(--t4); color: var(--text); }
-.i3-post__text { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; overflow: hidden; margin-top: var(--sp-12); font-size: var(--t5); color: var(--text-body); }
-.i3-post__link { display: inline-block; justify-self: start; align-self: end; margin-top: var(--s-24); font-size: var(--t5); font-weight: 500; color: var(--red); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+.i3-post__title { margin-top: var(--s-24);  color: var(--text); }
+.i3-post__text { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; overflow: hidden; margin-top: var(--sp-12);  color: var(--text-body); }
+.i3-post__link { display: inline-block; justify-self: start; align-self: end; margin-top: var(--s-24);   color: var(--red); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
 .i3-post__img { width: 100%; height: clamp(200px, 19vw, 320px); object-fit: cover; background: var(--ph); }   /* одна высота у всех, независимо от ширины карточки */
 
 @media (max-width: 1023px) {
@@ -2498,7 +2365,7 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .h3-steps .i3-news__list { column-gap: var(--g); padding-top: var(--tab-h); counter-reset: step; }
 .h3-steps .i3-post, .h3-steps .i3-post + .i3-post { position: relative; padding: var(--s-24); border: 0; border-radius: 0 var(--folder-r) var(--folder-r) var(--folder-r); background: var(--folder); counter-increment: step; }
 .h3-steps .i3-post::before { content: ""; position: absolute; bottom: 100%; left: 0; width: 42%; height: var(--tab-h); border-radius: var(--folder-r) 0 0 0; background: var(--folder); clip-path: polygon(0 0, calc(100% - var(--tab-h)) 0, 100% 100%, 0 100%); }
-.h3-steps .i3-post::after { content: "Этап " counter(step); align-self: end; margin-top: var(--s-48); font-size: 14px; font-weight: 500; color: var(--text); }
+.h3-steps .i3-post::after { content: "Этап " counter(step); align-self: end; margin-top: var(--s-48);   color: var(--text); }
 .h3-steps .i3-post__img { border-radius: var(--radius-sm); }
 .h3-steps .i3-post__text { color: var(--text); }   /* на фоне папки бледный --text-body слишком слабый */
 @media (max-width: 1023px) {
@@ -2536,13 +2403,13 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .svx__info { position: absolute; top: 11%; bottom: 0; left: calc(45% + var(--s-48)); width: calc(42% - var(--s-48)); display: flex; flex-direction: column; align-items: flex-start; }   /* по макету: текст начинается вровень с верхом узкой карточки справа (11% высоты), не по центру */
 .svx__text.is-on .svx__info { pointer-events: auto; }
 .svx__chips { display: flex; flex-wrap: wrap; gap: var(--s-8); margin: var(--s-24) 0 0; padding: 0; list-style: none; }   /* под названием: срок и цена */
-.svx__chips li { padding: 6px 14px; border-radius: 999px; white-space: nowrap; background: rgba(101, 98, 95, .1); font-size: 14px; color: var(--text); }   /* плашки — мелкие, второстепенные */
-.svx__name { font-size: var(--t2); color: var(--red); text-wrap: balance; }   /* размер H2, фирменный красный */
+.svx__chips li { padding: 6px 14px; border-radius: 999px; white-space: nowrap; background: rgba(101, 98, 95, .1);  color: var(--text); }   /* плашки — мелкие, второстепенные */
+.svx__name {  color: var(--red); text-wrap: balance; }   /* размер H2, фирменный красный */
 .svx__body { display: flex; flex-direction: column; align-items: flex-start; }
 /* название → 24 → плашки → 64 → «Что это такое?» (H3 — заметно крупнее текста, чтобы читался как заголовок) → 20 → описание → 56 → кнопка */
-.svx__label { margin-top: var(--s-64); font-size: var(--t3); line-height: 1.15; color: var(--text); }
-.svx__desc { max-width: 36em; margin-top: var(--sp-20); font-size: var(--t5); line-height: 1.5; color: var(--text-body); text-wrap: pretty; }
-.home3 .svx__btn { display: flex; width: fit-content; min-height: 64px; margin-top: var(--s-56); padding: 20px 56px !important; font-weight: 500; }
+.svx__label { margin-top: var(--s-64);   color: var(--text); }
+.svx__desc { max-width: 36em; margin-top: var(--sp-20);   color: var(--text-body); text-wrap: pretty; }
+.home3 .svx__btn { display: flex; width: fit-content; min-height: 64px; margin-top: var(--s-56); padding: 20px 56px !important;  }
 .svx__btn svg { width: 1em; height: 1em; }
 @media (max-width: 1023px) {
   .svx__info { left: calc(45% + var(--s-24)); width: calc(55% - var(--s-24)); }
@@ -2571,11 +2438,9 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .idx3.svcp .opening { height: calc(clamp(380px, 50svh, 560px) + var(--hdr-h)); margin: 0; }
 .idx3.svcp .opening__media::after { background: linear-gradient(68deg, rgba(0, 0, 0, .65) 0%, rgba(0, 0, 0, 0) 62%), linear-gradient(rgba(20, 16, 12, .45), rgba(20, 16, 12, 0) 200px); }   /* сверху — под белой шапкой */
 .idx3.svcp .opening__content { left: var(--side); right: var(--side); }
-.idx3.svcp .opening__title { font-size: var(--t1); font-weight: 400; }
 
 /* политика: текст по сетке страницы; разделы — стилем H3 */
 .idx3 .policy { margin: 0; padding: var(--s-96) var(--side) var(--s-128); }
-.idx3 .policy__text h2 { font-size: var(--t3); }
 .idx3 .policy__text > h2:first-child { margin-top: 0; }
 .idx3 .policy__text { display: block; max-width: 760px; }   /* заголовок теперь в баннере — ширину текста задаём сами */
 .opening--policy .opening__content { max-width: none; }     /* название — ровно в две строки */
@@ -2607,8 +2472,8 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
    ========================================================= */
 .formats__list { display: grid; grid-template-columns: 1fr 1fr; gap: var(--g); margin: 0; padding: 0; list-style: none; }
 .formats__img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; background: var(--ph); }
-.formats__name { margin-top: var(--s-24); font-size: var(--t3); line-height: 1.15; color: var(--text); }
-.formats__text { max-width: 36em; margin-top: var(--sp-12); font-size: var(--t5); color: var(--text-body); text-wrap: pretty; }
+.formats__name { margin-top: var(--s-24);   color: var(--text); }
+.formats__text { max-width: 36em; margin-top: var(--sp-12);  color: var(--text-body); text-wrap: pretty; }
 
 /* дизайн древа — как карточка услуги на главной: фото 45% ширины и высотой с экран за вычетом шапки и полей, текст справа с отступом 48px */
 .spot .addon { display: grid; grid-template-columns: 45fr 55fr; column-gap: var(--s-48); align-items: start; }
@@ -2688,12 +2553,12 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
   grid-row: auto;
 }
 .book-stages .i3-post::after { content: none; }
-.book-stages__number { margin: 0; font-size: var(--t3); line-height: 1.05; color: var(--text); font-weight: 400; }
+.book-stages__number { margin: 0;   color: var(--text);  }
 .book-stages .book-stages__duration { margin-top: clamp(72px, 8vw, 130px); }
 .book-stages .book-stages__duration li { background: #f4f1eb; }
-.book-stages__title { margin: var(--s-16) 0 0; font-size: var(--t4); color: var(--text); font-weight: 400; }
+.book-stages__title { margin: var(--s-16) 0 0;  color: var(--text);  }
 .book-stages__number + .book-stages__title { margin-top: clamp(72px, 8vw, 130px); }
-.book-stages__text { margin: var(--s-24) 0 0; font-size: var(--t5); color: var(--text); }
+.book-stages__text { margin: var(--s-24) 0 0;  color: var(--text); }
 @media (max-width: 1023px) {
   .book-stages .i3-post, .book-stages .i3-post + .i3-post { min-height: 0; }
   .book-stages .book-stages__duration,
@@ -2702,10 +2567,7 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 
 /* Вопросы обоих калькуляторов — как названия этапов; подсказки не прижаты к вопросу. */
 .idx3 .calc--split .calc-q__title {
-  font-family: "Playfair Display", Georgia, serif !important;
-  font-size: var(--t4);
-  font-weight: 400;
-  letter-spacing: -.01em;
+
   color: var(--text);
 }
 .idx3 .calc--split .calc-q__hint { margin-top: 0; }
@@ -2722,11 +2584,7 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .idx3 .svx__card[data-k="1"] img { filter: saturate(.76) contrast(.96) brightness(1.04); }
 .idx3 .calc--split .calc__box { padding-top: var(--s-32); }
 
-.community-photo-link:not([hidden]) { display: flex; align-items: center; justify-content: center; min-height: 180px; padding: 24px; background: #e6e2db; color: var(--text); text-align: center; text-decoration: underline; }
-
-/* Единые пропорции заголовков этапов и расстояние до кнопки формы. */
-.book-stages__number { font-size: var(--t4); }
-.book-stages__title { font-size: var(--t3); }
+.community-photo-link:not([hidden]) { display: flex; align-items: center; justify-content: center; min-height: 180px; padding: 24px; background: #e6e2db; color: var(--text);  text-decoration: underline; }
 .h3-lead__card .lead__agree + .lead__submit { margin-top: var(--s-16); }
 @media (min-width: 768px) {
   .h3-footer__links { padding-bottom: 0; }
@@ -2795,7 +2653,7 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
   scroll-snap-type: x proximity;
   padding-bottom: var(--s-16);
   scrollbar-width: thin;
-  scrollbar-color: var(--text) transparent;
+  scrollbar-color: #65625f transparent;
 }
 .i3-news .i3-post, .i3-news .i3-post + .i3-post, .i3-news .i3-post:last-child {
   display: flex;
@@ -2838,17 +2696,16 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 }
 /* В поле legend заголовок не участвует в flex-gap, поэтому отступ задаётся явно. */
 @media (min-width: 768px) and (max-width: 1366px) {
-  
+
   .h3-footer__mark { align-self: end; transform: translateY(var(--s-16)); }
 }
-
 
 /* Shared layout rules: page gutters, card widths and left-aligned links. */
 .idx3 {
   --content-gap: var(--g);
   --mobile-card-width: min(334px, 84vw);
 }
-.i3-news .i3-post__link { align-self: flex-start; justify-self: start; text-align: left; }
+.i3-news .i3-post__link { align-self: flex-start; justify-self: start;  }
 .i3-news .i3-post > div { display: flex; flex-direction: column; align-items: flex-start; }
 @media (orientation: landscape) {
   .i3-news .i3-news__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--content-gap); overflow: visible; padding-bottom: 0; }
@@ -2872,7 +2729,7 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 
 /* Directions replaces the old carousel. Typography uses the existing t2–t5 scale. */
 .directions { color: #fff; }
-.directions__heading { padding: 0 var(--g3); margin-bottom: var(--s-32); color: var(--text); font-size: var(--t2); }
+.directions__heading { padding: 0 var(--g3); margin-bottom: var(--s-32); color: var(--text);  }
 .directions__track { position: relative; }
 .directions__viewport { position: relative; }
 .directions__scene { position: relative; isolation: isolate; overflow: hidden; background: #292724; }
@@ -2882,11 +2739,11 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .directions__media { position: relative; min-height: clamp(480px, 42vw, 620px); }
 .directions__photo { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .directions__copy { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; justify-content: center; }
-.directions__title { font-size: var(--t2); line-height: 1.12; color: #fff; text-wrap: balance; }
+.directions__title {   color: #fff; text-wrap: balance; }
 .directions__chips { display: flex; flex-wrap: wrap; gap: var(--s-8); margin: var(--s-24) 0 0; padding: 0; list-style: none; }
-.directions__chips li { padding: 6px 14px; border: 1px solid #ffffff80; border-radius: 999px; font-size: 14px; line-height: 1.4; color: #fff; }
-.directions__label { margin-top: var(--s-48); font-size: var(--t4); line-height: 1.2; color: #fff; }
-.directions__description { margin-top: var(--s-16); font-size: var(--t5); line-height: 1.5; color: #f4f1eb; max-width: 38em; }
+.directions__chips li { padding: 6px 14px; border: 1px solid #ffffff80; border-radius: 999px;   color: #fff; }
+.directions__label { margin-top: var(--s-48);   color: #fff; }
+.directions__description { margin-top: var(--s-16);   color: #f4f1eb; max-width: 38em; }
 .home3 .directions__button { margin-top: var(--s-32); min-height: 48px; padding: 14px 32px; align-self: flex-start; gap: 12px; }
 .directions__button svg { width: 16px; height: 16px; }
 .directions__scene.is-visible .directions__copy { animation: directions-enter .65s ease both; }
@@ -2918,7 +2775,7 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .directions__visual { display: none; }
 .directions__backdrop { filter: blur(10px); opacity: .65; }
 .directions__scene::after { background: rgba(0,0,0,.58); }
-.directions__chips li { font: inherit; font-size: var(--t5); line-height: 1.5; }
+.directions__chips li { font: inherit;   }
 .directions__scene .directions__copy { animation: none !important; }
 .directions.is-story .directions__visual { display: block; position: sticky; top: 0; height: 100svh; margin-bottom: -100svh; overflow: hidden; background: #171614; isolation: isolate; pointer-events: none; }
 .directions__visual > .directions__backdrop { z-index: auto; opacity: 1; }
@@ -2945,7 +2802,7 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .i3-news .i3-post__img,
 .i3-news .community-photo-link:not([hidden]) { width: 100%; aspect-ratio: 3 / 2; height: auto; min-height: 0; flex: 0 0 auto; object-fit: cover; box-sizing: border-box; }
 .idx3 .h3-lead { height: 100svh; max-height: 100vh; min-height: 0; padding: clamp(12px, 3vh, 32px) var(--s-24); display: grid; place-items: center; box-sizing: border-box; }
-.idx3 .h3-lead__card { max-height: 100%; overflow-y: auto; overscroll-behavior: contain; padding: clamp(16px, 3vh, 32px); }
+.idx3 .h3-lead__card { max-height: 100%; overflow-y: auto; overscroll-behavior: contain; padding: var(--form-card-pad-block) var(--form-card-pad-inline); }
 
 /* The visual travels only inside its own three-screen section, then leaves with it. */
 .directions.is-story .directions__visual { position: absolute; top: 0; left: 0; width: 100%; margin: 0; will-change: transform; }
@@ -2962,15 +2819,13 @@ main > section[hidden] { display: none !important; }
 
 /* Alternate about layout: static photograph and flowing editorial copy. */
 .about-editorial { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: clamp(32px,7vw,128px); padding: var(--s-96) var(--g3); align-items: start; }
-.about-editorial__left h2 { font-size: var(--t2); margin: 0 0 var(--s-32); }
+.about-editorial__left h2 {  margin: 0 0 var(--s-32); }
 .about-editorial__left img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; filter: none; }
-.about-editorial__copy { font-size: var(--t5); color: var(--text); letter-spacing: normal; }
+.about-editorial__copy {  color: var(--text);  }
 .about-editorial__copy p + p { margin-top: var(--s-24); }
-.about-editorial__copy h3 { font-size: var(--t3); margin: var(--s-32) 0 var(--s-16); }
-.about-editorial__copy strong { font-weight: 700; }
+.about-editorial__copy h3 {  margin: var(--s-32) 0 var(--s-16); }
 .directions__chips--mobile { display: none; }
 .directions__description { margin-top: var(--s-40, 40px); }
-.idx3 .calc--split .calc-q__title { font-size: var(--t3); }
 @media (max-width: 767px) {
  .about-editorial { grid-template-columns: minmax(0,1fr); gap: var(--s-32); }
  .directions__backdrop, .directions__scene::after { display: none; }
@@ -2986,7 +2841,7 @@ main > section[hidden] { display: none !important; }
 
 /* Shared six-column split: the same content gutter and right-column origin. */
 .about-editorial { column-gap: var(--content-gap); row-gap: var(--s-64); align-items: stretch; }
-.about-editorial > h2 { grid-column: 1; grid-row: 1; font-size: var(--t2); margin: 0; }
+.about-editorial > h2 { grid-column: 1; grid-row: 1;  margin: 0; }
 .about-editorial__left { grid-column: 1; grid-row: 2; position: relative; min-height: 0; }
 .about-editorial__left img { position: absolute; inset: 0 auto auto 0; height: 100%; max-height: 520px; aspect-ratio: auto; object-fit: cover; }
 .about-editorial__copy { grid-column: 2; grid-row: 2; }
@@ -2997,7 +2852,8 @@ main > section[hidden] { display: none !important; }
  .about-editorial__left img { position: static; height: auto; max-height: none; aspect-ratio: 4 / 3; }
  .idx3 .h3-lead { display: block; height: auto; max-height: none; min-height: 0; padding: 0; background: var(--red); overflow: visible; }
  .idx3 .h3-lead__img { display: none; }
- .idx3 .h3-lead__card { width: 100%; max-width: none; height: auto; max-height: none; margin: 0; padding: var(--s-32) var(--g3); overflow: visible; border-radius: 0; box-sizing: border-box; }
+ :root { --form-card-pad-block: var(--s-32); --form-card-pad-inline: var(--g3); }
+ .idx3 .h3-lead__card { width: 100%; max-width: none; height: auto; max-height: none; margin: 0; padding: var(--form-card-pad-block) var(--form-card-pad-inline); overflow: visible; border-radius: 0; box-sizing: border-box; }
 }
 
 /* 8px rhythm and native sticky placement avoid JS/scroll feedback. */
@@ -3021,7 +2877,7 @@ main > section[hidden] { display: none !important; }
  .i3-about__side { margin-inline: calc(-1 * var(--g3)); }
  .i3-side { width: 100%; }
  .calc__photo { display: block; width: calc(100% + 2 * var(--g3)); max-width: none; margin-inline: calc(-1 * var(--g3)); }
- .idx3 .h3-footer { background: var(--text); }
+ .idx3 .h3-footer { background: #65625f; }
 }
 
 /* Move the desktop photograph inward by exactly one of twelve grid columns. */
@@ -3052,7 +2908,7 @@ main > section[hidden] { display: none !important; }
 /* Open stages, separated only by fine rules. */
 .book-stages .i3-news__list { gap: 0; }
 .book-stages .i3-post, .book-stages .i3-post + .i3-post { background: transparent; border-radius: 0; min-height: 0; padding: 0 32px; border: 0; clip-path: none; }
-.book-stages .i3-post + .i3-post { border-left: 1px solid var(--text); }
+.book-stages .i3-post + .i3-post { border-left: 1px solid #65625f; }
 .book-stages .i3-post::before, .book-stages .i3-post::after { content: none; }
 .book-stages .book-stages__duration { margin-top: 0; }
 .review--video .voice__play::before { width: 64px; height: 64px; margin: -32px 0 0 -32px; background-image: none; background-color: rgba(0,0,0,.5); }
@@ -3064,15 +2920,13 @@ main > section[hidden] { display: none !important; }
 .idx3 .calc--immersive .calc__intro { position: static; margin: 0 0 48px; gap: 24px; }
 .idx3 .calc--immersive .calc__intro h2,
 .idx3 .calc--immersive :is(.calc__text,.calc-q__title,.calc-q__hint,.radio,.calc-q__more,.calc__add,.calc__contact,.calc-line__title,.calc__result-label,.calc__result-sum,.calc__result-note,.calc__again) { color: #fff; }
-.idx3 .calc--immersive .calc__text { font-size: var(--t5); }
-.idx3 .calc--immersive .calc-q__hint { font-size: 16px; }
 .idx3 .calc--immersive .calc__card { padding: 0; background: transparent; }
 .idx3 .calc--immersive .calc__result { background: transparent; }
 .idx3 .calc--immersive .radio input[type='radio'] { border-color: #fff; }
 .idx3 .calc--immersive .radio input[type='radio']:checked { background: #fff; box-shadow: inset 0 0 0 4px var(--red); }
 .idx3 .calc--immersive .calc__submit { background: #fff; color: var(--text); }
 @media (min-width: 768px) and (max-width:1199px) and (orientation:portrait) {
- .book-stages .i3-post:last-child { border-left: 0; border-top: 1px solid var(--text); margin-top: 32px; padding-top: 32px; }
+ .book-stages .i3-post:last-child { border-left: 0; border-top: 1px solid #65625f; margin-top: 32px; padding-top: 32px; }
 }
 @media (max-width:767px) {
  .book-stages .i3-post, .book-stages .i3-post + .i3-post { padding: 0 16px; }
@@ -3083,7 +2937,7 @@ main > section[hidden] { display: none !important; }
 
 /* Short inset separators; white duration pills. */
 .book-stages .i3-post, .book-stages .i3-post + .i3-post { position: relative; border: 0; }
-.book-stages .i3-post + .i3-post::before { content: ''; position: absolute; left: 0; top: 24px; bottom: 24px; width: 1px; background: var(--text); }
+.book-stages .i3-post + .i3-post::before { content: ''; position: absolute; left: 0; top: 24px; bottom: 24px; width: 1px; background: #65625f; }
 .book-stages .book-stages__duration li { background: #fff; }
 /* The photograph enters with the section, pins at the viewport edge, then leaves with it. */
 .idx3 .calc.calc--immersive { isolation: isolate; background: #282522; overflow: clip; }
@@ -3102,24 +2956,21 @@ main > section[hidden] { display: none !important; }
 }
 @media (max-width:767px) { .idx3 .reviews { padding-bottom: 32px; } }
 
-/* Shared foundations: one text color, an 8px spacing rhythm, distinct type roles. */
+/* Shared layout foundations. Typography lives in typography.css. */
 html.theme-v1.home3.idx3 {
- --text:#65625f; --text-body:var(--text); --muted:var(--text);
- --type-body:18px; --type-section:48px; --type-heading:32px;
- --t5:var(--type-body); --t2:var(--type-section); --t3:var(--type-heading);
+
  --hdr-pad:64px; --g3:var(--hdr-pad); --content-gap:24px;
  --sp-12:16px; --sp-20:24px;
 }
-@media(max-width:1199px) { html.theme-v1.home3.idx3 { --hdr-pad:32px; --type-section:40px; --type-heading:28px; } }
-@media(max-width:767px) { html.theme-v1.home3.idx3 { --hdr-pad:16px; --type-body:16px; --type-section:32px; --type-heading:24px; --content-gap:16px; } }
+@media(max-width:1199px) { html.theme-v1.home3.idx3 { --hdr-pad:32px;   } }
+@media(max-width:767px) { html.theme-v1.home3.idx3 { --hdr-pad:16px;    --content-gap:16px; } }
 .idx3 .calc--split :is(.calc__text,.calc-q__hint,.calc-q__more p,.calc-q__more summary,.radio,.calc__contact,.calc__result-note),
 .idx3 .calc--immersive :is(.calc__text,.calc-q__hint,.calc-q__more p,.calc-q__more summary,.radio,.calc__contact,.calc__result-note) {
- color:var(--text); font-size:var(--type-body); line-height:1.5; letter-spacing:normal;
+ color:var(--text);
 }
 .idx3 .calc--immersive .calc__box,
 .idx3 .calc--immersive .calc__intro h2,
 .idx3 .calc--immersive :is(.calc-q__title,.calc-q__more,.calc__add,.calc-line__title,.calc__result-label,.calc__result-sum,.calc__again) {color:var(--text);}
-.idx3 .calc--split .calc-q__title {font-size:var(--type-heading);line-height:1.25;}
 .idx3 .calc--split .calc-q {gap:24px;}
 
 .idx3 .calc--split .radio {gap:8px;}
@@ -3135,12 +2986,12 @@ html.theme-v1.home3.idx3 {
 .idx3 .book-stages .i3-post::before,.idx3 .book-stages .i3-post::after {content:none;}
 .idx3 .book-stages .i3-post + .i3-post::before {
  content:'';position:absolute;left:-24px;top:24px;bottom:24px;width:1px;height:auto;
- background:var(--text);clip-path:none;border-radius:0;
+ background:#65625f;clip-path:none;border-radius:0;
 }
 .idx3 .book-stages .book-stages__duration {margin:0;gap:8px;}
-.idx3 .book-stages .book-stages__duration li {padding:8px 16px;background:#fff;color:var(--text);font-size:var(--type-body);line-height:1.5;}
-.idx3 .book-stages__title {margin:16px 0 0;font-size:var(--type-heading);line-height:1.25;min-height:2.5em;}
-.idx3 .book-stages__text {margin:24px 0 0;font-size:var(--type-body);line-height:1.5;color:var(--text);}
+.idx3 .book-stages .book-stages__duration li {padding:8px 16px;background:#fff;color:var(--text);}
+.idx3 .book-stages__title {margin:16px 0 0;min-height:2.5em;}
+.idx3 .book-stages__text {margin:24px 0 0;color:var(--text);}
 @media(min-width:768px) and (max-width:1199px) and (orientation:portrait) {
  .idx3 .book-stages .i3-news__list {grid-template-columns:repeat(2,minmax(0,1fr));}
  .idx3 .book-stages .i3-post:last-child {grid-column:1/-1;}
@@ -3212,13 +3063,10 @@ html.theme-v1.home3.idx3 {
 
 /* Semantic spacing shared by equal type roles, always at least one line high. */
 html.theme-v1.home3.idx3 {--heading-gap:40px;--section-title-gap:64px;}
-.idx3 .about-editorial__copy h3 {line-height:1.25;margin-bottom:var(--heading-gap);}
+.idx3 .about-editorial__copy h3 {margin-bottom:var(--heading-gap);}
 .idx3 .about-editorial {row-gap:var(--section-title-gap);}
-.idx3 .calc--split .calc-q__title {line-height:1.25;}
-
 
 .idx3 .formats__text,.idx3 .book-stages__text {margin-top:var(--heading-gap);}
-.idx3 .i3-news .i3-post__title {font-size:var(--type-heading);line-height:1.25;}
 .idx3 .i3-news .i3-post__text {margin-top:var(--heading-gap);}
 .idx3 .h3-head,.idx3 .i3-news__head {margin-bottom:var(--section-title-gap);}
 .idx3 .calc__intro {gap:var(--section-title-gap);}
@@ -3278,10 +3126,6 @@ html.theme-v1.home3.idx3 {--heading-gap:16px;--section-title-gap:40px;}
  .idx3 .about-editorial__copy h3 {margin-top:48px;margin-bottom:16px;}
 }
 
-/* Body copy by device class; heading roles remain unchanged. */
-html.theme-v1.home3.idx3 {--type-body:17px;}
-@media(max-width:1199px) {html.theme-v1.home3.idx3 {--type-body:16px;}}
 @media(max-width:767px) {
- html.theme-v1.home3.idx3 {--type-body:15px;}
  .idx3 .h3-footer {background:#48413a;}
 }

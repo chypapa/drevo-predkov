@@ -81,12 +81,12 @@
       var gap = size * 0.28;                                   // знак → название
       var shift = 0;
       if (word) {
-        word.style.fontSize = Math.round(size * 0.36) + 'px';
+        word.style.fontSize = 'var(--fs-h1)';
         var ww = word.offsetWidth, wh = word.offsetHeight;
         var scaleDown = Math.min(1, (vw - 48) / (logoW + gap + ww));   // узкий экран — всё чуть меньше
         if (scaleDown < 1) {
           size *= scaleDown; s = size / r.height; logoW = r.width * s; gap *= scaleDown;
-          word.style.fontSize = Math.round(size * 0.36) + 'px';
+          word.style.fontSize = 'var(--fs-h1)';
           ww = word.offsetWidth; wh = word.offsetHeight;
         }
         shift = (gap + ww) / 2;                                // знак с названием — по центру экрана

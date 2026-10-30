@@ -1,0 +1,55 @@
+/* Feedback and calculator cards share the same responsive insets. */
+.idx3 .calc--split .calc__box {
+  padding: var(--form-card-pad-block) var(--form-card-pad-inline);
+}
+.idx3 .calc--immersive .calc__backdrop {
+  object-position: 50% 28%;
+  filter: saturate(.5) sepia(.15) hue-rotate(-30deg) contrast(.96) brightness(1.03);
+}
+
+/* The photograph spans both the heading and the full copy column. */
+@media (min-width: 768px) {
+  .idx3 .about-editorial__left { grid-row: 1 / 3; align-self: stretch; }
+  .idx3 .about-editorial__left img {
+    position: absolute; inset: 0; width: 100%; height: 100%; max-height: none;
+    aspect-ratio: auto; transform: none; object-fit: cover; object-position: center;
+  }
+}
+@media (max-width: 767px) {
+  .idx3 .about-editorial__left img { aspect-ratio: 1200 / 751; height: auto; }
+}
+
+/* Equal text slots and bottom-aligned article links, including the mobile rail. */
+.idx3 .i3-news .i3-post { display: flex; flex-direction: column; }
+.idx3 .i3-news .i3-post > div {
+  display: flex; flex-direction: column; align-items: flex-start; flex: 1;
+}
+.idx3 .i3-news .i3-post__text {
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
+  line-clamp: 4; overflow: hidden; min-height: 6em; max-height: 6em;
+}
+.idx3 .i3-news .i3-post__link {
+  margin-top: auto; padding-top: var(--s-24); align-self: flex-start;
+}
+
+@media (max-width: 1199px) {
+  .home3 .i3-hero__link {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: fit-content; max-width: 100%; box-sizing: border-box;
+    padding: 12px 26.667px; border-radius: 999px;
+    background: #fff; color: var(--text); font-family: var(--font-body);
+    font-size: var(--fs-body); font-weight: 600; line-height: var(--lh-small);
+    text-decoration: none;
+  }
+  .home3 .i3-hero__link svg { display: none; }
+}
+@media (max-width: 767px) {
+  .home3 .i3-hero__link { display: flex; width: 100%; }
+  .home3 .directions__button {
+    background: var(--red); border-color: var(--red); color: #fff;
+  }
+  .home3 .directions__button:hover {
+    background: var(--red-hover); border-color: var(--red-hover); color: #fff;
+  }
+  .directions__scene + .directions__scene { border-top: 0; }
+}
