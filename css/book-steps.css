@@ -30,3 +30,8 @@ html.home3.idx3 body .book-steps__label { margin: 0; color: #fff; font-family: '
 @media (prefers-reduced-transparency:reduce) {
  .book-steps__card { background: #3c3936; backdrop-filter: none; -webkit-backdrop-filter: none; }
 }
+
+@media (min-width:1200px) {
+ .book-intro-redesign .book-steps__button { background: #fff; color: var(--red); }
+ .book-intro-redesign .book-steps__button:hover { background: var(--bg); }
+}

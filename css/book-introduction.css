@@ -1,5 +1,5 @@
 /* Photo opening: H1 on the image, followed by H2 summary and three useful points. */
-.book-intro-redesign.idx3 main#top > .book-editorial { display: block; margin: 0; padding: var(--hdr-h) 0 0; }
+.book-intro-redesign.idx3 main#top > .book-editorial { display: block; margin: 0; padding: 0; }
 .book-opening__hero { position: relative; isolation: isolate; display: flex; align-items: flex-end; height: clamp(320px,48svh,560px); padding: var(--form-padding) var(--g3); box-sizing: border-box; overflow: hidden; }
 .book-opening__image { position: absolute; inset: 0; z-index: -2; display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .book-opening__hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg,rgba(0,0,0,.62),rgba(0,0,0,.12) 75%); }
@@ -57,3 +57,7 @@
  .book-opening__benefits ul { padding-left: 0; list-style: none; }
  .book-opening__benefits li { display: block; padding-left: 0; }
 }
+
+.book-intro-redesign .header.is-top :is(.header__bar,.header__mobile,.icon-btn) { background: transparent; box-shadow: none; }
+.book-intro-redesign .header.is-top :is(.nav a,.logo-mark,.header__brand,.icon-btn) { color: #fff; }
+.book-intro-redesign .header.is-top .header__cta { background: transparent; color: #fff; border: 1px solid #fff; }

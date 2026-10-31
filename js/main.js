@@ -132,6 +132,7 @@
      Первый экран при прокрутке: фото чуть приближается, текст уходит вверх и гаснет ---------- */
   var topHeader = document.querySelector('.header--sticky');
   var opening = document.querySelector('.opening');
+  var bookOpening = document.querySelector('.book-opening__hero');
   var collageBlock = document.querySelector('.collage');
   if (topHeader) {
     var openingMotion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -141,7 +142,8 @@
       topTicking = false;
       var y = window.scrollY;
       var home3 = document.documentElement.classList.contains('home3');   // все страницы: шапка без заливки над первым экраном
-      topHeader.classList.toggle('is-top', !document.documentElement.hasAttribute('data-no-hero') && (!!opening || home3) && y <= 40);
+      var overOpening = bookOpening ? bookOpening.getBoundingClientRect().bottom > topHeader.offsetHeight : y <= 40;
+      topHeader.classList.toggle('is-top', !document.documentElement.hasAttribute('data-no-hero') && (!!opening || home3) && overOpening);
       // в самом верху, при открытом меню и пока идёт заставка шапка всегда видна; мелкие подёргивания (до 6px) не считаем.
       // Заставка: знак сидит в шапке — если шапка уедет (страница открыта по ссылке на блок, например «О нас»,
       // и прокручивается к нему), знак уедет вместе с ней и встанет выше названия

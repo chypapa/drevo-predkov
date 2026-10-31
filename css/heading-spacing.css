@@ -4,19 +4,22 @@ html.theme-v1.home3.idx3 { --section-heading-space: 64px; }
 .idx3 .home-reviews .section-head { margin-bottom: var(--section-heading-space); }
 .idx3 #about .story-intro__body { padding-top: calc(2 * var(--group-gap)); }
 .idx3 .service-intro .story-intro__body { margin-top: 0; padding-top: calc(2 * var(--group-gap)); }
-.book-intro-redesign .book-opening__cta { margin-top: calc(2 * var(--group-gap)); }
+.book-intro-redesign .book-opening__cta { margin-top: var(--group-gap); }
 .book-intro-redesign .book-opening__benefits ul { margin-top: calc(2 * var(--text-gap)); }
 .book-intro-redesign .book-formats__copy p:first-of-type { margin-top: calc(2 * var(--group-gap)); padding-top: 0; }
-.idx3 .book-steps__description { margin-top: calc(3 * var(--group-gap)); }
+.idx3 .book-steps__description { margin-top: calc(1.5 * var(--group-gap)); }
 .idx3 .scroll-stage__description { margin-top: 64px; }
 .idx3 .lead__head { gap: calc(2 * var(--text-gap)); }
 .idx3 .calc.calc--immersive .calc__intro { gap: calc(2 * var(--calc-space-yellow)); }
 .idx3 .policy__text :is(h1,h2,h3) + :is(p,ul,ol) { margin-top: calc(2 * var(--text-gap)); }
 .idx3 .directions__description,
-.idx3 .directions.is-story:not(.is-tablet-story) .directions__description { margin-top: 128px; padding-top: 0; }
+.idx3 .directions.is-story:not(.is-tablet-story) .directions__description { margin-top: 64px; padding-top: 0; }
 .idx3 .mobile-section-title { margin-bottom: 64px; }
 @media (max-width:767px), (min-width:768px) and (max-width:1199px) and (orientation:portrait) {
  .idx3 .scroll-stage__description { margin-top: 48px; }
  .idx3 .directions__description,
- .idx3 .directions.is-story:not(.is-tablet-story) .directions__description { margin-top: 64px; }
+ .idx3 .directions.is-story:not(.is-tablet-story) .directions__description { margin-top: 32px; }
+}
+@media (min-width:1200px), (min-width:768px) and (orientation:landscape) {
+ .idx3 #about .story-intro__copy { justify-content: center; }
 }
