@@ -521,7 +521,7 @@ html.theme-v1.home3.idx3 body .page :is(h3,h4,.h3,.h4) * { font-family: 'Manrope
 
 /* The annotated calculator spacing scale: red > gray > orange > yellow > answers. */
 .idx3 .calc.calc--immersive .calc__intro { gap: var(--calc-space-yellow); }
-.idx3 .calc.calc--immersive .calc-q__title { margin-bottom: var(--calc-space-yellow); }
+.idx3 .calc.calc--immersive .calc-q__title { margin-bottom: calc(var(--calc-space-yellow) - 8px); }
 .idx3 .calc.calc--immersive .calc-q__hint { margin-bottom: var(--calc-space-orange); }
 .idx3 .calc.calc--immersive .calc-q__options { gap: var(--calc-space-answer); }
 @media (min-width:768px) { .idx3 .calc.calc--immersive .calc__box { padding: var(--calc-space-red); } }
