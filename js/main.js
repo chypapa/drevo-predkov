@@ -11,7 +11,7 @@
 
   /* плавная прокрутка колесом мыши и по якорям (Lenis); на телефоне и при «уменьшении движения» — обычная */
   if (window.Lenis && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var lenis = new window.Lenis({ duration: 1.1, anchors: { offset: -88 }, smoothWheel: document.documentElement.classList.contains('book-intro-redesign') });
+    var lenis = new window.Lenis({ duration: 1.1, anchors: { offset: -88 }, smoothWheel: document.documentElement.classList.contains('book-intro-redesign') || !!document.querySelector('.i3-hero') });
     window.lenis = lenis;
     var raf = function (t) { lenis.raf(t); requestAnimationFrame(raf); };
     requestAnimationFrame(raf);

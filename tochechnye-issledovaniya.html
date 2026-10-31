@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="ru" class="theme-v1 home3 idx3 svcp">
+<html lang="ru" data-no-hero class="theme-v1 home3 idx3 svcp book-intro-redesign">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Точечные исследования | Древо предков</title>
   <meta name="description" content="Отдельные генеалогические задачи: поиск архивных документов, установление личности предка, подтверждение родства для суда, наследства и гражданства по происхождению. Консультация. Дизайн родословного древа по уже известным данным.">
   <link rel="icon" href="img/favicon.ico?v=20261030-new" type="image/x-icon" sizes="16x16">
-  <link rel="stylesheet" href="css/style.css?v=natural-wrap-12">
-  <link rel="stylesheet" href="css/design-system.css?v=mobile-footer-13">
-  <link rel="stylesheet" href="css/scroll-stages.css?v=uniform-frames-2">
+  <link rel="stylesheet" href="css/style.css?v=calculator-hidden-13">
+  <link rel="stylesheet" href="css/design-system.css?v=shared-services-16">
+  <link rel="stylesheet" href="css/book-steps.css?v=page-cards-16">
+  <link rel="stylesheet" href="css/book-introduction.css?v=shared-service-opening-19">
   <script>if (!('onpagereveal' in window)) document.documentElement.classList.add('fade-nav');</script>
   <script src="js/typography.js?v=prepositions-1" defer></script>
-  <link rel="stylesheet" href="css/heading-spacing.css?v=book-exceptions-2">
+  <link rel="stylesheet" href="css/heading-spacing.css?v=shared-editorial-4">
 </head>
 <body>
 <div class="page">
@@ -107,74 +108,43 @@
 
     <!-- ============ ПЕРВЫЙ ЭКРАН — по макету Figma (plat-fam, узел 481:387): фото на 90% высоты окна, нижние углы скруглены,
          затемнение-градиент снизу, заголовок и текст поверх ============ -->
-    <section class="opening opening--tochno opening--banner" aria-labelledby="opening-title">
-      <div class="opening__media" aria-hidden="true">
-        <img class="opening__img" src="img/photos/archive-shelves.webp" srcset="img/photos/archive-shelves-960.webp 960w, img/photos/archive-shelves.webp 1407w" sizes="100vw" width="1407" height="1000" alt="" fetchpriority="high" decoding="async">
+    <section class="book-editorial" id="book-intro" aria-labelledby="book-intro-title">
+      <div class="book-opening__hero">
+        <picture class="book-opening__picture"><img class="book-opening__image" src="img/photos/archive-shelves.webp" srcset="img/photos/archive-shelves-960.webp 960w, img/photos/archive-shelves.webp 1407w" sizes="100vw" width="1407" height="1000" alt="" fetchpriority="high" decoding="async"></picture>
+        <h1 id="book-intro-title">Точечные исследования</h1>
       </div>
-      <div class="opening__content">
-        <h1 class="opening__title" id="opening-title">
-          <span class="line"><span>Точечные генеалогические</span></span>
-          <span class="line"><span>исследования и&nbsp;дизайн древа</span></span>
-        </h1>
+      <div class="book-opening__details" id="service-intro">
+        <div class="book-opening__summary">
+          <h2 class="h2 book-opening__title" id="service-intro-title">Точечное исследование — ответ на конкретный вопрос о вашем предке</h2>
+          <a class="btn book-opening__cta" href="index.html#contact" data-consult>Получить консультацию</a>
+        </div>
+        <div class="book-opening__benefits">
+          <h3>Об услуге</h3>
+          <ul><li>Иногда поиск начинается с одной задачи: найти запись о рождении, установить место жительства предка или проверить семейный рассказ. Мы поможем определить нужные источники и проверить сведения по документам.</li><li>Ищем записи о рождении, браке и смерти, сведения о службе и переездах. Найденные документы расшифровываем и объясняем, какие факты и родственные связи они подтверждают. Возможность использовать их для официальных целей зависит от требований организации, в которую вы обращаетесь.</li><li>Вы получите электронные копии найденных записей с пояснениями. Сроки и стоимость согласуем после знакомства с исходными сведениями. Если история семьи уже собрана, можно отдельно заказать оформление родословного древа.</li></ul>
+        </div>
       </div>
     </section>
 
     <!-- ============ ОБ УСЛУГЕ — как «О книге» на странице родословной книги: слева крупный текст и кнопка, справа подробности ============ -->
-    <section class="story-intro service-intro" id="service-intro" aria-labelledby="service-intro-title">
-      <div class="story-intro__media"><img src="img/photos/directions-research-1600.webp" alt="Старинная карта и инструменты для исследования истории семьи" loading="lazy" decoding="async"></div>
-      <div class="story-intro__copy">
-        <h2 id="service-intro-title">Точечное исследование — ответ на конкретный вопрос о вашем предке</h2>
-        <div class="story-intro__body"><p>Иногда поиск начинается с одной задачи: найти запись о рождении, установить место жительства предка или проверить семейный рассказ. Мы поможем определить нужные источники и проверить сведения по документам.</p><p>Ищем записи о рождении, браке и смерти, сведения о службе и переездах. Найденные документы расшифровываем и объясняем, какие факты и родственные связи они подтверждают. Возможность использовать их для официальных целей зависит от требований организации, в которую вы обращаетесь.</p><p>Вы получите электронные копии найденных записей с пояснениями. Сроки и стоимость согласуем после знакомства с исходными сведениями. Если история семьи уже собрана, можно отдельно заказать оформление родословного древа.</p></div>
-      </div>
-    </section>
+
 
     <!-- ============ ЭТАПЫ РАБОТЫ — как на главной: три фото разной высоты, под каждым — этап ============ -->
-    <section class="scroll-stages" aria-label="Этапы работы" data-scroll-stages>
-      <h2 class="mobile-section-title">Этапы работы</h2>
-      <div class="scroll-stages__layout">
-        <div class="scroll-stages__paper" aria-hidden="true"></div>
-        <div class="scroll-stages__copy">
-          <article class="scroll-stage" data-stage="1">
-            <img class="scroll-stage__mobile-img" src="img/photos/stage-consultation.jpg" alt="" loading="lazy" decoding="async">
-            <div class="scroll-stage__content">
-              <p class="scroll-stage__label">Этап 1</p>
-              <h2 class="scroll-stage__title" data-static-title>Обсудим ваш вопрос на бесплатной консультации</h2>
-              <p class="scroll-stage__description">Расскажите, что нужно узнать: найти запись о предке, подтвердить родство, проверить семейную легенду или оформить уже собранное древо. Изучим исходные сведения, определим задачу и согласуем предварительные сроки и стоимость. Консультация бесплатная и ни к чему вас не обязывает.</p>
-              <a class="scroll-stage__button" href="index.html#contact" data-consult>Получить консультацию</a>
-            </div>
-          </article>
-          <article class="scroll-stage" data-stage="2">
-            <img class="scroll-stage__mobile-img" src="img/photos/stage-archive.jpg" alt="" loading="lazy" decoding="async">
-            <div class="scroll-stage__content">
-              <p class="scroll-stage__label">Этап 2</p>
-              <h2 class="scroll-stage__title" data-static-title>Проверим нужные источники и найдём ответ</h2>
-              <p class="scroll-stage__description">Выберем архивы и фонды, в которых могут храниться нужные сведения, запросим документы и расшифруем записи. Сопоставим найденное с вашими материалами и сообщим о результате проверки. Поиск занимает от нескольких дней; точный срок зависит от задачи и ответа архива. Если вы заказали дизайн древа, на этом этапе согласуем его состав и оформление.</p>
-
-            </div>
-          </article>
-          <article class="scroll-stage" data-stage="3">
-            <img class="scroll-stage__mobile-img" src="img/photos/archive-family.webp" alt="" loading="lazy" decoding="async">
-            <div class="scroll-stage__content">
-              <p class="scroll-stage__label">Этап 3</p>
-              <h2 class="scroll-stage__title" data-static-title>Передадим найденные документы с пояснениями</h2>
-              <p class="scroll-stage__description">Вы получите электронные копии найденных записей, расшифровку и пояснение, что они подтверждают. Если нужная запись не обнаружена, расскажем, какие источники проверили и какие шаги возможны дальше. При заказе оформления родословного древа подготовим готовый файл для хранения, отправки близким или печати.</p>
-
-            </div>
-          </article>
+    <section id="book-stages" class="book-steps" aria-label="Этапы работы" data-book-steps>
+      <div class="book-steps__window">
+        <div class="book-steps__backdrop" aria-hidden="true">
+          <img src="img/photos/book-stages-archive-background.webp" alt="" loading="lazy" decoding="async">
         </div>
-        <div class="scroll-stages__visual" aria-hidden="true"><div class="scroll-stages__sticky">
-            <div class="scroll-stages__photo-window">
-          <div class="scroll-stages__frame"><div class="scroll-stages__crop"><div class="scroll-stages__artwork"><img src="img/photos/workflow-album.webp" alt="" loading="lazy" decoding="async"></div></div></div>
-          <div class="scroll-stages__frame"><div class="scroll-stages__crop"><div class="scroll-stages__artwork"><img src="img/photos/workflow-catalog.webp" alt="" loading="lazy" decoding="async"></div></div></div>
-          <div class="scroll-stages__frame"><div class="scroll-stages__crop"><div class="scroll-stages__artwork"><img src="img/photos/workflow-family-original.webp" alt="" loading="lazy" decoding="async"></div></div></div>
-            </div>
-        </div></div>
+        <div class="book-steps__cards">
+<article class="book-steps__card" data-book-step="1"><p class="book-steps__label">Этап 1</p><h2 class="book-steps__title" data-static-title>Обсудим ваш вопрос на бесплатной консультации</h2><p class="book-steps__description">Расскажите, что нужно узнать: найти запись о предке, подтвердить родство, проверить семейную легенду или оформить уже собранное древо. Изучим исходные сведения, определим задачу и согласуем предварительные сроки и стоимость. Консультация бесплатная и ни к чему вас не обязывает.</p><a class="btn book-steps__button" href="index.html#contact" data-consult>Получить консультацию</a></article>
+<article class="book-steps__card" data-book-step="2"><p class="book-steps__label">Этап 2</p><h2 class="book-steps__title" data-static-title>Проверим нужные источники и найдём ответ</h2><p class="book-steps__description">Выберем архивы и фонды, в которых могут храниться нужные сведения, запросим документы и расшифруем записи. Сопоставим найденное с вашими материалами и сообщим о результате проверки. Поиск занимает от нескольких дней; точный срок зависит от задачи и ответа архива. Если вы заказали дизайн древа, на этом этапе согласуем его состав и оформление.</p></article>
+<article class="book-steps__card" data-book-step="3"><p class="book-steps__label">Этап 3</p><h2 class="book-steps__title" data-static-title>Передадим найденные документы с пояснениями</h2><p class="book-steps__description">Вы получите электронные копии найденных записей, расшифровку и пояснение, что они подтверждают. Если нужная запись не обнаружена, расскажем, какие источники проверили и какие шаги возможны дальше. При заказе оформления родословного древа подготовим готовый файл для хранения, отправки близким или печати.</p></article>
+        </div>
       </div>
     </section>
 
 
     <!-- ============ ДИЗАЙН РОДОСЛОВНОГО ДРЕВА — фотография и редакционное описание без плашки и списка ============ -->
-    <section class="story-intro service-intro" id="family-tree" aria-labelledby="family-tree-title">
+    <section class="story-intro" id="family-tree" aria-labelledby="family-tree-title">
       <div class="story-intro__media"><img src="img/photos/tree-opt.webp" alt="Родословное древо с именами и датами жизни" loading="lazy" decoding="async"></div>
       <div class="story-intro__copy">
         <h2 id="family-tree-title">Родословное древо вашей семьи — история поколений в одной картине</h2>
@@ -272,7 +242,8 @@
 </div>
 
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="js/main.js?v=book-hero-header-4"></script>
-<script src="js/scroll-stages.js?v=mounted-paper-1"></script>
+<script src="js/main.js?v=home-smooth-scroll-5"></script>
+<script src="js/book-steps.js?v=natural-wrap-12"></script>
+<script src="js/book-surfaces.js?v=calculator-entry-18"></script>
 </body>
 </html>

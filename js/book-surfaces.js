@@ -33,7 +33,7 @@
   });
   if (calculatorBox) {
    var entry = Math.max(0, Math.min(1, calculator.getBoundingClientRect().top / innerHeight));
-   calculatorBox.style.transform = enabled ? 'translate3d(0,' + (24 * entry).toFixed(3) + 'px,0)' : '';
+   calculatorBox.style.transform = enabled ? 'translate3d(0,' + (96 * entry).toFixed(3) + 'px,0)' : '';
   }
  }
  function schedule() { if (!queued) { queued = true; requestAnimationFrame(update); } }

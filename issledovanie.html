@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="ru" class="theme-v1 home3 idx3 svcp">
+<html lang="ru" data-no-hero class="theme-v1 home3 idx3 svcp book-intro-redesign">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Архивный свиток | Древо предков</title>
   <meta name="description" content="Генеалогическое исследование семьи по архивам России, Украины и Беларуси с результатом в электронном виде: копии документов с расшифровкой и поколенная роспись. Рассчитайте стоимость.">
   <link rel="icon" href="img/favicon.ico?v=20261030-new" type="image/x-icon" sizes="16x16">
-  <link rel="stylesheet" href="css/style.css?v=natural-wrap-12">
-  <link rel="stylesheet" href="css/design-system.css?v=mobile-footer-13">
-  <link rel="stylesheet" href="css/scroll-stages.css?v=uniform-frames-2">
+  <link rel="stylesheet" href="css/style.css?v=calculator-hidden-13">
+  <link rel="stylesheet" href="css/design-system.css?v=shared-services-16">
+  <link rel="stylesheet" href="css/book-steps.css?v=page-cards-16">
+  <link rel="stylesheet" href="css/book-introduction.css?v=shared-service-opening-19">
   <script>if (!('onpagereveal' in window)) document.documentElement.classList.add('fade-nav');</script>
   <script src="js/typography.js?v=prepositions-1" defer></script>
-  <link rel="stylesheet" href="css/heading-spacing.css?v=book-exceptions-2">
+  <link rel="stylesheet" href="css/heading-spacing.css?v=shared-editorial-4">
 </head>
 <body>
 <div class="page">
@@ -107,68 +108,37 @@
 
     <!-- ============ ПЕРВЫЙ ЭКРАН — по макету Figma (plat-fam, узел 181:1133): фото на 90% высоты окна, нижние углы скруглены,
          затемнение-градиент снизу, заголовок и текст поверх ============ -->
-    <section class="opening opening--issl opening--banner" aria-labelledby="opening-title">
-      <div class="opening__media" aria-hidden="true">
-        <img class="opening__img" src="img/photos/archive-family.webp" srcset="img/photos/archive-family-960.webp 960w, img/photos/archive-family.webp 1800w" sizes="100vw" width="1800" height="1361" alt="" fetchpriority="high" decoding="async">
+    <section class="book-editorial" id="book-intro" aria-labelledby="book-intro-title">
+      <div class="book-opening__hero">
+        <picture class="book-opening__picture"><img class="book-opening__image" src="img/photos/archive-family.webp" srcset="img/photos/archive-family-960.webp 960w, img/photos/archive-family.webp 1800w" sizes="100vw" width="1800" height="1361" alt="" fetchpriority="high" decoding="async"></picture>
+        <h1 id="book-intro-title">Генеалогическое исследование вашей семьи</h1>
       </div>
-      <div class="opening__content">
-        <h1 class="opening__title" id="opening-title">
-          <span class="line"><span>Генеалогическое исследование</span></span>
-          <span class="line"><span>вашей семьи</span></span>
-        </h1>
+      <div class="book-opening__details" id="service-intro">
+        <div class="book-opening__summary">
+          <h2 class="h2 book-opening__title" id="service-intro-title">Архивный свиток — история вашего рода, подтверждённая документами</h2>
+          <a class="btn book-opening__cta" href="#calc">Рассчитать стоимость</a>
+        </div>
+        <div class="book-opening__benefits">
+          <h3>Об услуге</h3>
+          <ul><li>Архивные записи помогают узнать, где жили ваши предки, чем занимались и как связаны поколения. Мы исследуем историю семьи, проверяем родство и собираем найденные сведения в подробный отчёт.</li><li>В архивный свиток входят фотокопии найденных документов, расшифровки старого почерка и поколенная роспись: имена, даты, места и родственные связи. У каждой находки сохраняем ссылку на источник, чтобы было понятно, на чём основан вывод.</li><li>Результат готовим в электронном виде — его удобно хранить и пересылать близким. Этот формат подойдёт, если вам важны документы и факты или вы планируете написать семейную книгу самостоятельно.</li></ul>
+        </div>
       </div>
     </section>
 
     <!-- ============ ОБ УСЛУГЕ — как «О книге» на странице родословной книги: слева крупный текст и кнопка, справа подробности ============ -->
-    <section class="story-intro service-intro" id="service-intro" aria-labelledby="service-intro-title">
-      <div class="story-intro__media"><img src="img/photos/directions-archive-v2-1600.webp" alt="Семейные фотографии, архивные документы и схема родственных связей" loading="lazy" decoding="async"></div>
-      <div class="story-intro__copy">
-        <h2 id="service-intro-title">Архивный свиток — история вашего рода, подтверждённая документами</h2>
-        <div class="story-intro__body"><p>Архивные записи помогают узнать, где жили ваши предки, чем занимались и как связаны поколения. Мы исследуем историю семьи, проверяем родство и собираем найденные сведения в подробный отчёт.</p><p>В архивный свиток входят фотокопии найденных документов, расшифровки старого почерка и поколенная роспись: имена, даты, места и родственные связи. У каждой находки сохраняем ссылку на источник, чтобы было понятно, на чём основан вывод.</p><p>Результат готовим в электронном виде — его удобно хранить и пересылать близким. Этот формат подойдёт, если вам важны документы и факты или вы планируете написать семейную книгу самостоятельно.</p></div>
-      </div>
-    </section>
+
 
     <!-- ============ ЭТАПЫ РАБОТЫ — как на главной: три фото разной высоты, под каждым — этап ============ -->
-    <section class="scroll-stages" aria-label="Этапы работы" data-scroll-stages>
-      <h2 class="mobile-section-title">Этапы работы</h2>
-      <div class="scroll-stages__layout">
-        <div class="scroll-stages__paper" aria-hidden="true"></div>
-        <div class="scroll-stages__copy">
-          <article class="scroll-stage" data-stage="1">
-            <img class="scroll-stage__mobile-img" src="img/photos/stage-consultation.jpg" alt="" loading="lazy" decoding="async">
-            <div class="scroll-stage__content">
-              <p class="scroll-stage__label">Этап 1</p>
-              <h2 class="scroll-stage__title" data-static-title>Расскажите, что вы хотите узнать о своих предках</h2>
-              <p class="scroll-stage__description">На бесплатной консультации обсудим известные имена, даты и места, посмотрим семейные документы и выберем линии для поиска. Согласуем глубину исследования, предварительные сроки и стоимость. Консультация ни к чему вас не обязывает.</p>
-              <a class="scroll-stage__button" href="index.html#contact" data-consult>Получить консультацию</a>
-            </div>
-          </article>
-          <article class="scroll-stage" data-stage="2">
-            <img class="scroll-stage__mobile-img" src="img/photos/stage-archive.jpg" alt="" loading="lazy" decoding="async">
-            <div class="scroll-stage__content">
-              <p class="scroll-stage__label">Этап 2</p>
-              <h2 class="scroll-stage__title" data-static-title>Найдём архивные записи и проверим родственные связи</h2>
-              <p class="scroll-stage__description">Изучим метрические книги, ревизские сказки, переписи и другие источники. Сопоставим имена, даты и места, чтобы проследить историю семьи по поколениям. Будем сообщать о находках и объяснять, что удалось подтвердить. Исследование занимает от месяца; срок зависит от задачи и сохранности документов.</p>
-
-            </div>
-          </article>
-          <article class="scroll-stage" data-stage="3">
-            <img class="scroll-stage__mobile-img" src="img/photos/directions-archive-v2-1600.webp" alt="" loading="lazy" decoding="async">
-            <div class="scroll-stage__content">
-              <p class="scroll-stage__label">Этап 3</p>
-              <h2 class="scroll-stage__title" data-static-title>Соберём документы и сведения в подробный отчёт</h2>
-              <p class="scroll-stage__description">Передадим электронный архивный свиток: копии найденных записей, их расшифровки, ссылки на источники и поколенную роспись. Вы сможете увидеть подтверждённые родственные связи, сохранить материалы для семьи или использовать их для собственной книги. Если сведения найти не удалось, поясним, какие источники проверили и где можно продолжить поиск.</p>
-
-            </div>
-          </article>
+    <section id="book-stages" class="book-steps" aria-label="Этапы работы" data-book-steps>
+      <div class="book-steps__window">
+        <div class="book-steps__backdrop" aria-hidden="true">
+          <img src="img/photos/book-stages-archive-background.webp" alt="" loading="lazy" decoding="async">
         </div>
-        <div class="scroll-stages__visual" aria-hidden="true"><div class="scroll-stages__sticky">
-            <div class="scroll-stages__photo-window">
-          <div class="scroll-stages__frame"><div class="scroll-stages__crop"><div class="scroll-stages__artwork"><img src="img/photos/workflow-album.webp" alt="" loading="lazy" decoding="async"></div></div></div>
-          <div class="scroll-stages__frame"><div class="scroll-stages__crop"><div class="scroll-stages__artwork"><img src="img/photos/workflow-catalog.webp" alt="" loading="lazy" decoding="async"></div></div></div>
-          <div class="scroll-stages__frame"><div class="scroll-stages__crop"><div class="scroll-stages__artwork"><img src="img/photos/workflow-family-original.webp" alt="" loading="lazy" decoding="async"></div></div></div>
-            </div>
-        </div></div>
+        <div class="book-steps__cards">
+<article class="book-steps__card" data-book-step="1"><p class="book-steps__label">Этап 1</p><h2 class="book-steps__title" data-static-title>Расскажите, что вы хотите узнать о своих предках</h2><p class="book-steps__description">На бесплатной консультации обсудим известные имена, даты и места, посмотрим семейные документы и выберем линии для поиска. Согласуем глубину исследования, предварительные сроки и стоимость. Консультация ни к чему вас не обязывает.</p><a class="btn book-steps__button" href="index.html#contact" data-consult>Получить консультацию</a></article>
+<article class="book-steps__card" data-book-step="2"><p class="book-steps__label">Этап 2</p><h2 class="book-steps__title" data-static-title>Найдём архивные записи и проверим родственные связи</h2><p class="book-steps__description">Изучим метрические книги, ревизские сказки, переписи и другие источники. Сопоставим имена, даты и места, чтобы проследить историю семьи по поколениям. Будем сообщать о находках и объяснять, что удалось подтвердить. Исследование занимает от месяца; срок зависит от задачи и сохранности документов.</p></article>
+<article class="book-steps__card" data-book-step="3"><p class="book-steps__label">Этап 3</p><h2 class="book-steps__title" data-static-title>Соберём документы и сведения в подробный отчёт</h2><p class="book-steps__description">Передадим электронный архивный свиток: копии найденных записей, их расшифровки, ссылки на источники и поколенную роспись. Вы сможете увидеть подтверждённые родственные связи, сохранить материалы для семьи или использовать их для собственной книги. Если сведения найти не удалось, поясним, какие источники проверили и где можно продолжить поиск.</p></article>
+        </div>
       </div>
     </section>
 
@@ -212,7 +182,7 @@
       <template id="calc-line">
         <fieldset class="calc-line">
           <div class="calc-line__head">
-            <h3 class="h3 calc-line__title"><span class="calc-line__num">2</span> фамильная линия</h3>
+            <h2 class="h2 calc-line__title"><span class="calc-line__num">2</span> фамильная линия</h2>
             <button class="calc-line__remove" type="button"><img src="icons/delete.svg" width="18" height="19" alt=""><span class="calc-line__remove-text">Удалить</span></button>
           </div>
 
@@ -352,8 +322,9 @@
 </div>
 
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="js/main.js?v=book-hero-header-4"></script>
-<script src="js/scroll-stages.js?v=mounted-paper-1"></script>
+<script src="js/main.js?v=home-smooth-scroll-5"></script>
+<script src="js/book-steps.js?v=natural-wrap-12"></script>
+<script src="js/book-surfaces.js?v=calculator-entry-18"></script>
 <script src="js/calculator.js?v=calc-manrope-1"></script>
 </body>
 </html>

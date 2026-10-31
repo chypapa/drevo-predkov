@@ -1299,7 +1299,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
   border-radius: var(--radius);
   background: var(--white);
 }
-.calc__card[hidden], .calc__result[hidden] { display: none; }
+.calc__card[hidden], .calc__result[hidden] { display: none !important; }
 .calc__lines { display: flex; flex-direction: column; gap: var(--gap-head); width: 100%; }
 .calc-line { display: flex; flex-direction: column; gap: var(--gap-head); min-width: 0; margin: 0; padding: 0; border: 0; }
 .calc-line { transition: opacity .45s ease, transform .45s cubic-bezier(.4, 0, .2, 1); }

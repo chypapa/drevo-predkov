@@ -2,7 +2,7 @@
 html.theme-v1.home3.idx3 { --section-heading-space: 64px; }
 .idx3 :is(.h3-head,.i3-news__head,.section-head),
 .idx3 .home-reviews .section-head { margin-bottom: var(--section-heading-space); }
-.idx3 #about .story-intro__body { padding-top: calc(2 * var(--group-gap)); }
+.idx3 :is(#about,#family-tree) .story-intro__body { padding-top: calc(2 * var(--group-gap)); }
 .idx3 .service-intro .story-intro__body { margin-top: 0; padding-top: calc(2 * var(--group-gap)); }
 .book-intro-redesign .book-opening__cta { margin-top: var(--group-gap); }
 .book-intro-redesign .book-opening__benefits ul { margin-top: calc(2 * var(--text-gap)); }
@@ -21,5 +21,5 @@ html.theme-v1.home3.idx3 { --section-heading-space: 64px; }
  .idx3 .directions.is-story:not(.is-tablet-story) .directions__description { margin-top: 32px; }
 }
 @media (min-width:1200px), (min-width:768px) and (orientation:landscape) {
- .idx3 #about .story-intro__copy { justify-content: center; }
+ .idx3 :is(#about,#family-tree) .story-intro__copy { justify-content: center; }
 }

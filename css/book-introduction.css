@@ -76,3 +76,5 @@ html.theme-v1.home3.idx3 body .page .book-opening__hero h1 { font-size: calc(var
 @media (prefers-reduced-motion:reduce) {
  .book-intro-redesign #calc .calc__backdrop { position: absolute; height: 100%; }
 }
+/* The archive calculator begins at the edge of the workflow photograph. */
+.book-intro-redesign.idx3 main#top > .book-steps + .calc { margin-top: 0; }
