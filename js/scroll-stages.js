@@ -5,7 +5,7 @@
   if (!section) return;
   var articles = Array.from(section.querySelectorAll('.scroll-stage'));
   var frames = Array.from(section.querySelectorAll('.scroll-stages__frame'));
-  var sticky = section.querySelector('.scroll-stages__sticky');
+  var photoWindow = section.querySelector('.scroll-stages__photo-window');
   var reduced = matchMedia('(prefers-reduced-motion: reduce)');
   var mobile = matchMedia('(max-width: 767px), (max-width: 1199px) and (orientation: portrait)');
   var queued = false, visible = true;
@@ -14,12 +14,12 @@
     queued = false;
     if (!visible) return;
     if (mobile.matches) {
-      frames.forEach(function (frame) { frame.style.height = ''; frame.style.clipPath = 'none'; frame.querySelector('img').style.transform = 'none'; });
+      frames.forEach(function (frame) { frame.style.height = ''; frame.style.clipPath = 'none'; frame.querySelector('.scroll-stages__crop').style.transform = 'none'; });
       section.querySelectorAll('.scroll-stage__mobile-img').forEach(function (photo) { photo.style.transform = 'none'; });
       return;
     }
     var rects = articles.map(function (article) { return article.getBoundingClientRect(); });
-    var windowRect = sticky.getBoundingClientRect();
+    var windowRect = photoWindow.getBoundingClientRect();
     // Reveal each incoming frame as its text section crosses the photo viewport.
     var reveals = rects.map(function (rect, index) {
       return index === 0 ? 1 : clamp(1 - (rect.top - windowRect.top) / windowRect.height);
@@ -29,7 +29,7 @@
       frame.style.clipPath = reduced.matches ? 'none' : 'inset(' + ((1 - reveals[index]) * 100) + '% 0 0)';
       // The outgoing photograph shrinks subtly underneath the next reveal.
       var covered = index + 1 < frames.length ? reveals[index + 1] : 0;
-      frame.querySelector('img').style.transform = reduced.matches ? 'none' : 'scale(' + (1.08 - covered * .08) + ')';
+      frame.querySelector('.scroll-stages__crop').style.transform = reduced.matches ? 'none' : 'scale(' + (1 - covered * .04) + ')';
     });
   }
   function schedule() {
