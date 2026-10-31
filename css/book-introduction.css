@@ -1,20 +1,22 @@
-/* Book opening: one heading row, then subtitle and two concise text columns. */
-.book-intro-redesign.idx3 main#top > .book-editorial {
- display: block; margin-top: 0; padding: calc(var(--hdr-h) + var(--section-space)) var(--g3) var(--section-space);
+/* Photo opening: H1 on the image, followed by H2 summary and three useful points. */
+.book-intro-redesign.idx3 main#top > .book-editorial { display: block; margin: 0; padding: var(--hdr-h) 0 0; }
+.book-opening__hero { position: relative; isolation: isolate; display: flex; align-items: flex-end; height: clamp(280px,40svh,480px); padding: var(--form-padding) var(--g3); box-sizing: border-box; overflow: hidden; }
+.book-opening__image { position: absolute; inset: 0; z-index: -2; display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.book-opening__hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg,rgba(0,0,0,.62),rgba(0,0,0,.12) 75%); }
+.book-intro-redesign .book-opening__hero h1 { margin: 0; color: #fff; }
+.book-opening__details { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--grid-gap); padding: var(--grid-gap) var(--g3) var(--section-space); }
+.book-opening__summary,.book-opening__benefits { min-width: 0; }
+.book-opening__summary { display: flex; flex-direction: column; align-items: flex-start; }
+.book-opening__summary h2,.book-opening__benefits h3 { margin: 0; color: var(--text); font-weight: 400; }
+.book-opening__cta { margin-top: var(--group-gap); min-height: 48px; background: var(--red); color: #fff; border: 0; text-decoration: none; }
+.book-opening__benefits ul { display: grid; gap: var(--text-gap); margin: var(--text-gap) 0 0; padding-left: 1em; list-style: square; }
+.book-opening__benefits li { display: list-item; margin: 0; padding-left: 0; color: var(--text); font-size: var(--type-body); line-height: 1.5; }
+.book-opening__benefits strong { font-weight: 600; }
+@media (max-width:1199px) and (orientation:portrait), (max-width:767px) {
+ .book-opening__details { grid-template-columns: minmax(0,1fr); row-gap: var(--group-gap); }
 }
-.book-editorial__heading { min-width: 0; }
-.book-intro-redesign .book-editorial__heading h1 { margin: 0; color: var(--text); }
-.book-intro-redesign .book-editorial__heading .book-editorial__subtitle { margin: var(--group-gap) 0 0; padding: 0; color: var(--text); font-size: var(--type-heading); font-weight: 400; }
-.book-editorial__body { min-width: 0; margin-top: var(--group-gap); }
-.book-editorial__body p { margin: 0; font-size: var(--type-body); line-height: 1.5; }
-.book-editorial__body p + p { margin-top: var(--grid-gap); }
-@media (min-width:768px) and (orientation:landscape), (min-width:1200px) {
- .book-intro-redesign.idx3 main#top > .book-editorial { display: grid; grid-template-columns: repeat(12,minmax(0,1fr)); column-gap: var(--grid-gap); row-gap: var(--group-gap); }
- .book-editorial__heading { display: contents; }
- .book-intro-redesign .book-editorial__heading h1 { grid-column: 1 / -1; grid-row: 1; }
- .book-intro-redesign .book-editorial__heading .book-editorial__subtitle { grid-column: 1 / 5; grid-row: 2; margin: 0; }
- .book-editorial__body { grid-column: 6 / 13; grid-row: 2; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--grid-gap); margin: 0; padding: 0; width: auto; align-items: start; }
- .book-editorial__body p + p { margin: 0; }
+@media (max-width:767px) {
+ .book-opening__hero { height: clamp(240px,35svh,360px); }
 }
 .book-intro-redesign.idx3 main#top > .book-formats { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--card-gap); padding: 0 var(--g3); align-items: start; }
 .book-formats__copy { min-width: 0; }
