@@ -844,7 +844,7 @@
   })();
 })();
 
-/* Directions: photo masks scrub independently while the text scrolls in normal flow. */
+/* Scroll-linked service photos: read geometry before updating compositor layers. */
 (function () {
   const section = document.querySelector('.directions');
   if (!section) return;
@@ -852,53 +852,58 @@
   const scenes = [...section.querySelectorAll('.directions__scene')];
   const photos = [...section.querySelectorAll('.directions__image-stack img')];
   const backgrounds = [...section.querySelectorAll('.directions__visual > img')];
-  const wide = matchMedia('(min-width: 768px)');
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const titles = scenes.map(scene => scene.querySelector('.directions__title'));
+  const copies = scenes.map(scene => scene.querySelector('.directions__copy'));
+  const header = document.querySelector('.header');
+  const wide = matchMedia('(min-width:768px)');
+  const tablet = matchMedia('(max-width:1439px)');
+  const stacked = matchMedia('(orientation:portrait), (max-height:649px)');
+  const reduced = matchMedia('(prefers-reduced-motion:reduce)');
   const clamp = x => Math.max(0, Math.min(1, x));
   let queued = false;
-  function update() {
-    queued = false;
+  function configure() {
     const story = wide.matches && !reduced.matches;
     section.classList.toggle('is-story', story);
-    section.classList.toggle('is-tablet-story', story && matchMedia('(orientation: portrait), (max-height: 649px)').matches);
-    const visual = section.querySelector('.directions__visual');
-    visual.style.transform = '';
-    const header = document.querySelector('.header');
+    section.classList.toggle('is-tablet-story', story && stacked.matches);
+    schedule();
+  }
+  function update() {
+    queued = false;
+    const story = section.classList.contains('is-story');
     const bounds = section.getBoundingClientRect();
-    if (header) header.classList.toggle('is-over-directions', story && bounds.top <= 0 && bounds.bottom > header.offsetHeight);
+    const headerHeight = header ? header.offsetHeight : 0;
+    const inView = bounds.bottom > 0 && bounds.top < innerHeight;
+    if (header) header.classList.toggle('is-over-directions', story && bounds.top <= 0 && bounds.bottom > headerHeight);
+    if (!inView) return;
     const distance = -track.getBoundingClientRect().top;
+    const geometry = scenes.map(scene => ({top: scene.offsetTop, rect: scene.getBoundingClientRect()}));
     let progress = 0;
-    for (let i = 0; i < scenes.length - 1; i++) {
-      const start = scenes[i].offsetTop, end = scenes[i + 1].offsetTop;
+    for (let i = 0; i < geometry.length - 1; i++) {
+      const start = geometry[i].top, end = geometry[i + 1].top;
       if (distance >= start) progress = i + clamp((distance - start) / Math.max(1, end - start));
     }
     photos.forEach((photo, i) => {
       const reveal = i === 0 ? 1 : clamp((progress - (i - 0.75)) / 0.6);
-      photo.style.clipPath = 'inset(' + (50 * (1 - reveal)) + '%)';
+      // Crossfades avoid repainting a large clipping mask on tablet Safari.
+      photo.style.clipPath = tablet.matches ? 'none' : 'inset(' + (50 * (1 - reveal)) + '%)';
+      photo.style.opacity = tablet.matches ? reveal : '1';
       backgrounds[i].style.opacity = reveal;
     });
-    scenes.forEach(scene => {
-      scene.inert = false;
-      scene.removeAttribute('aria-hidden');
-      const title = scene.querySelector('.directions__title');
-      const rect = scene.getBoundingClientRect();
-      const entrance = story ? clamp((innerHeight - rect.top) / (innerHeight * 0.22)) : 1;
-      title.style.opacity = entrance;
-      title.style.transform = 'none';
+    geometry.forEach(({rect}, i) => {
+      titles[i].style.opacity = story ? clamp((innerHeight - rect.top) / (innerHeight * .22)) : 1;
+      titles[i].style.transform = 'none';
       if (section.classList.contains('is-tablet-story')) {
         const center = rect.top + rect.height / 2;
-        const fade = clamp(1 - Math.max(0, Math.abs(center - innerHeight / 2) - innerHeight * .22) / (innerHeight * .3));
-        scene.querySelector('.directions__copy').style.opacity = fade;
-      } else scene.querySelector('.directions__copy').style.opacity = ''; 
+        copies[i].style.opacity = clamp(1 - Math.max(0, Math.abs(center - innerHeight / 2) - innerHeight * .22) / (innerHeight * .3));
+      } else copies[i].style.opacity = '';
     });
   }
   function schedule() { if (!queued) { queued = true; requestAnimationFrame(update); } }
   addEventListener('scroll', schedule, { passive: true });
-  addEventListener('resize', schedule);
-  wide.addEventListener('change', schedule);
-  reduced.addEventListener('change', schedule);
-  if (document.fonts) document.fonts.ready.then(schedule);
-  update();
+  addEventListener('resize', configure);
+  [wide, tablet, stacked, reduced].forEach(query => query.addEventListener('change', configure));
+  if (document.fonts) document.fonts.ready.then(configure);
+  configure();
 })();
 
 /* главная, «Услуги» — карусель, переключается прокруткой (стили — css/style.css). Блок закреплён на экране, на услугу —

@@ -7,7 +7,7 @@
   var row = section.querySelector('.book-steps__cards');
   var cards = Array.from(section.querySelectorAll('.book-steps__card'));
   var reduce = matchMedia('(prefers-reduced-motion: reduce)');
-  var compact = matchMedia('(max-width:1199px)');
+  var compact = matchMedia('(max-width:1199px), (max-width:1439px) and (pointer:coarse)');
   var active = false, queued = false, viewport = 0, releaseAt = 0;
   function clamp(n) { return Math.max(0, Math.min(1, n)); }
   function update() {

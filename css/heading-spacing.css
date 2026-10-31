@@ -23,3 +23,35 @@ html.theme-v1.home3.idx3 { --section-heading-space: 64px; }
 @media (min-width:1200px), (min-width:768px) and (orientation:landscape) {
  .idx3 :is(#about,#family-tree) .story-intro__copy { justify-content: center; }
 }
+
+/* The price belongs to the description immediately below it. */
+.idx3 #family-tree .family-tree__price + .story-intro__body { padding-top: calc(2 * var(--group-gap) / 3); margin-top: 0; }
+@media (min-width:768px) and (max-width:1439px) {
+ .idx3 .i3-news__head { margin-bottom: calc(var(--section-heading-space) / 2); }
+ .idx3 .directions__visual > .directions__backdrop,
+ .idx3 .directions__image-stack .directions__photo { will-change: opacity; backface-visibility: hidden; }
+}
+@media (min-width:768px) and (max-width:1439px) and (orientation:landscape) {
+ .idx3 .directions.is-story:not(.is-tablet-story) .directions__copy { width: calc((100% + var(--g)) / 2 - var(--g)); margin-right: 0; }
+ .service-photo-adjustments .book-opening__summary { grid-column: 1 / 7; }
+ .service-photo-adjustments .book-opening__benefits { grid-column: 7 / 13; }
+}
+
+/* Service conditions share the same outlined pill on every surface. */
+.idx3 :is(.directions__chips,.svx__chips,.lead__chips) li { background: transparent; border: 1px solid currentColor; }
+@media (max-width:767px) {
+ html.theme-v1.home3.idx3 { --section-heading-space: 32px; }
+ .idx3 .mobile-section-title { margin-bottom: 32px; }
+ .idx3 .directions .directions__media { width: 100%; margin-inline: 0; }
+ .idx3 .directions .mobile-section-title { margin-bottom: 24px; }
+ .idx3 .directions__scene:first-of-type .directions__inner { padding-top: 0; }
+ .idx3 #family-tree { row-gap: 24px; }
+ .idx3 #family-tree .story-intro__copy { display: contents; }
+ .idx3 #family-tree h2 { order: -1; grid-column: 1; margin: 0; }
+ .idx3 #family-tree .story-intro__media { order: 0; grid-column: 1; }
+ .idx3 #family-tree .family-tree__price { order: 1; grid-column: 1; margin: 0; }
+ .idx3 #family-tree .family-tree__price + .story-intro__body { order: 2; grid-column: 1; padding-top: 8px; margin: 0; }
+ .idx3 .home-reviews .reviews__list { align-items: flex-start; }
+ .idx3 .home-reviews .review { min-height: 0; grid-template-rows: 20px auto auto; }
+ .idx3 .home-reviews .review .review__author { padding-top: 0; }
+}

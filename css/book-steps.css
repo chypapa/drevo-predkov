@@ -31,3 +31,8 @@ html.home3.idx3 body .book-steps__label { margin: 0; color: var(--text); font-fa
 
 .book-intro-redesign .book-steps__button { background: var(--red); color: #fff; }
 .book-intro-redesign .book-steps__button:hover { background: var(--red-hover); }
+
+/* Tablets keep three separate, centered cards in the reading flow. */
+@media (min-width:768px) and (max-width:1199px), (min-width:768px) and (max-width:1439px) and (pointer:coarse) {
+ .book-steps__cards { grid-template-columns: minmax(0,1fr); width: 66.6667%; margin-inline: auto; }
+}
