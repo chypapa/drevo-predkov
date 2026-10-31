@@ -23,7 +23,7 @@
 .book-formats__copy h2 { margin: 0; font-size: var(--type-section); line-height: 1.15; font-weight: 400; }
 .book-formats__copy p { margin-top: var(--group-gap); font-size: var(--type-body); line-height: 1.5; }
 .book-formats__copy p + p { margin-top: var(--text-gap); }
-.book-formats > img { display: block; width: 100%; aspect-ratio: 1.08; object-fit: cover; }
+.book-formats > img { display: block; width: 100%; height: var(--format-image-height, auto); aspect-ratio: .9; object-fit: cover; }
 @media (max-width:1199px) and (orientation:portrait), (max-width:767px) {
  .book-intro-redesign.idx3 main#top > .book-formats { grid-template-columns: repeat(2,minmax(0,1fr)); row-gap: var(--group-gap); }
  .book-formats__copy { grid-column: 1 / -1; order: -1; }
@@ -32,10 +32,9 @@
  .book-intro-redesign.idx3 main#top > .book-formats { grid-template-columns: minmax(0,1fr); }
 }
 @media (min-width:768px) and (orientation:landscape), (min-width:1200px) {
- .book-intro-redesign.idx3 main#top > .book-formats { align-items: stretch; }
+ .book-intro-redesign.idx3 main#top > .book-formats { align-items: start; }
  .book-formats__copy { display: flex; flex-direction: column; }
- .book-formats__copy p:first-of-type { margin-top: auto; padding-top: var(--group-gap); }
- .book-formats > img { height: 100%; }
+ .book-formats__copy p:first-of-type { margin-top: var(--group-gap); padding-top: 0; }
 }
 .book-intro-redesign.idx3 main#top > .book-formats + .reviews { margin-top: var(--section-space); }
 /* Contrasting surfaces overlap slightly without changing their layout positions. */
