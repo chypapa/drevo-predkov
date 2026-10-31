@@ -1,0 +1,22 @@
+/* Four independent reviews with aligned ratings, copy and author rows. */
+.idx3 #reviews.home-reviews { width: 100%; max-width: none; padding: 0 var(--g3); box-sizing: border-box; }
+.home-reviews .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--group-gap); }
+.home-reviews .reviews__heading { font-size: var(--type-section); font-weight: 400; line-height: 1.15; }
+.home-reviews .link-more { color: var(--red); }
+.idx3 .home-reviews .reviews__list { display: flex; align-items: stretch; gap: var(--card-gap); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 8px; }
+.home-reviews .reviews__list::-webkit-scrollbar { display: none; }
+.idx3 .home-reviews .review { display: grid; grid-template-rows: 20px 1fr auto; gap: var(--text-gap); flex: 0 0 calc((100% - 3 * var(--card-gap)) / 4); max-width: none; min-width: 0; min-height: 240px; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; scroll-snap-align: start; }
+.home-reviews .review::before,.home-reviews .review::after { content: none; }
+.idx3 .home-reviews .review__stars { display: block; width: 98px; height: 20px; margin: 0; filter: none; }
+.home-reviews .review__text { margin: 0; color: var(--text); font-size: var(--type-body); line-height: 1.5; text-wrap: wrap; }
+.idx3 .home-reviews .review .review__author { position: static; margin: 0; padding-top: var(--group-gap); color: var(--text); opacity: .5; font-size: var(--type-body); line-height: 1.5; pointer-events: auto; }
+.home-reviews .review__person { flex-shrink: 0; width: 22px; height: 22px; }
+.home-reviews .review--video .review__video { position: relative; inset: auto; align-self: start; width: min(100%,200px); height: auto; aspect-ratio: 16 / 10; border-radius: 0; overflow: hidden; }
+.home-reviews :is(a,button,.reviews__list):focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
+@media (max-width: 1199px) {
+ .idx3 .home-reviews .review { flex-basis: calc((100% - var(--card-gap)) / 2); }
+}
+@media (max-width: 767px) {
+ .home-reviews .section-head { flex-direction: column; align-items: flex-start; gap: var(--text-gap); }
+ .idx3 .home-reviews .review { flex-basis: 88%; }
+}
