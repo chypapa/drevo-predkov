@@ -13,10 +13,12 @@
   function update() {
     queued = false;
     if (!active) return;
-    var progress = clamp(-section.getBoundingClientRect().top / travel);
+    var scrolled = -section.getBoundingClientRect().top;
+    var progress = clamp(scrolled / travel);
     cards.forEach(function (card, index) {
-      var enterStart = index * .10;
-      var enter = clamp((progress - enterStart) / .20);
+      // Start before pinning: the first card is settled when the full background arrives.
+      var enterStart = [-.85, -.40, .10][index];
+      var enter = clamp((scrolled / viewport - enterStart) / .75);
       var exitEnd = [.98, .86, .74][index];
       var leave = clamp((progress - .58) / (exitEnd - .58));
       var y = (1 - enter) * viewport * .8 - leave * exitDistance;
@@ -29,14 +31,16 @@
     var padding = parseFloat(getComputedStyle(section).getPropertyValue('--form-padding')) || 32;
     var heading = section.querySelector('.book-steps__heading').offsetHeight;
     // Tall copy always remains in ordinary flow rather than being clipped.
-    active = !reduce.matches && !compact.matches && row.offsetHeight + 2 * (padding + heading) <= viewport;
+    var headingSpace = heading + padding;
+    section.style.setProperty('--book-steps-heading-space', headingSpace + 'px');
+    active = !reduce.matches && !compact.matches && row.offsetHeight + headingSpace + padding <= viewport;
     section.classList.toggle('is-scroll-story', active);
     if (!active) {
       cards.forEach(function (card) { card.style.transform = ''; });
       return;
     }
     travel = Math.max(1, section.offsetHeight - viewport);
-    exitDistance = (viewport + row.offsetHeight) / 2 + padding;
+    exitDistance = (viewport + headingSpace + row.offsetHeight) / 2 + padding;
     update();
   }
   addEventListener('scroll', schedule, { passive: true });
