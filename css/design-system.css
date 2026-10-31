@@ -507,7 +507,7 @@ html.theme-v1.home3.idx3 body .page :is(h3,h4,.h3,.h4) { font-family: 'Manrope',
 html.theme-v1.home3.idx3 body .page :is(h3,h4,.h3,.h4) * { font-family: 'Manrope',system-ui,sans-serif !important; font-size: inherit !important; font-weight: 400 !important; }
 /* Equal outer form intervals, with a smaller interval between questions. */
 .idx3 .calc.calc--immersive {
- --calc-space-red: 48px; --calc-space-gray: 40px; --calc-space-orange: 32px; --calc-space-yellow: 24px; --calc-space-answer: 16px;
+ --calc-space-red: 56px; --calc-space-gray: 48px; --calc-space-orange: 40px; --calc-space-yellow: 24px; --calc-space-answer: 16px;
  --calc-edge-gap: var(--calc-space-red); --calc-question-gap: var(--calc-space-gray);
 }
 .idx3 .calc.calc--immersive .calc__intro { margin-bottom: var(--calc-edge-gap); }
