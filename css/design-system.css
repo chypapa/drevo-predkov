@@ -570,3 +570,6 @@ html.theme-v1.home3.idx3 body .page .calc .calc-line .calc-line__title * {
   width: calc((100% + var(--g)) * 5 / 12 - var(--g)); margin-right: 0;
  }
 }
+/* Reuse the existing service price pill on the light editorial surface. */
+.idx3 #family-tree .family-tree__price { margin-top: var(--text-gap); }
+.idx3 #family-tree .family-tree__price li { color: var(--text); border-color: currentColor; }
