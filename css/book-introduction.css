@@ -41,7 +41,7 @@
 @media (max-width:1199px) and (orientation:portrait), (max-width:767px) {
  .book-editorial__heading { padding-inline: 0; }
  .book-intro-redesign.idx3 main#top > .book-formats { grid-template-columns: repeat(2,minmax(0,1fr)); row-gap: var(--group-gap); }
- .book-formats__copy { grid-column: 1 / -1; }
+ .book-formats__copy { grid-column: 1 / -1; order: -1; }
 }
 @media (max-width:767px) {
  .book-intro-redesign.idx3 main#top > .book-formats { grid-template-columns: minmax(0,1fr); }
