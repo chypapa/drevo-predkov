@@ -51,3 +51,9 @@
 }
 
 .book-intro-redesign .book-opening__summary .book-opening__title { font-size: var(--type-h3); line-height: 1.15; font-style: normal; }
+
+.book-opening__picture { position: absolute; inset: 0; z-index: -2; }
+@media (max-width:767px) {
+ .book-opening__benefits ul { padding-left: 0; list-style: none; }
+ .book-opening__benefits li { display: block; padding-left: 0; }
+}

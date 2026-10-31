@@ -546,3 +546,10 @@ html.theme-v1.home3.idx3 body .page :is(h3,h4,.h3,.h4) * { font-family: 'Manrope
 .idx3 #blog .i3-post__link { margin-top: auto; padding-top: var(--text-gap); }
 /* Keep the home introduction prose close to its heading. */
 .idx3 #about .story-intro__body { margin-top: 0; padding-top: var(--group-gap); }
+/* Compact, left-aligned mobile footer. */
+@media (max-width:767px) {
+ .idx3 .h3-footer { min-height: 0; grid-template-rows: auto auto; padding-bottom: 24px; }
+ .idx3 .h3-footer .h3-footer__mark { display: none; }
+ .idx3 .h3-footer__links { justify-content: flex-start; gap: 16px; }
+ .idx3 .h3-footer__policy { justify-self: start; text-align: left; }
+}
