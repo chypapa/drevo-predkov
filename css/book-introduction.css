@@ -81,3 +81,11 @@ html.theme-v1.home3.idx3 body .page .book-opening__hero h1 { font-size: calc(var
 
 /* A lightly muted photograph, shared by both service calculators. */
 .book-intro-redesign #calc .calc__backdrop { filter: saturate(.75); }
+
+/* Lighter source photographs need a deeper veil to match the book page. */
+.service-photo-adjustments .book-opening__hero::after {
+ background: linear-gradient(0deg,rgba(0,0,0,.62),rgba(0,0,0,.12) 75%), linear-gradient(rgba(0,0,0,.18),rgba(0,0,0,.18));
+}
+.service-photo-adjustments .book-steps__backdrop::after { background: rgba(0,0,0,.48); }
+/* Bias the research crop slightly upward: remove more from the top. */
+.book-opening__image--research { top: 0; height: 100%; object-position: center 55%; }

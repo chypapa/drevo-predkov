@@ -573,3 +573,7 @@ html.theme-v1.home3.idx3 body .page .calc .calc-line .calc-line__title * {
 /* Reuse the existing service price pill on the light editorial surface. */
 .idx3 #family-tree .family-tree__price { margin-top: var(--text-gap); }
 .idx3 #family-tree .family-tree__price li { color: var(--text); border-color: currentColor; }
+
+/* Dim only the contact photograph; the form retains its original contrast. */
+.idx3 .h3-lead img.h3-lead__img { filter: saturate(.5) sepia(.15) hue-rotate(-30deg) contrast(.96) brightness(.62); }
+.idx3 #family-tree .story-intro__media img { filter: saturate(.5); }
