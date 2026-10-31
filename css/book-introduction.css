@@ -1,6 +1,6 @@
 /* Photo opening: H1 on the image, followed by H2 summary and three useful points. */
 .book-intro-redesign.idx3 main#top > .book-editorial { display: block; margin: 0; padding: var(--hdr-h) 0 0; }
-.book-opening__hero { position: relative; isolation: isolate; display: flex; align-items: flex-end; height: min(48svh, calc((100vw - var(--sbw, 0px)) * 481 / 1436)); padding: var(--form-padding) var(--g3); box-sizing: border-box; overflow: hidden; }
+.book-opening__hero { position: relative; isolation: isolate; display: flex; align-items: flex-end; height: min(48svh, calc((100vw - var(--sbw, 0px)) * 1009 / 1908)); padding: var(--form-padding) var(--g3); box-sizing: border-box; overflow: hidden; }
 .book-opening__image { position: absolute; inset: 0; z-index: -2; display: block; width: 100%; height: auto; object-fit: cover; object-position: center top; }
 .book-opening__hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg,rgba(0,0,0,.62),rgba(0,0,0,.12) 75%); }
 .book-intro-redesign .book-opening__hero h1 { margin: 0; color: #fff; }
@@ -16,7 +16,7 @@
  .book-opening__details { grid-template-columns: minmax(0,1fr); row-gap: var(--group-gap); }
 }
 @media (max-width:767px) {
- .book-opening__hero { height: min(48svh,calc((100vw - var(--sbw, 0px)) * 481 / 1436)); }
+ .book-opening__hero { height: min(48svh,calc((100vw - var(--sbw, 0px)) * 1009 / 1908)); }
 }
 .book-intro-redesign.idx3 main#top > .book-formats { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--card-gap); padding: 0 var(--g3); align-items: start; }
 .book-formats__copy { min-width: 0; }
@@ -53,6 +53,7 @@
 .book-intro-redesign .book-opening__summary .book-opening__title { font-size: var(--type-h2); line-height: 1.15; font-style: normal; }
 
 .book-opening__picture { position: absolute; inset: 0; z-index: -2; }
+.book-intro-redesign #calc .calc__backdrop { position: absolute; inset: 0; height: 100%; object-position: center; }
 @media (max-width:767px) {
  .book-opening__benefits ul { padding-left: 0; list-style: none; }
  .book-opening__benefits li { display: block; padding-left: 0; }
@@ -60,7 +61,7 @@
 
 .book-intro-redesign .header.is-top .header__cta { background: transparent; color: #fff; border: 1px solid #fff; }
 @media (orientation:portrait) {
- .book-opening__hero { height: min(40svh,calc((100vw - var(--sbw, 0px)) * 362 / 418)); }
+ .book-opening__hero { height: min(40svh,calc((100vw - var(--sbw, 0px)) * 1009 / 1908)); }
 }
 @media (min-width:1200px) {
  .book-intro-redesign .calc.calc--immersive .calc__box {
