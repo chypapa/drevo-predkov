@@ -539,3 +539,10 @@ html.theme-v1.home3.idx3 body .page :is(h3,h4,.h3,.h4) * { font-family: 'Manrope
 /* The poster is softer and lighter; stars and controls remain sharp. */
 .idx3 .review--video .voice__player { filter: blur(2px); }
 .idx3 .review--video .review__video::after { background: linear-gradient(180deg,rgba(20,18,14,.34),rgba(20,18,14,.22) 45%,rgba(20,18,14,.4)); }
+
+/* Community links share a baseline even when titles wrap to a second line. */
+.idx3 #blog .i3-post { display: flex; flex-direction: column; }
+.idx3 #blog .i3-post > div { display: flex; flex-direction: column; flex: 1; }
+.idx3 #blog .i3-post__link { margin-top: auto; padding-top: var(--text-gap); }
+/* Keep the home introduction prose close to its heading. */
+.idx3 #about .story-intro__body { margin-top: 0; padding-top: var(--group-gap); }
