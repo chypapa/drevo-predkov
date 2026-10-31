@@ -1,37 +1,21 @@
-/* One shared column boundary derived from the existing review-card grid. */
-.book-intro-redesign { --book-column-split: calc(50% - var(--card-gap) / 2); }
-/* Use the original service-page hero and its full-photo dark overlay. */
+/* Book opening: one heading row, then subtitle and two concise text columns. */
 .book-intro-redesign.idx3 main#top > .book-editorial {
-  display: grid; grid-template-columns: minmax(0,var(--book-column-split)) minmax(0,1fr); gap: 0;
-  margin-top: 0; padding: var(--section-space) 0;
+ display: block; margin-top: 0; padding: calc(var(--hdr-h) + var(--section-space)) var(--g3) var(--section-space);
 }
-.book-intro-redesign .book-editorial h2 { margin: 0; padding-inline: var(--g3); color: var(--text); font-weight: 400; line-height: 1.15; }
-.book-editorial__body { min-width: 0; padding-right: var(--g3); }
-.book-intro-redesign.idx3 main#top > .book-editorial + .scroll-stages { margin-top: 0; }
-.book-editorial__body p { font-size: var(--type-body); line-height: 1.5; }
-.book-editorial__body p + p { margin-top: var(--text-gap); }
-@media (min-width:768px) and (max-width:1199px) and (orientation:portrait) {
-  .book-intro-redesign.idx3 main#top > .book-editorial { grid-template-columns: minmax(0,1fr); gap: var(--group-gap); }
-}
-@media (max-width:767px) {
-  .book-intro-redesign.idx3 main#top > .book-editorial { padding-inline: var(--g3); }
-  .book-intro-redesign.idx3 main#top > .book-editorial { grid-template-columns: minmax(0,1fr); gap: var(--group-gap); padding-block: var(--section-space); }
-}
-
-@media (min-width:768px) and (orientation:landscape), (min-width:1200px) {
-  .book-intro-redesign .scroll-stages__layout { grid-template-columns: minmax(0,var(--book-column-split)) minmax(0,1fr); }
-  .book-intro-redesign .scroll-stage { padding-inline: var(--g3); }
-}
-@media (max-width:767px), (min-width:768px) and (max-width:1199px) and (orientation:portrait) {
-  .book-intro-redesign.idx3 main#top > .book-editorial { padding-inline: var(--g3); }
-  .book-intro-redesign .book-editorial h2,.book-intro-redesign .book-editorial__body { padding-inline: 0; }
-}
-
-/* The book introduction now opens the page, below the existing header. */
-.book-intro-redesign.idx3 main#top > .book-editorial { padding-top: calc(var(--hdr-h) + var(--section-space)); }
-.book-editorial__heading { min-width: 0; padding-inline: var(--g3); }
+.book-editorial__heading { min-width: 0; }
 .book-intro-redesign .book-editorial__heading h1 { margin: 0; color: var(--text); }
-.book-intro-redesign .book-editorial__heading .book-editorial__subtitle { padding: 0; margin-top: var(--group-gap); font-size: var(--type-heading); }
+.book-intro-redesign .book-editorial__heading .book-editorial__subtitle { margin: var(--group-gap) 0 0; padding: 0; color: var(--text); font-size: var(--type-heading); font-weight: 400; }
+.book-editorial__body { min-width: 0; margin-top: var(--group-gap); }
+.book-editorial__body p { margin: 0; font-size: var(--type-body); line-height: 1.5; }
+.book-editorial__body p + p { margin-top: var(--grid-gap); }
+@media (min-width:768px) and (orientation:landscape), (min-width:1200px) {
+ .book-intro-redesign.idx3 main#top > .book-editorial { display: grid; grid-template-columns: repeat(12,minmax(0,1fr)); column-gap: var(--grid-gap); row-gap: var(--group-gap); }
+ .book-editorial__heading { display: contents; }
+ .book-intro-redesign .book-editorial__heading h1 { grid-column: 1 / -1; grid-row: 1; }
+ .book-intro-redesign .book-editorial__heading .book-editorial__subtitle { grid-column: 1 / 5; grid-row: 2; margin: 0; }
+ .book-editorial__body { grid-column: 6 / 13; grid-row: 2; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--grid-gap); margin: 0; padding: 0; width: auto; align-items: start; }
+ .book-editorial__body p + p { margin: 0; }
+}
 .book-intro-redesign.idx3 main#top > .book-formats { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--card-gap); padding: 0 var(--g3); align-items: start; }
 .book-formats__copy { min-width: 0; }
 .book-formats__copy h2 { margin: 0; font-size: var(--type-section); line-height: 1.15; font-weight: 400; }
@@ -39,31 +23,20 @@
 .book-formats__copy p + p { margin-top: var(--text-gap); }
 .book-formats > img { display: block; width: 100%; aspect-ratio: 1.08; object-fit: cover; }
 @media (max-width:1199px) and (orientation:portrait), (max-width:767px) {
- .book-editorial__heading { padding-inline: 0; }
  .book-intro-redesign.idx3 main#top > .book-formats { grid-template-columns: repeat(2,minmax(0,1fr)); row-gap: var(--group-gap); }
  .book-formats__copy { grid-column: 1 / -1; order: -1; }
 }
 @media (max-width:767px) {
  .book-intro-redesign.idx3 main#top > .book-formats { grid-template-columns: minmax(0,1fr); }
 }
-
-/* Move the five-column prose one grid column left, preserving its width. */
-@media (min-width:768px) and (orientation:landscape), (min-width:1200px) {
- .book-intro-redesign.idx3 main#top > .book-editorial { --book-intro-column: calc((100vw - 2 * var(--g3) + var(--grid-gap)) / 12); grid-template-columns: minmax(0,calc(var(--book-column-split) - var(--book-intro-column))) minmax(0,1fr); }
- .book-editorial__body { box-sizing: border-box; width: calc(100% - 2 * var(--book-intro-column)); }
-}
-
-/* Align the format description to the bottoms of its adjacent photographs. */
 @media (min-width:768px) and (orientation:landscape), (min-width:1200px) {
  .book-intro-redesign.idx3 main#top > .book-formats { align-items: stretch; }
  .book-formats__copy { display: flex; flex-direction: column; }
  .book-formats__copy p:first-of-type { margin-top: auto; padding-top: var(--group-gap); }
  .book-formats > img { height: 100%; }
 }
-
 .book-intro-redesign.idx3 main#top > .book-formats + .reviews { margin-top: var(--section-space); }
-
-/* Slight overlap only at boundaries between the light and dark surfaces. */
+/* Contrasting surfaces overlap slightly without changing their layout positions. */
 .book-intro-redesign .book-editorial { position: relative; z-index: 3; background: var(--bg); }
 .book-intro-redesign .book-steps { position: relative; z-index: 2; }
 .book-intro-redesign #reviews { position: relative; z-index: 3; background: var(--bg); }

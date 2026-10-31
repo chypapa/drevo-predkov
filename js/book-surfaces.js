@@ -1,4 +1,4 @@
-/* A restrained 16px overlap at each contrasting section boundary.
+/* A restrained 32px overlap at each contrasting section boundary.
    Sticky stage geometry remains on its original, untransformed section. */
 (function () {
  'use strict';
@@ -26,7 +26,7 @@
    if (!enabled) { pair.surface.style.transform = ''; return; }
    var nextTop = layoutTop(pair.next) - scrollY;
    var progress = Math.max(0, Math.min(1, (innerHeight - nextTop) / innerHeight));
-   pair.surface.style.transform = 'translate3d(0,' + (16 * progress).toFixed(3) + 'px,0)';
+   pair.surface.style.transform = 'translate3d(0,' + (32 * progress).toFixed(3) + 'px,0)';
   });
  }
  function schedule() { if (!queued) { queued = true; requestAnimationFrame(update); } }
