@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" class="theme-v1 home3 idx3 svcp matched-book book-intro-redesign">
+<html lang="ru" data-no-hero class="theme-v1 home3 idx3 svcp matched-book book-intro-redesign">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,9 +7,9 @@
   <meta name="description" content="Генеалогическое исследование по архивам: ищем и расшифровываем документы о ваших предках и оформляем результат в родословную книгу с родословным древом. Рассчитайте стоимость онлайн.">
   <link rel="icon" href="img/favicon.ico?v=20261030-new" type="image/x-icon" sizes="16x16">
   <link rel="stylesheet" href="css/style.css?v=20261030-proximity-fix">
-  <link rel="stylesheet" href="css/design-system.css?v=calc-manrope-1">
+  <link rel="stylesheet" href="css/design-system.css?v=compact-calc-formats-1">
   <link rel="stylesheet" href="css/scroll-stages.css?v=uniform-frames-2">
-  <link rel="stylesheet" href="css/book-introduction.css?v=original-dark-hero-2">
+  <link rel="stylesheet" href="css/book-introduction.css?v=book-formats-1">
   <script>if (!('onpagereveal' in window)) document.documentElement.classList.add('fade-nav');</script>
   <style>
     .idx3.svcp .opening--kniga .opening__media::after {
@@ -29,7 +29,7 @@
 <div class="page">
 
   <!-- ============ HEADER ============ -->
-  <header class="header header--sticky header--dark is-top">
+  <header class="header header--sticky header--dark">
     <div class="header__bar">
       <div class="header__left">
         <a class="header__logo" href="index.html" aria-label="Древо предков — на главную">
@@ -119,18 +119,12 @@
 
     <!-- ============ ШАПКА СТРАНИЦЫ — по макету Figma (plat-fam, узел 690:550): невысокий баннер с фото,
          затемнение слева снизу, название услуги Cormorant ============ -->
-    <section class="opening opening--kniga opening--banner" aria-labelledby="opening-title">
-      <div class="opening__media" aria-hidden="true">
-        <img class="opening__img" src="img/photos/matched-book-printed.webp" width="1515" height="1038" alt="" fetchpriority="high" decoding="async">
-      </div>
-      <div class="opening__content">
-        <h1 class="opening__title" id="opening-title"><span class="line"><span>Родословная книга</span></span></h1>
-      </div>
-    </section>
-
-    <!-- ============ О КНИГЕ — две колонки, как блок «О проекте» на главной: слева крупный текст и кнопка, справа «Как создаётся книга» ============ -->
+<!-- ============ О КНИГЕ — две колонки, как блок «О проекте» на главной: слева крупный текст и кнопка, справа «Как создаётся книга» ============ -->
     <section class="book-editorial" id="book-intro" aria-labelledby="book-intro-title">
-      <h2 id="book-intro-title">История вашего рода, рассказанная живым языком и сохранённая для&nbsp;близких</h2>
+      <div class="book-editorial__heading">
+        <h1 id="book-intro-title">Родословная книга</h1>
+        <h2 class="book-editorial__subtitle">История вашего рода, рассказанная живым языком и сохранённая на&nbsp;листах</h2>
+      </div>
       <div class="book-editorial__body"><p>За&nbsp;каждым именем в&nbsp;архивной записи стоит человек. Мы восстанавливаем родственные связи, изучаем документы и складываем из&nbsp;них связный рассказ о&nbsp;семье: где жили ваши предки, чем занимались и как менялась их жизнь на&nbsp;фоне событий эпохи.</p><p>Из&nbsp;проверенных фактов рождается повествование, которое хочется читать и обсуждать с&nbsp;родными. В&nbsp;нём есть место семейным воспоминаниям, фотографиям, картам и копиям документов. Живой язык помогает увидеть за&nbsp;датами характеры и судьбы, сохраняя точность источников.</p><p>Такую книгу приятно подарить родителям, бабушке или дедушке и передать детям. Мы оформляем её как цельное издание с&nbsp;продуманной вёрсткой. Готовую электронную версию можно читать и пересылать близким, а печатную книгу в&nbsp;переплёте — заказать отдельно.</p></div>
     </section>
 
@@ -180,6 +174,16 @@
 
 <!-- ============ ОТЗЫВЫ — как на главной; вторая карточка — видеоотзыв: обложка видео на всю карточку с затемнением,
          по нажатию видео открывается поверх страницы и играет без затемнения (js/main.js) ============ -->
+    <section class="book-formats" aria-labelledby="book-formats-title">
+      <div class="book-formats__copy">
+        <h2 id="book-formats-title">Выберите свой формат</h2>
+        <p>По&nbsp;умолчанию мы создаём электронную родословную книгу. Её удобно хранить, читать на&nbsp;планшете или компьютере и&nbsp;отправлять близким&nbsp;— история семьи будет рядом, где&nbsp;бы вы ни&nbsp;находились.</p>
+        <p>Если хочется листать настоящие страницы, подготовим печатную версию. Книга в&nbsp;переплёте станет частью семейного архива или подарком родным. Печать заказывается отдельно.</p>
+      </div>
+      <img src="img/photos/matched-book-tablet.webp" alt="Электронная родословная книга на планшете" loading="lazy" decoding="async">
+      <img src="img/photos/matched-book-printed.webp" alt="Разворот печатной родословной книги" loading="lazy" decoding="async">
+    </section>
+
     <section class="reviews container section" id="reviews">
       <div class="section-head">
         <h2 class="h2 reviews__heading quote-title">Что о&nbsp;нас говорят заказчики</h2>
@@ -350,7 +354,7 @@
           <div class="calc-row">
             <fieldset class="calc-q" data-q="years">
               <legend class="calc-q__title">За&nbsp;сколько лет вести исследование?</legend>
-              <p class="calc-q__hint">Это период от&nbsp;последнего известного вам предка вглубь истории. Например, если предок родился в&nbsp;1920&nbsp;году, исследование на&nbsp;100&nbsp;лет приведёт нас примерно к&nbsp;началу XIX&nbsp;века. Если не&nbsp;уверены&nbsp;— выбирайте 100&nbsp;лет: это самый частый запрос. Продолжить поиск глубже можно и&nbsp;потом. Записи старше 300&nbsp;лет сохранились не&nbsp;везде&nbsp;— такую глубину обсудим на&nbsp;консультации.</p>
+              <p class="calc-q__hint">Период поиска от&nbsp;последнего известного вам предка вглубь истории. Например, 100&nbsp;лет от&nbsp;1920&nbsp;года&nbsp;— это примерно до&nbsp;1820&nbsp;года.</p>
               <div class="calc-q__options">
                 <label class="radio"><input type="radio" name="years" value="100"><span>100</span></label>
                 <label class="radio"><input type="radio" name="years" value="200"><span>200</span></label>
@@ -365,7 +369,7 @@
           <div class="calc-row">
             <fieldset class="calc-q" data-q="before1917">
               <legend class="calc-q__title">Родился ли&nbsp;последний известный предок до&nbsp;революции (1917&nbsp;года)?</legend>
-              <p class="calc-q__hint">После 1917&nbsp;года записи о&nbsp;рождении, браке и&nbsp;смерти велись в&nbsp;ЗАГСах, а&nbsp;до&nbsp;этого&nbsp;— в&nbsp;церковных метрических книгах. Архивы и&nbsp;методы поиска в&nbsp;этих двух случаях разные. Если в&nbsp;1930-е годы у&nbsp;предка уже были дети, он почти наверняка родился до&nbsp;революции.</p>
+              <p class="calc-q__hint">До&nbsp;1917&nbsp;года записи о&nbsp;рождении, браке и&nbsp;смерти велись в&nbsp;церковных книгах, после&nbsp;— в&nbsp;ЗАГСах. От&nbsp;этого зависит, в&nbsp;каких архивах искать.</p>
               <div class="calc-q__options">
                 <label class="radio"><input type="radio" name="before1917" value="yes"><span>Да</span></label>
                 <label class="radio"><input type="radio" name="before1917" value="no"><span>Нет</span></label>
@@ -378,7 +382,7 @@
           <div class="calc-row">
             <div class="calc-q" data-q="region">
               <label class="calc-q__title" for="region">В&nbsp;каком регионе жил этот род?</label>
-              <p class="calc-q__hint">Регион определяет, в&nbsp;каком архиве вести поиск, и&nbsp;может повлиять на&nbsp;сроки и&nbsp;стоимость исследования. Пишите современное название&nbsp;— губернию определим сами. Если семья переезжала, укажите место, где род жил дольше всего или откуда он, по&nbsp;семейным рассказам, родом. Подойдёт и&nbsp;город, где родились бабушка или дед.</p>
+              <p class="calc-q__hint">Укажите современное название региона, где жили предки. От&nbsp;него зависят выбор архива, сроки и&nbsp;стоимость поиска.</p>
               <div class="combo">
                 <input class="input combo__input" id="region" type="text" autocomplete="off" placeholder="Москва"
                        role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="region-list">
@@ -490,7 +494,7 @@
 </div>
 
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-<script src="js/main.js?v=20261029-system"></script>
+<script src="js/main.js?v=book-no-hero-1"></script>
 <script src="js/scroll-stages.js?v=book-no-shrink-1"></script>
 <script src="js/calculator.js?v=calc-manrope-1"></script>
 </body>

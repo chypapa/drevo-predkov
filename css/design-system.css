@@ -485,3 +485,15 @@ html.home3.idx3 body .calc.calc--immersive :is(p,legend,label,input,button,span,
 .idx3 .calc--immersive .calc__again { margin-top: var(--group-gap); color: var(--red); }
 
 html.theme-v1.home3.idx3 body .calc.calc--immersive .calc__result .calc__result-sum { font-weight: 600 !important; }
+
+/* Compact calculator controls and clear separation from validation messages. */
+.idx3 .calc.calc--immersive .calc-q__custom.input { width: 96px; height: 24px; min-height: 0; padding: 0 8px; line-height: 1.2; box-sizing: border-box; }
+.idx3 .calc.calc--immersive .combo { width: 288px; max-width: 100%; }
+.idx3 .calc.calc--immersive .combo__input { width: 100%; height: 32px; min-height: 0; padding: 0 8px; line-height: 1.2; box-sizing: border-box; }
+.idx3 .calc.calc--immersive :is(.calc-q__custom,.combo__input) { border: 1px solid rgba(101,98,95,.65); }
+.idx3 .calc.calc--immersive :is(.calc-q__custom,.combo__input)::placeholder { color: rgba(101,98,95,.35); opacity: 1; }
+.idx3 .calc.calc--immersive .radio input[type='radio'] { border-width: 2px; }
+.idx3 .calc.calc--immersive .calc-q__error { margin: var(--text-gap) 0 0; }
+/* Community titles use the same Manrope Regular role as calculator questions. */
+html.home3.idx3 body .i3-news .i3-post__title,
+html.home3.idx3 body .i3-news .i3-post__title * { font-family: 'Manrope',system-ui,sans-serif !important; font-weight: 400 !important; font-size: var(--type-heading); line-height: 1.25; letter-spacing: -.005em; }
