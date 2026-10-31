@@ -7,8 +7,8 @@
   filter: saturate(.35) sepia(.04) hue-rotate(175deg); object-position: center;
 }
 .book-intro-redesign.idx3.svcp .opening--kniga .opening__content {
-  position: absolute; inset: 0 0 0 auto; width: 50%; max-width: none;
-  padding: var(--section-space) var(--g3) var(--section-space) calc(var(--grid-gap) / 2); box-sizing: border-box;
+  position: absolute; inset: 0 auto 0 0; width: 50%; max-width: none;
+  padding: var(--section-space) var(--form-padding); box-sizing: border-box;
   display: flex; flex-direction: column; justify-content: flex-end; gap: var(--text-gap);
   background: rgba(0,0,0,.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   transform: none !important; opacity: 1 !important;
@@ -17,7 +17,7 @@
 .book-intro-redesign .book-hero__lead { margin: 0; max-width: 480px; color: #fff; font-size: var(--type-body); line-height: 1.5; }
 .book-intro-redesign.idx3 main#top > .book-editorial {
   display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--grid-gap);
-  margin-top: 0; padding: var(--section-space) var(--g3);
+  margin-top: 0; padding: var(--section-space) var(--form-padding);
 }
 .book-intro-redesign .book-editorial h2 { margin: 0; color: var(--text); font-weight: 400; line-height: 1.15; }
 .book-editorial__body { min-width: 0; }
@@ -25,10 +25,11 @@
 .book-editorial__body p { font-size: var(--type-body); line-height: 1.5; }
 .book-editorial__body p + p { margin-top: var(--text-gap); }
 @media (min-width:768px) and (max-width:1199px) and (orientation:portrait) {
-  .book-intro-redesign.idx3.svcp .opening--kniga .opening__content { inset: auto 0 0; width: 100%; padding: var(--section-space) var(--g3); }
+  .book-intro-redesign.idx3.svcp .opening--kniga .opening__content { inset: auto 0 0; width: 100%; padding: var(--section-space) var(--form-padding); }
   .book-intro-redesign.idx3 main#top > .book-editorial { grid-template-columns: minmax(0,1fr); gap: var(--group-gap); }
 }
 @media (max-width:767px) {
+  .book-intro-redesign.idx3 main#top > .book-editorial { padding-inline: var(--g3); }
   .book-intro-redesign.idx3 main#top > .opening--kniga { height: 80svh; min-height: 520px; }
   .book-intro-redesign.idx3.svcp .opening--kniga .opening__content { inset: auto 0 0; width: 100%; padding: var(--section-space) var(--g3); }
   .book-intro-redesign.idx3 main#top > .book-editorial { grid-template-columns: minmax(0,1fr); gap: var(--group-gap); padding-block: var(--section-space); }
