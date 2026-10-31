@@ -7,10 +7,10 @@
   filter: saturate(.35) sepia(.04) hue-rotate(175deg); object-position: center;
 }
 .book-intro-redesign.idx3.svcp .opening--kniga .opening__content {
-  position: absolute; inset: 0 auto 0 0; width: 50%; max-width: none;
-  padding: clamp(24px,4vw,64px); box-sizing: border-box;
+  position: absolute; inset: 0 0 0 auto; width: 50%; max-width: none;
+  padding: clamp(24px,4vw,64px) var(--g3) clamp(24px,4vw,64px) calc(var(--grid-gap) / 2); box-sizing: border-box;
   display: flex; flex-direction: column; justify-content: flex-end; gap: 16px;
-  background: rgba(0,0,0,.6); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  background: rgba(0,0,0,.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   transform: none !important; opacity: 1 !important;
 }
 .book-intro-redesign .opening__title { margin: 0; color: #fff; }
@@ -21,9 +21,11 @@
 }
 .book-intro-redesign .book-editorial h2 { margin: 0; color: var(--text); font-weight: 400; line-height: 1.15; }
 .book-editorial__body { min-width: 0; }
+.book-intro-redesign.idx3 main#top > .book-editorial + .scroll-stages { margin-top: 0; }
 .book-editorial__body p { font-size: var(--type-body); line-height: 1.5; }
 .book-editorial__body p + p { margin-top: 16px; }
 @media (min-width:768px) and (max-width:1199px) and (orientation:portrait) {
+  .book-intro-redesign.idx3.svcp .opening--kniga .opening__content { inset: auto 0 0; width: 100%; padding: 24px var(--g3); }
   .book-intro-redesign.idx3 main#top > .book-editorial { grid-template-columns: minmax(0,1fr); gap: 24px; }
 }
 @media (max-width:767px) {
