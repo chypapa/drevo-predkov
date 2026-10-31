@@ -49,3 +49,5 @@
  .book-opening__summary { grid-column: 1 / 6; }
  .book-opening__benefits { grid-column: 7 / 12; }
 }
+
+.book-intro-redesign .book-opening__summary .book-opening__title { font-size: var(--type-h2); line-height: 1.15; font-style: normal; }
