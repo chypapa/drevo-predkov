@@ -8,20 +8,20 @@
   var cards = Array.from(section.querySelectorAll('.book-steps__card'));
   var reduce = matchMedia('(prefers-reduced-motion: reduce)');
   var compact = matchMedia('(max-width:767px), (max-width:1199px) and (orientation:portrait)');
-  var active = false, queued = false, viewport = 0, travel = 0, exitDistance = 0;
+  var active = false, queued = false, viewport = 0, releaseAt = 0;
   function clamp(n) { return Math.max(0, Math.min(1, n)); }
   function update() {
     queued = false;
     if (!active) return;
     var scrolled = -section.getBoundingClientRect().top;
-    var progress = clamp(scrolled / travel);
+    // At this point the sticky window naturally releases and carries the first card with it.
+    var leaving = Math.max(0, scrolled - releaseAt);
     cards.forEach(function (card, index) {
       // Start before pinning: the first card is settled when the full background arrives.
       var enterStart = [-.85, -.40, .10][index];
       var enter = clamp((scrolled / viewport - enterStart) / .75);
-      var exitEnd = [.98, .86, .74][index];
-      var leave = clamp((progress - .58) / (exitEnd - .58));
-      var y = (1 - enter) * viewport * .8 - leave * exitDistance;
+      var extraSpeed = [0, .35, .8][index];
+      var y = (1 - enter) * viewport * .8 - leaving * extraSpeed;
       card.style.transform = 'translate3d(0,' + y.toFixed(3) + 'px,0)';
     });
   }
@@ -29,18 +29,14 @@
   function configure() {
     viewport = innerHeight;
     var padding = parseFloat(getComputedStyle(section).getPropertyValue('--form-padding')) || 32;
-    var heading = section.querySelector('.book-steps__heading').offsetHeight;
     // Tall copy always remains in ordinary flow rather than being clipped.
-    var headingSpace = heading + padding;
-    section.style.setProperty('--book-steps-heading-space', headingSpace + 'px');
-    active = !reduce.matches && !compact.matches && row.offsetHeight + headingSpace + padding <= viewport;
+    active = !reduce.matches && !compact.matches && row.offsetHeight + 2 * padding <= viewport;
     section.classList.toggle('is-scroll-story', active);
     if (!active) {
       cards.forEach(function (card) { card.style.transform = ''; });
       return;
     }
-    travel = Math.max(1, section.offsetHeight - viewport);
-    exitDistance = (viewport + headingSpace + row.offsetHeight) / 2 + padding;
+    releaseAt = Math.max(1, section.offsetHeight - viewport);
     update();
   }
   addEventListener('scroll', schedule, { passive: true });
@@ -53,7 +49,7 @@
     if (!active || !event.target.closest('.book-steps__card')) return;
     var rect = event.target.getBoundingClientRect();
     if (rect.top < 0 || rect.bottom > viewport) {
-      scrollTo({ top: scrollY + section.getBoundingClientRect().top + travel * .46, behavior: 'instant' });
+      scrollTo({ top: scrollY + section.getBoundingClientRect().top + viewport * .95, behavior: 'instant' });
     }
   });
   configure();

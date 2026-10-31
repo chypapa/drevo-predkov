@@ -31,7 +31,7 @@
 .book-intro-redesign.idx3 main#top > .book-editorial { padding-top: calc(var(--hdr-h) + var(--section-space)); }
 .book-editorial__heading { min-width: 0; padding-inline: var(--g3); }
 .book-intro-redesign .book-editorial__heading h1 { margin: 0; color: var(--text); }
-.book-intro-redesign .book-editorial__heading .book-editorial__subtitle { padding: 0; margin-top: var(--group-gap); font-size: var(--type-section); }
+.book-intro-redesign .book-editorial__heading .book-editorial__subtitle { padding: 0; margin-top: var(--group-gap); font-size: var(--type-heading); }
 .book-intro-redesign.idx3 main#top > .book-formats { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--card-gap); padding: 0 var(--g3); align-items: start; }
 .book-formats__copy { min-width: 0; }
 .book-formats__copy h2 { margin: 0; font-size: var(--type-section); line-height: 1.15; font-weight: 400; }
@@ -45,4 +45,9 @@
 }
 @media (max-width:767px) {
  .book-intro-redesign.idx3 main#top > .book-formats { grid-template-columns: minmax(0,1fr); }
+}
+
+/* Keep the right column's starting edge and remove one column of text width. */
+@media (min-width:768px) and (orientation:landscape), (min-width:1200px) {
+ .book-editorial__body { box-sizing: border-box; width: calc(100% - (100vw - 2 * var(--g3) + var(--grid-gap)) / 12); }
 }
