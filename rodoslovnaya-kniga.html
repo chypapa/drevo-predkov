@@ -8,7 +8,7 @@
   <link rel="icon" href="img/favicon.ico?v=20261030-new" type="image/x-icon" sizes="16x16">
   <link rel="stylesheet" href="css/style.css?v=20261030-proximity-fix">
   <link rel="stylesheet" href="css/design-system.css?v=compact-calc-formats-1">
-  <link rel="stylesheet" href="css/scroll-stages.css?v=uniform-frames-2">
+  <link rel="stylesheet" href="css/book-steps.css?v=glass-story-1">
   <link rel="stylesheet" href="css/book-introduction.css?v=book-formats-1">
   <script>if (!('onpagereveal' in window)) document.documentElement.classList.add('fade-nav');</script>
   <style>
@@ -128,46 +128,30 @@
       <div class="book-editorial__body"><p>За&nbsp;каждым именем в&nbsp;архивной записи стоит человек. Мы восстанавливаем родственные связи, изучаем документы и складываем из&nbsp;них связный рассказ о&nbsp;семье: где жили ваши предки, чем занимались и как менялась их жизнь на&nbsp;фоне событий эпохи.</p><p>Из&nbsp;проверенных фактов рождается повествование, которое хочется читать и обсуждать с&nbsp;родными. В&nbsp;нём есть место семейным воспоминаниям, фотографиям, картам и копиям документов. Живой язык помогает увидеть за&nbsp;датами характеры и судьбы, сохраняя точность источников.</p><p>Такую книгу приятно подарить родителям, бабушке или дедушке и передать детям. Мы оформляем её как цельное издание с&nbsp;продуманной вёрсткой. Готовую электронную версию можно читать и пересылать близким, а печатную книгу в&nbsp;переплёте — заказать отдельно.</p></div>
     </section>
 
-    <!-- Этапы работы: текст прокручивается, фотографии открываются снизу. -->
-    <section id="book-stages" class="scroll-stages" aria-label="Этапы работы над родословной книгой" data-scroll-stages>
-      <h2 class="mobile-section-title">Этапы работы</h2>
-      <div class="scroll-stages__layout">
-        <div class="scroll-stages__paper" aria-hidden="true"></div>
-        <div class="scroll-stages__copy">
-          <article class="scroll-stage" data-stage="1">
-            <img class="scroll-stage__mobile-img" src="img/photos/stage-consultation.jpg" alt="" loading="lazy" decoding="async">
-            <div class="scroll-stage__content">
-              <p class="scroll-stage__label">Этап 1</p>
-              <h3 class="scroll-stage__title">Расскажите о своей семье на бесплатной консультации</h3>
-              <p class="scroll-stage__description">Обсудим, что вы хотите узнать о предках и какие сведения уже сохранились: имена, фотографии, документы и рассказы близких. Подскажем, с чего начать поиск, согласуем объём исследования и предварительно оценим сроки и стоимость. Консультация бесплатная и ни к чему вас не обязывает.</p>
-              <a class="scroll-stage__button" href="index.html#contact" data-consult>Получить консультацию</a>
-            </div>
-          </article>
-          <article class="scroll-stage" data-stage="2">
-            <img class="scroll-stage__mobile-img" src="img/photos/stage-archive.jpg" alt="" loading="lazy" decoding="async">
-            <div class="scroll-stage__content">
-              <p class="scroll-stage__label">Этап 2</p>
-              <h3 class="scroll-stage__title">Найдём документы и восстановим историю вашего рода</h3>
-              <p class="scroll-stage__description">После согласования задачи начнём поиск в архивах. Изучим записи о рождении, браке, службе и других событий, проверим родственные связи и проследим историю семьи по поколениям. В ходе работы будем рассказывать о находках и уточнять сведения вместе с вами. Исследование занимает от месяца — срок зависит от задачи и доступности архивов.</p>
-            </div>
-          </article>
-          <article class="scroll-stage" data-stage="3">
-            <img class="scroll-stage__mobile-img" src="img/photos/printed-book-brighter.webp" alt="" loading="lazy" decoding="async">
-            <div class="scroll-stage__content">
-              <p class="scroll-stage__label">Этап 3</p>
-              <h3 class="scroll-stage__title">Соберём историю вашей семьи в родословную книгу</h3>
-              <p class="scroll-stage__description">На основе найденных документов напишем связный рассказ о ваших предках. Дополним его фотографиями, копиями архивных записей и родословным древом, согласуем с вами содержание и оформим книгу. По умолчанию создаём книгу в электронном виде — её удобно читать и пересылать близким. При желании подготовим физическую версию в переплёте: печать заказывается и оплачивается отдельно.</p>
-            </div>
-          </article>
+    <!-- Этапы работы: единый фон закрепляется, карточки движутся последовательно. -->
+    <section id="book-stages" class="book-steps" aria-labelledby="book-steps-title" data-book-steps>
+      <div class="book-steps__window">
+        <div class="book-steps__backdrop" aria-hidden="true">
+          <img src="img/photos/book-stages-archive-background.webp" alt="" loading="lazy" decoding="async">
         </div>
-        <div class="scroll-stages__visual" aria-hidden="true">
-          <div class="scroll-stages__sticky">
-            <div class="scroll-stages__photo-window">
-            <div class="scroll-stages__frame"><div class="scroll-stages__crop"><div class="scroll-stages__artwork"><img src="img/photos/workflow-album.webp" alt="" loading="lazy" decoding="async"></div></div></div>
-            <div class="scroll-stages__frame"><div class="scroll-stages__crop"><div class="scroll-stages__artwork"><img src="img/photos/workflow-catalog.webp" alt="" loading="lazy" decoding="async"></div></div></div>
-            <div class="scroll-stages__frame"><div class="scroll-stages__crop"><div class="scroll-stages__artwork"><img src="img/photos/workflow-family-original.webp" alt="" loading="lazy" decoding="async"></div></div></div>
-            </div>
-          </div>
+        <h2 id="book-steps-title" class="book-steps__heading">Этапы работы</h2>
+        <div class="book-steps__cards">
+          <article class="book-steps__card" data-book-step="1">
+            <p class="book-steps__label">Этап 1</p>
+              <h3 class="book-steps__title">Расскажите о своей семье на бесплатной консультации</h3>
+              <p class="book-steps__description">Обсудим, что вы хотите узнать о предках и какие сведения уже сохранились: имена, фотографии, документы и рассказы близких. Подскажем, с чего начать поиск, согласуем объём исследования и предварительно оценим сроки и стоимость. Консультация бесплатная и ни к чему вас не обязывает.</p>
+              <a class="book-steps__button" href="index.html#contact" data-consult>Получить консультацию</a>
+          </article>
+          <article class="book-steps__card" data-book-step="2">
+            <p class="book-steps__label">Этап 2</p>
+              <h3 class="book-steps__title">Найдём документы и восстановим историю вашего рода</h3>
+              <p class="book-steps__description">После согласования задачи начнём поиск в архивах. Изучим записи о рождении, браке, службе и других событий, проверим родственные связи и проследим историю семьи по поколениям. В ходе работы будем рассказывать о находках и уточнять сведения вместе с вами. Исследование занимает от месяца — срок зависит от задачи и доступности архивов.</p>
+          </article>
+          <article class="book-steps__card" data-book-step="3">
+            <p class="book-steps__label">Этап 3</p>
+              <h3 class="book-steps__title">Соберём историю вашей семьи в родословную книгу</h3>
+              <p class="book-steps__description">На основе найденных документов напишем связный рассказ о ваших предках. Дополним его фотографиями, копиями архивных записей и родословным древом, согласуем с вами содержание и оформим книгу. По умолчанию создаём книгу в электронном виде — её удобно читать и пересылать близким. При желании подготовим физическую версию в переплёте: печать заказывается и оплачивается отдельно.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -495,7 +479,7 @@
 
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="js/main.js?v=book-no-hero-1"></script>
-<script src="js/scroll-stages.js?v=book-no-shrink-1"></script>
+<script src="js/book-steps.js?v=glass-story-1"></script>
 <script src="js/calculator.js?v=calc-manrope-1"></script>
 </body>
 </html>
