@@ -53,7 +53,7 @@
 .book-intro-redesign .book-opening__summary .book-opening__title { font-size: var(--type-h2); line-height: 1.15; font-style: normal; }
 
 .book-opening__picture { position: absolute; inset: 0; z-index: -2; }
-.book-intro-redesign #calc .calc__backdrop { position: absolute; inset: 0; height: 100%; object-position: center; }
+.book-intro-redesign #calc .calc__backdrop { position: sticky; inset: auto; top: 0; height: 100svh; object-position: center; }
 @media (max-width:767px) {
  .book-opening__benefits ul { padding-left: 0; list-style: none; }
  .book-opening__benefits li { display: block; padding-left: 0; }
@@ -67,4 +67,12 @@
  .book-intro-redesign .calc.calc--immersive .calc__box {
   max-width: calc((100vw - var(--sbw, 0px) - 2 * var(--g3) - var(--card-gap)) / 2);
  }
+}
+
+html.theme-v1.home3.idx3 body .page .book-opening__hero h1 { font-size: calc(var(--type-h1) + 4px) !important; }
+@media (min-width:1200px), (min-width:768px) and (orientation:landscape) {
+ .book-intro-redesign .book-formats__copy { align-self: center; }
+}
+@media (prefers-reduced-motion:reduce) {
+ .book-intro-redesign #calc .calc__backdrop { position: absolute; height: 100%; }
 }

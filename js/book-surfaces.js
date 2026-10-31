@@ -6,6 +6,8 @@
  if (!root.classList.contains('book-intro-redesign')) return;
  var reduced = matchMedia('(prefers-reduced-motion: reduce)');
  var wide = matchMedia('(min-width:768px)');
+ var calculator = document.querySelector('#calc');
+ var calculatorBox = calculator && calculator.querySelector('.calc__box');
  var pairs = [
   ['.book-editorial', '.book-steps'],
   ['.book-steps__window', '.book-formats'],
@@ -29,7 +31,10 @@
    var overlap = 4;
    pair.surface.style.transform = 'translate3d(0,' + (overlap * progress).toFixed(3) + 'px,0)';
   });
-
+  if (calculatorBox) {
+   var entry = Math.max(0, Math.min(1, calculator.getBoundingClientRect().top / innerHeight));
+   calculatorBox.style.transform = enabled ? 'translate3d(0,' + (24 * entry).toFixed(3) + 'px,0)' : '';
+  }
  }
  function schedule() { if (!queued) { queued = true; requestAnimationFrame(update); } }
  addEventListener('scroll', schedule, { passive: true });
