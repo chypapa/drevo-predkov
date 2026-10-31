@@ -28,7 +28,7 @@
       frame.style.height = reduced.matches ? rects[index].height + 'px' : '';
       frame.style.clipPath = reduced.matches ? 'none' : 'inset(' + ((1 - reveals[index]) * 100) + '% 0 0)';
       // The outgoing photograph shrinks subtly underneath the next reveal.
-      var covered = index + 1 < frames.length ? reveals[index + 1] : 0;
+      var covered = section.id === 'book-stages' ? 0 : (index + 1 < frames.length ? reveals[index + 1] : 0);
       frame.querySelector('.scroll-stages__crop').style.transform = reduced.matches ? 'none' : 'scale(' + (1 - covered * .04) + ')';
     });
   }

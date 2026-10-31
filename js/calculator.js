@@ -266,7 +266,7 @@
       submit.classList.remove('is-loading');
       submit.removeAttribute('aria-busy');
       resultSum.textContent = money(total);
-      resize(function () { form.hidden = true; result.hidden = false; });
+      resize(function () { panel.classList.add('has-result'); form.hidden = true; result.hidden = false; });
       result.focus({ preventScroll: true });
       bringIntoView(result);
     }, 600);
@@ -280,7 +280,7 @@
     if (q) q.classList.remove('is-invalid');
   });
   again.addEventListener('click', function () {
-    resize(function () { result.hidden = true; form.hidden = false; });
+    resize(function () { panel.classList.remove('has-result'); result.hidden = true; form.hidden = false; });
     bringIntoView(form);
     var first = form.querySelector('input');
     if (first) first.focus({ preventScroll: true });
@@ -291,22 +291,6 @@
     // новая линия проявляется, пока панель растёт
     line.classList.add('is-entering');
     requestAnimationFrame(function () { requestAnimationFrame(function () { line.classList.remove('is-entering'); }); });
-  });
-
-  // «Как выбрать период?» и другие пояснения: раскрываются и сворачиваются плавно, без рывка анкеты
-  form.addEventListener('click', function (e) {
-    var summary = e.target.closest('.calc-q__more > summary');
-    if (!summary || reduceMotion) return;
-    e.preventDefault();
-    var more = summary.parentElement, body = more.querySelector('p');
-    if (more.classList.contains('is-anim')) return;
-    more.classList.add('is-anim');
-    var opening = !more.open;
-    if (opening) more.open = true;
-    var full = { height: body.offsetHeight + 'px', marginTop: getComputedStyle(body).marginTop, opacity: 1 };
-    var none = { height: '0px', marginTop: '0px', opacity: 0 };
-    var anim = body.animate(opening ? [none, full] : [full, none], { duration: 320, easing: 'cubic-bezier(.4, 0, .2, 1)' });
-    anim.onfinish = function () { if (!opening) more.open = false; more.classList.remove('is-anim'); };
   });
 
   // на компьютере карточка с анкетой начинается вровень с фото слева (под заголовком и текстом), при прокрутке уходит выше

@@ -7,7 +7,7 @@
   <meta name="description" content="Генеалогическое исследование по архивам: ищем и расшифровываем документы о ваших предках и оформляем результат в родословную книгу с родословным древом. Рассчитайте стоимость онлайн.">
   <link rel="icon" href="img/favicon.ico?v=20261030-new" type="image/x-icon" sizes="16x16">
   <link rel="stylesheet" href="css/style.css?v=20261030-proximity-fix">
-  <link rel="stylesheet" href="css/design-system.css?v=20261031-map-complete">
+  <link rel="stylesheet" href="css/design-system.css?v=calc-manrope-1">
   <link rel="stylesheet" href="css/scroll-stages.css?v=uniform-frames-2">
   <link rel="stylesheet" href="css/book-introduction.css?v=original-dark-hero-2">
   <script>if (!('onpagereveal' in window)) document.documentElement.classList.add('fade-nav');</script>
@@ -346,11 +346,11 @@
             <button class="calc-line__remove" type="button"><img src="icons/delete.svg" width="18" height="19" alt=""><span class="calc-line__remove-text">Удалить</span></button>
           </div>
 
-          <!-- вопрос → короткая подсказка → варианты в строку; подробности — по нажатию -->
+          <!-- вопрос → единое пояснение → варианты в столбик -->
           <div class="calc-row">
             <fieldset class="calc-q" data-q="years">
               <legend class="calc-q__title">За&nbsp;сколько лет вести исследование?</legend>
-              <p class="calc-q__hint">Глубина поиска от&nbsp;последнего известного вам предка. Не&nbsp;уверены&nbsp;— оставьте 100&nbsp;лет: обычно это&nbsp;4–&#8288;5&nbsp;поколений.</p>
+              <p class="calc-q__hint">Это период от&nbsp;последнего известного вам предка вглубь истории. Например, если предок родился в&nbsp;1920&nbsp;году, исследование на&nbsp;100&nbsp;лет приведёт нас примерно к&nbsp;началу XIX&nbsp;века. Если не&nbsp;уверены&nbsp;— выбирайте 100&nbsp;лет: это самый частый запрос. Продолжить поиск глубже можно и&nbsp;потом. Записи старше 300&nbsp;лет сохранились не&nbsp;везде&nbsp;— такую глубину обсудим на&nbsp;консультации.</p>
               <div class="calc-q__options">
                 <label class="radio"><input type="radio" name="years" value="100"><span>100</span></label>
                 <label class="radio"><input type="radio" name="years" value="200"><span>200</span></label>
@@ -359,43 +359,32 @@
                   <input class="input calc-q__custom" type="number" inputmode="numeric" min="1" max="1000" step="1" aria-label="Свой вариант, лет"></label>
               </div>
               <p class="calc-q__error">Выберите срок или впишите свой</p>
-              <details class="calc-q__more">
-                <summary>Как выбрать период?</summary>
-                <p>Если прадед родился в&nbsp;1920&nbsp;году, 100&nbsp;лет поиска приведут к&nbsp;1820-м, 200&nbsp;— к&nbsp;началу XVIII&nbsp;века. Продолжить глубже можно и&nbsp;потом. Записи старше 300&nbsp;лет сохранились не&nbsp;везде&nbsp;— такую глубину обсудим на&nbsp;консультации.</p>
-              </details>
             </fieldset>
           </div>
 
           <div class="calc-row">
             <fieldset class="calc-q" data-q="before1917">
               <legend class="calc-q__title">Родился ли&nbsp;последний известный предок до&nbsp;революции (1917&nbsp;года)?</legend>
-              <p class="calc-q__hint">До&nbsp;1917&nbsp;года рождения записывали в&nbsp;церковные метрические книги, после&nbsp;— в&nbsp;ЗАГСах. Это разные архивы.</p>
+              <p class="calc-q__hint">После 1917&nbsp;года записи о&nbsp;рождении, браке и&nbsp;смерти велись в&nbsp;ЗАГСах, а&nbsp;до&nbsp;этого&nbsp;— в&nbsp;церковных метрических книгах. Архивы и&nbsp;методы поиска в&nbsp;этих двух случаях разные. Если в&nbsp;1930-е годы у&nbsp;предка уже были дети, он почти наверняка родился до&nbsp;революции.</p>
               <div class="calc-q__options">
                 <label class="radio"><input type="radio" name="before1917" value="yes"><span>Да</span></label>
                 <label class="radio"><input type="radio" name="before1917" value="no"><span>Нет</span></label>
+                <label class="radio"><input type="radio" name="before1917" value="unknown"><span>Не знаю</span></label>
               </div>
               <p class="calc-q__error">Выберите ответ</p>
-              <details class="calc-q__more">
-                <summary>Не&nbsp;знаете точно?</summary>
-                <p>Если в&nbsp;1930-е годы у&nbsp;предка уже были дети, он почти наверняка родился до&nbsp;революции.</p>
-              </details>
             </fieldset>
           </div>
 
           <div class="calc-row">
             <div class="calc-q" data-q="region">
               <label class="calc-q__title" for="region">В&nbsp;каком регионе жил этот род?</label>
-              <p class="calc-q__hint">От&nbsp;региона зависит, в&nbsp;каком архиве искать. Пишите современное название&nbsp;— губернию определим сами.</p>
+              <p class="calc-q__hint">Регион определяет, в&nbsp;каком архиве вести поиск, и&nbsp;может повлиять на&nbsp;сроки и&nbsp;стоимость исследования. Пишите современное название&nbsp;— губернию определим сами. Если семья переезжала, укажите место, где род жил дольше всего или откуда он, по&nbsp;семейным рассказам, родом. Подойдёт и&nbsp;город, где родились бабушка или дед.</p>
               <div class="combo">
                 <input class="input combo__input" id="region" type="text" autocomplete="off" placeholder="Москва"
                        role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="region-list">
                 <ul class="combo__list" id="region-list" role="listbox" hidden></ul>
               </div>
               <p class="calc-q__error">Впишите регион</p>
-              <details class="calc-q__more">
-                <summary>Если семья переезжала</summary>
-                <p>Укажите место, где род жил дольше всего или откуда он, по&nbsp;семейным рассказам, родом. Хватит и&nbsp;города, где родились бабушка или&nbsp;дед.</p>
-              </details>
             </div>
           </div>
         </fieldset>
@@ -502,8 +491,8 @@
 
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="js/main.js?v=20261029-system"></script>
-<script src="js/scroll-stages.js?v=mounted-paper-1"></script>
-<script src="js/calculator.js?v=20261026-empty"></script>
+<script src="js/scroll-stages.js?v=book-no-shrink-1"></script>
+<script src="js/calculator.js?v=calc-manrope-1"></script>
 </body>
 </html>
 

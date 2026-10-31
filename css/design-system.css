@@ -470,3 +470,18 @@ html.theme-v1.home3.idx3 {
     font-size: 20vw; margin: 16px 0 0; text-align: left; transform: translateY(.12em);
   }
 }
+
+/* Calculator typography and question groups follow the supplied reference. */
+html.home3.idx3 body .calc.calc--immersive :is(p,legend,label,input,button,span,li,a,h3):not(.calc__intro h2 *) { font-family: 'Manrope',system-ui,sans-serif !important; font-weight: 400 !important; }
+.idx3 .calc--immersive .calc-q__options { display: flex; flex-direction: column; flex-wrap: nowrap; align-items: flex-start; gap: var(--text-gap); }
+.idx3 .calc--immersive .calc-row { border-top: 0; }
+.idx3 .calc--immersive .calc-q__hint { color: var(--text); opacity: 1; }
+.idx3 .calc.calc--immersive .calc__add svg { width: 1em; height: 1em; flex: 0 0 1em; }
+.idx3 .calc--immersive .calc__box.has-result .calc__intro { display: none; }
+.idx3 .calc--immersive .calc__result { padding: 0; }
+.idx3 .calc--immersive .calc__result-label { margin: 0; font-size: var(--type-heading); line-height: 1.25; }
+.idx3 .calc--immersive .calc__result-sum { margin-top: var(--text-gap); font-size: var(--type-h1); font-weight: 600 !important; line-height: 1.2; color: var(--red); }
+.idx3 .calc--immersive .calc__result-note { margin-top: var(--grid-gap); color: var(--text); }
+.idx3 .calc--immersive .calc__again { margin-top: var(--group-gap); color: var(--red); }
+
+html.theme-v1.home3.idx3 body .calc.calc--immersive .calc__result .calc__result-sum { font-weight: 600 !important; }
