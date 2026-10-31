@@ -62,3 +62,9 @@
 }
 
 .book-intro-redesign.idx3 main#top > .book-formats + .reviews { margin-top: var(--section-space); }
+
+/* Slight overlap only at boundaries between the light and dark surfaces. */
+.book-intro-redesign .book-editorial { position: relative; z-index: 3; background: var(--bg); }
+.book-intro-redesign .book-steps { position: relative; z-index: 2; }
+.book-intro-redesign #reviews { position: relative; z-index: 3; background: var(--bg); }
+.book-intro-redesign #calc { position: relative; z-index: 2; }
