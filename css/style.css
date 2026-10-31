@@ -181,7 +181,7 @@ section[hidden] { display: none !important; }       /* скрытые блоки
    В блоках размер, начертание и межстрочный интервал заголовков не переопределяются */
 h1, h2, h3, h4, .h2, .h3, .h4 {
   font-family: "Manrope", system-ui, sans-serif;
-  text-wrap: balance;                                 /* ровные строки, без одного слова на последней */
+  text-wrap: wrap;                                 /* ровные строки, без одного слова на последней */
 }
 h1, h2, h3, h4, .h2, .h3, .h4 { color: var(--text); }
 h1, h2, .h2, .lead__title, .about2__subtitle, .book-lead { font-family: "Cormorant", Georgia, serif; }   /* заголовки — Cormorant; H3/H4 (названия карточек) — Manrope */
@@ -1767,7 +1767,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 .calc--split .radio { gap: 10px; }
 .calc--split .combo { margin-top: 0; }
 .calc--split .calc-q__options { flex-direction: row; flex-wrap: wrap; align-items: center; column-gap: var(--s-32); row-gap: var(--s-16); margin-top: 0; }
-.calc-q__hint { max-width: 60ch; margin-top: calc(var(--sp-12) - var(--s-24)); font-size: 16px; line-height: 1.45; color: var(--muted); text-wrap: pretty; }   /* ближе к вопросу (12), чем к вариантам (24); мельче вопроса */
+.calc-q__hint { max-width: 60ch; margin-top: calc(var(--sp-12) - var(--s-24)); font-size: 16px; line-height: 1.45; color: var(--muted); text-wrap: wrap; }   /* ближе к вопросу (12), чем к вариантам (24); мельче вопроса */
 .calc-q__more summary { display: inline-flex; font-size: 16px; align-items: center; gap: var(--sp-8); color: var(--text); text-decoration: underline; text-decoration-color: rgba(60, 60, 60, .3); text-underline-offset: 4px; cursor: pointer; list-style: none; }
 .calc-q__more summary::-webkit-details-marker { display: none; }
 .calc-q__more summary::after { content: ""; width: 7px; height: 7px; margin-top: -4px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; rotate: 45deg; transition: rotate .32s ease, margin .32s ease; }
@@ -1777,7 +1777,7 @@ h4, .h4 { font-size: var(--fs-h4); font-weight: 500; line-height: 1.3; letter-sp
 /* «2 фамильная линия» — заголовок новой части анкеты: крупно, номер красным */
 .svcp .calc-line .calc-line__title { font-size: var(--t3); color: var(--text); }   /* сильнее общего .svcp .h3 ниже по файлу */
 .calc-line__num { color: var(--red); }
-.calc-q__more p { max-width: 60ch; margin-top: var(--sp-12); font-size: 16px; line-height: 1.45; color: var(--muted); text-wrap: pretty; }
+.calc-q__more p { max-width: 60ch; margin-top: var(--sp-12); font-size: 16px; line-height: 1.45; color: var(--muted); text-wrap: wrap; }
 @media (max-width: 767px) {
   .calc-row { padding: var(--sp-32) 0; }
   .calc--split .calc-line--extra { padding-top: var(--sp-32); }
@@ -2100,7 +2100,7 @@ body, body *:not(svg):not(svg *) { font-family: "Manrope", system-ui, sans-serif
 .h3-title { font-size: var(--v1-h4); font-weight: 500; letter-spacing: -.01em; color: var(--text); }
 .h3-text { font-size: 16px; color: var(--text-body); }
 .h3-head { margin-bottom: var(--head); }
-.h3-head .v1-h2, .h3-head.v1-h2 { max-width: 900px; text-wrap: balance; }
+.h3-head .v1-h2, .h3-head.v1-h2 { max-width: 900px; text-wrap: wrap; }
 
 /* блоки с полями */
 .h3-sec { margin-top: var(--sec); padding-inline: var(--side); }
@@ -2372,8 +2372,8 @@ html.home3 :is(h1, h2, h3, h4, .h3-intro__lead):not(.about-svc__chip) { font-wei
 .roots::after { left: 0; transform: scaleX(-1); }   /* отражение: слева ветка растёт от левого края */
 .roots__in { display: flex; flex-direction: column; align-items: center; max-width: 760px; }
 .roots__label { font-size: var(--t5); }
-.roots__title { margin-top: var(--s-16); font-size: var(--v1-h2); color: var(--white); text-wrap: balance; }
-.roots__text { margin-top: var(--s-24); font-size: var(--t5); text-wrap: pretty; }
+.roots__title { margin-top: var(--s-16); font-size: var(--v1-h2); color: var(--white); text-wrap: wrap; }
+.roots__text { margin-top: var(--s-24); font-size: var(--t5); text-wrap: wrap; }
 .home3 .roots__btn { margin-top: var(--s-48); background: var(--white) !important; color: #4a5a3f !important; }
 .home3 .roots__btn:hover { background: rgba(255, 255, 255, .88) !important; }
 @media (max-width: 767px) {
@@ -2424,7 +2424,7 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .i3-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }   /* шкатулка с фото — справа, слева размытый фон под текстом */
 .i3-hero::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(20, 16, 12, .6), rgba(20, 16, 12, .15) 65%), linear-gradient(rgba(20, 16, 12, .45), rgba(20, 16, 12, 0) 200px); pointer-events: none; }   /* под белым текстом и шапкой */
 .i3-hero__text { position: absolute; top: 50%; left: var(--g3); z-index: 2; max-width: 760px; padding-right: var(--g3); transform: translateY(-50%); }
-.i3-hero__title { font-size: var(--t2); color: var(--white); text-wrap: balance; }
+.i3-hero__title { font-size: var(--t2); color: var(--white); text-wrap: wrap; }
 .i3-hero__lead { max-width: 580px; margin-top: var(--s-24); font-size: var(--t5); color: rgba(255, 255, 255, .92); }
 .i3-hero__link { display: inline-flex; align-items: center; gap: .5em; margin-top: var(--s-24); font-size: var(--t5); font-weight: 500; color: var(--white); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
 .i3-hero__link svg { width: .8em; height: .8em; }
@@ -2434,9 +2434,9 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .i3-about__main { grid-column: 1 / 6; }
 .i3-about__side { grid-column: 6 / 11; position: sticky; top: calc(var(--hdr-h) + var(--g)); }   /* фото — до правого края сетки, как карточки «Услуг» ниже */
 .i3-label { font-size: var(--t5); font-weight: 500; color: var(--red); }
-.i3-about__title { max-width: 18em; margin-top: var(--s-24); font-size: var(--t2); color: var(--text); text-wrap: balance; }
+.i3-about__title { max-width: 18em; margin-top: var(--s-24); font-size: var(--t2); color: var(--text); text-wrap: wrap; }
 .i3-about__text { max-width: 680px; }
-.i3-about__text p { margin-top: var(--s-24); font-size: var(--t5); color: var(--text-body); text-wrap: pretty; }
+.i3-about__text p { margin-top: var(--s-24); font-size: var(--t5); color: var(--text-body); text-wrap: wrap; }
 .i3-about__sub { margin: var(--s-96) 0 var(--s-48); font-size: var(--t3); color: var(--text); }   /* заголовок → первый пункт заметно больше, чем между пунктами: пункты читаются одной группой */
 /* линии — только между пунктами: над первым и под последним их нет, крайние пункты без внешнего отступа */
 .i3-lines, .i3-steps { max-width: 760px; margin: 0; padding: 0; list-style: none; }
@@ -2537,11 +2537,11 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .svx__text.is-on .svx__info { pointer-events: auto; }
 .svx__chips { display: flex; flex-wrap: wrap; gap: var(--s-8); margin: var(--s-24) 0 0; padding: 0; list-style: none; }   /* под названием: срок и цена */
 .svx__chips li { padding: 6px 14px; border-radius: 999px; white-space: nowrap; background: rgba(101, 98, 95, .1); font-size: 14px; color: var(--text); }   /* плашки — мелкие, второстепенные */
-.svx__name { font-size: var(--t2); color: var(--red); text-wrap: balance; }   /* размер H2, фирменный красный */
+.svx__name { font-size: var(--t2); color: var(--red); text-wrap: wrap; }   /* размер H2, фирменный красный */
 .svx__body { display: flex; flex-direction: column; align-items: flex-start; }
 /* название → 24 → плашки → 64 → «Что это такое?» (H3 — заметно крупнее текста, чтобы читался как заголовок) → 20 → описание → 56 → кнопка */
 .svx__label { margin-top: var(--s-64); font-size: var(--t3); line-height: 1.15; color: var(--text); }
-.svx__desc { max-width: 36em; margin-top: var(--sp-20); font-size: var(--t5); line-height: 1.5; color: var(--text-body); text-wrap: pretty; }
+.svx__desc { max-width: 36em; margin-top: var(--sp-20); font-size: var(--t5); line-height: 1.5; color: var(--text-body); text-wrap: wrap; }
 .home3 .svx__btn { display: flex; width: fit-content; min-height: 64px; margin-top: var(--s-56); padding: 20px 56px !important; font-weight: 500; }
 .svx__btn svg { width: 1em; height: 1em; }
 @media (max-width: 1023px) {
@@ -2608,7 +2608,7 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .formats__list { display: grid; grid-template-columns: 1fr 1fr; gap: var(--g); margin: 0; padding: 0; list-style: none; }
 .formats__img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; background: var(--ph); }
 .formats__name { margin-top: var(--s-24); font-size: var(--t3); line-height: 1.15; color: var(--text); }
-.formats__text { max-width: 36em; margin-top: var(--sp-12); font-size: var(--t5); color: var(--text-body); text-wrap: pretty; }
+.formats__text { max-width: 36em; margin-top: var(--sp-12); font-size: var(--t5); color: var(--text-body); text-wrap: wrap; }
 
 /* дизайн древа — как карточка услуги на главной: фото 45% ширины и высотой с экран за вычетом шапки и полей, текст справа с отступом 48px */
 .spot .addon { display: grid; grid-template-columns: 45fr 55fr; column-gap: var(--s-48); align-items: start; }
@@ -2882,7 +2882,7 @@ html.home3.idx3 :is(h1, h2, h3, h4, .i3-side__title) { font-weight: 400; letter-
 .directions__media { position: relative; min-height: clamp(480px, 42vw, 620px); }
 .directions__photo { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .directions__copy { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; justify-content: center; }
-.directions__title { font-size: var(--t2); line-height: 1.12; color: #fff; text-wrap: balance; }
+.directions__title { font-size: var(--t2); line-height: 1.12; color: #fff; text-wrap: wrap; }
 .directions__chips { display: flex; flex-wrap: wrap; gap: var(--s-8); margin: var(--s-24) 0 0; padding: 0; list-style: none; }
 .directions__chips li { padding: 6px 14px; border: 1px solid #ffffff80; border-radius: 999px; font-size: 14px; line-height: 1.4; color: #fff; }
 .directions__label { margin-top: var(--s-48); font-size: var(--t4); line-height: 1.2; color: #fff; }

@@ -5,7 +5,7 @@
  var root = document.documentElement;
  if (!root.classList.contains('book-intro-redesign')) return;
  var reduced = matchMedia('(prefers-reduced-motion: reduce)');
- var wide = matchMedia('(min-width:768px) and (orientation:landscape), (min-width:1200px)');
+ var wide = matchMedia('(min-width:1200px)');
  var pairs = [
   ['.book-editorial', '.book-steps'],
   ['.book-steps__window', '.book-formats'],

@@ -6,7 +6,7 @@
   const formats = document.querySelector('.book-formats');
   if (stages && formats) {
     const syncFormats = () => {
-      if (matchMedia('(min-width: 1200px), (min-width: 768px) and (orientation: landscape)').matches) {
+      if (matchMedia('(min-width: 1200px)').matches) {
         const height = Math.max(...Array.from(stages.children, card => card.offsetHeight));
         formats.style.setProperty('--format-image-height', `${height + 24}px`);
       } else {
