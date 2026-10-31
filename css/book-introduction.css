@@ -62,8 +62,8 @@
 @media (orientation:portrait) {
  .book-opening__hero { height: min(40svh,calc((100vw - var(--sbw, 0px)) * 362 / 418)); }
 }
-@media (min-width:768px) {
+@media (min-width:1200px) {
  .book-intro-redesign .calc.calc--immersive .calc__box {
-  max-width: min(100%, calc(var(--form-width) + (100vw - 2 * var(--g3) + var(--grid-gap)) / 6));
+  max-width: calc((100vw - var(--sbw, 0px) - 2 * var(--g3) - var(--card-gap)) / 2);
  }
 }

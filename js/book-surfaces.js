@@ -30,7 +30,7 @@
    if (!enabled) { pair.surface.style.transform = ''; return; }
    var nextTop = layoutTop(pair.next) - scrollY;
    var progress = Math.max(0, Math.min(1, (innerHeight - nextTop) / innerHeight));
-   var overlap = Math.min(160, innerHeight * .16);
+   var overlap = 4;
    pair.surface.style.transform = 'translate3d(0,' + (overlap * progress).toFixed(3) + 'px,0)';
   });
   backgrounds.forEach(function (entry) {
