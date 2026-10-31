@@ -498,15 +498,20 @@ html.theme-v1.home3.idx3 body .calc.calc--immersive .calc__result .calc__result-
 html.home3.idx3 body .i3-news .i3-post__title,
 html.home3.idx3 body .i3-news .i3-post__title * { font-family: 'Manrope',system-ui,sans-serif !important; font-weight: 400 !important; font-size: var(--type-heading); line-height: 1.25; letter-spacing: -.005em; }
 
-/* H3 is one type role everywhere, including legacy H4 aliases and subtitles. */
-html.theme-v1.home3.idx3 body :is(h3,h4,.h3,.h4,.book-editorial__subtitle),
-html.theme-v1.home3.idx3 body :is(h3,h4,.h3,.h4,.book-editorial__subtitle) * {
- font-family: 'Manrope',system-ui,sans-serif !important;
- font-weight: 400 !important;
-}
 
-html.theme-v1.home3.idx3 body .book-editorial .book-editorial__subtitle,
-html.theme-v1.home3.idx3 body .book-editorial .book-editorial__subtitle * {
- font-family: 'Manrope',system-ui,sans-serif !important;
- font-weight: 400 !important;
-}
+/* One type scale: Playfair for H1/H2, Manrope Regular for smaller headings. */
+html.theme-v1.home3.idx3 body .page :is(h1,.h1) { font-family: 'Playfair Display',Georgia,serif !important; font-size: var(--type-h1) !important; font-weight: 400 !important; }
+html.theme-v1.home3.idx3 body .page :is(h2,.h2) { font-family: 'Playfair Display',Georgia,serif !important; font-size: var(--type-h2) !important; font-weight: 400 !important; }
+html.theme-v1.home3.idx3 body .page :is(h1,h2,.h1,.h2) * { font-family: 'Playfair Display',Georgia,serif !important; font-size: inherit !important; font-weight: 400 !important; }
+html.theme-v1.home3.idx3 body .page :is(h3,h4,.h3,.h4) { font-family: 'Manrope',system-ui,sans-serif !important; font-size: var(--type-h3) !important; font-weight: 400 !important; }
+html.theme-v1.home3.idx3 body .page :is(h3,h4,.h3,.h4) * { font-family: 'Manrope',system-ui,sans-serif !important; font-size: inherit !important; font-weight: 400 !important; }
+/* Equal outer form intervals, with a smaller interval between questions. */
+.idx3 .calc.calc--immersive { --calc-edge-gap: var(--group-gap); --calc-question-gap: var(--text-gap); }
+.idx3 .calc.calc--immersive .calc__intro { margin-bottom: var(--calc-edge-gap); }
+.idx3 .calc.calc--immersive .calc__card { display: flex; flex-direction: column; gap: 0; }
+.idx3 .calc.calc--immersive .calc__lines { display: grid; gap: var(--calc-edge-gap); }
+.idx3 .calc.calc--immersive .calc-line { display: block; }
+.idx3 .calc.calc--immersive .calc-line .calc-row { padding: 0; border-top: 0; }
+.idx3 .calc.calc--immersive .calc-line .calc-row + .calc-row { margin-top: var(--calc-question-gap); padding-top: 0; }
+.idx3 .calc.calc--immersive .calc__add { margin-top: var(--calc-edge-gap); margin-bottom: var(--calc-edge-gap); align-self: flex-start; }
+.idx3 .calc.calc--immersive .calc__add path { stroke-width: 2; }

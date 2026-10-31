@@ -485,7 +485,7 @@
     // у заголовка блока «О нас» два варианта текста (для широкого экрана и для телефона) — размечаем каждый
     var targets = [];
     document.querySelectorAll('h2').forEach(function (h) {
-      if (h.closest('[hidden], .opening, .overlay') || h.classList.contains('about-svc__chip')) return;
+      if (h.hasAttribute('data-static-title') || h.closest('[hidden], .opening, .overlay') || h.classList.contains('about-svc__chip')) return;
       if (h.querySelector('em, strong, a')) return;            // с выделением внутри (курсив, ссылка) — без построчной разметки, иначе выделение теряется
       var parts = h.querySelectorAll(':scope > span');
       if (parts.length) parts.forEach(function (p) { targets.push({ el: p, root: h }); });

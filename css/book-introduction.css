@@ -59,3 +59,5 @@
  .book-formats__copy p:first-of-type { margin-top: auto; padding-top: var(--group-gap); }
  .book-formats > img { height: 100%; }
 }
+
+.book-intro-redesign.idx3 main#top > .book-formats + .reviews { margin-top: calc(2 * var(--section-space)); }

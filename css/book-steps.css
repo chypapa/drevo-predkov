@@ -12,7 +12,7 @@ html.home3.idx3 body .book-steps__label { margin: 0; color: #fff; font-family: '
 .idx3 .book-steps__description { margin: var(--text-gap) 0 0; color: #fff; font-size: var(--type-body); line-height: 1.5; }
 .book-steps__button { display: inline-flex; align-items: center; justify-content: center; align-self: flex-start; min-height: 48px; margin-top: var(--group-gap); padding: 8px 24px; border: 1px solid currentColor; border-radius: 0; background: transparent; color: #fff; font-size: var(--type-body); text-decoration: none; box-sizing: border-box; }
 .book-steps__button:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
-.book-intro-redesign.idx3 main#top > .book-steps.is-scroll-story { height: 274svh; }
+.book-intro-redesign.idx3 main#top > .book-steps.is-scroll-story { height: 294svh; }
 .book-steps.is-scroll-story .book-steps__window { position: sticky; top: 0; height: 100svh; padding: 0; overflow: hidden; }
 .book-steps.is-scroll-story .book-steps__cards { position: absolute; top: 50%; left: var(--g3); right: var(--g3); transform: translateY(-50%); }
 .book-steps.is-scroll-story .book-steps__card { will-change: transform; }

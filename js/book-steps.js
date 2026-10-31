@@ -14,13 +14,13 @@
     queued = false;
     if (!active) return;
     var scrolled = -section.getBoundingClientRect().top;
-    // At this point the sticky window naturally releases and carries the first card with it.
-    var leaving = Math.max(0, scrolled - releaseAt);
+    // Let all cards begin leaving while the photograph briefly remains pinned.
+    var leaving = Math.max(0, scrolled - (releaseAt - viewport * .20));
     cards.forEach(function (card, index) {
       // Start before pinning: the first card is settled when the full background arrives.
       var enterStart = [-.85, -.40, .10][index];
       var enter = clamp((scrolled / viewport - enterStart) / .75);
-      var extraSpeed = [0, .35, .8][index];
+      var extraSpeed = [.25, .60, 1.05][index];
       var y = (1 - enter) * viewport * .8 - leaving * extraSpeed;
       card.style.transform = 'translate3d(0,' + y.toFixed(3) + 'px,0)';
     });
