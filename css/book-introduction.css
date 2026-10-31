@@ -47,9 +47,10 @@
  .book-intro-redesign.idx3 main#top > .book-formats { grid-template-columns: minmax(0,1fr); }
 }
 
-/* Keep the right column's starting edge and remove one column of text width. */
+/* Move the five-column prose one grid column left, preserving its width. */
 @media (min-width:768px) and (orientation:landscape), (min-width:1200px) {
- .book-editorial__body { box-sizing: border-box; width: calc(100% - (100vw - 2 * var(--g3) + var(--grid-gap)) / 12); }
+ .book-intro-redesign.idx3 main#top > .book-editorial { --book-intro-column: calc((100vw - 2 * var(--g3) + var(--grid-gap)) / 12); grid-template-columns: minmax(0,calc(var(--book-column-split) - var(--book-intro-column))) minmax(0,1fr); }
+ .book-editorial__body { box-sizing: border-box; width: calc(100% - 2 * var(--book-intro-column)); }
 }
 
 /* Align the format description to the bottoms of its adjacent photographs. */
@@ -60,4 +61,4 @@
  .book-formats > img { height: 100%; }
 }
 
-.book-intro-redesign.idx3 main#top > .book-formats + .reviews { margin-top: calc(2 * var(--section-space)); }
+.book-intro-redesign.idx3 main#top > .book-formats + .reviews { margin-top: var(--section-space); }
