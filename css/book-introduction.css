@@ -51,3 +51,11 @@
 @media (min-width:768px) and (orientation:landscape), (min-width:1200px) {
  .book-editorial__body { box-sizing: border-box; width: calc(100% - (100vw - 2 * var(--g3) + var(--grid-gap)) / 12); }
 }
+
+/* Align the format description to the bottoms of its adjacent photographs. */
+@media (min-width:768px) and (orientation:landscape), (min-width:1200px) {
+ .book-intro-redesign.idx3 main#top > .book-formats { align-items: stretch; }
+ .book-formats__copy { display: flex; flex-direction: column; }
+ .book-formats__copy p:first-of-type { margin-top: auto; padding-top: var(--group-gap); }
+ .book-formats > img { height: 100%; }
+}
