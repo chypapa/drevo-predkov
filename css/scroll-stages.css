@@ -62,11 +62,13 @@
 /* Keep the reveal inside the mounted photographs; the paper margins stay still. */
 .scroll-stages__photo-window { position: absolute; top: var(--section-space); bottom: var(--section-space); left: 0; right: var(--g3); overflow: hidden; }
 .scroll-stages__frame { display: grid; place-items: center; }
-.scroll-stages__crop { position: relative; overflow: hidden; width: min(100%, calc((100svh - 2 * var(--section-space)) * var(--mount-ratio))); aspect-ratio: var(--mount-ratio); transform-origin: center; will-change: transform; }
-.scroll-stages__frame .scroll-stages__crop img { inset: auto; left: var(--source-left); top: var(--source-top); width: var(--source-width); height: var(--source-height); object-fit: fill; transform: none; will-change: auto; }
-.scroll-stages__frame:nth-child(1) { --mount-ratio: .839506; --source-left: -137.037%; --source-top: -6.914%; --source-width: 245.926%; --source-height: 116.173%; }
-.scroll-stages__frame:nth-child(2) { --mount-ratio: .845963; --source-left: -137.151%; --source-top: -7.578%; --source-width: 245.375%; --source-height: 116.894%; }
-.scroll-stages__frame:nth-child(3) { --mount-ratio: 1.08; --source-left: -101.975%; --source-top: -12.667%; --source-width: 206.42%; --source-height: 125.467%; }
+.scroll-stages__crop { position: relative; overflow: hidden; width: min(100%, calc((100svh - 2 * var(--section-space)) * var(--mount-ratio))); aspect-ratio: var(--mount-ratio); background: url('../img/photos/workflow-album.webp') 93.906% 42.75% / 245.926% 116.173%; transform-origin: center; will-change: transform; }
+.scroll-stages__artwork { position: absolute; inset: 5%; overflow: hidden; }
+.scroll-stages__frame .scroll-stages__crop .scroll-stages__artwork img { inset: auto; left: var(--source-left); top: var(--source-top); width: var(--source-width); height: var(--source-height); object-fit: fill; transform: none; will-change: auto; }
+.scroll-stages__frame { --mount-ratio: .84; }
+.scroll-stages__frame:nth-child(1) { --source-left: -186.012%; --source-top: -17.188%; --source-width: 311.012%; --source-height: 147.031%; }
+.scroll-stages__frame:nth-child(2) { --source-left: -166.327%; --source-top: -15.429%; --source-width: 284.354%; --source-height: 134.429%; }
+.scroll-stages__frame:nth-child(3) { --source-left: -25.397%; --source-top: 0%; --source-width: 190.476%; --source-height: 100.133%; }
 @media (prefers-reduced-motion: reduce) {
   .scroll-stages__photo-window { position: relative; inset: auto; overflow: visible; margin-right: var(--g3); }
   .scroll-stages__crop { transform: none !important; will-change: auto; }
