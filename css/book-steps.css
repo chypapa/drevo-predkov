@@ -1,4 +1,4 @@
-/* A single pinned photograph with sequential, scroll-linked white cards. */
+/* A single pinned photograph with sequential, scroll-linked page-colored cards. */
 .book-intro-redesign.idx3 main#top > .book-steps { width: 100%; padding: 0; background: #171411; }
 .book-intro-redesign.idx3 main#top > .book-editorial + .book-steps { margin-top: 0; }
 .book-steps__window { position: relative; isolation: isolate; padding: var(--section-space) var(--g3); box-sizing: border-box; }
@@ -6,7 +6,7 @@
 .book-steps__backdrop img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .book-steps__backdrop::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.25); }
 .book-steps__cards { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--card-gap); align-items: stretch; }
-.book-steps__card { min-width: 0; padding: var(--form-padding); box-sizing: border-box; display: flex; flex-direction: column; background: #fff; color: var(--text); }
+.book-steps__card { min-width: 0; padding: var(--form-padding); box-sizing: border-box; display: flex; flex-direction: column; background: var(--bg); color: var(--text); }
 html.home3.idx3 body .book-steps__label { margin: 0; color: var(--text); font-family: 'Manrope',system-ui,sans-serif !important; font-size: var(--type-body); font-weight: 400; line-height: 1.5; }
 .idx3 .book-steps__title { margin: var(--text-gap) 0 0; color: var(--text); font-size: var(--type-section); font-weight: 400; line-height: 1.15; }
 .idx3 .book-steps__description { margin: calc(1.5 * var(--group-gap)) 0 0; color: var(--text); font-size: var(--type-body); line-height: 1.5; }

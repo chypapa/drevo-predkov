@@ -6,7 +6,7 @@ html.theme-v1.home3.idx3 { --section-heading-space: 64px; }
 .idx3 .service-intro .story-intro__body { margin-top: 0; padding-top: calc(2 * var(--group-gap)); }
 .book-intro-redesign .book-opening__cta { margin-top: var(--group-gap); }
 .book-intro-redesign .book-opening__benefits ul { margin-top: calc(2 * var(--text-gap)); }
-.book-intro-redesign .book-formats__copy p:first-of-type { margin-top: calc(2 * var(--group-gap)); padding-top: 0; }
+.book-intro-redesign .book-formats__copy p:first-of-type { margin-top: var(--group-gap); padding-top: 0; }
 .idx3 .book-steps__description { margin-top: calc(1.5 * var(--group-gap)); }
 .idx3 .scroll-stage__description { margin-top: 64px; }
 .idx3 .lead__head { gap: calc(2 * var(--text-gap)); }
