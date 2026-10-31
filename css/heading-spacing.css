@@ -55,3 +55,14 @@ html.theme-v1.home3.idx3 { --section-heading-space: 64px; }
  .idx3 .home-reviews .review { min-height: 0; grid-template-rows: 20px auto auto; }
  .idx3 .home-reviews .review .review__author { padding-top: 0; }
 }
+
+/* A mobile section gap is applied once, outside the content surface. */
+@media (max-width:767px) {
+ html.theme-v1.home3.idx3 { --section-space: 48px; }
+ .idx3 main#top > :is(.story-intro,.i3-news,.reviews,.book-formats,.calc) {
+  margin-block: var(--section-space) 0;
+  padding-block: 0;
+ }
+ .idx3 main#top > section:first-child { margin-top: 0; }
+ .idx3 .home-reviews .reviews__list { padding-bottom: 0; }
+}
