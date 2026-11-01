@@ -546,12 +546,14 @@ html.theme-v1.home3.idx3 body .page :is(h3,h4,.h3,.h4) * { font-family: 'Manrope
 .idx3 #blog .i3-post__link { margin-top: auto; padding-top: var(--text-gap); }
 /* Keep the home introduction prose close to its heading. */
 .idx3 :is(#about,#family-tree) .story-intro__body { margin-top: 0; padding-top: var(--group-gap); }
-/* Compact, left-aligned mobile footer. */
+/* Compact mobile footer with centered social links and a muted policy link. */
 @media (max-width:767px) {
- .idx3 .h3-footer { min-height: 0; grid-template-rows: auto auto; padding-bottom: 24px; }
+ .idx3 .h3-footer { min-height: 0; grid-template-rows: auto auto; gap: 4px; padding: 8px var(--g3) 12px; background: #32170f; }
  .idx3 .h3-footer .h3-footer__mark { display: none; }
- .idx3 .h3-footer__links { justify-content: flex-start; gap: 16px; }
- .idx3 .h3-footer__policy { justify-self: start; text-align: left; }
+ .idx3 .h3-footer__links { justify-content: center; gap: 4px; }
+ .idx3 .h3-footer__links a { display: flex; justify-content: center; width: 40px; height: 40px; }
+ .idx3 .h3-footer .h3-footer__links img { flex: 0 0 28px; width: 28px; height: 28px; max-width: 28px; }
+ .idx3 .h3-footer__policy { justify-self: center; text-align: center; font-size: 12px !important; line-height: 1.5; font-weight: 400; opacity: .5; text-decoration: none; }
 }
 /* Additional family lines are full sections within the calculator. */
 html.theme-v1.home3.idx3 body .page .calc .calc-line .calc-line__title,
